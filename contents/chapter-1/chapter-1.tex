@@ -2,131 +2,255 @@
 
 \section{Latar Belakang}
 
-Sub-bab ini berisi uraian tentang latar belakang atau justifikasi ilmiah (dari \textit{paper} dan jurnal) dari permasalahan yang akan diteliti, alasan penelitian dan penelitian yang pernah dilakukan sebelumnya terkait fenomena tersebut.
+Dunia pendidikan tinggi saat ini menuntut mahasiswa untuk bisa belajar secara mandiri.
+ Namun banyak dari mereka belum siap menghadapi tuntutan tersebut. Hal ini menimbulkan 
+ kesenjangan yang serius dalam keterampilan Self-Regulated Learning (SRL), yang dapat 
+ menghambat keberhasilan belajar dan mengganggu pemerataan akses pendidikan \cite{liu2025srl, xiao2019relationships}. 
+ Tantangan ini justru diperburuk oleh teknologi digital yang menjadi ciri khas pembelajaran 
+ masa kini. Meskipun menawarkan fleksibilitas, teknologi tersebut juga menghadirkan distraksi 
+ yang signifikan dan menuntut disiplin diri yang lebih besar \cite{chitra2022srl}. Kegagalan institusi dalam 
+ memberikan dukungan yang memadai untuk pengembangan SRL bukan hanya masalah akademik, melainkan 
+ juga masalah sosial yang berdampak pada prospek karier jangka panjang mahasiswa dan efektivitas 
+ sistem pendidikan \cite{liu2025srl}.
+% ------------------------------------------------
+
+Untuk mengatasi kesenjangan SRL, Zimmerman mengemukakan kerangka kerja yang mencakup tahap 
+perencanaan (forethought), pelaksanaan (performance), dan refleksi diri (self-reflection). 
+SRL merupakan gabungan strategi kognitif, motivasional, dan perilaku \cite{liu2025srl, akdeniz2022srl}. 
+Individu dengan 
+kemampuan regulasi diri yang efektif terbentuk melalui penetapan tujuan, perancangan strategi, 
+pemantauan diri secara aktif, dan evaluasi diri yang bijaksana. Sejumlah besar penelitian 
+mengonfirmasi hubungan kuat antara keterampilan ini dan pencapaian akademik \cite{liu2025srl, xiao2019relationships}. 
+Namun, 
+pengembangannya kerap terhambat oleh hambatan personal, kontekstual, dan sosial—mulai dari 
+manajemen waktu yang buruk dan distraksi digital hingga rendahnya kesadaran metakognitif—sehingga 
+intervensi terstruktur diperlukan untuk membimbing mahasiswa menjalani proses yang kompleks 
+ini \cite{chitra2022srl, 10.3389/feduc.2024.1418297}.
+% ------------------------------------------------
+
+Metode tradisional yang paling efektif untuk mengembangkan keterampilan ini adalah umpan balik 
+personal dari ahli manusia. Umpan balik berkualitas tinggi yang berfokus tidak hanya pada 
+jumlah tugas yang diselesaikan, tetapi juga pada proses belajar dan regulasi diri mahasiswa 
+merupakan katalis kuat untuk perbaikan [15, 16]\cite{10.3389/fpsyg.2022.1027266, Bock14032024}. Namun standar emas ini menghadapi krisis 
+skalabilitas dengan meningkatnya jumlah mahasiswa dan kebutuhan dukungan yang beragam membuat 
+model bimbingan satu-satu sulit diterapkan dalam skala besar. Hal ini diperkuat
+dengan studi-studi yang dilakukan dan menunjukkan bahwa  tekanan anggaran mendorong ukuran kelas 
+yang semakin besar, sehingga interaksi personal antara dosen dan mahasiswa sangat terbatas \cite{schaffer2017automating, pardo2019using}. 
+Ini menciptakan kebutuhan mendesak akan solusi inovatif berbasis teknologi yang dapat melengkapi keahlian manusia.
+% ------------------------------------------------
+
+Salah satu teknologi tersebut adalah penggunaan Large Language Models (LLM). LLM dapat 
+digunakan sebagai tutor virtual yang mampu memberi umpan balik yang cepat dan konsisten. 
+Temuan terbaru memperlihatkan bahwa ketika LLM digunakan untuk penilaian dan umpan balik, 
+\textit{artificial intelligence} (AI) cenderung murah hati dalam memberikan nilai sehingga nilainya
+lebih tinggi daripada nilai yang diberikan ahli manusia. 
+Sementara itu penilaian 
+antar rekan dan dosen lebih rendah dan sesuai dengan performa mahasiswa. 
+Umpan balik AI sering terstruktur, tetapi tetap 
+memerlukan pengawasan ahli manusia agar relevan secara pedagogis sehingga pendekatan 
+hibrida (penggabungan AI dan ahli manusia) direkomendasikan \cite{Usher2025GenAIAssessments}.
+Pendekatan hibrida direkomendasikan karena dapat menggabungkan kecepatan dan skalabilitas AI dengan
+penguasaan konteks, pemahaman empati dan nuansa pedagogis dari penilaian manusia \cite{Usher2025GenAIAssessments}.
+Anjuran penulis terhadap pendekatan hibrida menegaskan bahwa respons LLM masih membutuhkan pengawasan pakar agar relevan.
+Di sisi lain, upaya standarisasi evaluasi tutor-AI menunjukkan bahwa meskipun model terkini seperti GPT-4 
+kuat dalam menjawab pertanyaan, mereka cenderung terlalu 
+cepat memberikan jawaban kepada mahasiswa 
+dan kurang menuntun proses. Fakta ini menunjukkan bahwa LLM belum 
+ideal sebagai tutor dan belum dapat menggantikan 
+ahli manusia dalam penilaian kualitas pedagogis \cite{Maurya2025UnifyingAITutorEvaluation}.
+%-------------------------------------------------
+
+Oleh karena itu, skripsi ini berfokus pada peningkatan kualitas performa respons 
+LLM sebagai pemberi umpan balik agar mendekati mutu ahli manusia secara kuantitatif 
+dan kualitatif. Peningkatan dilakukan melalui kerangka evaluasi hibrida yang menggabungkan 
+acuan ahli manusia sebagai \textit{ground truth} dan penilaian kualitas yang menilai 
+dimensi-dimensi pedagogis relevan \cite{Usher2025GenAIAssessments, Maurya2025UnifyingAITutorEvaluation}. 
+Dalam melakukan peningkatan kualitas umpan balik LLM, 
+skripsi ini menggabungkan \textit{context engineering} dengan data \textit{learning analytics} 
+untuk mengekstrak proses pembelajaran mahasiswa. Pendekatan kombinasi ini diharapkan mampu meningkatkan performa LLM 
+dalam memberikan \textit{feedback}, motivation, dan \textit{appreciation} kepada mahasiswa.
+% Penelitian terdahulu telah menunjukkan potensi umpan balik berbasis LLM dalam mendukung hasil 
+% belajar dan aspek afektif siswa.[]
+
+
+%-------------------------------------------------
+
+Untuk mendukung proses pengukuran tersebut, skripsi ini memanfaatkan jejak proses belajar 
+yang terstruktur. Data pembelajaran mahasiswa yang dipresentasikan ke dalam bentuk
+Papan Kanban digital dipakai sebatas alat operasional untuk menata dan mengekstraksi
+data proses (perpindahan kartu, checklist, waktu pengerjaan) yang dapat dipetakan
+ke fase SRL (perencanaan–monitoring–refleksi) \cite{strickroth2022kanban}. 
+Penggunaan Papan Kanban
+hanya sebagai salah satu instrumen pengaya data agar evaluasi dan perbaikan kualitas umpan balik
+LLM bisa berjalan lebih terarah. Fokus kebaruan terletak pada rangkaian evaluasi dan perbaikan
+\textit{prompt} LLM yang menargetkan tiga fungsi
+pedagogis utama yakni feedback kognitif, dukungan motivasional, dan dukungan apresiatif dengan
+tujuan praktis yaitu menyamai kualitas ahli manusia pada metrik kuantitatif sekaligus memenuhi
+standar kualitas kualitatif \cite{10.3389/fpsyg.2022.1027266, Bock14032024, Usher2025GenAIAssessments, Maurya2025UnifyingAITutorEvaluation}. 
+Dengan 
+membandingkan keluaran LLM dan pakar ahli, studi ini menilai peningkatan performa LLM agar 
+dapat menjadi pertimbangan dalam penggunaan sebagai agen pedagogis pelengkap mahasiswa 
+yang masif dan personal.
+
+%-------------------------------------------------
+
+% Oleh karena itu, studi ini menangani kesenjangan riset yang jelas dan mendesak pada irisan learning analytics, psikologi pendidikan, dan kecerdasan buatan. 
+% % Pertanyaan utamanya 
+% % adalah: Dapatkah LLM memberikan umpan balik terhadap proses SRL mahasiswa—sebagaimana direpresentasikan melalui data papan 
+% % Kanban dengan kualitas yang sebanding dengan umpan balik dari seorang ahli manusia? 
+% Untuk menangani permasalahan ini, dilakukan penelitian dengan membandingkan umpan balik yang dihasilkan oleh AI dengan ground truth dari ahli manusia. Tesis ini akan mengevaluasi 
+% kelayakan umpan balik dari LLM saat disandingkan dengan ahli manusia. 
+% % Untuk mendukung penelitian ini, telah dikembangkan sebelumnya sebuah platform pembelajaran berbasis Kanban yaitu
+% % GAMATUTOR.ID sebagai .... 
+% Temuan dari penelitian ini berpotensi memvalidasi model baru untuk dukungan akademik yang skalabel dan 
+% menjadi proof-of-concept penting bagi pengembangan generasi berikutnya dari agen pedagogis cerdas yang dirancang untuk menjadikan setiap mahasiswa menjadi pembelajar yang 
+% lebih efektif, mandiri, dan sepanjang hayat.
+
+
 
 %HAPUS YANG TIDAK PERLU
 %-------------------------------------------------
-\noindent\textbf{Contoh latar belakang penelitian untuk teknik elektro:} \\
-\noindent\fbox{%
-	\parbox{\textwidth}{%
+% \noindent\textbf{Contoh latar belakang penelitian untuk teknik elektro:} \\
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
 				
-		\hspace{1cm} "Peningkatan konsumsi energi listrik yang terus menerus menyebabkan ketersediaan 
-		sumber energi yang semakin terbatas. Sumber energi terbarukan seperti solar dan angin 
-		menjadi solusi yang menjanjikan untuk memenuhi kebutuhan energi. Namun, kapasitas 
-		produksi dan efisiensi dari sumber energi terbarukan masih sangat tergantung pada 
-		kondisi cuaca dan geografis. Oleh karena itu, perlu adanya sistem penyimpanan energi 
-		yang efisien dan dapat memastikan ketersediaan energi listrik secara kontinu. Penelitian 
-		ini akan mengevaluasi kemampuan superkapasitor dalam menyimpan dan mengirimkan 
-		energi secara efisien dan memastikan ketersediaan energi listrik secara kontinu."
+% 		\hspace{1cm} "Peningkatan konsumsi energi listrik yang terus menerus menyebabkan ketersediaan 
+% 		sumber energi yang semakin terbatas. Sumber energi terbarukan seperti solar dan angin 
+% 		menjadi solusi yang menjanjikan untuk memenuhi kebutuhan energi. Namun, kapasitas 
+% 		produksi dan efisiensi dari sumber energi terbarukan masih sangat tergantung pada 
+% 		kondisi cuaca dan geografis. Oleh karena itu, perlu adanya sistem penyimpanan energi 
+% 		yang efisien dan dapat memastikan ketersediaan energi listrik secara kontinu. Penelitian 
+% 		ini akan mengevaluasi kemampuan superkapasitor dalam menyimpan dan mengirimkan 
+% 		energi secara efisien dan memastikan ketersediaan energi listrik secara kontinu."
 		
-	}%
-}
+% 	}%
+% }
 
-%-------------------------------------------------	
-\vspace{5mm}
-Latar belakang ini memperkenalkan masalah ketersediaan sumber energi dan 
-peningkatan konsumsi energi listrik yang terus menerus. Ini juga memperkenalkan solusi 
-yang menjanjikan dari sumber energi terbarukan dan menjelaskan mengapa perlu adanya 
-sistem penyimpanan energi yang efisien. Latar belakang ini memberikan dasar yang kuat 
-bagi perumusan masalah dan tujuan penelitian, memastikan bahwa hasil penelitian 
-memiliki relevansi dan signifikansi bagi bidang terkait.
+% %-------------------------------------------------	
+% \vspace{5mm}
+% Latar belakang ini memperkenalkan masalah ketersediaan sumber energi dan 
+% peningkatan konsumsi energi listrik yang terus menerus. Ini juga memperkenalkan solusi 
+% yang menjanjikan dari sumber energi terbarukan dan menjelaskan mengapa perlu adanya 
+% sistem penyimpanan energi yang efisien. Latar belakang ini memberikan dasar yang kuat 
+% bagi perumusan masalah dan tujuan penelitian, memastikan bahwa hasil penelitian 
+% memiliki relevansi dan signifikansi bagi bidang terkait.
 
-%HAPUS YANG TIDAK PERLU
-%-------------------------------------------------
-\noindent\textbf{Contoh latar belakang penelitian untuk teknik biomedis:} \\
-\noindent\fbox{%
-	\parbox{\textwidth}{%
+% %HAPUS YANG TIDAK PERLU
+% %-------------------------------------------------
+% \noindent\textbf{Contoh latar belakang penelitian untuk teknik biomedis:} \\
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
 		
-		\hspace{1cm} "Diagnosis dan pengobatan penyakit memerlukan integrasi informasi medis yang 
-		akurat dan terkini. Alat diagnostik tradisional seperti CT scan dan MRI memiliki resolusi 
-		yang tinggi dan dapat mengidentifikasi masalah pada tingkat sel, tetapi sering 
-		memerlukan banyak waktu dan biaya. Alat deteksi dini seperti tes darah dan urin memiliki 
-		biaya rendah dan mudah digunakan, tetapi sering kurang akurat dan tidak memberikan gambaran yang jelas tentang masalah medis. Oleh karena itu, penting untuk menemukan metode baru yang memadukan keunggulan dari kedua jenis alat tersebut. Penelitian ini akan mengevaluasi kemampuan nanopartikel dalam meningkatkan akurasi dan efisiensi diagnosis medis."
+% 		\hspace{1cm} "Diagnosis dan pengobatan penyakit memerlukan integrasi informasi medis yang 
+% 		akurat dan terkini. Alat diagnostik tradisional seperti CT scan dan MRI memiliki resolusi 
+% 		yang tinggi dan dapat mengidentifikasi masalah pada tingkat sel, tetapi sering 
+% 		memerlukan banyak waktu dan biaya. Alat deteksi dini seperti tes darah dan urin memiliki 
+% 		biaya rendah dan mudah digunakan, tetapi sering kurang akurat dan tidak memberikan gambaran yang jelas tentang masalah medis. Oleh karena itu, penting untuk menemukan metode baru yang memadukan keunggulan dari kedua jenis alat tersebut. Penelitian ini akan mengevaluasi kemampuan nanopartikel dalam meningkatkan akurasi dan efisiensi diagnosis medis."
 		
-	}%
-}
+% 	}%
+% }
 
-%-------------------------------------------------	
-\vspace{5mm}
-Latar belakang ini memperkenalkan masalah diagnostik dan pengobatan penyakit dan mempertimbangkan pentingnya integrasi informasi medis yang akurat dan terkini. Ini 
-juga memperkenalkan kelemahan dari alat diagnostik tradisional dan deteksi dini dan menjelaskan mengapa penting untuk menemukan metode baru yang memadukan 
-keunggulan dari kedua jenis alat tersebut. Latar belakang ini memberikan dasar yang kuat bagi perumusan masalah dan tujuan penelitian, memastikan bahwa hasil penelitian 
-memiliki relevansi dan signifikansi bagi bidang terkait.
+% %-------------------------------------------------	
+% \vspace{5mm}
+% Latar belakang ini memperkenalkan masalah diagnostik dan pengobatan penyakit dan mempertimbangkan pentingnya integrasi informasi medis yang akurat dan terkini. Ini 
+% juga memperkenalkan kelemahan dari alat diagnostik tradisional dan deteksi dini dan menjelaskan mengapa penting untuk menemukan metode baru yang memadukan 
+% keunggulan dari kedua jenis alat tersebut. Latar belakang ini memberikan dasar yang kuat bagi perumusan masalah dan tujuan penelitian, memastikan bahwa hasil penelitian 
+% memiliki relevansi dan signifikansi bagi bidang terkait.
 
-%HAPUS YANG TIDAK PERLU
-%-------------------------------------------------
-\noindent\textbf{Contoh latar belakang penelitian untuk teknologi informasi:} \\
-\noindent\fbox{%
-	\parbox{\textwidth}{%
+% %HAPUS YANG TIDAK PERLU
+% %-------------------------------------------------
+% \noindent\textbf{Contoh latar belakang penelitian untuk teknologi informasi:} \\
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
 		
-\hspace{1cm} "Dengan perkembangan teknologi informasi yang sangat pesat dalam beberapa tahun terakhir, penyimpanan data menjadi masalah yang semakin penting. Semakin banyak data yang diterima setiap hari, semakin penting bagi organisasi untuk memastikan bahwa data 
-mereka aman dan terlindungi. Pada saat yang sama, organisasi juga membutuhkan akses cepat dan efisien ke data mereka untuk membuat keputusan yang tepat. Teknologi 
-enkripsi kuantum baru-baru ini muncul sebagai solusi potensial untuk memenuhi kebutuhan ini, dengan menawarkan tingkat keamanan yang jauh lebih tinggi dan proses 
-enkripsi yang lebih cepat dibandingkan dengan teknologi enkripsi konvensional. Oleh karena itu, penting untuk mengevaluasi efektivitas dan keamanan teknologi enkripsi 
-kuantum dalam sistem penyimpanan data cloud."
+% \hspace{1cm} "Dengan perkembangan teknologi informasi yang sangat pesat dalam beberapa tahun terakhir, penyimpanan data menjadi masalah yang semakin penting. Semakin banyak data yang diterima setiap hari, semakin penting bagi organisasi untuk memastikan bahwa data 
+% mereka aman dan terlindungi. Pada saat yang sama, organisasi juga membutuhkan akses cepat dan efisien ke data mereka untuk membuat keputusan yang tepat. Teknologi 
+% enkripsi kuantum baru-baru ini muncul sebagai solusi potensial untuk memenuhi kebutuhan ini, dengan menawarkan tingkat keamanan yang jauh lebih tinggi dan proses 
+% enkripsi yang lebih cepat dibandingkan dengan teknologi enkripsi konvensional. Oleh karena itu, penting untuk mengevaluasi efektivitas dan keamanan teknologi enkripsi 
+% kuantum dalam sistem penyimpanan data cloud."
 		
-	}%
-}
+% 	}%
+% }
 
-%-------------------------------------------------	
-\vspace{5mm}
-Latar belakang ini memperkenalkan masalah penyimpanan data dan mempertimbangkan pentingnya keamanan data. Ini juga memperkenalkan teknologi enkripsi kuantum sebagai solusi potensial dan menjelaskan mengapa evaluasi teknologi ini penting bagi bidang teknologi informasi. Latar belakang ini memberikan dasar yang kuat bagi perumusan masalah dan tujuan penelitian, memastikan bahwa hasil penelitian memiliki relevansi dan signifikansi bagi bidang terkait.
+% %-------------------------------------------------	
+% \vspace{5mm}
+% Latar belakang ini memperkenalkan masalah penyimpanan data dan mempertimbangkan pentingnya keamanan data. Ini juga memperkenalkan teknologi enkripsi kuantum sebagai solusi potensial dan menjelaskan mengapa evaluasi teknologi ini penting bagi bidang teknologi informasi. Latar belakang ini memberikan dasar yang kuat bagi perumusan masalah dan tujuan penelitian, memastikan bahwa hasil penelitian memiliki relevansi dan signifikansi bagi bidang terkait.
 
 \section{Rumusan Masalah}
 
-Sub-bab ini berisi poin-poin yang menjelaskan masalah atau isu yang akan diteliti dalam suatu penelitian. Ini mencakup formulasi masalah yang jelas dan spesifik dan 
-mempertimbangkan latar belakang dan deskripsi masalah yang terkait yang tertulis Dalam latar belakang pada sub-bab sebelumnya. Perumusan masalah yang baik akan membantu menentukan fokus penelitian dan memberikan dasar untuk tujuan dan hipotesis penelitian. Dalam penelitian, perumusan masalah memainkan peran penting dalam memastikan bahwa hasil penelitian berguna dan relevan untuk masalah yang diteliti.
+% Berdasarkan latar belakang yang telah dipaparkan, rumusan masalah yang diangkat
+% dalam peneltian tersebut meliputi beberapa poin berikut:
 
-Jika rumusan masalah lebih dari 1, maka ditulis dengan format \textit{list}. Contoh sebagai  berikut:
-
-\begin{enumerate}
-	\item Rumusan masalah 1.
-	\item Rumusan masalah 2.
-\end{enumerate}
+% \begin{enumerate}
+% 	\item Bagaimana kualitas umpan balik yang dihasilkan LLM terhadap proses SRL mahasiswa yang direpresentasikan melalui data papan Kanban dibandingkan dengan umpan balik ahli manusia?
+% 	\item Bagaimana format prompt yang paling optimal untuk disusun agar mampu menghasilkan kualitas umpan balik yang mendekati ahli manusia.
+% \end{enumerate}
+Berdasarkan latar belakang yang telah dipaparkan, rumusan masalah yang diangkat
+dalam peneltian tersebut adalah belum ada penelitian yang membahas bagaimana cara meningkatkan
+performa LLM secara kuantitatif dan kualitatif dalam memberikan umpan balik terhadap proses SRL 
+mahasiswa yang menargetkan tiga fungsi pedagogis yaitu \textit{feedback}, \textit{motivation} 
+dan \textit{appreciation} bila dibandingkan dengan ahli manusia. Beberapa penelitian sudah 
+menerapkan pendekatan untuk meningkatkan performa LLM tetapi dengan fokus yang berbeda seperti
+pada TutorLLM dan LLM-KT \cite{li2024tutorllm, wang2025llmktaligninglargelanguage} yang memanfaatkan data \textit{learning analytics} dipadukan dengan
+teknik \textit{Knowledge Tracing} untuk memahami tahapan belajar mahasiswa, tetapi tidak
+mengukur dampaknya terhadap kualitas umpan balik yang dihasilkan. Oleh karena itu, penelitian ini
+bertujuan untuk mengisi celah tersebut dengan mengeksplorasi cara-cara untuk meningkatkan
+performa LLM dalam memberikan umpan balik yang lebih baik dan lebih relevan bagi mahasiswa.
+% \begin{enumerate}
+% 	\item Belum adanya penelitian yang membahas peningkatan kualitas umpan balik LLM dalam .
+% 	\item Bagaimana format prompt yang paling optimal untuk disusun agar mampu menghasilkan kualitas umpan balik yang mendekati ahli manusia.
+% \end{enumerate}
 
 %-------------------------------------------------
-\noindent\fbox{%
-	\parbox{\textwidth}{%
-\noindent\textbf{Contoh} perumusan masalah untuk \textbf{Teknik Elektro}: \\		
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
+% \noindent\textbf{Contoh} perumusan masalah untuk \textbf{Teknik Elektro}: \\		
 
-\hspace{1cm} \textbf{"Bagaimana memperbaiki efisiensi penghematan energi pada sistem pencahayaan rumah tangga melalui implementasi teknologi kontrol otomatis?"} \\
+% \hspace{1cm} \textbf{"Bagaimana memperbaiki efisiensi penghematan energi pada sistem pencahayaan rumah tangga melalui implementasi teknologi kontrol otomatis?"} \\
 	
-\hspace{1cm} Perumusan masalah ini jelas dan spesifik dan menentukan fokus penelitian pada perbaikan efisiensi penghematan energi dalam sistem pencahayaan rumah tangga dengan menggunakan teknologi kontrol otomatis. Ini juga mempertimbangkan latar belakang tentang pentingnya penghematan energi dan memberikan solusi praktis melalui implementasi teknologi. Perumusan masalah ini memberikan dasar yang kuat untuk tujuan dan hipotesis penelitian dan memastikan bahwa hasil penelitian akan berguna bagi bidang teknik elektro.
+% \hspace{1cm} Perumusan masalah ini jelas dan spesifik dan menentukan fokus penelitian pada perbaikan efisiensi penghematan energi dalam sistem pencahayaan rumah tangga dengan menggunakan teknologi kontrol otomatis. Ini juga mempertimbangkan latar belakang tentang pentingnya penghematan energi dan memberikan solusi praktis melalui implementasi teknologi. Perumusan masalah ini memberikan dasar yang kuat untuk tujuan dan hipotesis penelitian dan memastikan bahwa hasil penelitian akan berguna bagi bidang teknik elektro.
 		
-	}%
-}
+% 	}%
+% }
 
-%-------------------------------------------------
-\noindent\fbox{%
-	\parbox{\textwidth}{%
-\noindent\textbf{Contoh} perumusan masalah untuk \textbf{Teknik Biomedis}: \\		
+% %-------------------------------------------------
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
+% \noindent\textbf{Contoh} perumusan masalah untuk \textbf{Teknik Biomedis}: \\		
 
-\hspace{1cm} \textbf{"Bagaimana memperbaiki akurasi deteksi kanker payudara dengan menggunakan teknologi pemindaian ultrasonografi berbasis AI?"} \\
+% \hspace{1cm} \textbf{"Bagaimana memperbaiki akurasi deteksi kanker payudara dengan menggunakan teknologi pemindaian ultrasonografi berbasis AI?"} \\
 
-\hspace{1cm} Perumusan masalah ini jelas dan spesifik dan menentukan fokus penelitian pada 
-perbaikan akurasi deteksi kanker payudara dengan menggunakan teknologi pemindaian ultrasonografi berbasis AI. Ini mempertimbangkan latar belakang tentang pentingnya deteksi dini kanker payudara dan memberikan solusi praktis melalui implementasi teknologi. Perumusan masalah ini memberikan dasar yang kuat untuk tujuan dan hipotesis penelitian dan memastikan bahwa hasil penelitian akan berguna bagi bidang teknik biomedis.
+% \hspace{1cm} Perumusan masalah ini jelas dan spesifik dan menentukan fokus penelitian pada 
+% perbaikan akurasi deteksi kanker payudara dengan menggunakan teknologi pemindaian ultrasonografi berbasis AI. Ini mempertimbangkan latar belakang tentang pentingnya deteksi dini kanker payudara dan memberikan solusi praktis melalui implementasi teknologi. Perumusan masalah ini memberikan dasar yang kuat untuk tujuan dan hipotesis penelitian dan memastikan bahwa hasil penelitian akan berguna bagi bidang teknik biomedis.
 		
-	}%
-}
+% 	}%
+% }
 
-%-------------------------------------------------	
-\noindent\fbox{%
-	\parbox{\textwidth}{%
-\noindent\textbf{Contoh} perumusan masalah untuk \textbf{Teknologi Informasi}: \\		
+% %-------------------------------------------------	
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
+% \noindent\textbf{Contoh} perumusan masalah untuk \textbf{Teknologi Informasi}: \\		
 
-\hspace{1cm} \textbf{"Bagaimana meningkatkan efisiensi dan keamanan sistem penyimpanan data cloud melalui implementasi teknologi enkripsi kuantum?"} \\
+% \hspace{1cm} \textbf{"Bagaimana meningkatkan efisiensi dan keamanan sistem penyimpanan data cloud melalui implementasi teknologi enkripsi kuantum?"} \\
 
-\hspace{1cm} Perumusan masalah ini jelas dan spesifik dan menentukan fokus penelitian pada peningkatan efisiensi dan keamanan sistem penyimpanan data cloud dengan menggunakan teknologi enkripsi kuantum. Ini mempertimbangkan latar belakang tentang pentingnya keamanan data dan memberikan solusi praktis melalui implementasi teknologi. Perumusan masalah ini memberikan dasar yang kuat untuk tujuan dan hipotesis penelitian dan memastikan bahwa hasil penelitian akan berguna bagi bidang teknologi informasi.
+% \hspace{1cm} Perumusan masalah ini jelas dan spesifik dan menentukan fokus penelitian pada peningkatan efisiensi dan keamanan sistem penyimpanan data cloud dengan menggunakan teknologi enkripsi kuantum. Ini mempertimbangkan latar belakang tentang pentingnya keamanan data dan memberikan solusi praktis melalui implementasi teknologi. Perumusan masalah ini memberikan dasar yang kuat untuk tujuan dan hipotesis penelitian dan memastikan bahwa hasil penelitian akan berguna bagi bidang teknologi informasi.
 		
-	}%
-}
+% 	}%
+% }
 
 %-------------------------------------------------	
 
 \section{Tujuan Penelitian}
 
-Tujuan penelitian pada skripsi Teknik (TE, TB, TIF) adalah menentukan sasaran atau target yang ingin dicapai melalui proses penelitian. Tujuan penelitian bisa beragam sesuai dengan bidang ilmu yang dipelajari, topik penelitian, dan permasalahan yang akan dicari solusinya.
-
+Tujuan penelitian ini adalah sebagai berikut:
+\begin{enumerate}
+	\item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
+	yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
+	\item Mengevaluasi secara empiris apakah adanya peningkatan kualitas umpan balik 
+	LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
+	balik ahli manusia.
+	\item Melihat pengaruh besar ukuran model LLM terhadap kualitas umpan balik yang dihasilkan.
+\end{enumerate}
 %Secara umum, tujuan penelitian pada skripsi bidang teknik adalah untuk:
 %
 %\begin{itemize}
@@ -141,134 +265,157 @@ Tujuan penelitian pada skripsi Teknik (TE, TB, TIF) adalah menentukan sasaran at
 %
 %\noindent Catatan: Tujuan penelitian dalam skripsi bidang teknik harus jelas, spesifik, terukur, dan dapat dicapai dalam jangka waktu yang ditentukan.
 
+\section{Hipotesis Penelitian}
+% Revisi : Gunakan H0 dan H1 dalam menyampaikan hipotesisnya.
+% Kalo ada 2 objective, brrti perlu bikin 2 H0 dan H1.
+Hipotesis penelitian ini adalah penerapan \textit{context engineering} 
+yang dikombinasikan dengan metode dari \textit{learning analytics} %(sinyal SRL dari papan Kanban) 
+dengan dukungan \textit{prompt} yang terstruktur akan secara signifikan meningkatkan 
+kualitas kemiripan dan kelayakan respons LLM terhadap umpan balik ahli manusia
+dalam tiga fungsi pedagogis yaitu \textit{feedback}, \textit{motivation}, dan 
+\textit{appreciation} dibandingkan dengan LLM yang menggunakan metode \textit{baseline}.
 
-\textcolor{red}{Tujuan perlu disinkronkan dengan rumusan masalah. Setiap rumusan masalah boleh memiliki lebih dari 1 tujuan. Berikut ini adalah contoh tujuan dari rumusan masalah "Bagaimanakan memperbaiki efisiensi penghematan energi pada sistem pencahayaan rumah tangga melalui implementasi teknologi kontrol otomatis?"
-\begin{enumerate}
-	\item Memodelkan sistem pencahayaan rumah tangga;
-	\item Mendesain sistem kontrol otomatis untuk sistem pencahayaan rumah tangga.
-\end{enumerate}
-}
+% \textcolor{red}{Tujuan perlu disinkronkan dengan rumusan masalah. Setiap rumusan masalah boleh memiliki lebih dari 1 tujuan. Berikut ini adalah contoh tujuan dari rumusan masalah "Bagaimanakan memperbaiki efisiensi penghematan energi pada sistem pencahayaan rumah tangga melalui implementasi teknologi kontrol otomatis?"
+% \begin{enumerate}
+% 	\item Memodelkan sistem pencahayaan rumah tangga;
+% 	\item Mendesain sistem kontrol otomatis untuk sistem pencahayaan rumah tangga.
+% \end{enumerate}
+% }
 
-\noindent Catatan: Tujuan penelitian dalam skripsi bidang teknik harus jelas, spesifik, terukur, dan dapat dicapai dalam jangka waktu yang ditentukan.
+% \noindent Catatan: Tujuan penelitian dalam skripsi bidang teknik harus jelas, spesifik, terukur, dan dapat dicapai dalam jangka waktu yang ditentukan.
 
-Berikut ini adalah contoh detail tujuan untuk masing-masing prodi di DTETI:
+% Berikut ini adalah contoh detail tujuan untuk masing-masing prodi di DTETI:
 
-\newpage
-\vspace{5mm}
-\textbf{Contoh Tujuan Penelitian Skripsi Teknik Elektro:}
+% \newpage
+% \vspace{5mm}
+% \textbf{Contoh Tujuan Penelitian Skripsi Teknik Elektro:}
 
-\begin{minipage}{0.92\textwidth}
-Berikut adalah beberapa contoh tujuan penelitian yang sesuai dengan rumusan masalah 
-“perbaikan efisiensi penghematan energi pada sistem pencahayaan rumah tangga 
-melalui implementasi teknologi kontrol otomatis”:
-\end{minipage}
+% \begin{minipage}{0.92\textwidth}
+% Berikut adalah beberapa contoh tujuan penelitian yang sesuai dengan rumusan masalah 
+% “perbaikan efisiensi penghematan energi pada sistem pencahayaan rumah tangga 
+% melalui implementasi teknologi kontrol otomatis”:
+% \end{minipage}
 
 
 
-%-------------------------------------------------	
-\noindent\fbox{%
-	\parbox{\textwidth}{%
-\begin{enumerate}
-\item Menganalisis tingkat efisiensi energi pada sistem pencahayaan rumah tangga 
-sebelum dan setelah implementasi teknologi kontrol otomatis.
-\item Mengukur pengurangan biaya listrik setelah implementasi teknologi kontrol 
-otomatis pada sistem pencahayaan rumah tangga.
-\item Menunjukkan bagaimana teknologi kontrol otomatis dapat memperbaiki 
-efisiensi penghematan energi pada sistem pencahayaan rumah tangga.
-\item Meningkatkan kenyamanan dan keamanan pengguna rumah tangga melalui 
-penggunaan teknologi kontrol otomatis pada sistem pencahayaan.
-\item Menjelaskan bagaimana implementasi teknologi kontrol otomatis 
-mempengaruhi kualitas cahaya dan faktor-faktor lain dalam sistem pencahayaan 
-rumah tangga.
-\item Membandingkan efisiensi energi dan biaya pada sistem pencahayaan rumah 
-tangga dengan teknologi kontrol otomatis dan sistem manual.
-\item Menunjukkan implikasi dan rekomendasi dari hasil penelitian bagi rumah tangga 
-dan lingkungan.
-\end{enumerate}
+% %-------------------------------------------------	
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
+% \begin{enumerate}
+% \item Menganalisis tingkat efisiensi energi pada sistem pencahayaan rumah tangga 
+% sebelum dan setelah implementasi teknologi kontrol otomatis.
+% \item Mengukur pengurangan biaya listrik setelah implementasi teknologi kontrol 
+% otomatis pada sistem pencahayaan rumah tangga.
+% \item Menunjukkan bagaimana teknologi kontrol otomatis dapat memperbaiki 
+% efisiensi penghematan energi pada sistem pencahayaan rumah tangga.
+% \item Meningkatkan kenyamanan dan keamanan pengguna rumah tangga melalui 
+% penggunaan teknologi kontrol otomatis pada sistem pencahayaan.
+% \item Menjelaskan bagaimana implementasi teknologi kontrol otomatis 
+% mempengaruhi kualitas cahaya dan faktor-faktor lain dalam sistem pencahayaan 
+% rumah tangga.
+% \item Membandingkan efisiensi energi dan biaya pada sistem pencahayaan rumah 
+% tangga dengan teknologi kontrol otomatis dan sistem manual.
+% \item Menunjukkan implikasi dan rekomendasi dari hasil penelitian bagi rumah tangga 
+% dan lingkungan.
+% \end{enumerate}
 		
-	}%
-}
+% 	}%
+% }
 
-%-------------------------------------------------	
+% %-------------------------------------------------	
 
-\newpage
-\vspace{5mm}
-\textbf{Contoh Tujuan Penelitian Skripsi Teknik Biomedis:}
+% \newpage
+% \vspace{5mm}
+% \textbf{Contoh Tujuan Penelitian Skripsi Teknik Biomedis:}
 
-\begin{minipage}{0.92\textwidth}
-Berikut adalah beberapa contoh tujuan penelitian untuk penelitian dengan tema "Bagaimana memperbaiki akurasi deteksi kanker payudara dengan menggunakan 
-teknologi pemindaian ultrasonografi berbasis AI":
-\end{minipage}
+% \begin{minipage}{0.92\textwidth}
+% Berikut adalah beberapa contoh tujuan penelitian untuk penelitian dengan tema "Bagaimana memperbaiki akurasi deteksi kanker payudara dengan menggunakan 
+% teknologi pemindaian ultrasonografi berbasis AI":
+% \end{minipage}
 
-%-------------------------------------------------	
-\noindent\fbox{%
-	\parbox{\textwidth}{%
-\begin{enumerate}
-\item Mengidentifikasi faktor-faktor yang mempengaruhi akurasi deteksi kanker 
-payudara dengan menggunakan teknologi pemindaian ultrasonografi berbasis 
-AI.
-\item Menilai efektivitas teknologi pemindaian ultrasonografi berbasis AI dalam 
-meningkatkan akurasi deteksi kanker payudara.
-\item Menentukan metode pemindaian ultrasonografi berbasis AI yang paling efektif dalam meningkatkan akurasi deteksi kanker payudara.
-\item Menilai keamanan dan tolerabilitas teknologi pemindaian ultrasonografi berbasis AI dalam deteksi kanker payudara.
-\item Membandingkan akurasi deteksi kanker payudara dengan teknologi pemindaian 
-ultrasonografi berbasis AI dengan metode deteksi lainnya.
-\item Menyediakan bukti ilmiah untuk menunjukkan bahwa teknologi pemindaian 
-ultrasonografi berbasis AI dapat digunakan sebagai metode deteksi kanker 
-payudara yang lebih efektif dan akurat.
-\item Meningkatkan akurasi deteksi kanker payudara dengan menggunakan teknologi 
-pemindaian ultrasonografi berbasis AI.
-\end{enumerate}
+% %-------------------------------------------------	
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
+% \begin{enumerate}
+% \item Mengidentifikasi faktor-faktor yang mempengaruhi akurasi deteksi kanker 
+% payudara dengan menggunakan teknologi pemindaian ultrasonografi berbasis 
+% AI.
+% \item Menilai efektivitas teknologi pemindaian ultrasonografi berbasis AI dalam 
+% meningkatkan akurasi deteksi kanker payudara.
+% \item Menentukan metode pemindaian ultrasonografi berbasis AI yang paling efektif dalam meningkatkan akurasi deteksi kanker payudara.
+% \item Menilai keamanan dan tolerabilitas teknologi pemindaian ultrasonografi berbasis AI dalam deteksi kanker payudara.
+% \item Membandingkan akurasi deteksi kanker payudara dengan teknologi pemindaian 
+% ultrasonografi berbasis AI dengan metode deteksi lainnya.
+% \item Menyediakan bukti ilmiah untuk menunjukkan bahwa teknologi pemindaian 
+% ultrasonografi berbasis AI dapat digunakan sebagai metode deteksi kanker 
+% payudara yang lebih efektif dan akurat.
+% \item Meningkatkan akurasi deteksi kanker payudara dengan menggunakan teknologi 
+% pemindaian ultrasonografi berbasis AI.
+% \end{enumerate}
 		
-	}%
-}
+% 	}%
+% }
 
-%-------------------------------------------------	
+% %-------------------------------------------------	
 
-\newpage
-\vspace{5mm}
-\textbf{Contoh Tujuan Penelitian Skripsi Teknologi Informasi:}
+% \newpage
+% \vspace{5mm}
+% \textbf{Contoh Tujuan Penelitian Skripsi Teknologi Informasi:}
 
-\begin{minipage}{0.92\textwidth}
-Berikut adalah beberapa contoh tujuan penelitian untuk penelitian dengan tema 
-"Bagaimana meningkatkan efisiensi dan keamanan sistem penyimpanan data cloud 
-melalui implementasi teknologi enkripsi kuantum?":
-\end{minipage}
+% \begin{minipage}{0.92\textwidth}
+% Berikut adalah beberapa contoh tujuan penelitian untuk penelitian dengan tema 
+% "Bagaimana meningkatkan efisiensi dan keamanan sistem penyimpanan data cloud 
+% melalui implementasi teknologi enkripsi kuantum?":
+% \end{minipage}
 
-%-------------------------------------------------	
-\noindent\fbox{%
-	\parbox{\textwidth}{%
-\begin{enumerate}
-\item Menilai efektivitas implementasi teknologi enkripsi kuantum dalam 
-meningkatkan keamanan data pada sistem penyimpanan cloud.
-\item Menentukan metode enkripsi kuantum yang paling efektif dalam meningkatkan 
-keamanan data pada sistem penyimpanan cloud.
-\item Membandingkan efisiensi enkripsi kuantum dengan metode enkripsi lainnya 
-dalam meningkatkan keamanan data pada sistem penyimpanan cloud.
-\item Menilai keamanan dan stabilitas sistem penyimpanan data cloud setelah 
-implementasi teknologi enkripsi kuantum.
-\item Menyediakan bukti ilmiah untuk menunjukkan bahwa implementasi teknologi 
-enkripsi kuantum dapat meningkatkan efisiensi dan keamanan sistem 
-penyimpanan data cloud.
-\item Mengidentifikasi potensi masalah dan hambatan dalam implementasi teknologi 
-enkripsi kuantum pada sistem penyimpanan data cloud.
-\end{enumerate}
+% %-------------------------------------------------	
+% \noindent\fbox{%
+% 	\parbox{\textwidth}{%
+% \begin{enumerate}
+% \item Menilai efektivitas implementasi teknologi enkripsi kuantum dalam 
+% meningkatkan keamanan data pada sistem penyimpanan cloud.
+% \item Menentukan metode enkripsi kuantum yang paling efektif dalam meningkatkan 
+% keamanan data pada sistem penyimpanan cloud.
+% \item Membandingkan efisiensi enkripsi kuantum dengan metode enkripsi lainnya 
+% dalam meningkatkan keamanan data pada sistem penyimpanan cloud.
+% \item Menilai keamanan dan stabilitas sistem penyimpanan data cloud setelah 
+% implementasi teknologi enkripsi kuantum.
+% \item Menyediakan bukti ilmiah untuk menunjukkan bahwa implementasi teknologi 
+% enkripsi kuantum dapat meningkatkan efisiensi dan keamanan sistem 
+% penyimpanan data cloud.
+% \item Mengidentifikasi potensi masalah dan hambatan dalam implementasi teknologi 
+% enkripsi kuantum pada sistem penyimpanan data cloud.
+% \end{enumerate}
 		
-	}%
-}
+% 	}%
+% }
 
 %-------------------------------------------------	
 
 
 \section{Batasan Penelitian}
 
-Batasan penelitian teknik adalah pembatasan atau definisi yang menentukan lingkup dan ruang lingkup suatu penelitian dalam bidang teknik. Ini membantu membatasi masalah dan isu yang akan diteliti, menentukan metode dan teknik penelitian, membatasi populasi dan sampel, dan membatasi variabel dan hipotesis yang akan diuji. Batasan penelitian juga mencakup keterbatasan dan hambatan yang mungkin timbul selama proses penelitian. Tujuan utama dari batasan penelitian teknik adalah membuat penelitian terfokus dan terarah, serta memastikan hasil yang diperoleh dapat digunakan untuk menjawab pertanyaan dan masalah teknik secara efektif dan akurat.
+% Keterbatasan penelitian itu adalah kelemahan yang belum dikerjakan. (Misal belum nyoba API yg lain. Data Kanban juga masuk keterbatasan karena data sintetis).
+Penelitian ini berfokus untuk melihat peningkatan performa dari LLM ketika diberikan perlakuan 
+berupa metode \textit{context engineering} yang memanfaatkan data \textit{learning analytics}. 
+Upaya untuk menyederhanakan proses ini dilakukan dengan cara memberikan batasan penelitian yang 
+jelas dan ditetapkan oleh peneliti dengan mempertimbangkan aspek-aspek yang relevan. 
+Batasan-batasan tersebut adalah sebagai berikut:
 
 Batasan penelitian dapat ditulis dengan format \textit{list}. Contohnya adalah sebagai berikut:
 
 \begin{enumerate}
-	\item Batasan 1.
-	\item Batasan 2.
+	\item Data Pembelajaran Mahasiswa berbasis Papan Kanban yang digunakan merupakan data sintetis 
+	yang dibuat hanya untuk keperluan pengambilan data dari para ahli manusia dan LLM. Data sintetis 
+	digunakan karena waktu yang terbatas untuk mengambil data yang ril. Selain itu, fokus penelitian 
+	ini adalah pada respons dari LLM dan
+	ahli manusia sehingga penggunaan data sintetis dianggap valid untuk tujuan penelitian ini.
+	\item Penelitian ini hanya menggunakan model yang sudah ada dan bersifat \textit{open-source}
+	untuk menghemat waktu dan pengeluaran.
+	\item Penelitian ini menganalisis kemampuan model LLM dalam bahasa Indonesia. Oleh karena itu,
+	semua data yang digunakan untuk penelitian ini dalam bahasa Indonesia.
+	\item Sumber data utama yang digunakan berasal respons LLM dan ahli manusia sebagai data yang akan
+	dianalisis dan data pembelajaran berbasis Kanban sebagai data pendukung untuk pembuatan respons.
 \end{enumerate}
 
 
@@ -343,18 +490,19 @@ Batasan penelitian dapat ditulis dengan format \textit{list}. Contohnya adalah s
 
 \section{Manfaat Penelitian}
 
-Manfaat penelitian didefinisikan sebagai manfaat yang diperoleh apabila 
-skripsi telah selesai dilakukan. Manfaat skripsi pada umumnya berbentuk daftar. 
-Manfaat penelitian dapat berupa manfaat bagi dunia akademik dan atau masyarakat.
-
-\begin{enumerate}
-	\item Enum 1
-	\begin{itemize}
-		\item Coba 1
-		\item Coba 2
-	\end{itemize}
-	\item Enum 2
-\end{enumerate}
+Penelitian ini menawarkan wawasan bagaimana penerapan LLM sebagai pendamping dalam proses SRL 
+bagi mahasiswa bisa menjadi alternatif yang efektif dalam meningkatkan kualitas pembelajaran. 
+Selain itu, penelitian ini juga dapat menjadi dasar untuk penelitian lebih lanjut untuk 
+peningkatan performa respons LLM terutama pada bidang pedagogis sehingga seiring berjalannya 
+waktu dapat memberikan hasil yang lebih optimal.
+% \begin{enumerate}
+% 	\item Enum 1
+% 	\begin{itemize}
+% 		\item Coba 1
+% 		\item Coba 2
+% 	\end{itemize}
+% 	\item Enum 2
+% \end{enumerate}
 
 
 
