@@ -3,26 +3,24 @@
 \section{Latar Belakang}
 
 Dunia pendidikan tinggi saat ini menuntut mahasiswa untuk bisa belajar secara mandiri.
- Namun banyak dari mereka belum siap menghadapi tuntutan tersebut. Hal ini menimbulkan 
- kesenjangan yang serius dalam keterampilan Self-Regulated Learning (SRL), yang dapat 
- menghambat keberhasilan belajar dan mengganggu pemerataan akses pendidikan \cite{liu2025srl, xiao2019relationships}. 
- Tantangan ini justru diperburuk oleh teknologi digital yang menjadi ciri khas pembelajaran 
- masa kini. Meskipun menawarkan fleksibilitas, teknologi tersebut juga menghadirkan distraksi 
- yang signifikan dan menuntut disiplin diri yang lebih besar \cite{chitra2022srl}. Kegagalan institusi dalam 
- memberikan dukungan yang memadai untuk pengembangan SRL bukan hanya masalah akademik, melainkan 
- juga masalah sosial yang berdampak pada prospek karier jangka panjang mahasiswa dan efektivitas 
- sistem pendidikan \cite{liu2025srl}.
+Namun banyak dari mereka belum siap menghadapi tuntutan tersebut. Hal ini menimbulkan 
+kesenjangan yang serius dalam keterampilan Self-Regulated Learning (SRL), yang dapat 
+menghambat keberhasilan belajar dan mengganggu pemerataan akses pendidikan \cite{liu2025srl, xiao2019relationships}. 
+Tantangan ini justru diperburuk oleh teknologi digital yang menjadi ciri khas pembelajaran 
+masa kini. Meskipun menawarkan fleksibilitas, teknologi tersebut juga menghadirkan distraksi 
+yang signifikan dan menuntut disiplin diri yang lebih besar \cite{chitra2022srl}. Kegagalan institusi dalam 
+memberikan dukungan yang memadai untuk pengembangan SRL bukan hanya masalah akademik, melainkan 
+juga masalah sosial yang berdampak pada prospek karier jangka panjang mahasiswa dan efektivitas 
+sistem pendidikan \cite{liu2025srl}.
 % ------------------------------------------------
 
 Untuk mengatasi kesenjangan SRL, Zimmerman mengemukakan kerangka kerja yang mencakup tahap 
-perencanaan (forethought), pelaksanaan (performance), dan refleksi diri (self-reflection). 
-SRL merupakan gabungan strategi kognitif, motivasional, dan perilaku \cite{liu2025srl, akdeniz2022srl}. 
-Individu dengan 
-kemampuan regulasi diri yang efektif terbentuk melalui penetapan tujuan, perancangan strategi, 
+perencanaan (textit{forethought}), pelaksanaan (textit{performance}), dan refleksi diri (textit{self-reflection}) 
+di mana SRL merupakan gabungan strategi kognitif, motivasional, dan perilaku \cite{liu2025srl, akdeniz2022srl}. 
+Individu dengan kemampuan regulasi diri yang efektif terbentuk melalui penetapan tujuan, perancangan strategi, 
 pemantauan diri secara aktif, dan evaluasi diri yang bijaksana. Sejumlah besar penelitian 
 mengonfirmasi hubungan kuat antara keterampilan ini dan pencapaian akademik \cite{liu2025srl, xiao2019relationships}. 
-Namun, 
-pengembangannya kerap terhambat oleh hambatan personal, kontekstual, dan sosial—mulai dari 
+Namun, pengembangannya kerap terhambat oleh hambatan personal, kontekstual, dan sosial—mulai dari 
 manajemen waktu yang buruk dan distraksi digital hingga rendahnya kesadaran metakognitif—sehingga 
 intervensi terstruktur diperlukan untuk membimbing mahasiswa menjalani proses yang kompleks 
 ini \cite{chitra2022srl, 10.3389/feduc.2024.1418297}.
@@ -40,7 +38,8 @@ Ini menciptakan kebutuhan mendesak akan solusi inovatif berbasis teknologi yang 
 % ------------------------------------------------
 
 Salah satu teknologi tersebut adalah penggunaan Large Language Models (LLM). LLM dapat 
-digunakan sebagai tutor virtual yang mampu memberi umpan balik yang cepat dan konsisten. 
+digunakan sebagai tutor virtual yang mampu memberi umpan balik yang cepat dan konsisten.
+LLM telah digunakan di berbagai penelitian dalam konteks pendidikan dengan bermacam terobosan
 Temuan terbaru memperlihatkan bahwa ketika LLM digunakan untuk penilaian dan umpan balik, 
 \textit{artificial intelligence} (AI) cenderung murah hati dalam memberikan nilai sehingga nilainya
 lebih tinggi daripada nilai yang diberikan ahli manusia. 
@@ -60,35 +59,39 @@ ideal sebagai tutor dan belum dapat menggantikan
 ahli manusia dalam penilaian kualitas pedagogis \cite{Maurya2025UnifyingAITutorEvaluation}.
 %-------------------------------------------------
 
-Oleh karena itu, skripsi ini berfokus pada peningkatan kualitas performa respons 
-LLM sebagai pemberi umpan balik agar mendekati mutu ahli manusia secara kuantitatif 
-dan kualitatif. Peningkatan dilakukan melalui kerangka evaluasi hibrida yang menggabungkan 
-acuan ahli manusia sebagai \textit{ground truth} dan penilaian kualitas yang menilai 
-dimensi-dimensi pedagogis relevan \cite{Usher2025GenAIAssessments, Maurya2025UnifyingAITutorEvaluation}. 
-Dalam melakukan peningkatan kualitas umpan balik LLM, 
-skripsi ini menggabungkan \textit{context engineering} dengan data \textit{learning analytics} 
-untuk mengekstrak proses pembelajaran mahasiswa. Pendekatan kombinasi ini diharapkan mampu meningkatkan performa LLM 
-dalam memberikan \textit{feedback}, motivation, dan \textit{appreciation} kepada mahasiswa.
+% Oleh karena itu, skripsi ini berfokus pada peningkatan kualitas performa respons 
+% LLM sebagai pemberi umpan balik agar mendekati mutu ahli manusia secara kuantitatif 
+% dan kualitatif. Peningkatan dilakukan melalui kerangka evaluasi hibrida yang menggabungkan 
+% acuan ahli manusia sebagai \textit{ground truth} dan penilaian kualitas yang menilai 
+% dimensi-dimensi pedagogis relevan \cite{Usher2025GenAIAssessments, Maurya2025UnifyingAITutorEvaluation}. 
+% Dalam melakukan peningkatan kualitas umpan balik LLM, 
+% skripsi ini menggabungkan \textit{context engineering} dengan data \textit{learning analytics} 
+% untuk mengekstrak proses pembelajaran mahasiswa. Pendekatan kombinasi ini diharapkan mampu meningkatkan performa LLM 
+% dalam memberikan \textit{feedback}, motivation, dan \textit{appreciation} kepada mahasiswa.
 % Penelitian terdahulu telah menunjukkan potensi umpan balik berbasis LLM dalam mendukung hasil 
 % belajar dan aspek afektif siswa.[]
 
 
 %-------------------------------------------------
-
+Oleh karena itu, skripsi ini berfokus pada peningkatan kualitas performa respons 
+LLM sebagai pemberi umpan balik agar mendekati mutu ahli manusia secara kuantitatif 
+dan kualitatif. Peningkatan dilakukan melalui kerangka evaluasi hibrida yang menggabungkan 
+acuan ahli manusia sebagai \textit{ground truth} dan penilaian kualitas yang menilai 
+dimensi-dimensi pedagogis relevan \cite{Usher2025GenAIAssessments, Maurya2025UnifyingAITutorEvaluation}. 
+% -------------------------------------------------
 Untuk mendukung proses pengukuran tersebut, skripsi ini memanfaatkan jejak proses belajar 
 yang terstruktur. Data pembelajaran mahasiswa yang dipresentasikan ke dalam bentuk
 Papan Kanban digital dipakai sebatas alat operasional untuk menata dan mengekstraksi
 data proses (perpindahan kartu, checklist, waktu pengerjaan) yang dapat dipetakan
 ke fase SRL (perencanaan–monitoring–refleksi) \cite{strickroth2022kanban}. 
 Penggunaan Papan Kanban
-hanya sebagai salah satu instrumen pengaya data agar evaluasi dan perbaikan kualitas umpan balik
-LLM bisa berjalan lebih terarah. Fokus kebaruan terletak pada rangkaian evaluasi dan perbaikan
-\textit{prompt} LLM yang menargetkan tiga fungsi
+hanya sebagai salah satu instrumen pengaya data agar evaluasi dan perbaikan kualitas 
+umpan balik LLM bisa berjalan lebih terarah. Fokus kebaruan terletak pada rangkaian 
+evaluasi dan perbaikan \textit{prompt} LLM yang menargetkan tiga fungsi
 pedagogis utama yakni feedback kognitif, dukungan motivasional, dan dukungan apresiatif dengan
 tujuan praktis yaitu menyamai kualitas ahli manusia pada metrik kuantitatif sekaligus memenuhi
 standar kualitas kualitatif \cite{10.3389/fpsyg.2022.1027266, Bock14032024, Usher2025GenAIAssessments, Maurya2025UnifyingAITutorEvaluation}. 
-Dengan 
-membandingkan keluaran LLM dan pakar ahli, studi ini menilai peningkatan performa LLM agar 
+Dengan membandingkan keluaran LLM dan pakar ahli, studi ini menilai peningkatan performa LLM agar 
 dapat menjadi pertimbangan dalam penggunaan sebagai agen pedagogis pelengkap mahasiswa 
 yang masif dan personal.
 
@@ -185,17 +188,34 @@ yang masif dan personal.
 % 	\item Bagaimana kualitas umpan balik yang dihasilkan LLM terhadap proses SRL mahasiswa yang direpresentasikan melalui data papan Kanban dibandingkan dengan umpan balik ahli manusia?
 % 	\item Bagaimana format prompt yang paling optimal untuk disusun agar mampu menghasilkan kualitas umpan balik yang mendekati ahli manusia.
 % \end{enumerate}
-Berdasarkan latar belakang yang telah dipaparkan, rumusan masalah yang diangkat
-dalam peneltian tersebut adalah belum ada penelitian yang membahas bagaimana cara meningkatkan
-performa LLM secara kuantitatif dan kualitatif dalam memberikan umpan balik terhadap proses SRL 
-mahasiswa yang menargetkan tiga fungsi pedagogis yaitu \textit{feedback}, \textit{motivation} 
-dan \textit{appreciation} bila dibandingkan dengan ahli manusia. Beberapa penelitian sudah 
-menerapkan pendekatan untuk meningkatkan performa LLM tetapi dengan fokus yang berbeda seperti
-pada TutorLLM dan LLM-KT \cite{li2024tutorllm, wang2025llmktaligninglargelanguage} yang memanfaatkan data \textit{learning analytics} dipadukan dengan
-teknik \textit{Knowledge Tracing} untuk memahami tahapan belajar mahasiswa, tetapi tidak
-mengukur dampaknya terhadap kualitas umpan balik yang dihasilkan. Oleh karena itu, penelitian ini
-bertujuan untuk mengisi celah tersebut dengan mengeksplorasi cara-cara untuk meningkatkan
-performa LLM dalam memberikan umpan balik yang lebih baik dan lebih relevan bagi mahasiswa.
+
+% ========== versi 1 ==========
+% Berdasarkan latar belakang yang telah dipaparkan, rumusan masalah yang diangkat
+% dalam peneltian tersebut adalah belum ada penelitian yang membahas bagaimana cara meningkatkan
+% performa LLM secara kuantitatif dan kualitatif dalam memberikan umpan balik terhadap proses SRL 
+% mahasiswa yang menargetkan tiga fungsi pedagogis yaitu \textit{feedback}, \textit{motivation} 
+% dan \textit{appreciation} bila dibandingkan dengan ahli manusia. Beberapa penelitian sudah 
+% menerapkan pendekatan untuk meningkatkan performa LLM tetapi dengan fokus yang berbeda seperti
+% pada TutorLLM dan LLM-KT \cite{li2024tutorllm, wang2025llmktaligninglargelanguage} yang memanfaatkan data \textit{learning analytics} dipadukan dengan
+% teknik \textit{Knowledge Tracing} untuk memahami tahapan belajar mahasiswa, tetapi tidak
+% mengukur dampaknya terhadap kualitas umpan balik yang dihasilkan. Oleh karena itu, penelitian ini
+% bertujuan untuk mengisi celah tersebut dengan mengeksplorasi cara-cara untuk meningkatkan
+% performa LLM dalam memberikan umpan balik yang lebih baik dan lebih relevan bagi mahasiswa.
+
+% ========== versi 2 ==========
+Berdasarkan latar belakang yang telah dipaparkan, penelitian ini mengidentifikasi 
+Secara spesifik, penelitian ini berfokus pada pengembangan umpan balik yang 
+menargetkan tiga fungsi pedagogis: \textit{feedback}, \textit{motivation}, dan 
+\textit{appreciation}. Rumusan masalah yang diangkat dalam penelitian ini adalah 
+sebagai berikut:
+\begin{enumerate}
+    \item Bagaimana strategi optimal untuk meningkatkan performa LLM dalam 
+	menghasilkan umpan balik yang mencakup ketiga fungsi pedagogis tersebut?
+	\item Bagaimana kualitas umpan balik yang dihasilkan LLM terhadap proses SRL 
+	mahasiswa dibandingkan dengan umpan balik ahli manusia?
+	\item Bagaimana pengaruh besar ukuran model LLM terhadap kualitas umpan balik yang dihasilkan?
+\end{enumerate}
+
 % \begin{enumerate}
 % 	\item Belum adanya penelitian yang membahas peningkatan kualitas umpan balik LLM dalam .
 % 	\item Bagaimana format prompt yang paling optimal untuk disusun agar mampu menghasilkan kualitas umpan balik yang mendekati ahli manusia.
@@ -265,15 +285,15 @@ Tujuan penelitian ini adalah sebagai berikut:
 %
 %\noindent Catatan: Tujuan penelitian dalam skripsi bidang teknik harus jelas, spesifik, terukur, dan dapat dicapai dalam jangka waktu yang ditentukan.
 
-\section{Hipotesis Penelitian}
-% Revisi : Gunakan H0 dan H1 dalam menyampaikan hipotesisnya.
-% Kalo ada 2 objective, brrti perlu bikin 2 H0 dan H1.
-Hipotesis penelitian ini adalah penerapan \textit{context engineering} 
-yang dikombinasikan dengan metode dari \textit{learning analytics} %(sinyal SRL dari papan Kanban) 
-dengan dukungan \textit{prompt} yang terstruktur akan secara signifikan meningkatkan 
-kualitas kemiripan dan kelayakan respons LLM terhadap umpan balik ahli manusia
-dalam tiga fungsi pedagogis yaitu \textit{feedback}, \textit{motivation}, dan 
-\textit{appreciation} dibandingkan dengan LLM yang menggunakan metode \textit{baseline}.
+% \section{Hipotesis Penelitian}
+% % Revisi : Gunakan H0 dan H1 dalam menyampaikan hipotesisnya.
+% % Kalo ada 2 objective, brrti perlu bikin 2 H0 dan H1.
+% Hipotesis penelitian ini adalah penerapan \textit{context engineering} 
+% yang dikombinasikan dengan metode dari \textit{learning analytics} %(sinyal SRL dari papan Kanban) 
+% dengan dukungan \textit{prompt} yang terstruktur akan secara signifikan meningkatkan 
+% kualitas kemiripan dan kelayakan respons LLM terhadap umpan balik ahli manusia
+% dalam tiga fungsi pedagogis yaitu \textit{feedback}, \textit{motivation}, dan 
+% \textit{appreciation} dibandingkan dengan LLM yang menggunakan metode \textit{baseline}.
 
 % \textcolor{red}{Tujuan perlu disinkronkan dengan rumusan masalah. Setiap rumusan masalah boleh memiliki lebih dari 1 tujuan. Berikut ini adalah contoh tujuan dari rumusan masalah "Bagaimanakan memperbaiki efisiensi penghematan energi pada sistem pencahayaan rumah tangga melalui implementasi teknologi kontrol otomatis?"
 % \begin{enumerate}
@@ -394,51 +414,158 @@ dalam tiga fungsi pedagogis yaitu \textit{feedback}, \textit{motivation}, dan
 
 
 \section{Batasan Penelitian}
-
-% Keterbatasan penelitian itu adalah kelemahan yang belum dikerjakan. (Misal belum nyoba API yg lain. Data Kanban juga masuk keterbatasan karena data sintetis).
 Penelitian ini berfokus untuk melihat peningkatan performa dari LLM ketika diberikan perlakuan 
 berupa metode \textit{context engineering} yang memanfaatkan data \textit{learning analytics}. 
 Upaya untuk menyederhanakan proses ini dilakukan dengan cara memberikan batasan penelitian yang 
-jelas dan ditetapkan oleh peneliti dengan mempertimbangkan aspek-aspek yang relevan. 
-Batasan-batasan tersebut adalah sebagai berikut:
+jelas dan ditetapkan oleh peneliti dengan mempertimbangkan aspek-aspek yang relevan. Berikut
+adalah batasan-batasan tersebut:
 
-Batasan penelitian dapat ditulis dengan format \textit{list}. Contohnya adalah sebagai berikut:
+% % Keterbatasan penelitian itu adalah kelemahan yang belum dikerjakan. (Misal belum nyoba API yg lain. Data Kanban juga masuk keterbatasan karena data sintetis).
+% Penelitian ini berfokus untuk melihat peningkatan performa dari LLM ketika diberikan perlakuan 
+% berupa metode \textit{context engineering} yang memanfaatkan data \textit{learning analytics}. 
+% Upaya untuk menyederhanakan proses ini dilakukan dengan cara memberikan batasan penelitian yang 
+% jelas dan ditetapkan oleh peneliti dengan mempertimbangkan aspek-aspek yang relevan. 
+% Batasan-batasan tersebut adalah sebagai berikut:
 
+% Batasan penelitian dapat ditulis dengan format \textit{list}. Contohnya adalah sebagai berikut:
+
+% \begin{enumerate}
+% 	\item Data Pembelajaran Mahasiswa berbasis Papan Kanban yang digunakan merupakan data sintetis 
+% 	yang dibuat hanya untuk keperluan pengambilan data dari para ahli manusia dan LLM. Data sintetis 
+% 	digunakan karena waktu yang terbatas untuk mengambil data yang ril. Selain itu, fokus penelitian 
+% 	ini adalah pada respons dari LLM dan
+% 	ahli manusia sehingga penggunaan data sintetis dianggap valid untuk tujuan penelitian ini.
+% 	\item Penelitian ini hanya menggunakan model yang sudah ada dan bersifat \textit{open-source}
+% 	untuk menghemat waktu dan pengeluaran.
+% 	\item Penelitian ini menganalisis kemampuan model LLM dalam bahasa Indonesia. Oleh karena itu,
+% 	semua data yang digunakan untuk penelitian ini dalam bahasa Indonesia.
+% 	\item Sumber data utama yang digunakan berasal respons LLM dan ahli manusia sebagai data yang akan
+% 	dianalisis dan data pembelajaran berbasis Kanban sebagai data pendukung untuk pembuatan respons.
+% \end{enumerate}
+
+\subsection{Objek Penelitian}
 \begin{enumerate}
-	\item Data Pembelajaran Mahasiswa berbasis Papan Kanban yang digunakan merupakan data sintetis 
-	yang dibuat hanya untuk keperluan pengambilan data dari para ahli manusia dan LLM. Data sintetis 
-	digunakan karena waktu yang terbatas untuk mengambil data yang ril. Selain itu, fokus penelitian 
-	ini adalah pada respons dari LLM dan
-	ahli manusia sehingga penggunaan data sintetis dianggap valid untuk tujuan penelitian ini.
-	\item Penelitian ini hanya menggunakan model yang sudah ada dan bersifat \textit{open-source}
-	untuk menghemat waktu dan pengeluaran.
-	\item Penelitian ini menganalisis kemampuan model LLM dalam bahasa Indonesia. Oleh karena itu,
-	semua data yang digunakan untuk penelitian ini dalam bahasa Indonesia.
-	\item Sumber data utama yang digunakan berasal respons LLM dan ahli manusia sebagai data yang akan
-	dianalisis dan data pembelajaran berbasis Kanban sebagai data pendukung untuk pembuatan respons.
+  \item[(a)] Ruang lingkup mencakup analisis kemampuan model bahasa besar pada tugas 
+  berbahasa Indonesia dengan konteks pembelajaran berbasis papan Kanban.
+  \item[(b)] Data pembelajaran yang digunakan berupa data sintetis yang disusun untuk 
+  memicu respons dari model dan dari pakar manusia. Pemakaian data sintetis dinilai m
+  emadai karena keterbatasan waktu pengambilan data ril serta karena fokus utama 
+  penelitian adalah perbandingan kualitas respons model dan respons pakar.
+  \item[(c)] Model yang diteliti merupakan model yang tersedia secara \textit{open source} 
+  dan diakses melalui Groq API. Dua model yang digunakan adalah 
+  Llama 3.1 8B Instant 128k dan Llama 3.3 70B Versatile 128k.
+\end{enumerate}
+% Penelitian ini menganalisis kemampuan model bahasa besar pada tugas berbahasa Indonesia 
+% dengan konteks pembelajaran berbasis papan Kanban. Data pembelajaran yang digunakan berupa 
+% data sintetis yang disusun untuk memicu respons dari model dan dari pakar manusia. 
+% Fokus utama adalah membandingkan kualitas respons model dan respons pakar manusia sehingga 
+% pemakaian data sintetis dinilai memadai untuk tujuan penelitian ini. Model yang diteliti 
+% merupakan model yang tersedia secara \textit{open source} dan diakses melalui Groq API. 
+% Dua model yang digunakan adalah Llama 3.1 8B Instant 128k dan Llama 3.3 70B Versatile 128k.
+
+\subsection{Metode Penelitian}
+Penelitian menggunakan rancangan eksperimen komparatif tanpa pelatihan ulang pada model. 
+Seluruh prosedur mengandalkan rekayasa konteks yang mencakup perancangan templat 
+\textit{prompt} penetapan instruksi dan penyediaan konteks dari data Kanban berbahasa 
+Indonesia. Langkah penelitian meliputi penyusunan skenario soal dan konteks berbasis 
+Kanban pembuatan respons oleh kedua model melalui Groq API pengumpulan respons pakar 
+manusia pada skenario yang sama serta evaluasi kuantitatif dan penilaian kualitatif oleh 
+pakar. Reproduksibilitas dijaga melalui pencatatan parameter \textit{decoding} 
+penetapan \textit{seed} serta pelaporan lingkungan komputasi.
+
+\subsection{Waktu dan Tempat Penelitian}
+Penelitian dilaksanakan pada Juni 2025 hingga Oktober 2025. Proses perancangan dan 
+analisis dilakukan dengan memanfaatkan layanan Groq untuk inferensi model.
+
+\subsection{Populasi dan Sampel}
+Populasi penelitian mencakup seluruh respons atas skenario berbahasa Indonesia yang 
+relevan dengan konteks pembelajaran berbasis Kanban. Sampel terdiri atas sekumpulan 
+skenario tugas yang dipilih secara purposif beserta pasangan respons model dan respons 
+pakar manusia. Jumlah \textit{rater} pakar jumlah skenario serta pembagian data 
+ditetapkan agar memadai untuk analisis kuantitatif dan penilaian kualitatif.
+
+\subsection{Variabel}
+\begin{enumerate}
+  \item[(a)] \textbf{Variabel bebas} mencakup jenis model Llama 3.1 8B Instant 128k 
+  dan Llama 3.3 70B Versatile 128k serta strategi rekayasa konteks yang digunakan 
+  pada \textit{prompt} dan penyajian \textit{learning analytics} berbasis Kanban
+  .
+  \item[(b)] \textbf{Variabel terikat} adalah kualitas keluaran yang diukur dengan 
+  metrik kuantitatif seperti \textit{accuracy} \textit{precision} \textit{recall} 
+  \textit{macro F1} serta ukuran kesesuaian teks yang relevan.
+  \item[(c)] \textbf{Variabel kendali} meliputi penggunaan bahasa Indonesia pada 
+  seluruh data karakteristik skenario Kanban, parameter seperti 
+  \textit{temperature} dan \textit{top-$p$} \textit{random seed} serta prosedur 
+  evaluasi yang seragam.
 \end{enumerate}
 
+% \subsection{Hipotesis}
+% H1. Model Llama 3.3 70B Versatile 128k memberikan skor kuantitatif yang lebih 
+% tinggi dibandingkan Llama 3.1 8B Instant 128k pada skenario yang sama
 
-%\noindent \textbf{Contoh penulisan batasan skripsi Teknik Elektro:}
-%
-%%-------------------------------------------------	
-%\noindent\fbox{%
-%	\parbox{\textwidth}{%
-%\begin{enumerate}
-%\item Objek penelitian: Studi efisiensi dan kinerja sistem pemantauan suhu dan arus pada sistem pembangkit tenaga listrik.
-%\item Metode penelitian: Penelitian eksperimental menggunakan analisis simulasi dan pengujian sistem pada skala laboratorium.
-%\item Waktu dan tempat penelitian: Waktu penelitian adalah Maret-Agustus 2022 di 
-%FasLab TTL.
-%\item Populasi dan sampel: Populasi adalah sistem pembangkit tenaga listrik, dan sampel diambil sebanyak 3 sistem yang berbeda.
-%\item Variabel: Variabel bebas adalah metode pemantauan suhu dan arus, dan variabel terikat adalah efisiensi dan kinerja
-%\item Hipotesis: bahwa metode pemantauan suhu dan arus berpengaruh terhadap efisiensi dan kinerja sistem pembangkit tenaga listrik.
-%\item Keterbatasan Penelitian: Keterbatasan penelitian adalah hanya melibatkan 
-%pengujian sistem pada skala laboratorium dan membatasi analisis pada variabel 
-%bebas dan terikat.
-%\end{enumerate}
-%		
-%	}%
-%}
+% H2. Rekayasa konteks yang lebih kaya melalui templat \textit{prompt} dan 
+% penyajian konteks Kanban menghasilkan skor kuantitatif yang lebih baik dibandingkan 
+% templat dasar
+
+% H3. Peningkatan skor kuantitatif selaras dengan preferensi penilaian pakar 
+% pada uji kualitatif
+
+\subsection{Keterbatasan Penelitian}
+\begin{enumerate}
+  \item Data pembelajaran berbasis papan Kanban yang digunakan merupakan data 
+  sintetis yang disusun untuk keperluan pengambilan data dari pakar manusia dan 
+  model. Data sintetis dipilih karena keterbatasan waktu pengambilan data ril 
+  serta karena fokus penelitian berada pada perbandingan respons.
+  \item Penelitian hanya menggunakan model yang telah tersedia dan bersifat 
+  \textit{open source} guna efisiensi waktu dan biaya.
+  \item Model diakses melalui Groq API sebagai sarana inferensi.
+  \item Model yang digunakan terbatas pada dua model yaitu Llama 3.1 8B Instant 128k 
+  dan Llama 3.3 70B Versatile 128k.
+  \item Tidak dilakukan pelatihan ulang pada model sehingga seluruh prosedur bersifat 
+  rekayasa konteks.
+  \item Seluruh kegiatan dilakukan pada Juni 2025 hingga Oktober 2025.
+  \item Analisis difokuskan pada kemampuan berbahasa Indonesia sehingga seluruh data 
+  yang digunakan berbahasa Indonesia.
+  \item Sumber data utama berasal dari keluaran model dan respons pakar manusia yang 
+  dianalisis sedangkan data pembelajaran Kanban berfungsi sebagai pendukung penyusunan 
+  konteks.
+  \item Luaran penelitian berfokus pada identifikasi metode optimisasi yang paling 
+  baik berdasarkan pengukuran kuantitatif yang selanjutnya diuji kepada pakar manusia 
+  untuk penilaian kualitatif.
+\end{enumerate}
+
+% \subsection{Objek Penelitian}
+% \begin{enumerate}
+%   \item[(a)] 
+% \end{enumerate}
+% \subsection{Metode Penelitian}
+% \subsection{Waktu dan Tempat Penelitian}
+% \subsection{Populasi dan Sampel}
+% \subsection{Variabel}
+% \subsection{Keterbatasan Penelitian}
+
+
+
+% \noindent \textbf{Contoh penulisan batasan skripsi Teknik Elektro:}
+
+% %-------------------------------------------------	
+% \noindent\fbox{
+% 	\parbox{\textwidth}{
+% \begin{enumerate}
+% \item Objek penelitian: Studi efisiensi dan kinerja sistem pemantauan suhu dan arus pada sistem pembangkit tenaga listrik.
+% \item Metode penelitian: Penelitian eksperimental menggunakan analisis simulasi dan pengujian sistem pada skala laboratorium.
+% \item Waktu dan tempat penelitian: Waktu penelitian adalah Maret-Agustus 2022 di 
+% FasLab TTL.
+% \item Populasi dan sampel: Populasi adalah sistem pembangkit tenaga listrik, dan sampel diambil sebanyak 3 sistem yang berbeda.
+% \item Variabel: Variabel bebas adalah metode pemantauan suhu dan arus, dan variabel terikat adalah efisiensi dan kinerja
+% \item Hipotesis: bahwa metode pemantauan suhu dan arus berpengaruh terhadap efisiensi dan kinerja sistem pembangkit tenaga listrik.
+% \item Keterbatasan Penelitian: Keterbatasan penelitian adalah hanya melibatkan 
+% pengujian sistem pada skala laboratorium dan membatasi analisis pada variabel 
+% bebas dan terikat.
+% \end{enumerate}
+
+% }
+% }
 %
 %%-------------------------------------------------	
 %\newpage

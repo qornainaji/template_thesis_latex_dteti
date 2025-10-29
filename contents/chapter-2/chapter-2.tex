@@ -1,35 +1,973 @@
 \chapter{Tinjauan Pustaka dan Dasar Teori}
 
+
 % \section{Tinjauan Pustaka}
 
 % Pada bab ini, akan dibahas mengenai dasar teori, penelitian sebelumnya yang berkaitan dengan penggunaan
 % data \textit{learning analytics} untuk meningkatkan performa LLM dalam memberikan umpan balik 
+% ============= versi 1 ================
+% Pada bab ini dibahas dasar teori dan penelitian sebelumnya yang berkaitan 
+% dengan penggunaan data \textit{learning analytics} dan teknik 
+% \textit{context engineering} (termasuk \textit{prompt engineering}) untuk 
+% meningkatkan performa LLM dalam memberikan umpan balik (kognitif), dukungan 
+% motivasional, dan dukungan apresiatif. Uraian dimulai dari landasan 
+% \textit{Self‑Regulated Learning} (SRL) dan peran umpan balik dalam fase 
+% perencanaan, pelaksanaan, dan refleksi. Kemudian mendefinisikan 
+% \textit{prompt engineering} serta \textit{context engineering} beserta 
+% perbedaan keduanya dan implikasinya bagi rancangan sistem tutor‑AI. 
+% Selanjutnya, bab ini menguraikan konsep \textit{learning analytics}—cakupan, 
+% sumber data proses (mis. log LMS, urutan aktivitas, \textit{time‑on‑task}, 
+% perpindahan tugas, beban/WIP), serta cara mengekstraksinya—dan bagaimana 
+% sinyal‑sinyal tersebut direkayasa menjadi konteks \textit{prompt} agar LLM 
+% mampu menghasilkan bimbingan yang lebih terstruktur, \textit{actionable}, 
+% koheren, dan berempati. Bagian tinjauan juga membandingkan karya‑karya 
+% terkait yang mengintegrasikan LA dan LLM (misalnya pendekatan berbasis 
+% \textit{knowledge tracing} dan pemetaan kesalahan untuk umpan balik 
+% personal) guna menegaskan posisi penelitian ini, sekaligus menyoroti isu 
+% skalabilitas umpan balik personal dan kebutuhan evaluasi hibrida kualitas 
+% respons. Sebagai penutup, bab ini merangkum kesenjangan penelitian dan 
+% menjelaskan kontribusi yang diusulkan—yakni \textit{pipeline} perakitan 
+% konteks berbasis \textit{learning analytics} yang instrumen‑agnostik 
+% (Kanban hanya digunakan sebagai alat pengumpul/penyaji data proses), untuk meningkatkan 
+% kualitas respons LLM agar mendekati mutu pakar manusia baik secara kuantitatif maupun 
+% kualitatif.
 
-Pada bab ini dibahas dasar teori dan penelitian sebelumnya yang berkaitan 
-dengan penggunaan data \textit{learning analytics} dan teknik 
-\textit{context engineering} (termasuk \textit{prompt engineering}) untuk 
-meningkatkan performa LLM dalam memberikan umpan balik (kognitif), dukungan 
-motivasional, dan dukungan apresiatif. Uraian dimulai dari landasan 
-\textit{Self‑Regulated Learning} (SRL) dan peran umpan balik dalam fase 
-perencanaan, pelaksanaan, dan refleksi. Kemudian mendefinisikan 
-\textit{prompt engineering} serta \textit{context engineering} beserta 
-perbedaan keduanya dan implikasinya bagi rancangan sistem tutor‑AI. 
-Selanjutnya, bab ini menguraikan konsep \textit{learning analytics}—cakupan, 
-sumber data proses (mis. log LMS, urutan aktivitas, \textit{time‑on‑task}, 
-perpindahan tugas, beban/WIP), serta cara mengekstraksinya—dan bagaimana 
-sinyal‑sinyal tersebut direkayasa menjadi konteks \textit{prompt} agar LLM 
-mampu menghasilkan bimbingan yang lebih terstruktur, \textit{actionable}, 
-koheren, dan berempati. Bagian tinjauan juga membandingkan karya‑karya 
-terkait yang mengintegrasikan LA dan LLM (misalnya pendekatan berbasis 
-\textit{knowledge tracing} dan pemetaan kesalahan untuk umpan balik 
-personal) guna menegaskan posisi penelitian ini, sekaligus menyoroti isu 
-skalabilitas umpan balik personal dan kebutuhan evaluasi hibrida kualitas 
-respons. Sebagai penutup, bab ini merangkum kesenjangan penelitian dan 
-menjelaskan kontribusi yang diusulkan—yakni \textit{pipeline} perakitan 
-konteks berbasis \textit{learning analytics} yang instrumen‑agnostik 
-(Kanban hanya digunakan sebagai alat pengumpul/penyaji data proses), untuk meningkatkan 
-kualitas respons LLM agar mendekati mutu pakar manusia baik secara kuantitatif maupun 
-kualitatif.
+%  =========== versi 2 ================
+Bab ini menyajikan tinjauan komprehensif yang disusun secara sistematis untuk membangun 
+landasan penelitian. Tinjauan dimulai dengan analisis terhadap penelitian-penelitian terdahulu, 
+dilanjutkan dengan komparasi kritikal, dan diakhiri dengan pembahasan dasar teori yang relevan.
+
+Pertama, dibahas terlebih dahulu kumpulan penelitian sebelumnya yang berfokus pada upaya meningkatkan kualitas 
+umpan balik dari Large Language Models (LLMs) dalam konteks pendidikan. Termasuk di dalamnya 
+adalah berbagai strategi optimasi yang telah diusulkan serta metode-metode evaluasi yang 
+digunakan untuk mengukur efektivitas umpan balik yang dihasilkan. 
+Kedua, dilakukan komparasi mendalam terhadap penelitian-penelitian tersebut untuk 
+mengidentifikasi 
+kesenjangan yang ada di dalam literatur. Analisis komparatif ini membantu 
+memetakan posisi penelitian ini dalam lanskap penelitian yang lebih luas.
+Ketiga, dibahas metode-metode evaluasi yang telah digunakan dalam studi-studi sebelumnya.
+Hal ini mencakup evaluasi baik dari segi kuantitatif maupun kualitatif.
+Keempat, berdasarkan identifikasi kesenjangan tersebut, disajikan dasar teori yang melandasi 
+penelitian ini. Pembahasan mencakup peran LLM dalam dunia pendidikan, kerangka teoritis 
+Self-Regulated Learning (SRL), konsep Prompt Engineering dan Context Engineering, 
+pendekatan Learning Analytics beserta metode-metode analitik yang relevan untuk konteks pembelajaran, 
+serta metode evaluasi yang dapat digunakan di dalam penelitian ini.
+
+Melalui struktur ini, bab ini tidak hanya memberikan fondasi teoretis yang kuat, tetapi 
+juga memperjelas kontribusi penelitian dalam mengisi celah yang teridentifikasi dari 
+penelitian-penelitian sebelumnya.
+
+\section{Tinjauan Pustaka}
+Bagian ini menyajikan tinjauan terhadap penelitian-penelitian sebelumnya yang menjadi 
+landasan bagi pengembangan sistem umpan balik LLM dalam pendidikan. Tinjauan ini mencakup 
+dua fokus utama yaitu strategi peningkatan kualitas umpan balik LLM dan metode evaluasi 
+yang digunakan. 
+
+Melalui analisis komparatif terhadap berbagai pendekatan yang ada, diidentifikasi 
+pola, tren, dan kesenjangan dalam literatur. Pemetaan ini tidak hanya memberikan 
+konteks bagi penelitian ini, tetapi juga memperjelas kontribusi unik yang ditawarkan 
+dalam mengatasi keterbatasan-keterbatasan yang masih ada pada penelitian-penelitian 
+sebelumnya.
+
+\subsection{Peningkatan Umpan Balik LLM dengan \textit{Direct Preference Optimization} (DPO)}
+Para penulis yaitu, Juliette Woodrow, Sanmi Koyejo, dan Chris Piech (Stanford), mengajukan makalah 
+“\textit{Improving Generative AI Student Feedback: Direct Preference Optimization with Teachers in 
+the Loop}” pada EDM 2025 \cite{woodrow2025dpo_feedback}. Mereka memotret persoalan klasik 
+pada umpan balik berbasis LLM yaitu, walau model mampu menghasilkan 
+teks yang koheren, gaya, ketelitian, dan terminologi, 
+sering kali tidak selaras dengan preferensi pengajar dan konteks spesifik mata kuliah. 
+Penulis menyebutnya “\textit{Feedback Alignment Challenge}” yaitu tantangan menyesuaikan keluaran 
+AI dengan ketelitian, terminologi, dan gaya respons yang diharapkan tim pengajar, sehingga 
+\textit{feedback} terasa “\textit{course-specific}”, bukan \textit{feedback} generik.
+
+Solusi yang ditawarkan adalah Direct Preference Optimization (DPO) dengan guru/TA di 
+dalam loop. Inti dari DPO adalah selama proses penilaian, 
+sistem menampilkan dua kandidat umpan balik AI untuk 
+setiap jawaban mahasiswa, asisten dosen dapat memilih, mengedit, atau 
+menulis ulang. Pilihan ini menjadi pasangan preferensi (menang\-kalah) yang 
+kemudian dipakai untuk \textit{fine-tuning} model menggunakan DPO, 
+tanpa perlu membangun reward model seperti pada 
+\textit{Reinforcement Learning from Human Feedback} (RLHF) 
+sehingga alurnya lebih sederhana dan langsung menekan 
+probabilitas keluaran yang disukai dibanding yang tidak disukai. Penulis merancang 
+pipa tiga tahap—koleksi preferensi saat grading, pelatihan DPO antar tugas, dan 
+inferensi untuk tugas berikutnya—mewujudkan sistem self-improving yang semakin selaras 
+dengan preferensi pengajar dari satu \textit{assignment} ke \textit{assignment} berikutnya. 
+% Dalam implementasinya, mereka men-fine-tune Llama 3.1 8B Instruct (Hugging Face DPOTrainer), 
+% satu periode latih $\approx 7$ jam pada 3 $\times$ A6000, rata-rata 1.408 pasangan preferensi 
+% per gelombang; tahap “noticing” (mengumpulkan observasi atas pekerjaan mahasiswa) 
+% mengandalkan rubrik/tes otomatis/LLM lain—di sini GPT-4o—yang kemudian disisipkan 
+% ke prompt terstruktur untuk memicu respons yang lebih tepat sasaran.
+Dalam implementasinya, mereka melakukan \textit{fine-tuning} pada model Llama 3.1 8B Instruct 
+menggunakan Hugging Face DPOTrainer. Proses pelatihan berlangsung sekitar tujuh jam 
+pada tiga GPU A6000 dengan rata-rata 1.408 pasangan preferensi per gelombang. 
+Pada tahap noticing, yaitu pengumpulan observasi atas pekerjaan mahasiswa, mereka 
+memanfaatkan rubrik, tes otomatis, dan juga bantuan model LLM lain (GPT-4o). Hasil 
+dari tahap ini kemudian disusun ke dalam prompt terstruktur agar model dapat 
+menghasilkan respons yang lebih tepat sasaran.
+
+Penulis menguji pendekatan ini pada dua skenario. Pertama, studi terkontrol 
+buta yakni digunakan 10 evaluator ahli (staf pengajar) membandingkan umpan 
+balik dari beberapa model pada kiriman mahasiswa yang dianonimkan di mana
+mereka tidak mengetahui identitas 
+model dan menilai preferensi, \textit{Insightfulness}, serta \textit{Naturalness}. 
+Kedua, deployment 
+nyata di dua penyelenggaraan mata kuliah universitas besar 
+($\approx 330$ dan $\approx 289$ mahasiswa; >10 \textit{teaching assistants} 
+(TA) per semester), di mana setiap generasi 
+model dilatih dari preferensi tugas sebelumnya lalu dipakai pada tugas berikutnya. 
+Penulis juga mencatat potensi \textit{confounding variable} dalam deployment 
+(mis. setiap soal dinilai oleh satu TA sehingga preferensi pribadi bisa 
+memengaruhi pemilihan \textit{feedback}; variasi soal antar generasi menyulitkan isolasi 
+efek model).
+
+Untuk evaluasi, penulis memadukan penilaian manusia secara buta dan penilaian otomatis 
+berbasis \textit{critic model}. Pada sisi otomatis, mereka mengadopsi kerangka Scarlatos 
+et al. \cite{scarlatos2024validity} guna menilai lima dimensi yaitu,
+\textit{Correctness, Not-revealing-the-answer, Suggestions, Positive tone}, serta skor total. 
+Kerangka ini juga harusnya memuat \textit{“diagnosing errors”} namun 
+tidak difokuskan di hasil tabel karena tidak sejalan dengan tugas utama studi ini. 
+Di luar itu, penulis memperkenalkan \textit{critic model} baru dengan tiga dimensi yaitu 
+\textit{Assertiveness}, \textit{Accuracy}, dan \textit{Helpfulness} yang lebih 
+umum untuk berbagai tipe jawaban (benar/salah). 
+Kedua kerangka ini menggunakan GPT-4o sebagai evaluator otomatis; prompts dan kode 
+penilaian dibuka untuk umum.
+
+% Hasil studi terkontrol menunjukkan DPO lebih disukai dibanding baseline kuat 
+% GPT-4o: 56,8\% vs 40,2\% (3\% “Neither”), p = 0,007. Pada metrik Insightfulness, 
+% DPO lebih tinggi signifikan daripada GPT-4o (rata-rata 3,13 vs 2,79) dan model SFT (2,82); 
+% sedangkan Naturalness tidak berbeda signifikan di antara model-model yang diuji. Ulasan 
+% kualitatif evaluator menggarisbawahi bahwa ketika DPO dipilih, alasannya mencakup 
+% spesifisitas yang lebih tinggi, relevansi masalah, nada yang mendorong, dan saran yang 
+% lebih dapat ditindaklanjuti; ketika GPT-4o dipilih, alasan utamanya adalah kejelasan dan 
+% keringenkasan (sementara DPO kadang terlalu panjang atau agak canggung secara gaya).
+
+Hasil studi terkontrol menunjukkan bahwa model DPO lebih disukai dibanding baseline 
+kuat GPT-4o dengan persentase 56,8\% berbanding 40,2\% sementara 3\% responden memilih 
+netral. Pada metrik \textit{Insightfulness}, DPO juga memperoleh skor lebih 
+tinggi secara signifikan dibanding GPT-4o (rata-rata 3,13 berbanding 2,79) maupun model 
+SFT (2,82). Sebaliknya, pada metrik \textit{Naturalness} tidak ditemukan perbedaan signifikan 
+antar model. Ulasan kualitatif evaluator menegaskan bahwa alasan memilih DPO adalah 
+karena tingkat kekhususan yang lebih tinggi, relevansi terhadap masalah, nada yang 
+mendorong, serta saran yang lebih dapat ditindaklanjuti. Sementara itu, alasan utama 
+dipilihnya GPT-4o adalah kejelasan dan keringkasan, sementara DPO terkadang dinilai terlalu 
+panjang atau agak canggung dari segi gaya.
+
+Pada evaluasi otomatis (kerangka Scarlatos), DPO melampaui GPT-4o pada 4/5 
+metrik \textit{Correctness} (0,932 ± 0,004 vs 0,862 ± 0,006), \textit{Not-revealing-the-answer} 
+(0,980 ± 0,002 vs 0,973 ± 0,003), \textit{Positive tone} (0,989 ± 0,002 vs 0,905 ± 0,005), dan 
+skor total (0,724 ± 0,004 vs 0,664 ± 0,005). Satu-satunya area yang lebih baik pada 
+GPT-4o adalah \textit{Suggestions} (GPT-4o 0,229 ± 0,007 vs DPO 0,163 ± 0,006), menandakan bahwa 
+keluaran GPT-4o relatif lebih banyak memberi saran eksplisit, sementara DPO unggul dalam 
+ketepatan, menjaga agar tidak membocorkan jawaban, dan mempertahankan nada positif. 
+Di critic model baru, sebaran titik menunjukkan klaster DPO lebih konsisten di area 
+akurasi dan helpfulness yang tinggi, sedangkan GPT-4o menampilkan variasi lebih besar 
+berikut klaster pada wilayah rendah akurasi dan rendah helpfulness; secara kuantitatif, 
+umpan balik GPT-4o 8,73 kali lebih mungkin tergolong unhelpful dan 7 kali lebih mungkin inaccurate 
+dibanding DPO (tingkat assertiveness relatif sebanding). Hasil deployment memperlihatkan 
+kelayakan integrasi di kelas besar dan penguatan preferensi TA terhadap DPO dalam seting 
+riil, seraya membuka jalan untuk monitoring otomatis dan eksplorasi awal fairness 
+(gender) yang dapat diperluas ke demografi lain. 
+
+\subsection{Peningkatan \textit{Feedback} LLM dengan \textit{Prompt Engineering} Berbasis \textit{Learning Analytics}}
+Artikel ini ditulis oleh Lucas Jasper Jacobsen dan Kira Elena Weber 
+(Universität Hamburg) \cite{jacobsen2025promises}. Tujuan utamanya ada dua: 
+(1) mengidentifikasi jenis prompt seperti apa yang dibutuhkan agar LLM 
+dapat menghasilkan umpan balik berkualitas tinggi di pendidikan guru, dan 
+(2) membandingkan kualitas umpan balik LLM dengan umpan balik manusia dari 
+kelompok novice (calon guru/preservice teachers) dan expert. Latar masalah 
+yang mereka tekankan: studi empiris yang langsung membandingkan kualitas umpan 
+balik LLM vs manusia masih jarang, dan belum ada manual/kerangka berbasis teori 
+untuk menilai kualitas prompt di konteks pendidikan tinggi, padahal umpan 
+balik berkualitas penting namun sumber daya manusia dan waktu dosen sering terbatas.
+
+Sebagai respons, penulis mengembangkan sebuah manual prompt berbasis teori. 
+Manual ini merangkum kategori-kategori kualitas prompt (mencakup aspek 
+konteks/peran–audiens–medium, misi, kejernihan dan spesifikasi—misalnya format, 
+kekonkretan, spesifik domain, dan logika instruksi). Berdasarkan manual tersebut, 
+mereka merancang tiga versi prompt dengan kualitas rendah–menengah–tinggi. 
+Seluruh generasi umpan balik LLM menggunakan ChatGPT-4, dengan alasan 
+kesesuaian praktik nyata di pendidikan tinggi saat penelitian dilakukan. 
+Gagasannya sederhana: jika mutu prompt dapat disistematiskan, kualitas umpan 
+balik LLM akan lebih konsisten dan bisa dibandingkan secara adil dengan umpan 
+balik manusia.
+
+Tugas yang dipakai berupa learning goal di topik geometri (mengenali segitiga 
+siku-siku dan teorema Pythagoras), lengkap dengan tiga jenis kesalahan yang 
+umum pada perumusan tujuan pembelajaran. Dari tiga kualitas prompt 
+(rendah–menengah–tinggi), penulis menghasilkan 20 umpan balik per prompt 
+(total 60 keluaran LLM) yang kemudian dikodekan oleh tiga coder terlatih. 
+Untuk pembandingan antar penyedia umpan balik, kelompok novice dan expert 
+juga diminta menulis umpan balik dengan menggunakan prompt terbaik (kualitas tinggi), 
+sehingga perbandingan dengan LLM berlangsung pada kondisi instruksi yang 
+optimal. Desain ini memungkinkan isolasi efek “kualitas prompt” pada kinerja 
+LLM sekaligus membangun baseline manusia yang kuat pada kondisi yang sama.
+
+Kualitas umpan balik dianalisis dengan skema kodifikasi yang mencakup 
+dimensi-dimensi pedagogis seperti concreteness (kriteria dan penjelasan), 
+activation (mis. keberadaan pertanyaan pemandu), empathy 
+(nada, penggunaan orang pertama), specificity, serta errors (kesalahan isi). 
+Analisis statistik dilakukan untuk membandingkan LLM vs novice vs expert, 
+dengan pengujian post hoc (Bonferroni) pada beberapa subkategori. Dengan 
+pendekatan ini, penulis tidak hanya menilai “siapa yang lebih baik”, tetapi 
+juga pada aspek apa LLM unggul/kurang, sehingga relevan bagi desain intervensi 
+dan prompting ke depan. 
+
+Studi tersebut menunjukkan bahwa hanya prompt berkualitas tinggi yang secara 
+konsisten memicu LLM menghasilkan umpan balik bermutu, sehingga desain prompt 
+menjadi faktor kunci. Dibanding penilai pemula, LLM unggul pada hampir semua 
+subkategori, sementara pada aspek afektif tertentu seperti valensi dan penggunaan 
+orang pertama keunggulan itu tidak tampak. Dibanding pakar, LLM melampaui 
+pada explanation, questions, dan specificity dengan selisih rata-rata 
+(M\textsubscript{diff}) masing-masing 0{,}46 
+(CI 95\%: 0{,}17–0{,}74; p<0{,}001), 0{,}50 (CI 95\%: 0{,}07–0{,}93; p<0{,}05), dan 0{,}96 (CI 95\%: 0{,}52–1{,}41). 
+Dari sisi efisiensi, ChatGPT-4 mampu menghasilkan sekitar 49 umpan balik 
+dalam waktu yang sama ketika seorang pakar hanya menyusun satu, sehingga LLM 
+berpotensi menjadi alternatif yang skalabel untuk umpan balik berkualitas 
+asalkan perancangan prompt dilakukan dengan tepat.
+
+Penulis menekankan bahwa kualitas prompt harus diajarkan sebagai 
+keterampilan bagi pendidik; manual yang mereka kembangkan dapat dijadikan 
+panduan praktis. Namun, mereka juga mengingatkan keterbatasan—misalnya, 
+halusinasi masih mungkin terjadi pada prompt tertentu, dan persepsi siswa 
+terhadap umpan balik LLM serta transfer ke konteks/mata kuliah lain perlu 
+diteliti lebih lanjut. Dengan kata lain, LLM berpotensi menjadi alternatif 
+berkualitas dan efisien untuk sebagian peran feedback pakar, tetapi desain 
+prompt serta pengawasan pedagogis tetap penting agar umpan balik selaras 
+dengan kebutuhan dan konteks kursus.
+
+
+\subsection{\textit{Reinforcement Learning from Human Feedback} (RLHF) untuk Peningkatan Kualitas Respons}
+Makalah berjudul “\textit{Training language models to follow instructions 
+with human feedback}” ini ditulis oleh Long Ouyang, Jeff Wu, Xu Jiang, 
+Diogo Almeida, Carroll L. Wainwright, dkk. 
+\cite{ouyang2022traininglanguagemodelsfollow}, sebagai proyek tim Alignment 
+di OpenAI. Mereka memulai dari pengamatan bahwa memperbesar model bahasa 
+tidak otomatis membuatnya lebih mampu mengikuti niat pengguna; model besar 
+tetap bisa menghasilkan keluaran yang tidak benar, toksik, atau tidak membantu 
+sehingga tidak selaras (misaligned) dengan kebutuhan pengguna. Paper ini 
+menawarkan arah untuk menyelaraskan model dengan niat pengguna pada beragam 
+tugas melalui penyelarasan berbasis umpan balik manusia (fine-tuning with human feedback).
+
+Masalah utamanya adalah ketidakselarasan tujuan pelatihan model bahasa 
+(memprediksi token berikutnya dari web) dengan tujuan penggunaan di dunia 
+nyata (mengikuti instruksi secara membantu, jujur, dan aman). Konsekuensinya, 
+meski bisa diprompt untuk banyak tugas, model sering “membuat fakta”, 
+bias/toksik, atau tidak mengikuti instruksi pengguna. Tim menekankan 
+kebutuhan menyelaraskan model agar helpful-honest-harmless dalam 
+penggunaan sehari-hari.
+Solusi mereka adalah pipeline RLHF (reinforcement learning from human 
+feedback) dengan tiga tahap: (1) Supervised fine-tuning (SFT) pada demonstrasi 
+yang ditulis pelabel tentang perilaku model yang diinginkan; (2) pelatihan 
+reward model (RM) dari perbandingan/ranking beberapa keluaran model oleh 
+pelabel; (3) optimasi kebijakan dengan PPO menggunakan RM sebagai sinyal 
+ganjaran. Dataset dikumpulkan dari prompt yang ditulis pelabel dan prompt 
+nyata yang disubmit melalui OpenAI API, sehingga mencerminkan distribusi 
+penggunaan riil. Hasilnya adalah keluarga model InstructGPT.
+
+Secara operasional, RM akhir diinisialisasi dari GPT-3 6B yang telah 
+di-\textit{fine-tune} pada beragam dataset NLP publik; pelatihan RM 
+dilakukan satu \textit{epoch} pada himpunan latih, dan mereka menemukan 
+pelatihan sensitif terhadap jumlah \textit{epoch} (multi-\textit{epoch} 
+cepat \textit{overfit}), sementara \textit{learning rate} tidak terlalu 
+sensitif. Untuk model RLHF, kebijakan diinisialisasi dari model SFT 
+dengan campuran 10\% data pra-latih (membantu stabilitas PPO), 
+kemudian dilatih sebanyak 256{,}000 episode yang mencakup sekitar 
+31{,}000 \textit{prompt} unik (setelah penyaringan PII dan deduplikasi). 
+\textit{Batch} per iterasi sebanyak 512 (dipecah menjadi 8 \textit{minibatch} 
+berukuran 64) dan hanya satu \textit{inner epoch} per iterasi; 
+\textit{warmup} pada 10 iterasi pertama, ditambah KL reward mengikuti 
+Stiennon dkk.\ ($\beta=0{,}02$). Rincian ini memperlihatkan setup 
+yang hati-hati agar PPO stabil pada skala 1{,}3B/6B/175B.
+
+Evaluasi utama menggunakan preferensi manusia di atas distribusi prompt 
+API (mencerminkan use-case riil), serta metrik safety seperti 
+truthfulness dan toxicity (dengan regresi kinerja minimal pada dataset 
+NLP publik). Mereka juga memformalkan tujuan evaluasi selaras dengan 
+kerangka \textit{helpful, honest, harmless}. Visualisasi utama (Figur 1) menampilkan 
+seberapa sering keluaran model lebih disukai dibanding \textit{baseline} GPT-3 175B (SFT).
+
+Secara konsisten, InstructGPT menunjukkan perbaikan yang berarti: model 
+1.3B mereka lebih sering dipilih manusia dibanding GPT-3 175B, meski 100 kali 
+lebih kecil; ada peningkatan truthfulness dan penurunan toksisitas, sambil 
+menjaga regresi kinerja pada dataset publik tetap minimal. Ini memperlihatkan 
+bahwa penyelarasan dengan umpan balik manusia lebih menentukan daripada 
+sekadar memperbesar parameter. Penulis tetap mencatat keterbatasan model yang 
+masih bisa melakukan kesalahan sederhana. Namun, arah ini dinilai menjanjikan 
+untuk menyelaraskan model dengan niat pengguna di banyak aplikasi.
+
+\subsection{Regulasi Diri dalam Pendidikan Pemrograman Berbasis LLM dengan \textit{Learning Analytics}}
+Makalah \textit{Design of AI-Powered Tool for Self-Regulation Support in Programming 
+Education} karya Huiyong Li dan Boxuan Ma dari Kyushu University 
+\cite{li2025designaipoweredtoolselfregulation}, disajikan pada CHI 2025 Workshop: 
+Augmented Educators and AI, berangkat dari tantangan integrasi AI di pendidikan 
+pemrograman. Banyak alat berbasis LLM yang digunakan mahasiswa berjalan di luar 
+LMS institusional seperti Moodle. Keterpisahan ini memutus keterkaitan penting 
+dengan konteks perkuliahan, misalnya materi kuliah, rincian soal, dan hasil 
+eksekusi kode. Dampaknya, umpan balik AI sering kurang selaras dengan tujuan 
+dan ruang lingkup mata kuliah, sementara dosen kesulitan menelusuri dampak jangka 
+panjang interaksi mahasiswa dengan AI karena tidak ada jejak data proses yang 
+terkumpul secara sistematis di lingkungan LMS. Pada saat yang sama, sebagian besar 
+riset LLM di domain ini masih memfokuskan akuisisi pengetahuan (seperti generasi 
+kode dan perbaikan bug) sehingga perhatian pada keterampilan SRL seperti perencanaan, 
+monitoring, dan refleksi—relatif kurang. Kekhawatiran lain adalah ketergantungan 
+mahasiswa pada jawaban instan LLM, yang berisiko mengurangi upaya kognitif mendalam 
+yang dibutuhkan pemula untuk membangun kemandirian belajar.
+
+Untuk menjawab celah tersebut, penulis merancang CodeRunner Agent, sebuah alat 
+LLM yang menempel langsung pada ekosistem Moodle. Ia memadukan \textit{lecture viewer} 
+untuk penyajian materi, plugin CodeRunner guna menjalankan dan menilai kode secara 
+otomatis, serta \textit{xAPI logging} ke Learning Record Store sehingga setiap 
+interaksi penting—mulai dari akses materi, percobaan \textit{test case}, hingga 
+permintaan bantuan yang terekam sebagai data proses. Di sisi pedagogis, dukungan SRL 
+dioperasionalkan lewat model PPESS (\textit{Planning, Program creation, Error 
+correction, Self-monitoring, Self-reflection}) yang menurunkan kerangka SRL Zimmerman 
+khusus untuk pembelajaran pemrograman. Dengan pendekatan ini, mahasiswa bisa meminta 
+bantuan sesuai fase SRL yang sedang dijalani, sehingga umpan balik AI tidak acak, 
+melainkan terarah pada kebutuhan regulasi diri saat itu.
+
+Arsitektur CodeRunner Agent menonjol karena mengandalkan dua mesin konteks. 
+Pertama, LACE (\textit{Learning Analytics Context Engine}) yang merangkum metrik 
+keterlibatan dan performansi dari jejak xAPI, seperti waktu yang dihabiskan, 
+frekuensi upaya, tingkat keberhasilan, dan pola kesalahan, lalu menyuntikkan 
+ringkasan tersebut ke \textit{prompt} agar respons LLM memanfaatkan sinyal 
+perilaku SRL nyata. Kedua, KCE (\textit{Knowledge Context Engine}) yang mengelola 
+basis pengetahuan materi kuliah dan latihan, termasuk konsep kunci, prasyarat, 
+tingkat kesulitan, solusi, dan \textit{typical mistakes}, sehingga umpan balik 
+AI selaras kurikulum dan menghindari kebocoran solusi langsung. Dosen dapat 
+mengunggah materi, memutakhirkan basis pengetahuan, dan menyetel parameter 
+konteks agar gaya dan standar umpan balik ``menjadi milik mata kuliah'' alih-alih 
+generik.
+
+Skenario penggunaan disiapkan untuk kelas pemrograman pemula. Mahasiswa menulis 
+kode di CodeRunner, menjalankan \textit{test cases}, lalu mengakses panel 
+LLM-based Support dan memilih fase SRL yang relevan, misalnya \textit{error 
+correction} ketika menghadapi pesan kesalahan. Permintaan itu seperti identitas 
+latihan, waktu, dan tipe bantuan tercatat sebagai xAPI. Dengan demikian 
+terbentuk alur \textit{end-to-end} dari log pembelajaran, rekayasa 
+konteks, dan respons LLM yang dapat dianalisis untuk penyelarasan 
+pedagogis dan perbaikan berkelanjutan. Pada tahap ini, makalah berposisi sebagai 
+paper rancangan; penulis merencanakan \textit{pilot} jangka pendek dan 
+eksperimen satu semester lintas beberapa kelas untuk memvalidasi rancangan pada 
+situasi nyata.
+
+Rencana evaluasi memanfaatkan log xAPI untuk melihat perubahan pola percobaan, 
+akurasi, waktu penyelesaian, serta pergeseran strategi SRL ketika dukungan AI 
+diaktifkan. Di luar metrik kuantitatif, penulis juga merencanakan studi kelas 
+guna menilai kualitas, relevansi, dan keamanan pedagogis dari umpan balik LLM, 
+termasuk apakah agen berhasil menjaga SRL (memberi \textit{scaffold} dan 
+pertanyaan pemandu) alih-alih langsung membocorkan jawaban. Pendekatan evaluasi 
+ganda ini menggabungkan analitik perilaku yang objektif dan penilaian pedagogis yang 
+kualitatif ditujukan untuk memastikan alat tidak hanya berfungsi, tetapi 
+bermanfaat bagi kemandirian belajar mahasiswa.
+
+Kontribusi utama paper ini adalah rancangan terintegrasi yang menghubungkan 
+data proses LMS dengan rekayasa konteks dan \textit{scaffolding} SRL berbasis 
+LLM di lingkungan yang benar-benar digunakan kampus. Pemetaan PPESS memberi 
+kerangka operasional agar bantuan AI selalu terkait fase SRL yang tepat, 
+sementara LACE dan KCE memastikan umpan balik kontekstual, selaras kurikulum, 
+dan mendorong kemandirian. Hasil yang ditekankan bukan angka evaluasi, 
+melainkan kelayakan implementasi dan janji untuk kelas besar yang ingin 
+memanfaatkan analitik pembelajaran serta dukungan AI tanpa mengorbankan tujuan 
+pengembangan SRL. Validasi empiris disiapkan melalui \textit{pilot} dan studi 
+semeseter penuh pada tahap berikutnya.
+
+\subsection{Dashboard \textit{Real-time} untuk Orkestrasi Kelas Berbasis Kanban}
+
+Makalah ini ditulis oleh Sven Strickroth, Melanie Kreidenweis, dan Andreas Götzfried. 
+Mereka menyoroti tantangan nyata pada pembelajaran berbasis tugas di kelas yang bersifat 
+kolaboratif. Ketika beberapa kelompok bergerak pada tugas berbeda dalam waktu yang sama, 
+guru sulit memiliki pandangan menyeluruh tentang status pekerjaan setiap kelompok. Versi 
+awal alat mereka, AgileBoard4Teaching, memang memungkinkan perencanaan dan pelaksanaan 
+dengan papan Kanban per kelompok, tetapi berjalan sepenuhnya \textit{offline}. Guru 
+perlu menyalurkan berkas ke semua siswa, berkeliling memeriksa satu per satu, serta 
+tidak memiliki ringkasan progres kelas secara langsung. Di sisi lain, solusi profesional 
+seperti Trello tidak ideal untuk sekolah karena fitur dan kebijakan privasi. Kebutuhan 
+akan \textit{dashboard} \textit{real-time} menjadi titik mula rancangan mereka.
+
+Solusi yang diusulkan adalah memperluas AgileBoard4Teaching menjadi sistem berjaringan 
+dengan arsitektur \textit{client-server}. Di sisi guru tersedia \textit{authoring mode} 
+untuk menyusun tugas dan putaran kerja lalu menggandakan papan untuk banyak kelompok. 
+Di sisi siswa tersedia antarmuka Kanban tiga kolom \textit{ToDo}, \textit{In Progress}, 
+\textit{Done} dengan unggah hasil dan permintaan \textit{review}. Inti pembeda adalah 
+\textit{dashboard} guru yang menampilkan kotak ringkas untuk tiap kelompok. Guru dapat 
+melihat jumlah tugas per kolom, daftar pekerjaan yang menunggu persetujuan, serta 
+sinyal seperti \textit{raise hand}. Tersedia pula pengiriman pesan massal, penetapan 
+\textit{timer}, dan jeda tampilan siswa. Secara teknis, sistem menggunakan 
+Java Servlets dan MariaDB di \textit{backend}, penyimpanan papan sebagai JSON, 
+komunikasi WebSocket untuk sinkronisasi perubahan secara langsung, dan opsi 
+\textit{deployment} via Docker. Mekanisme bergabung untuk siswa menggunakan kode 
+grup agar tetap ramah privasi tanpa akun individual.
+
+Penulis melakukan dua studi evaluasi. Pertama, studi lapangan di kelas TIK tingkat 
+8 pada topik \textit{CAD} selama tiga minggu dengan dua sesi per minggu. Desainnya 
+\textit{within-subjects}. Satu minggu pertama menggunakan versi \textit{offline}, 
+lalu beralih ke versi jaringan untuk membandingkan pengalaman secara adil. 
+Total 18 siswa dalam 9 kelompok berpartisipasi. Pengumpulan data meliputi observasi 
+langsung, kuesioner fitur, \textit{System Usability Scale} (SUS), wawancara dengan 
+guru, serta analisis \textit{log} interaksi server. Kedua, studi simulasi berupa 
+lokakarya dua jam yang diikuti 18 guru dan \textit{trainer} berpengalaman. Pada 
+lokakarya ini, prototipe dipakai untuk mengorkestrasi kegiatan sehingga peserta 
+mengalami peran “siswa” sekaligus menilai kegunaan alat.
+
+Temuan dari studi lapangan menunjukkan pergeseran preferensi yang kuat ke versi 
+jaringan. Siswa menyatakan alur kerja lebih lancar karena tidak perlu impor dan 
+simpan manual. Fitur seperti \textit{raise hand}, pesan, \textit{timer}, dan 
+\textit{pause} dinilai membantu koordinasi. SUS siswa mencapai 84 yang tergolong 
+sangat baik dan SUS guru 92 yang termasuk kategori pengalaman terbaik. Analisis 
+\textit{log} memperlihatkan intensitas penggunaan tinggi di kelas serta 
+pemanfaatan di luar kelas untuk persiapan dan \textit{review}. Guru menyampaikan 
+bahwa \textit{dashboard} paling berguna untuk meninjau progres banyak kelompok 
+sekaligus dan menyiapkan pertemuan berikutnya. Selama sesi tatap muka, guru 
+tidak selalu menatap \textit{dashboard} karena fokus pada pendampingan langsung. 
+Beberapa saran muncul seperti tampilan yang lebih ringkas untuk kelas besar, 
+pembuatan putaran baru secara cepat, serta statistik waktu dan progres.
+
+Pada studi simulasi, para guru mengapresiasi sinkronisasi waktu nyata dan 
+kemudahan kloning papan untuk banyak kelompok. SUS rata-rata 69 yang tetap 
+masuk kategori baik. Skor ini dipengaruhi kejadian \textit{bug} yang membuat 
+sebagian peserta terkendala masuk ke putaran kedua. Meski demikian, mayoritas 
+peserta menyatakan ingin mencoba alat ini di kelas mereka. Masukan tambahan 
+menyangkut kebutuhan versi terkelola yang stabil dan peningkatan visibilitas 
+opsi komunikasi.
+
+Secara keseluruhan, kontribusi utama makalah adalah desain dan prototipe 
+\textit{dashboard} \textit{real-time} yang mendukung orkestrasi kelas 
+\textit{agile} berbasis Kanban, lengkap dengan bukti kegunaan dari dua 
+konteks evaluasi. Solusi ini menjembatani celah antara alat perencanaan 
+yang kuat dan kebutuhan pemantauan langsung di kelas. Hasilnya menyiratkan 
+kesiapan untuk dilanjutkan ke tahap produksi dan pengayaan fitur 
+\textit{learning analytics} seperti waktu penyelesaian dan deviasi dari 
+target. Penulis menekankan pentingnya menjaga keseimbangan antara informasi 
+yang cukup dan beban kognitif guru agar \textit{dashboard} tetap dapat 
+dibaca sekejap sekaligus memberi sinyal tindakan yang jelas.
+
+\subsection{Perbandingan Metode Peningkatan Kualitas Respons LLM}
+Dapat dilihat, Tabel~\ref{tab:komparasi-llm-feedback} merangkum karya 
+kunci yang mewakili dua arus utama yakni penyelarasan \textit{model} 
+melalui \textit{fine-tuning} misalnya \textit{DPO} dan \textit{RLHF} 
+serta penyelarasan \textit{konteks} melalui \textit{prompt} dan 
+\textit{context engineering} serta orkestrasi kelas berbasis Kanban. 
+% Setiap studi diringkas menurut empat aspek yaitu tujuan dan masalah 
+% yang disasar, pendekatan dan teknik inti, konteks atau skenario 
+% penggunaan dan evaluasi, serta temuan utama. Fokus komparasi 
+% diarahkan pada kesesuaian dengan batasan penelitian ini tanpa 
+% pelatihan ulang model, memanfaatkan model \textit{open source} 
+% melalui Groq API, menggunakan bahasa Indonesia, serta bergantung 
+% pada sinyal proses dari papan Kanban, dan pada implikasinya 
+% bagi rancangan \textit{pipeline} yang menempatkan guru 
+% \textit{in the loop}. Hasil perbandingan pada tabel menjadi 
+% dasar pemilihan pendekatan orkestrasi ala Strickroth yang kemudian 
+% dikombinasikan dengan \textit{LLM} dan \textit{learning analytics} 
+% pada bagian berikut.
+
+\clearpage
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{Komparasi penelitian peningkatan kualitas umpan balik LLM di pendidikan}
+\label{tab:komparasi-llm-feedback}
+\scriptsize
+\begin{tabular}{|p{2.8cm}|p{3.1cm}|p{3.2cm}|p{2.8cm}|p{4.2cm}|}
+\hline
+\textbf{Studi} & \textbf{Tujuan} & \textbf{Pendekatan Inti} & \textbf{Pelaksanaan Penelitian} & \textbf{Temuan Utama} \\
+\hline
+Woodrow et al.\ (EDM 2025) \cite{woodrow2025dpo_feedback} &
+Menyelaraskan gaya dan isi feedback AI dengan preferensi pengajar &
+\textit{Direct Preference Optimization} dengan guru/TA di dalam loop. Preferensi menang-kalah dari dua kandidat umpan balik dipakai untuk fine-tuning &
+Mata kuliah besar. Siklus antartugas. Observasi pekerjaan mahasiswa diringkas ke prompt terstruktur &
+Studi terkontrol menunjukkan DPO lebih disukai daripada GPT-4o. Skor insight lebih tinggi. \textit{Naturalness} setara. Evaluasi otomatis juga lebih baik pada empat dari lima dimensi. DPO kadang lebih panjang \\
+\hline
+Jacobsen \& Weber\ (2025) \cite{jacobsen2025promises} &
+Menentukan desain prompt yang memicu feedback LLM berkualitas serta membandingkan LLM dengan manusia &
+Manual prompt berbasis teori. Tiga kualitas prompt rendah menengah tinggi. LLM dibanding novice dan expert pada tugas geometri &
+Feedback pada learning goal dan miskonsepsi umum. Semua pihak memakai prompt berkualitas tinggi untuk pembandingan adil &
+Prompt berkualitas tinggi menghasilkan feedback terbaik. LLM mengungguli novice di hampir semua subkategori. LLM melampaui expert pada explanation questions specificity. Efisiensi LLM jauh lebih tinggi \\
+\hline
+Ouyang et al.\ (InstructGPT, 2022) \cite{ouyang2022traininglanguagemodelsfollow} &
+Menyelaraskan model agar mengikuti instruksi yang membantu jujur dan aman &
+\textit{RLHF} tiga tahap. SFT pada demonstrasi manusia. Reward model dari perbandingan keluaran. PPO untuk mengoptimalkan kebijakan &
+Berbagai tugas umum. Prompt dari pelabel dan pengguna API. Bukan konteks kursus spesifik &
+Model kecil yang telah selaras lebih sering dipilih manusia dibanding GPT-3 yang jauh lebih besar. Truthfulness naik dan toksisitas turun. Kerangka selaras tugas umum bukan feedback proses belajar \\
+\hline
+Li \& Ma\ (CHI 2025 WS) \cite{li2025designaipoweredtoolselfregulation} &
+Merancang alat LLM yang mendukung SRL di pemrograman serta tetap terhubung ke LMS &
+Rekayasa konteks ganda. LACE untuk ringkasan learning analytics berbasis xAPI. KCE untuk pengetahuan kurikulum. Pemetaan SRL ke PPESS &
+Moodle dengan CodeRunner. Log xAPI merekam akses materi upaya tes dan bantuan. Fase SRL dipilih pengguna untuk memicu bantuan yang tepat &
+Paper rancangan. Rencana uji lapangan dan studi satu semester. Menekankan kelayakan integrasi. Fokus pada dukungan SRL dan kontrol kebocoran jawaban. Belum ada angka hasil akhir \\
+\hline
+Strickroth et al.\ (2025) \cite{Strickroth2025LiveTeacherDashboard} &
+\textit{Dashboard} \textit{real-time} untuk orkestrasi kelas Kanban agar guru memantau progres banyak kelompok &
+Ekstensi AgileBoard4Teaching ke sistem \textit{client--server}. \textit{Dashboard} guru. Sinkronisasi \textit{WebSocket}. Penyimpanan papan JSON. Opsi \textit{deployment} Docker. Mekanisme kode grup ramah privasi &
+Kelas TIK tingkat 8 topik \textit{CAD}. 18 siswa 9 kelompok. Desain \textit{within-subjects} \textit{offline} ke jaringan. Lokakarya dua jam dengan 18 guru/\textit{trainer}. Data observasi kuesioner SUS wawancara dan \textit{log} server &
+Preferensi kuat ke versi jaringan. Alur kerja lebih lancar. SUS siswa 84 dan SUS guru 92. Lokakarya SUS 69. Masukan lanjutan meliputi tampilan ringkas kelas besar pembuatan putaran cepat serta statistik waktu dan progres \\
+\hline
+\end{tabular}
+\end{table}
+\end{landscape}
+\clearpage
+
+% \subsection{Sintesis Kritis dan Rasional Pemilihan Pendekatan}
+ 
+Tabel~\ref{tab:komparasi-llm-feedback} secara garis besar menjelaskan
+karya terdahulu yang berpencar ke dua arus utama. Arus pertama 
+berfokus pada penyelarasan \textit{model} melalui \textit{fine-tuning}, misalnya 
+\textit{Direct Preference Optimization} (DPO) \cite{woodrow2025dpo_feedback} dan 
+\textit{Reinforcement Learning from Human Feedback} (RLHF) 
+\cite{ouyang2022traininglanguagemodelsfollow}. Arus kedua menekankan penyelarasan 
+\textit{konteks} melalui perancangan \textit{prompt} dan lingkungan interaksi 
+beserta pemanfaatan data proses pembelajaran, sebagaimana tampak pada 
+\cite{jacobsen2025promises} dan \cite{li2025designaipoweredtoolselfregulation}. 
+Di luar itu, \cite{Strickroth2025LiveTeacherDashboard} menawarkan orkestrasi 
+kelas berbasis papan Kanban dengan \textit{dashboard} \textit{real-time} yang 
+kaya sinyal proses sehingga menyediakan landasan operasional untuk memantau 
+dan menindaklanjuti progres kelompok secara langsung.
+
+Dari sisi tujuan intervensi, DPO dan RLHF mengubah parameter model agar keluaran 
+lebih selaras dengan preferensi manusia 
+\cite{woodrow2025dpo_feedback,ouyang2022traininglanguagemodelsfollow}. 
+Sebaliknya, \cite{jacobsen2025promises} memperlihatkan bahwa \textit{prompt} 
+berkualitas tinggi dapat mendorong kualitas umpan balik tanpa perlu pelatihan 
+ulang, sementara \cite{li2025designaipoweredtoolselfregulation} menekankan 
+rekayasa konteks yang ditopang oleh \textit{learning analytics}. 
+
+Menariknya, \cite{Strickroth2025LiveTeacherDashboard} 
+secara tidak langsung menyediakan
+fitur yang mendukung guru untuk melakukan tugas \textit{learning analytics}.
+Hal ini dapat dilihat dari kemampuan \textit{dashboard} dalam menampilkan 
+seperti jumlah tugas per kolom, daftar pekerjaan, dan waktu yang dihabiskan
+oleh siswa pada setiap tugas. Dengan demikian, guru dapat memantau
+aktivitas pembelajaran secara real-time dan mengambil tindakan yang diperlukan.
+Penelitian ini memosisikan diri pada jalur kedua, yaitu optimalisasi 
+konteks, sejalan dengan batasan metodologis bahwa tidak 
+dilakukan \textit{fine-tuning}.
+
+Untuk perspektif sumber daya dan kelayakan, pendekatan DPO/RLHF menuntut 
+data preferensi atau label serta infrastruktur pelatihan. Hal tersebut tidak 
+selaras dengan rancangan studi ini yang memanfaatkan model \textit{open source} 
+melalui Groq API tanpa pelatihan ulang. Pendekatan \textit{prompt}/\textit{context engineering} 
+lebih ringan dijalankan, mudah direplikasi, dan sesuai dengan keterbatasan 
+komputasi maupun waktu. Penelitian \cite{Strickroth2025LiveTeacherDashboard} 
+memanfaatkan \textit{dashboard real-time} 
+dan jejak proses Kanban yang memungkinkan pemantauan 
+banyak kelompok sekaligus, pengumpulan sinyal proses yang autentik, dan 
+pengambilan tindakan cepat oleh pengajar. Komponen ini belum tercakup 
+pada studi yang berfokus pada \textit{prompt} semata. Beberapa hal yang ada di 
+penelitian Strickroth dkk.\ dapat dimanfaatkan untuk memperkaya konteks
+umpan balik LLM.
+% Karena itu, penelitian 
+% ini memilih menjadikan pendekatan Strickroth sebagai \textit{backbone} orkestrasi 
+% sekaligus sumber data proses.
+
+Kontrol pedagogis tetap dipertahankan melalui penilaian kualitatif yang akan
+ditinjau langsung oleh pakar pendidikan. Keluaran LLM yang berupa \textit{feedback}
+ditinjau dan dinilai melalui rubrik penilaian yang telah dipersiapkan. 
+Dengan cara ini, kualitas pedagogis tetap terjaga dan sejalan dengan 
+kebutuhan untuk dilakukan penilaian oleh pakar manusia.
+
+% Kombinasi pilihan di atas dioperasionalkan melalui kerangka integrasi 
+% \textit{Kanban} $\rightarrow$ \textit{Learning Analytics} $\rightarrow$ 
+% \textit{LLM} $\rightarrow$ \textit{Guru}. Pertama, sinyal proses dari papan 
+% Kanban—waktu tinggal kartu per kolom, jumlah perpindahan, deteksi \textit{blocked}, 
+% \textit{work-in-progress} per kelompok, dan status \textit{review}—diakuisisi dari 
+% \textit{dashboard} ala \cite{Strickroth2025LiveTeacherDashboard}. Kedua, sinyal 
+% tersebut diringkas menjadi paket \textit{learning analytics} yang dipetakan ke 
+% fase SRL (perencanaan, pelaksanaan, refleksi) beserta indikator risiko seperti 
+% kartu lama di \textit{In Progress}, banyak \textit{reopen}, atau \textit{idle time} 
+% yang tinggi, terinspirasi rancangan konteks pada 
+% \cite{li2025designaipoweredtoolselfregulation}. Ketiga, paket konteks disisipkan ke 
+% templat \textit{prompt} yang menargetkan tiga fungsi pedagogis—\textit{feedback} 
+% kognitif, dukungan motivasional, dan dukungan apresiatif—dengan gaya instruksi 
+% yang disempurnakan mengikuti temuan \cite{jacobsen2025promises}. Keempat, respons 
+% dihasilkan oleh LLM melalui Groq API tanpa \textit{fine-tuning} dengan kontrol 
+% parameter \textit{decoding} untuk stabilitas keluaran. Kelima, guru melakukan 
+% \textit{review} singkat atas keluaran sebelum disalurkan ke kelompok.
+
+% Implikasi evaluasi menyentuh dua sisi. Secara kuantitatif, kualitas keluaran 
+% diukur terhadap acuan pakar melalui kesepadanan isi, spesifisitas saran, kepatuhan 
+% format, dan metrik klasifikasi seperti \textit{precision}, \textit{recall}, 
+% serta \textit{macro F1}. Secara kualitatif, \textit{expert review} menilai 
+% tiga fungsi pedagogis dan keberterimaan dalam konteks kelas. Selain itu, 
+% indikator proses dari \textit{dashboard}—misalnya waktu tanggap intervensi, 
+% penurunan tugas yang macet, dan konsistensi progres—digunakan untuk melihat 
+% dampak orkestrasi terhadap aktivitas kelompok.
+
+Dengan demikian, penelitian ini mendapatkan celah perbaruan di mana 
+pendekatan \textit{prompting} dan \textit{context engineering} yang murah
+sumber daya dan biaya digabungkan dengan \textit{learning analytics} yang
+berasal dari papan Kanban untuk memperkaya konteks umpan balik LLM. Kombinasi
+tersebut belum pernah dibahas sebelumnya oleh literatur yang ada. Celah 
+penelitian ini akan dievaluasi secara kuantitatif untuk mengukur kualitas
+keluaran LLM terhadap acuan pakar serta secara kualitatif melalui penilaian
+pakar pendidikan untuk menjaga kualitas pedagogis. Melalui batasan-batasan
+yang telah ditetapkan, rancangan ini menawarkan solusi praktis dan efektif.
+Pilihan metodologis ini konsisten dengan batasan penelitian, 
+memanfaatkan data proses untuk memperkuat konteks \textit{prompt}, 
+menjaga peran guru sebagai pengarah kualitas, dan menghadirkan 
+kesiapan implementasi di lapangan.
+
+% Dengan demikian, kontribusi yang diposisikan menjadi jelas. Dibanding DPO/RLHF, 
+% rancangan ini tidak menambah biaya pelatihan dan dapat diadopsi dengan cepat. 
+% Dibanding pendekatan yang mengandalkan \textit{prompt} saja, rancangan ini 
+% memperkaya konteks dengan sinyal proses autentik dari Kanban sehingga umpan 
+% balik lebih tepat sasaran. Dibanding rancangan LA yang melekat pada LMS 
+% tertentu, pendekatan ini bersifat instrumen-agnostik melalui papan Kanban 
+% dan siap diterapkan di kelas kolaboratif berbahasa Indonesia. Pilihan 
+% metodologis ini konsisten dengan batasan penelitian, memanfaatkan data proses 
+% untuk memperkuat konteks \textit{prompt}, menjaga peran guru sebagai pengarah 
+% kualitas, dan menghadirkan kesiapan implementasi di lapangan.
+
+% % 
+
+% \usepackage{pdflscape}
+% \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% \begin{landscape}
+%     \begin{longtable}{|p{2.5cm}|p{1.3cm}|p{5.7cm}|p{3.2cm}|p{4.8cm}|p{5.7cm}|}
+%         \caption{Perbandingan Penelitian M-Paspor}
+%         \label{tab:Tabel_Penelitian_MPaspor}
+%         \\
+        
+%         % Header pada halaman pertama
+%         \hline \footnotesize
+%         \textbf{Penulis} & \footnotesize \textbf{Tahun} & \footnotesize \textbf{Tujuan Penelitian} & \footnotesize \textbf{Objek Penelitian} & \footnotesize \textbf{Metode Penelitian} & \footnotesize \textbf{Hasil Penelitian} \\
+%         \hline
+%         \endfirsthead
+
+%         % Header pada halaman berikutnya
+%         \hline
+%         \footnotesize \textbf{Penulis} & \footnotesize \textbf{Tahun} & \footnotesize \textbf{Tujuan Penelitian} & \footnotesize \textbf{Objek Penelitian} & \footnotesize \textbf{Metode Penelitian} & \footnotesize \textbf{Hasil Penelitian} \\
+%         \hline
+%         \endhead
+
+%         % Footer (nomor halaman atau penanda lainnya)
+%         \hline
+%         \multicolumn{6}{|r|}{ \footnotesize Lanjutan pada halaman berikutnya} \\
+%         \hline
+%         \endfoot
+
+%         % Footer pada halaman terakhir
+%         \hline
+%         \multicolumn{6}{|r|}{\footnotesize Akhir Tabel} \\
+%         \hline
+%         \endlastfoot
+        
+%         % Mengecilkan font lebih lanjut
+%         % Data Penelitian 1
+%         \footnotesize Steven Mavish, Henoch Juli Christanto, Stephen Aprius Sutresno & \footnotesize 2024 & \footnotesize Menganalisis dan meredesain aplikasi M-Paspor menggunakan metode Design Thinking untuk meningkatkan usability dan pengalaman pengguna. & \footnotesize Aplikasi M-Paspor & \footnotesize
+%             \begin{itemize}[left=0pt, nosep]
+%                 \item Design Thinking
+%                 \item Evaluasi usability
+%             \end{itemize}
+%         & \footnotesize Redesain aplikasi meningkatkan navigasi yang lebih intuitif, formulir lebih efisien, dan mengurangi kesalahan pengguna. Kepuasan pengguna meningkat, dengan rekomendasi untuk pengembangan fitur lebih lanjut dan evaluasi berkelanjutan. \\
+%         \hline
+%         % Data Penelitian 2
+%         \footnotesize Shiddiq Muhammad Taufiq & \footnotesize 2022 & \footnotesize Mengembangkan tampilan pada aplikasi M-Paspor dengan metode five planes agar terlihat lebih menarik dan nyaman di gunakan sehingga dapat meningkatkan pelayanan terhadap masyarakat & \footnotesize Aplikasi M-Paspor & \footnotesize Perancangan UX dengan pendekatan Five Planes dan analisis deskriptif kualitatif. Pengujian usability dilakukan menggunakan UEQ. & \footnotesize Perbaikan UI/UX meningkatkan daya tarik, kejelasan, dan efisiensi aplikasi. Evaluasi UEQ menunjukkan hasil “Good” secara keseluruhan dan “Excellent” untuk kejelasan. \\
+%         \hline
+%         % Data Penelitian 3
+%         \footnotesize Amilia Purnama, Marcelina Lailatul Fitria, Ryandhika Yudhistira Widyaputra, Sunardi 3 & \footnotesize 2024 & \footnotesize Meneliti pengalaman pengguna (user experience) dari aplikasi M-Paspor dengan menganalisis sentimen pengguna serta mengevaluasi antarmuka aplikasi melalui cognitive walkthrough. & \footnotesize Aplikasi M-Paspor & \footnotesize 
+%             \begin{itemize}[left=0pt, nosep]
+%                 \item Analisis sentimen dari ulasan pengguna
+%                 \item Cognitive Walkthrough dengan pengguna berpengalaman dan tidak berpengalaman
+%             \end{itemize} & \footnotesize Ditemukan masalah pada beberapa fitur aplikasi. Direkomendasikan fitur penyimpanan login, otomatisasi data, notifikasi kuota, dan perbaikan alur lokasi untuk meningkatkan efisiensi dan kepuasan pengguna. \\
+%         \hline
+%         % Data Penelitian 4
+%         \footnotesize Claudia, Dessi Puji Lestari & \footnotesize 2024 & \footnotesize Mengembangkan desain interaksi M-Paspor Indonesia agar lebih mudah digunakan, dengan alur pendaftaran yang efisien dan efektif sesuai dengan kebutuhan pengguna. & \footnotesize Aplikasi M-Paspor & \footnotesize 
+%         \begin{itemize}[left=0pt, nosep]
+%                 \item User-Centered Design (UCD) dengan prinsip citizen-centric e-government
+%                 \item Pengembangan high-fidelity prototype dengan React Native
+%                 \item Evaluasi usability menggunakan SEQ dan SUS
+%             \end{itemize}
+%             & \footnotesize Diidentifikasi 13 fitur perbaikan untuk aplikasi M-Paspor. Evaluasi SEQ dan SUS menunjukkan peningkatan skor tiap iterasi, membuktikan desain lebih efektif, efisien, mudah dipelajari, dan mendukung proses pendaftaran paspor. \\
+%         \hline
+%         % Data Penelitian 5
+%         \footnotesize Avidhyana Sukma Valenta, Agi Putra Kharisma, Herman Tolle & \footnotesize 2024 & \footnotesize Mengevaluasi usability dan meningkatkan pengalaman pengguna aplikasi M-Paspor dengan merancang solusi berbasis desain menggunakan 4D Framework. & \footnotesize Aplikasi M-Paspor & \footnotesize 
+%         \begin{itemize}[left=0pt, nosep]
+%             \item Pendekatan 4D Framework
+%             \item Heuristic evaluation oleh lima evaluator
+%             \item Usability testing (completion rate, missclick rate, task completion time, SEQ)
+%             \item Analisis statistik menggunakan chi-square dan t-test
+%         \end{itemize} & \footnotesize Desain baru meningkatkan \textit{completion rate} menjadi 89{,}81\%, efisiensi dari 0{,}07 menjadi 0{,}12 \textit{goals/second}, dan kepuasan (SEQ) dari 5{,}07 ke 6{,}83. \textit{T-test} menunjukkan peningkatan signifikan, membuktikan efektivitas pendekatan \textit{4D Framework}. \\
+%         \hline
+%         % Data Penelitian 6
+%         \footnotesize Alexander Ryan Hendarto, Indah Werdiningsih, Kartono & \footnotesize 2023 & \footnotesize Penelitian ini bertujuan untuk mengevaluasi dan memberikan rekomendasi perbaikan antarmuka pengguna (UI) guna meningkatkan pengalaman pengguna (UX) dalam penggunaan aplikasi M-Paspor. & \footnotesize Aplikasi M-Paspor & \footnotesize 
+%         \begin{itemize}[left=0pt, nosep]
+%             \item Design Thinking (empathize, define, ideate, prototype, dan test)
+%             \item Usability test pada 15 responden dengan lima skenario
+%         \end{itemize} & \footnotesize Penelitian menunjukkan pengalaman pengguna M-Paspor diuji dengan lima skenario, menghasilkan efektivitas 100\%, efisiensi 0.133 goals/detik, dan kepuasan 5.1/7. Evaluasi memberi tujuh rekomendasi untuk perbaikan UI. \\
+%         \hline
+%         % Data Penelitian 7
+%         \footnotesize Michael J. Albers, Janet Patton Tracy & \footnotesize 2006 & \footnotesize Mengukur cognitive load yang dialami oleh pengguna saat melakukan uji kegunaan situs web, serta untuk menganalisis bagaimana cognitive load mempengaruhi pengalaman pengguna dan pengoptimalan desain situs. & \footnotesize Situs web secara umum. & \footnotesize Pengukuran cognitive load dengan NASA TLX, Sternberg Memory Test, dan Tapping Test. & \footnotesize NASA TLX efektif mendeteksi masalah desain situs, dan perbaikan desain yang mengurangi cognitive load dapat meningkatkan pengalaman pengguna. \\
+%         \hline
+%         % Data Penelitian 8
+%         \footnotesize Neşe Zayım, Hasibe Yıldız, Yılmaz Kemal Yüce & \footnotesize 2023 & \footnotesize Penelitian ini mengukur cognitive workload yang dialami oleh pengguna aplikasi kesehatan ketika melaksanakan tugas-tugas di aplikasi kesehatan pribadi berbasis mobile. & \footnotesize Aplikasi mPHR (Mobile Personal Health Records) & \footnotesize
+%         \begin{itemize}[left=0pt, nosep]
+%             \item Cognitive workload dengan NASA-TLX pada 30 partisipan.
+%             \item Eye tracking device untuk mengukur durasi waktu penyelesaian tugas.
+%         \end{itemize} & \footnotesize Terdapat perbedaan signifikan dalam cognitive load antara pengguna berpengalaman dan pemula, meskipun waktu penyelesaian tugas tidak menunjukkan perbedaan signifikan. Cognitive load lebih rendah pada pengguna berpengalaman. \\
+%         \hline
+%     \end{longtable}
+% \end{landscape}
+
+\subsection{Metode Evaluasi Umpan Balik LLM dalam Pendidikan}
+
+Evaluasi kualitas teks yang dihasilkan oleh \textit{Large Language Models} (LLM) 
+merupakan tantangan kompleks yang memerlukan pendekatan multi-aspek. Secara historis, 
+metrik evaluasi didominasi oleh metode berbasis tumpang tindih leksikal seperti BLEU 
+dan ROUGE. Metrik ini bekerja dengan menghitung kesamaan \textit{n-gram} (urutan kata) 
+antara teks yang dihasilkan dan teks referensi (\textit{ground truth})[1]. Namun, 
+ketergantungan pada pencocokan permukaan ini memiliki kelemahan signifikan; 
+metrik ini gagal memahami kesetaraan makna (semantik) dan sering kali memberikan 
+skor rendah pada parafrasa yang valid, ketika dua kalimat memiliki arti yang sama 
+tetapi menggunakan kosakata yang berbeda[2]. Berbagai studi telah menunjukkan bahwa 
+korelasi metrik ini dengan penilaian manusia sering kali rendah, terutama dalam 
+tugas-tugas yang menuntut keragaman ekspresi seperti simplifikasi teks atau dialog[3].
+
+% reference:
+% [1]https://pmc.ncbi.nlm.nih.gov/articles/PMC10449915/
+% [2]https://arxiv.org/pdf/2403.09727
+% [3]https://www.researchgate.net/publication/334116618_BLEU_is_Not_Suitable_for_the_Evaluation_of_Text_Simplification
+
+Keterbatasan ini mendorong pergeseran paradigma menuju metrik evaluasi yang mampu 
+menangkap kesamaan semantik. Pada penelitian ini, evaluasi yang akan dilakukan
+dibatasi pada dua faktor yaitu kesamaan semantik dan kualitas relevansinya 
+terhadap konteks. Untuk pendekatan kesamaan semantik, metrik berbasis 
+\textit{embedding} kontekstual 
+seperti BERTScore dan BARTScore menjadi pilihan utama [1][2]. Lalu,
+penilai (dikenal sebagai \textit{LLM-as-a-Judge}) dapat memberikan penilaian 
+relevansinya terhadap kriteria tertentu untuk teks yang dihasilkan. 
+Metrik berbasis \textit{embedding} seperti BERTScore dan BARTScore 
+tidak lagi membandingkan kata secara literal, 
+melainkan representasi vektornya yang kaya akan konteks, sehingga lebih selaras 
+dengan penilaian kualitas oleh manusia[1]. Di sisi lain, pendekatan 
+\textit{LLM-as-a-Judge} memanfaatkan kemampuan pemahaman bahasa dari model 
+canggih seperti GPT-4 untuk memberikan penilaian kualitatif yang bernuansa, 
+meniru proses evaluasi oleh manusia pada skala yang lebih besar[4].
+
+% reference:
+% [1]https://www.researchgate.net/publication/332590189_BERTScore_Evaluating_Text_Generation_with_BERT
+% [2]https://www.semanticscholar.org/paper/BARTScore%3A-Evaluating-Generated-Text-as-Text-Yuan-Neubig/a6a7724763d8adba466519489b0b9d209e7f2d15
+% [3]https://arxiv.org/pdf/2405.05253v1
+% [4]https://aclanthology.org/2023.emnlp-main.153.pdf
+
+% Meskipun menjanjikan, pendekatan \textit{LLM-as-a-Judge} juga memiliki 
+% serangkaian pertimbangan penting. Penelitian telah mengidentifikasi beberapa 
+% bias inheren yang dapat memengaruhi objektivitasnya. LLM penilai cenderung 
+% menunjukkan bias posisi, yaitu lebih menyukai respons yang disajikan pertama 
+% kali dalam perbandingan berpasangan[1]. Selain itu, terdapat bias kebertele-telean 
+% (\textit{verbosity bias}), ketika respons yang lebih panjang sering kali dinilai 
+% lebih baik, serta bias peningkatan diri (\textit{self-enhancement bias}), yang 
+% membuat model cenderung menyukai output dari model dalam keluarganya sendiri. 
+% Bias-bias ini menggarisbawahi pentingnya desain \textit{prompt} yang cermat dan 
+% validasi silang untuk memastikan keandalan penilaian.
+
+Dalam paper ini [1] Metrik ini bekerja dengan mengubah setiap token dalam kalimat 
+kandidat dan referensi menjadi \textit{embedding} kontekstual menggunakan 
+model BERT. Selanjutnya, kesamaan makna diukur dengan menghitung kemiripan 
+kosinus (\textit{cosine similarity}) antara setiap pasang token, lalu secara 
+serakah (\textit{greedy matching}) mencocokkan token dari satu kalimat ke 
+token yang paling mirip di kalimat lainnya untuk menghasilkan skor presisi, 
+\textit{recall}, dan F1. Keunggulan utamanya adalah kemampuannya untuk 
+mengenali sinonim dan parafrasa, sehingga memberikan evaluasi yang lebih kuat 
+terhadap kesetaraan makna dibandingkan metrik \textit{n-gram}.
+
+% referensi:
+% [1]https://www.researchgate.net/publication/332590189_BERTScore_Evaluating_Text_Generation_with_BERT
+
+Sementara itu, BARTScore [1] menawarkan filosofi yang berbeda secara fundamental 
+dengan membingkai evaluasi sebagai "tugas generasi teks". Alih-alih hanya 
+membandingkan \textit{embedding}, BARTScore menggunakan model seq2seq 
+(sequence-to-sequence) untuk menghitung probabilitas sebuah teks 
+dihasilkan dari teks lainnya. Misalnya, untuk mengukur presisi, 
+ia akan menghitung seberapa mungkin model BART akan menghasilkan teks 
+referensi jika diberi teks kandidat sebagai sumber. 
+Skor yang lebih tinggi (\textit{log-probability} yang lebih mendekati nol) 
+menandakan kualitas yang lebih baik. Fleksibilitas ini memungkinkan BARTScore 
+untuk menilai berbagai aspek seperti kefasihan, koherensi, dan bahkan 
+faktualitas hanya dengan mengubah input sumber dan targetnya.
+% referensi:
+% [1]https://www.semanticscholar.org/paper/BARTScore%3A-Evaluating-Generated-Text-as-Text-Yuan-Neubig/a6a7724763d8adba466519489b0b9d209e7f2d15
+
+Untuk mengatasi subjektivitas dan bias dalam pendekatan \textit{LLM-as-a-Judge}, 
+kerangka kerja terstruktur seperti G-Eval telah dikembangkan [1]. 
+G-Eval menggunakan 
+LLM penilai (misalnya, GPT-4) tetapi memandunya dengan penalaran 
+\textit{Chain-of-Thought} (CoT). Alih-alih hanya meminta skor akhir, 
+G-Eval terlebih dahulu menginstruksikan LLM untuk menghasilkan l
+angkah-langkah evaluasi berdasarkan kriteria yang diberikan pengguna, 
+lalu mengikuti langkah-langkah tersebut untuk sampai pada sebuah skor. 
+Pendekatan ini membuat proses penilaian lebih transparan, dapat dikontrol, 
+dan terbukti mencapai korelasi yang lebih tinggi dengan penilaian manusia 
+dibandingkan metode LLM-penilai yang tidak terstruktur. Pada penelitian [2],
+dilakukan juga penilaian umpan balik kode pemrograman yang dihasilkan oleh 
+model open-source. Seperti G-Eval, penilai LLM diminta untuk menilai
+berdasarkan kriteria yang telah ditentukan. Sehingga dapat disimpulkan bahwa
+pendekatan \textit{LLM-as-a-Judge} yang terstruktur dengan kriteria jelas
+meningkatkan keandalan penilaian.
+% referensi:
+% [1]https://aclanthology.org/2023.emnlp-main.153.pdf
+% [2]https://arxiv.org/pdf/2405.05253v1
+
+\subsection{Evaluasi Ahli Manusia}
+
+Untuk menilai kualitas umpan balik yang dihasilkan oleh LLM secara 
+komprehensif, evaluasi manusia yang terstruktur 
+menjadi standar emas, karena mampu menangkap 
+nuansa pedagogis dan psikologis yang terlewat oleh metrik otomatis. 
+Penilaian ini dapat dibingkai menggunakan rubrik yang didasarkan pada 
+prinsip-prinsip teoretis yang telah mapan. Mengacu pada Shute (2008), 
+kriteria fundamental yang harus dinilai adalah apakah umpan balik LLM 
+bersifat jelas, akurat, dan relevan dengan konteks tugas yang diberikan. 
+Penilai manusia dapat secara langsung memverifikasi apakah instruksi yang 
+diberikan spesifik dan apakah informasi faktualnya benar.
+
+Selanjutnya, dengan mengadopsi model dari Hattie dan Timperley (2007), 
+penilai dapat mengevaluasi kelengkapan struktural umpan balik tersebut. 
+Rubrik penilaian akan memeriksa apakah LLM mampu menjawab tiga pertanyaan 
+kunci: (1) Feed Up: Apakah umpan balik mengklarifikasi tujuan akhir 
+(Where am I going?); (2) Feedback: Apakah ia memberikan analisis tentang 
+kinerja saat ini terhadap tujuan tersebut (How am I going?); dan (3) 
+Feed Forward: Apakah ia menawarkan saran yang konkret dan dapat 
+ditindaklanjuti untuk perbaikan (Where to next?).
+
+Terakhir, dampak motivasional dari umpan balik, sebuah aspek yang 
+sulit diukur secara otomatis, dapat dinilai melalui lensa 
+Self-Determination Theory (Deci \& Ryan, 1985) dan prinsip penguatan 
+positif (Fredrickson, 2001). Penilai manusia akan mengevaluasi apakah 
+bahasa yang digunakan LLM mendukung otonomi (memberikan pilihan, 
+bukan mendikte), menumbuhkan rasa kompetensi (mengakui usaha dan kemajuan), 
+dan menggunakan nada yang apresiatif untuk meningkatkan self-efficacy. 
+Dengan demikian, evaluasi manusia yang berlandaskan teori ini tidak 
+hanya mengukur kebenaran teknis dari umpan balik, tetapi juga 
+efektivitasnya dalam memotivasi dan memberdayakan pengguna secara 
+konstruktif.
+
+Secara keseluruhan, penilaian kualitas umpan balik LLM oleh ahli manusia
+menggabungkan evaluasi objektif berdasarkan rubrik yang dikategorikan menjadi 
+tiga jenis yaitu penilaian secara \textit{feedback}, \textit{motivation support}, dan 
+\textit{appreciation support}. Setiap kategori dievaluasi menggunakan 
+skala likert (1-5) untuk mengukur berbagai dimensi kualitas umpan balik
+dari perspektif pedagogis dan psikologis. Dengan cara ini, evaluasi manusia
+menyediakan gambaran yang kaya dan bernuansa tentang efektivitas umpan balik
+LLM dalam konteks pendidikan.
+
+% Sebaiknya gunakan beragam metrik agar aspek kualitas yang berbeda terukur. 
+% Misalnya, metrik berbasis referensi (bandingkan keluaran LLM dengan ground-truth) 
+% seperti BLEU/ROUGE mengukur kesamaan n-gram, tetapi kelemahannya signifikan: 
+% BLEU/ROUGE tidak menangkap makna semantik dan sering tidak sensitif terhadap 
+% sinonim ￼ ￼. Sebagai contoh, Kirim AI mencatat bahwa BLEU menganggap kata 
+% “cepat” dan “lekas” berbeda meski maknanya sama ￼. Oleh karena itu BLEU/ROUGE 
+% saja kurang cocok bila respons LLM sangat bervariasi secara leksikal. Sebaliknya 
+% BERTScore dan BARTScore menggunakan embedding konteks untuk menilai kemiripan 
+% semantik. BERTScore menghitung kemiripan kosinus antara embedding kalimat 
+% referensi dan respons LLM ￼, sehingga skor tinggi menandakan tumpang tindih 
+% semantik yang kuat. BARTScore (Yuan et al. 2021) bahkan memandang evaluasi 
+% sebagai tugas generasi teks: model BART menaksir seberapa mudah mengonversi 
+% teks model ke referensi (dan sebaliknya), sehingga keluaran yang lebih baik 
+% memberi skor lebih tinggi ￼. Pendekatan ini bersifat unsupervised dan dapat 
+% mengevaluasi kelancaran atau kebenaran informasi teks. Selain itu ada metrik 
+% lain seperti MoverScore, BLEURT, atau chrF++ (untuk variasi morfologis) yang 
+% juga menangkap kesamaan makna, meski umumnya BERTScore/BARTScore sudah mencakup 
+% aspek semantik utama. Intinya, gunakan beberapa metrik referensi yang menilai 
+% overlap leksikal (BLEU/ROUGE) dan semantik (BERTScore/BARTScore dsb) sesuai kebutuhan.
+
+
+% Berbagai penelitian menunjukkan bahwa evaluasi kualitas umpan balik otomatis oleh LLM sering menggunakan metrik berbasis perbandingan dengan jawaban manusia (ground truth). Metrik tradisional seperti BLEU, ROUGE, METEOR, dan BERTScore banyak dipakai untuk mengukur kemiripan teks umpan balik LLM terhadap referensi manusia \textsuperscript{1, 4}. Contohnya, sebuah studi evaluasi umpan balik mahasiswa memanfaatkan BLEU, ROUGE-L, METEOR, dan BERTScore untuk menilai 6.426 entri umpan balik yang dihasilkan LLM (GPT-4o mini dan LLaMA 3.1) \textsuperscript{2}. Hasilnya menekankan pentingnya strategi prompting dan persona, dengan LLaMA unggul dalam aspek struktur kalimat dan GPT lebih baik pada kemiripan semantik \textsuperscript{2}. Meski efektif dalam kasus sederhana, metrik-metrik ini terutama menangkap tumpang tindih kata-kata atau informasi permukaan saja \textsuperscript{1, 3}, sehingga kurang memadai dalam menilai kedalaman, koherensi, dan kebermanfaatan pedagogis umpan balik di lingkungan pendidikan tinggi.
+
+% Karena keterbatasan metrik berbasis n-gram, muncul pula metrik evaluasi berbasis model bahasa. Misalnya, BERTScore mengukur kemiripan semantik dengan membandingkan embedding BERT dari kalimat keluaran dan referensi \textsuperscript{1, 4}. Pendekatan seperti BERTScore, MoverScore, atau BLEURT menggunakan representasi kontekstual untuk menangkap makna yang lebih dalam dibanding BLEU atau ROUGE \textsuperscript{3}. Namun, penelitian terkini menunjukkan bahwa walau metrik berbasis embedding ini lebih sensitif terhadap makna, mereka pun sulit langsung diadopsi dalam konteks umpan balik pendidikan tanpa penyesuaian, karena aspek kelayakan dan konstruktivitas umpan balik kurang terukur \textsuperscript{3}. Misalnya, umpan balik edukatif idealnya tidak hanya benar secara semantik tapi juga memberikan rekomendasi jelas, konteks khusus, dan saran perbaikan bagi siswa \textsuperscript{7}. Oleh karena itu, literatur menyarankan pengembangan metrik evaluasi khusus domain atau menggunakan data penilaian manusia sebagai pegangan, daripada hanya mengandalkan metrik leksikal atau embedding saja \textsuperscript{3, 7}.
+
+% Pendekatan evaluasi modern lainnya adalah LLM-as-a-judge, yaitu menggunakan LLM kuat untuk menilai keluaran LLM lain. Misalnya, penelitian oleh Koutscheme dkk. (2024) memanfaatkan GPT-4 sebagai penilai otomatis untuk mengevaluasi umpan balik kode pemrograman yang dihasilkan oleh model open-source. GPT-4-as-Judge ini dibandingkan dengan penilaian pakar manusia dan ternyata bersifat optimistis namun memiliki kesesuaian moderat dengan penilai manusia \textsuperscript{2}. Studi tersebut menemukan bahwa GPT-4 cenderung memberikan skor positif, namun masih mampu mengidentifikasi umpan balik berkualitas rendah dengan andal \textsuperscript{2}. Secara keseluruhan, beberapa model open-source (misalnya keluarga Zephyr dan Code Llama) terbukti menawarkan performa yang kompetitif dengan LLM komersial seperti ChatGPT ketika dievaluasi oleh GPT-4-as-Judge \textsuperscript{2}. Pendekatan ini memungkinkan skala evaluasi lebih besar sambil menggabungkan kedalaman penilaian kontekstual manusia. Luasnya penggunaan LLM-as-a-judge sebagai paradigma evaluasi dijelaskan pula dalam literatur, yang menekankan bahwa ide ini memadukan skalabilitas metrik otomatis dengan nalar kontekstual ala pakar \textsuperscript{3}.
+
+% Perkembangan terbaru juga melihat penggunaan LLM open-source seperti LLaMA dalam pipeline evaluasi umpan balik pendidikan. Sebuah studi di Indonesia mengevaluasi umpan balik mahasiswa menggunakan GPT-4o mini dan LLaMA 3.1 dengan berbagai strategi prompting \textsuperscript{2}. Hasilnya, LLaMA 3.1 dinilai unggul dalam struktur kalimat umpan balik, sementara GPT memberikan kemiripan semantik lebih tinggi \textsuperscript{2}. Di ranah yang lebih praktis, riset Vision–Language dan LLM di Indonesia (kelas 4 SD) menggabungkan pengenalan tulisan tangan (OCR) dengan LLM untuk menilai jawaban siswa. Meski menekankan bahwa evaluasi umpan balik dilakukan secara manual, studi ini mencatat bahwa umpan balik berbahasa Indonesia yang dihasilkan model umumnya jelas dan faktual, namun kurang dipersonalisasi dan kurang membantu \textsuperscript{5}. Untuk skor otomatis, LLaMA-3.1 (70B parameter) juga digunakan sebagai salah satu model penilai skor, meski hasilnya kurang akurat dibanding GPT-4 (MAE lebih tinggi) \textsuperscript{5, 6}. Pendekatan pengujian ini menggunakan metrik kuantitatif seperti mean absolute error (MAE) untuk skor benar/salah tugas dan penilaian manual oleh ahli untuk kualitas umpan balik personalisasi \textsuperscript{6}. Data ini menunjukkan bahwa meski ada kemajuan, model open-source perlu penyesuaian lebih lanjut agar setara LLM komersial dalam konteks pendidikan.
+
+% Selain metrik teks-berbasis kemiripan, beberapa penelitian mengevaluasi umpan balik LLM sebagai tugas pendeteksian. Dalam skenario pembuatan umpan balik terstruktur (misalnya kesalahan diagram ERD), digunakan metrik presisi, recall, dan skor-F1 untuk menilai seberapa tepat model menemukan kesalahan siswa \textsuperscript{7}. Dengan membandingkan true positive, false positive, dan seterusnya, peneliti melaporkan nilai presisi dan recall per kategori kesalahan (atribut, relasi, kardinalitas, dll) \textsuperscript{7}. Temuan menunjukkan LLM sering memiliki presisi tinggi (sedikit salah lapor kesalahan), namun recallnya lebih rendah (sering melewatkan beberapa kesalahan) \textsuperscript{7}. Pendekatan ini menyoroti bahwa metrik klasifikasi (precision/recall) berguna bila tugas evaluasi dipandang sebagai masalah deteksi elemen yang benar atau salah, bukan sekadar kesamaan teks.
+
+% Secara keseluruhan, literatur terkini menekankan pentingnya kombinasi metrik otomatis dengan evaluasi LLM-as-judge atau evaluasi manusia. Metrik klasik seperti BLEU dan F1 tetap digunakan untuk membandingkan keluaran LLM dengan acuan, namun metodologi baru memanfaatkan model LLM kuat (GPT-4 atau open-source) sebagai evaluator skala besar. Misalnya, pipeline multi-model mengintegrasikan LLaMA dan GPT-4o untuk menghasilkan dan menilai umpan balik pendidikan \textsuperscript{2}. Di Indonesia, kemampuan evaluasi kualitas keluaran berbahasa lokal mulai dijajaki: baik melalui metrik semantic (BERTScore dengan model IndoBERT) maupun melalui penilaian manual berbasis rubrik pendidikan \textsuperscript{4, 5}. Perkembangan ini menunjukkan bahwa meski tantangan masih ada, terutama dalam memvalidasi kesesuaian pedagogis umpan balik, pendekatan otomatis yang canggih mulai mendekati hasil evaluasi ahli. Kajian-kajian tersebut menekankan bahwa penggabungan berbagai metrik (BLEU/BERTScore/METEOR) dan model penilai LLM merupakan jalur utama untuk evaluasi umpan balik yang lebih akurat dan kontekstual dalam pendidikan \textsuperscript{1, 2}.
+
+
+% \bibitem{ref1} 
+% \url{https://eprints2.undip.ac.id/39509/3/6.%20ABSTRAK.pdf#:~:text=dengan%20empat%20metrik%20otomatis%3A%20BLEU%2C,performa%20lebih%20tinggi%20dalam%20kemiripan}
+
+% \bibitem{ref2} 
+% \url{https://arxiv.org/html/2405.05253v1#:~:text=using%20a%20dataset%20from%20an,proprietary%20LLMs%2C%20such%20as%20ChatGPT}
+
+% \bibitem{ref3} 
+% \url{https://educationaldatamining.org/edm2025/proceedings/2025.EDM.short-papers.6/index.html#:~:text=Traditional%20evaluation%20methods%20for%20LLMs,9}
+
+% \bibitem{ref4} 
+% \url{https://digilib.uin-suka.ac.id/id/eprint/59064/1/21206052001_BAB-I_IV-atau-V_DAFTAR-PUSTAKA.pdf#:~:text=nilai%20hasil%20peringkasan%20dan%20hasil,Bahasa%2C%20IndoBERT%2C%20ROUGE%2C%20BLEU%2C%20BERTScore}
+
+% \bibitem{ref5} 
+% \url{https://openreview.net/pdf?id=yXeWp0c7U0#:~:text=087%20feedback%20quality,remain%20notable%20areas%20of%20concern}
+
+% \bibitem{ref6} 
+% \url{https://openreview.net/pdf?id=yXeWp0c7U0#:~:text=196%20using%20mean%20absolute%20error,202%205%20Result%20and%20Analysis}
+
+% \bibitem{ref7} 
+% \url{https://arxiv.org/html/2412.17892v1#:~:text=as%20a%20correct%20submission,in%20evaluating%20machine%20learning%20methods}
+
+% \subsection{Metode Evaluasi Respons LLM dengan Ahli Pendidikan}
+
+\section{Hipotesis Penelitian}
+% Penelitian ini mengevaluasi kualitas umpan balik LLM berbahasa Indonesia terhadap konteks data pembelajaran
+% (SRL) dan membandingkannya dengan umpan balik ahli manusia. Peningkatan kualitas diupayakan melalui
+% perancangan \textit{prompt} serta integrasi \textit{learning analytics} (LA) yang menambah sinyal kontekstual.
+% Evaluasi dilakukan secara kuantitatif dan kualitatif. Secara kuantitatif, kita mengukur keselarasan semantik
+% dan cakupan rubrik menggunakan (i) BERTScore (kedekatan makna teks ahli vs LLM) dan (ii) LLM-as-a-judge
+% (GPT-4) yang memberi label biner per-dimensi rubrik (F1--F5, M1--M5, A1--A5) dan dihitung metrik
+% Precision/Recall/F1. Secara kualitatif, pakar manusia menilai kualitas umpan balik (skala Likert) pada dimensi
+% yang sama. Selain itu, penelitian ini juga menelaah pengaruh ukuran model (kecil vs besar) terhadap kualitas
+% umpan balik dan potensi interaksinya dengan intervensi \textit{prompt}+LA.
+
+Berdasarkan tujuan penelitian yang telah diuraikan dan metode evaluasi 
+kuantitatif (\textit{BERTScore, BARTScore, dan LLM-as-a-judge}) serta kualitatif 
+(Penilaian skala Likert oleh pakar) yang dipilih, maka hipotesis 
+penelitian ini dirumuskan sebagai berikut:
+
+% \subsection*{Notasi Singkat}
+% Misalkan:
+% \begin{itemize}
+%   \item $Q_{\text{BERT}}$: skor BERTScore (mis. F1) antara respons LLM dan respons ahli.
+%   \item $Q_{\text{Judge}}$: skor dari LLM-as-a-judge (mis. macro-F1 atas 15 dimensi rubrik).
+%   \item $Q_{\text{Human}}$: rata-rata skor Likert pakar (agregat atau per-dimensi).
+%   \item Kondisi \textit{Baseline} (tanpa \textit{prompt}+LA) vs \textit{Intervensi} (\textit{prompt}+LA).
+%   \item Ukuran model: \textit{Small} vs \textit{Large}.
+% \end{itemize}
+
+\subsection*{Hipotesis Efektivitas Metode(\textit{Context Engineering} dengan \textit{Learning Analytics})}
+\textbf{H0\textsubscript{1}}: Tidak ada perbedaan kualitas antara metode \textit{context engineering} digabungkan dengan LA dan \textit{Baseline}\\
+% \phantom{H0\textsubscript{1}:}\; (mis.\ $\mu^{\text{Interv}}_{Q_{\text{BERT}}} = \mu^{\text{Base}}_{Q_{\text{BERT}}}$ dan 
+% $\mu^{\text{Interv}}_{Q_{\text{Judge}}} = \mu^{\text{Base}}_{Q_{\text{Judge}}}$ serta 
+% $\mu^{\text{Interv}}_{Q_{\text{Human}}} = \mu^{\text{Base}}_{Q_{\text{Human}}}$).
+
+\textbf{H1\textsubscript{1}}: Ada perbedaan kualitas antara metode \textit{context engineering} digabungkan dengan LA dan \textit{Baseline}\\
+% \phantom{H1\textsubscript{1}:}\; (mis.\ $\mu^{\text{Interv}}_{Q_{\text{BERT}}} > \mu^{\text{Base}}_{Q_{\text{BERT}}}$,
+% $\mu^{\text{Interv}}_{Q_{\text{Judge}}} > \mu^{\text{Base}}_{Q_{\text{Judge}}}$,
+% dan $\mu^{\text{Interv}}_{Q_{\text{Human}}} > \mu^{\text{Base}}_{Q_{\text{Human}}}$).
+
+\subsection*{Hipotesis Kualitas Metode (\textit{Context Engineering} dengan \textit{Learning Analytics}) Menurut Ahli Manusia}
+\textbf{H0\textsubscript{2}}: Hasil evaluasi dari ahli manusia menunjukkan metode \textit{context engineering} digabungkan dengan LA tidak layak digunakan\\
+% \phantom{H0\textsubscript{2}:}\; (mis.\ $\rho(Q_{\text{BERT}}, Q_{\text{Human}})=0$ dan 
+% $\rho(Q_{\text{Judge}}, Q_{\text{Human}})=0$).
+
+\textbf{H1\textsubscript{2}}: Hasil evaluasi dari ahli manusia menunjukkan metode \textit{context engineering} digabungkan dengan LA layak digunakan\\
+% \phantom{H1\textsubscript{2}:}\; (mis.\ $\rho(Q_{\text{BERT}}, Q_{\text{Human}}) > 0$ dan 
+% $\rho(Q_{\text{Judge}}, Q_{\text{Human}}) > 0$; uji Spearman/Kendall).
+
+\subsection*{Hipotesis Pengaruh Ukuran Model}
+\textbf{H0\textsubscript{3}}: Ukuran model tidak berpengaruh pada kualitas\\
+% \phantom{H0\textsubscript{3}:}\; (mis.\ $\mu^{\text{Large}}_{Q_{\cdot}} = \mu^{\text{Small}}_{Q_{\cdot}}$ untuk semua metrik).
+
+\textbf{H1\textsubscript{3}}: Model Bahasa berukuran lebih besar menghasilkan kualitas lebih tinggi\\
+% \phantom{H1\textsubscript{3}:}\; (mis.\ $\mu^{\text{Large}}_{Q_{\text{BERT}}} > \mu^{\text{Small}}_{Q_{\text{BERT}}}$,
+% $\mu^{\text{Large}}_{Q_{\text{Judge}}} > \mu^{\text{Small}}_{Q_{\text{Judge}}}$,
+% dan $\mu^{\text{Large}}_{Q_{\text{Human}}} > \mu^{\text{Small}}_{Q_{\text{Human}}}$).
+
+% \subsection*{Hipotesis Interaksi (Opsional, Eksploratif)}
+% \textbf{H0\textsubscript{4}}: Tidak ada interaksi antara Intervensi dan Ukuran Model.\\
+% \textbf{H1\textsubscript{4}}: Ada interaksi; efek \textit{prompt}+LA berbeda tergantung ukuran model\\
+% \phantom{H1\textsubscript{4}:}\; (mis.\ peningkatan akibat Intervensi lebih besar pada model kecil).
+
 
 \section{Dasar Teori}
 
@@ -167,6 +1105,8 @@ secara langsung mendukung fase perencanaan–pelaksanaan–refleksi dalam SRL [1
 % [5] J. Hattie and H. Timperley, “The power of feedback,” Review of Educational Research, vol. 77, no. 1, pp. 81–112, 2007.
 % [6] D. Sun, P. Xu, J. Zhang, R. Liu, and J. Zhang, “How self-regulated learning is affected by feedback based on large language models: Data-driven sustainable development in computer programming learning,” Electronics, vol. 14, no. 1, art. 194, 2025.
 % [7] S. Steinert et al., “Harnessing large language models to develop research-based learning assistants for formative feedback,” Smart Learning Environments, vol. 11, no. 1, art. 30, 2024.
+
+% LLM dalam dunia pendidikan undergraduate
 
 
 \subsection{\textit{Prompt Engineering}}
@@ -526,6 +1466,8 @@ terdahulu seperti TutorLLM, LLM-KT, atau Reddig dkk. di atas.
 % [5] E. Mazzullo, O. Bulut, T. Wongvorachan, and B. Tan, "Learning Analytics in the Era of Large Language Models," Analytics, vol. 2, no. 4, pp. 877-898, Nov. 2023, doi: 10.3390/analytics2040046.
 
 
+% \section{Hipotesis Penelitian}
+% Diisi dengan hipotesis h0 dan h1.
 
 
 \section{Analisis Perbandingan Metode}
