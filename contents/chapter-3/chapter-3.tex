@@ -1,52 +1,730 @@
 \chapter{Metode Penelitian}
 
 Bab ini menjelaskan metode atau cara yang digunakan dalam penelitian ini untuk 
-mencapai maksud dan tujuan seperti yang tertulis dalam sub-bab 1.3 [jika diinginkan, kalian dapat menuliskan Kembali tujuan penelitian yang ingin dicapai di sini].
-
-\section{Alat dan Bahan Tugas akhir (Opsional)}
-
-\subsection{Alat Tugas akhir}
-
-Alat-alat yang digunakan pada tugas akhir ini berupa perangkat keras maupun perangkat lunak sebagai sarana pendukung antara lain. Kemukakan secara detail sesuai dengan kebutuhan tugas akhir dan juga tambahkan spesifikasi minumum sehingga peneliti lain yang hendak melakukan hal yang sama bisa melakukannya :
-
+mencapai maksud dan tujuan seperti yang tertulis dalam sub-bab 1.3 yaitu:
 \begin{enumerate}
-	\item \textit{Notebook} dengan spesifikasi minumum sistem operasi Windows 8, \textit{processor} Intel Core i3 2330M CPU @ 2,2 GHz, memori 4GB DDR3, grafis NVIDIA GeForce GT 610 (4GB), hardisk 500GB. Pada tugas akhir ini digunakan Windows 10, Intel Core i7 4570M CPU, Memori 4GB DDR 3, grafis Intel HD4300. 
-	\item \textit{Smartphone} dengan spesifikasi tipe minimum, OS Android OS v4.1.2 (Jelly Bean),CPU Dual-core 800 MHz, GPU Mali-400, Internal 4 GB, 768 MB RAM. Pada tugas akhir ini digunakan ....
-	\item \textit{Game creation platform} versi 3.3.2 untuk Stencyl dan Construct2.
-	\item CORELDRAW X7, Tiled dan GIMP 2
+	\item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
+	yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
+	% \item Mengevaluasi secara empiris apakah adanya peningkatan kualitas umpan balik 
+	% LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
+	% balik ahli manusia.
+	\item Mengevaluasi apakah adanya peningkatan kualitas umpan balik 
+	LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
+	balik ahli manusia.
+	\item Melihat pengaruh besar ukuran model LLM terhadap kualitas umpan balik yang dihasilkan.
+\end{enumerate}
+% [jika diinginkan, kalian dapat menuliskan Kembali tujuan penelitian yang ingin dicapai di sini].
+
+\section{Alat dan Bahan Tugas Akhir}
+
+\subsection{Alat Tugas Akhir}
+
+Alat-alat yang digunakan pada tugas akhir ini berupa perangkat keras maupun 
+perangkat lunak sebagai sarana pendukung. Alat-alat perangkat keras yang digunakan
+merupakan milik pribadi. Fungsi dari perangkat keras dan lunak ini adalah untuk 
+penulisan kode, pengembangan chatbot, melakukan pengujian baik secara kuantitatif
+maupun kualitatif, serta untuk pengumpulan dataset.Berikut adalah daftar 
+alat-alat tugas akhir yang digunakan pada penelitian ini.
+
+% \begin{enumerate}
+% 	\item \textit{Notebook} Apple MacBook Pro 14 inci (M1 Pro, 2021), SoC Apple M1 Pro 8-core CPU dan 14-core GPU dengan 16-core Neural Engine, memori terpadu 16 GB, SSD 512 GB. 
+% 	\item Visual Studio Code Version: 1.105.1.
+% 	\item Google Docs
+% 	\item Google Sheets
+% 	\item Groq API 
+	
+\begin{enumerate}
+  \item \textbf{Macbook Pro 14 inci.}
+  Spesifikasi utama:
+  \begin{itemize}
+    \item Prosesor: M1 Pro 10 Core @ 3{,}2~GHz
+    \item GPU internal: M1 Pro GPU 16 Core
+    \item Neural Engine: 32 Core
+    \item RAM: \textit{Unified Memory} 16~GB 200GB/s \textit{memory bandwidth}
+    \item Penyimpanan: \textit{Solid State Drive} internal 1~TB (MacOS 26 Tahoe)
+  \end{itemize}
+
+  \item \textbf{Visual Studio Code} versi 1.105.1 sebagai \textit{integrated development 
+  environment} (IDE) untuk menulis dan mengelola kode.
+
+  \item \textbf{Python 3.12.7} sebagai bahasa pemrograman utama untuk 
+  mengembangkan \textit{chatbot} berbasis LLM, dengan beberapa pustaka inti:
+  \begin{itemize}
+    \item \texttt{LangChain}: kerangka kerja aplikasi LLM yang menyediakan 
+	komponen modular untuk orkestrasi \textit{prompt}, alur data, dan 
+	integrasi sumber data eksternal.
+    \item \texttt{LangGraph}: ekstensi \texttt{LangChain} untuk membangun 
+	alur aplikasi yang lebih kompleks dalam bentuk graf.
+	\item \texttt{bert\_score}: sebagai salah satu kerangka kerja evaluasi kuantitatif 
+	untuk mengukur kesamaan semantik (Precision, Recall, F1) antara respons yang 
+	dihasilkan model dengan data ground truth.
+	\item \texttt{BARTScorer} sebagai kerangka kerja evaluasi kuantitatif alternatif 
+	(menggunakan mBART) untuk menghitung skor F1, Precision, dan Recall 
+	berdasarkan log-probability token.
+	\item \texttt{Pandas} sebagai library yang digunakan untuk menyusun, mengagregasi, dan menampilkan tabel ringkasan hasil evaluasi kuantitatif (BARTScore dan GPT-4o Judge)  agar mudah dibaca.
+
+
+	% \item \texttt{LangSmith}: pemantau dan \textit{tracing} interaksi LLM yang membantu proses \textit{debugging} dan evaluasi.
+    % \item \texttt{CyVer}: pustaka untuk validasi \textit{Cypher query} (sintaksis, skema, dan properti) yang dihasilkan LLM saat mengambil data dari Neo4J KG.
+    % \item \texttt{Streamlit}: kerangka kerja untuk membangun antarmuka pengguna (\textit{user interface}) \textit{chatbot}.
+  \end{itemize}
+  	\item \textbf{Google Docs}: sebagai alat untuk menulis kuesioner, dan melakukan 
+	revisi serta dokumentasi hasil diskusi.
+	\item \textbf{Google Sheets}: digunakan untuk memvisualisasikan dan mengelola 
+	data Kanban sehingga dapat dibagikan kepada para ahli yang akan mengisi 
+	dan menilai data, memudahkan kolaborasi, pengisian respons, serta 
+	pengumpulan metrik penilaian.
+
+  \item \textbf{Anaconda} untuk manajemen pustaka Python dan 
+  \textit{virtual environment} selama proses pengembangan.
+
+  \item \textbf{ChatGPT 5 Thinking} untuk membuat data sintetis papan Kanban yang 
+  akan digunakan dalam penelitian ini.
+
+%   \item \textbf{Neo4J Knowledge Graph} sebagai basis data untuk 
+%   menyimpan data Kurikulum 2021 Program Studi Teknologi Informasi, 
+%   Fakultas Teknik, Universitas Gadjah Mada.
+
+  \item \textbf{Groq API} untuk melakukan inferensi LLM 
+  (pemanggilan model) yang digunakan dalam penelitian ini.
 \end{enumerate}
 
-\subsection{Bahan Tugas akhir}
 
-Bahan tugas akhir adalah segala sesuatu yang bersifat fisik atau digital yang digunakan untuk kebutuhan tugas akhir. Bahan tugas akhir dapat berupa:
+\subsection{Bahan Tugas Akhir}
+
+Bahan yang digunakan dalam proses pembuatan chatbot dan untuk uji coba pada
+penelitian ini adalah sebagai berikut:
 
 \begin{enumerate}
-	\item Bahan habis pakai. Bahan yang digunakan untuk tugas akhir. Sebagai contoh 
-	mungkin dibutuhkan kertas transparansi, baterai, atau yang lain 
-	\item Bahan yang berupa data atau informasi yang menjadi dataset tugas akhir. Dataset tugas akhir dapat berupa:
-	\begin{itemize}
-		\item Dataset pihak lain yang diperoleh dengan izin atau dalam lisensi yang diizinkan untuk digunakan secara langsung 
-		\item Dataset pihak pertama yang disusun sendiri melalui quisioner, observasi, atau interview 
-		\item Dokumen panduan yang mengacu pada standar, hasil tugas akhir, atau artikel yang disitasi dan digunakan.
-	\end{itemize}
-	
+	\item LLM dengan model \textbf{Llama 3.1 8B Instant}, dengan parameter
+	delapan miliar, yang diperoleh dari platform Groq API.
+	\item LLM dengan model \textbf{Llama 3.3 70B Versatile}, dengan parameter
+	lebih besar yaitu 70 miliar yang juga diperoleh dari platform Groq API.
+	\item \textbf{GPT-4o} sebagai model yang digunakan untuk evaluasi kuantitatif
+	\textit{LLM-as-a-judge}
+	\item \textbf{Dataset sintetis} dengan format data \texttt{.json} yang 
+	di-\textit{generate} dari ChatGPT, berisikan pasangan data 
+	pembelajaran mahasiswa berbasis papan Kanban.
+	\item \textbf{Data umpan balik} berupa komentar dari ahli 
+	pembelajaran yang berisikan \textit{feedback}, \textit{motivation}, 
+	dan \textit{appreciation}.
+	\item \textbf{Data hasil kuesioner} dari ahli psikologi pendidikan yang berisikan
+	penilaian dan komentar terhadap hasil umpan balik LLM dalam menilai
+	performa belajar mahasiswa.
 \end{enumerate}
 
 
 
 \section{Metode yang Digunakan}
+\subsection{Evaluasi Kualitas Umpan Balik LLM}
+Penelitian ini menggunakan desain eksperimen untuk 
+menilai kualitas \textit{context engineering} yang digabungkan dengan 
+\textit{learning-analytics} dalam 
+meningkatkan mutu umpan balik LLM berbahasa Indonesia pada 
+skenario SRL berbasis papan Kanban. Setiap variasi \textit{context engineering}
+diimplementasikan secara terpisah dan dipadukan dengan dua ukuran model 
+(Llama~3.1~8B \textit{Instant} dan Llama~3.3~70B 
+\textit{Versatile} melalui Groq API), menghasilkan beberapa kombinasi 
+umpan balik yang diuji secara kuantitatif mapun kualitatif. Pengujian 
+kuantitatif berfokus pada kesamaan semantik (Subbab [2.1.7]) 
+menggunakan metrik berbasis \textit{embedding} kontekstual, 
+yaitu BERTScore [22] dan BARTScore [23], untuk mengukur keselarasan 
+antara respons LLM dengan data umpan balik ahli manusia 
+\textit{(ground truth)} [32, 33]. Selain itu, evaluasi relevansi juga 
+dilakukan menggunakan pendekatan \textit{LLM-as-a-Judge} 
+yang terstruktur [24, 25]. Di sisi lain, pengujian 
+kualitatif—yang merupakan standar emas (Subbab[2.1.8])—
+melibatkan peninjauan langsung oleh pakar psikologi pendidikan [33]. 
+Pakar ini menilai keluaran LLM menggunakan rubrik penilaian 
+komprehensif yang didasarkan pada kerangka teoretis mapan 
+seperti model Hattie dan Timperley (2007) [27], Shute (2008) [26], 
+dan \textit{Self-Determination Theory} [28]. Penilaian ini mengukur 
+tiga dimensi utama yakni \textit{feedback}, 
+\textit{motivation support}, dan \textit{appreciation support} 
+menggunakan skala Likert (1-5) untuk memastikan kualitas 
+pedagogis dan psikologis dari umpan balik tersebut (Subbab[2.1.8]). 
+Berikut adalah diagram alur metode evaluasinya.
+\clearpage
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{contents/chapter-3/Flowchart-Alur-Evaluasi-Kualitas-Umpan-Balik-LLM.png}
+  \caption[Contoh gambar]{Diagram Alir Metode Evaluasi.}
+  \label{Fig:diagram-alur-evaluasi}
+\end{figure}
+\clearpage
+Terlihat dari Gambar \ref{Fig:diagram-alur-evaluasi}, alur evaluasi 
+penelitian ini dimulai dengan generasi umpan balik LLM yang 
+dipadukan dengan berbagai skema \textit{context engineering}. 
+Umpan balik ini dihasilkan oleh dua model berbeda untuk 
+perbandingan, yaitu Llama 3.1 8B \textit{Instant} dan 
+Llama 3.3 70B \textit{Versatile}.
 
-Bagian ini membahas metode atau cara yang akan digunakan dalam penelitian, tahapan 
-penerapan metode, dan desain penelitian (misalnya apakah penelitian akan menggunakan 
-eksperimen di Laboratorium atau di lapangan, misalkan saja penelitian biomedis atau 
-penelitian alat ukur hama yang dapat dilakukan di laboratorium ataupun di lapangan, atau menggunakan metode survei (misalnya untuk teknologi Informasi), studi kasus, atau analisis dengan perangkat lunak (ETAP, LTSpice, dst), atau \textit{prototyping} (pembuatan perangkat keras).
+Keluaran dari model-model ini pertama-tama melalui 
+tahap Uji Kuantitatif. Sejalan dengan metodologi yang telah 
+dijelaskan, tahap ini berfokus pada pengukuran kesamaan semantik 
+dan relevansi Subbab \ref{subsection:tinjauan_evaluasi_kuantitatif} menggunakan tiga metrik utama: 
+Uji BERTScore, BARTScore, dan GPT-4o as a Judge [22, 23, 24].
 
-Bagian ini juga membahas bagaimana data [akan] dianalisis, apakah dengan membandingkan keluaran beberapa alat ukur, membandingkan dengan standar atau bagaimana.
+Keluaran dari pengujian ini kemudian menjalani analisis 
+hasil Uji Kuantitatif. Berdasarkan analisis ini, model 
+terbaik dipilih—yaitu, kombinasi model dan teknik 
+\textit{context engineering} yang menghasilkan skor keselarasan 
+tertinggi terhadap \textit{ground truth} ahli.
+
+Selanjutnya, umpan balik dari model terbaik tersebut dilanjutkan 
+ke tahap evaluasi kedua, yaitu Uji Kualitatif. Tahap ini 
+merupakan "standar emas" Subbab \ref{subsection:tinjauan_evaluasi_kualitatif} yang melibatkan peninjauan 
+langsung oleh Ahli Pendidikan. Pakar ini menilai kualitas pedagogis 
+dan psikologis dari umpan balik model terbaik menggunakan 
+Kuesioner Skala Likert yang dirancang khusus berdasarkan kerangka 
+teoretis [26, 27, 28]. Langkah terakhir adalah Analisis hasil uji 
+kualitatif untuk mendapatkan kesimpulan akhir mengenai efektivitas 
+umpan balik LLM dalam konteks SRL.
+% Tolong bantu saya dalam menulis penjelasan gambar \textit{flowchart} 
+% diatas dengan detail, sesuai dengan konteks paragraf nya. 
+
 
 \section{Alur Tugas Akhir}
+Dalam penelitian ini, terdapat sebuah alur kerja yang 
+menjabarkan semua tahapan dan proses yang terlibat. 
+Secara keseluruhan, proses penelitian terdiri dari 
+empat tahap utama: tahap studi pendahuluan dan persiapan data, 
+yang mencakup Tinjauan Pustaka dan 
+Pembuatan \textit{Dataset} Papan Kanban Mahasiswa (termasuk 
+pengumpulan \textit{ground truth} ahli); tahap desain eksperimen, 
+yang meliputi Pemilihan Model LLMs dan perancangan Metode 
+Peningkatan Hasil Umpan Balik (menggunakan Rekayasa Konteks, 
+Integrasi \textit{Learning Analytics}, dan Pembuatan Variasi 
+\textit{Prompt}); tahap implementasi, di mana dilakukan 
+Pengambilan Data Umpan Balik LLM menggunakan metode yang telah 
+dirancang; serta tahap evaluasi akhir, yang terdiri dari 
+Pengujian Kuantitatif dan Kualitatif, diikuti oleh Analisis dan 
+Evaluasi. Alur kerja penelitian secara keseluruhan diilustrasikan pada
+Gambar \ref{Fig:flowchart-alur-penelitian}.
+% Dalam penelitian ini, terdapat sebuah alur kerja yang 
+% menjabarkan semua tahapan dan proses yang terlibat. Secara keseluruhan,
+% proses penelitian....
 
-Menguraikan prosedur yang akan digunakan dan jadwal atau alur penyelesaian setiap 
-tahap. Alur penelian ini dapat disajikan dalam bentuk diagram. Diagram dapat disusun dengan aturan yang baik semisal menggunakan \textit{flowchart}. Aturan dan tutorial pembuatan \textit{flowchart} dapat dilihat di \textcolor{blue}{http://ugm.id/flowcharttutorial}. Setelah menggambarkannya, penulis wajib menjelaskan langkah-langkah setiap alur tugas akhir dalam sub bab tersendiri sesuai dengan kebutuhan.
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=24cm]{contents/chapter-3/Flowchart-Alur-Tugas-Akhir.png}
+  \caption[Contoh gambar]{Flowchart Alur Penelitian Tugas Akhir.}
+  \label{Fig:flowchart-alur-penelitian}
+\end{figure}
+
+% Menguraikan prosedur yang akan digunakan dan jadwal atau alur penyelesaian setiap 
+% tahap. Alur penelian ini dapat disajikan dalam bentuk diagram. Diagram dapat disusun dengan aturan yang baik semisal menggunakan \textit{flowchart}. Aturan dan tutorial pembuatan \textit{flowchart} dapat dilihat di \textcolor{blue}{http://ugm.id/flowcharttutorial}. Setelah menggambarkannya, penulis wajib menjelaskan langkah-langkah setiap alur tugas akhir dalam sub bab tersendiri sesuai dengan kebutuhan.
+
+\subsection{Tinjauan Pustaka}
+Bab ini menyajikan tinjauan pustaka mendalam yang relevan dengan 
+topik tesis. Tinjauan ini berfokus pada penelitian-penelitian 
+sebelumnya mengenai peningkatan kualitas umpan balik 
+LLM dalam konteks pendidikan, dengan menyelidiki dua arus 
+utama yang teridentifikasi dari karya-karya kunci [Tabel 2.1]. 
+Arus pertama adalah penyelarasan model (\textit{model alignment}) 
+melalui \textit{fine-tuning}, seperti \textit{Direct Preference 
+Optimization} (DPO) [13] dan \textit{Reinforcement Learning from 
+Human Feedback} (RLHF) [16]. Arus kedua adalah penyelarasan konteks 
+(\textit{context alignment}), yang mencakup rekayasa \textit{prompt} 
+(\textit{prompt engineering}) berbasis teori [15] dan rekayasa konteks 
+yang digabungkan dengan \textit{learning analytics} [17]. Tinjauan 
+ini juga menganalisis pemanfaatan dasbor orkestrasi kelas berbasis 
+Kanban [18] sebagai sumber data proses, bersama dengan metode 
+evaluasi yang digunakan untuk menilai kinerja umpan balik, baik 
+secara kuantitatif (misalnya, BERTScore [22], BARTScore [23], dan 
+\textit{LLM-as-a-Judge} [24]) maupun secara kualitatif oleh ahli 
+manusia sebagai standar emas [26, 27, 28].
+
+Selanjutnya, analisis terhadap metodologi yang diterapkan dan 
+temuan utama dalam studi-studi ini dilakukan. Tujuan utama dari 
+analisis ini adalah untuk menilai secara kritis keunggulan dan 
+keterbatasan dari setiap pendekatan. Evaluasi ini mengidentifikasi 
+keunggulan (seperti efisiensi biaya dan kelayakan implementasi 
+dari rekayasa konteks [15]) dan kelemahan (seperti tingginya 
+kebutuhan sumber daya komputasi dan data untuk \textit{fine-tuning} 
+[13, 16]). Temuan ini menjadi pertimbangan dalam pemilihan dan 
+adaptasi metodologi yang paling tepat untuk menjawab masalah 
+penelitian dalam karya ini: memanfaatkan pendekatan \textit{context 
+engineering} yang ringan dan murah [15] namun diperkaya dengan 
+data \textit{learning analytics} kaya sinyal yang diekstraksi 
+dari papan Kanban [18] untuk mengatasi celah penelitian yang 
+teridentifikasi.
+
+\subsection{Pembuatan Dataset Papan Kanban Mahasiswa}
+Pada bagian ini, dilakukan proses pembuatan \textit{Dataset} 
+Papan Kanban Mahasiswa. Tahap ini mencakup beberapa langkah 
+krusial, yaitu Pembuatan \textit{Prompt} , Pembuatan 
+Data Sintetis yang akan menjadi data papan Kanban , serta Pengambilan 
+data umpan balik pedagogis dari ahli manusia yang akan 
+digunakan sebagai \textit{ground truth} untuk perbandingan.
+
+\subsubsection{Pembuatan \textit{Prompt}}
+Proses pembuatan \textit{prompt} dimulai dengan analisis 
+mendalam terhadap struktur \textit{database} asli dari platform 
+pembelajaran berbasis papan Kanban. Platform yang digunakan dan 
+dikembangkan bernama Gamatutor yang dikembangkan oleh M. I. Azmi \cite{azmi2025pengembangan}. 
+Berikut adalah tampilan dari
+platform pembelajaran tersebut yang ditampilkan pada Gambar \ref{Fig:gamatutor_1}.
+
+% Pengembangan kanban board untuk self regulated learning.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{contents/chapter-3/gamatutor_1.png}
+  \caption[Contoh gambar]{Tampilan Utama Platform Gamatutor.}
+  \label{Fig:gamatutor_1}
+\end{figure}
+
+Secara umum, Gamatutor adalah platform \textit{learning analytics} berbasis 
+metode \textit{Kanban} yang dirancang untuk mendukung 
+SRL mahasiswa. Platform ini memfasilitasi pengelolaan 
+tugas belajar melalui sistem 
+papan visual dengan empat tahapan utama yaitu \textit{Planning (To Do)}, 
+\textit{Monitoring (In Progress)}, \textit{Controlling (Review)}, 
+dan \textit{Reflection (Done)}. Setiap tugas direpresentasikan 
+dalam bentuk \textit{kartu} yang memuat informasi lengkap seperti 
+judul, mata kuliah, \textit{priority}, \textit{difficulty}, 
+\textit{learning strategy}, nilai \textit{pre-test/post-test}, 
+dan \textit{checklist} progres. Fitur utamanya meliputi pembuatan 
+dan pengelolaan kartu tugas, pemantauan \textit{progress} melalui 
+\textit{learning analytics}, serta manajemen profil pengguna.
+
+Untuk satu kartunya merepresentasikan satu sub-topik dari salah satu mata kuliah.
+Jadi mahasiswa bisa membuat banyak kartu untuk mata kuliah yang sama.
+Untuk mengakses detail informasi-informasi tersebut, pengguna (mahasiswa)
+dapat melihatnya pada tiap-tiap kartu dengan menekan kartunya. Tampilan 
+dari informasinya dapat dilihat pada Gambar \ref{Fig:gamatutor_2}
+
+\clearpage
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{contents/chapter-3/gamatutor_2.png}
+  \caption[Contoh gambar]{Tampilan Informasi Tiap Kartu Gamatutor.}
+  \label{Fig:gamatutor_2}
+\end{figure}
+\clearpage
+
+Semua detail informasi dan fitur-fitur tersebut dibuat untuk membantu
+mahasiswa dalam menerapkan SRL (seperti: \textit{Start Timer}, 
+\textit{Checklists}, dan "Add Link") serta secara bersamaan 
+memberikan data proses yang kaya untuk \textit{learning analytics}. 
+Data ini mencakup \textit{Total study time} (yang dihasilkan dari fitur 
+\textit{Start Timer}), progres penyelesaian tugas melalui Checklists, 
+hingga data metakognitif dan performa seperti \textit{Priority, 
+Difficulty, Learning Strategy} yang dipilih, serta nilai \textit{Pre-test 
+Grade} dan \textit{Post-test Grade}. Kumpulan data proses inilah yang dapat 
+menjadi insight bagi agen pedagogis (guru ataupun \textit{AI chatbot}) untuk 
+memantau, mendiagnosis hambatan, dan memberikan bimbingan yang 
+terpersonalisasi sesuai dengan kondisi aktual mahasiswa tersebut.
+Gamatutor juga memiliki \textit{Learning Assistant} dengan berbasiskan chatbot LLM 
+yang rencananya akan diterapkan secara bertahap. Penelitian ini adalah 
+bagian dari pengembangan \textit{Learning Asistant} tersebut.
+
+Semua informasi mengenai pembelajaran mahasiswa dan kartu-kartu Kanban-nya
+secara rapi disimpan ke dalam \textit{database} NoSQL yaitu MongoDB.
+Data tersebut disimpan dengan mengikuti format \texttt{JSON}. 
+Berikut adalah skema penyimpanan data kartu Kanban dalam MongoDB.
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=18cm]{contents/chapter-3/skema_db_kanban_board.png}
+  \caption[Contoh gambar]{Skema Penyimpanan Data Kartu Pembelajaran Kanban Mahasiswa.}
+  \label{Fig:schema_kanban_mongodb}
+\end{figure}
+
+Dapat dilihat pada Gambar \ref{Fig:schema_kanban_mongodb} terdapat banyak 
+atribut, khususnya pada entitas \texttt{Card}, yang menyimpan data-data kunci 
+untuk merefleksikan proses dan hasil belajar mahasiswa.
+
+Beberapa atribut yang paling penting untuk mengevaluasi kemampuan belajar 
+ini meliputi \texttt{pre\_test\_grade} dan \texttt{post\_test\_grade}. 
+Kedua atribut ini secara langsung mengukur pengetahuan mahasiswa sebelum dan 
+sesudah mengerjakan tugas, sehingga selisih antara keduanya dapat menjadi 
+indikator utama peningkatan pemahaman.
+% (\textit{learning gain}).
+
+Selain itu, atribut \texttt{difficulty} mengkategorikan tingkat kesulitan 
+tugas, yang memungkinkan analisis performa mahasiswa terhadap tantangan yang 
+diberikan. Atribut \texttt{column\_movement\_times} juga sangat kaya data 
+dengan \texttt{timestamp} di dalamnya, data ini dapat digunakan untuk 
+menghitung total durasi pengerjaan, waktu yang dihabiskan dalam fase belajar 
+aktif (di kolom "In Progress"), atau bahkan mendeteksi adanya revisi. Terdapat juga
+atribut \texttt{notes} yang berisikan catatan dari mahasiswa ketika kartu
+sudah berada di tahap \textit{Controlling (Review)}. Isi catatan ini bisa menjadi
+gambaran penting tentang rangkuman pembelajaran yang dilakukan mahasiswa terhadap 
+sub-topik tersebut yang menjadikannya data yang cukup penting.
+
+Atribut lain yang relevan adalah \texttt{checklists} untuk melihat progres 
+granular pengerjaan sub-tugas, \texttt{learning\_strategy} untuk 
+memahami pendekatan belajar yang dipilih mahasiswa, dan \texttt{rating} untuk
+memberikan penilaian terhadap pengalaman belajar terhadap sub-topik yang dipelajari.
+Kombinasi dari atribut-atribut inilah yang memberikan gambaran komprehensif 
+mengenai pola dan kemampuan belajar mahasiswa.
+
+Dari skema MongoDB diatas, 
+dilakukan reduksi atribut untuk memfokuskan pada data yang paling 
+esensial bagi penelitian, seperti \texttt{created\_at}, 
+\texttt{checklists}, dan \texttt{column\_movements}. 
+Selain itu, dilakukan reduksi ini untuk mempermudah pembuatan
+data sintetis. Berikut adalah hasil skema database MongoDB setelah
+dilakukan reduksi data yang ada pada Gambar \ref{Fig:schema_kanban_mongodb_reduksi}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=16cm]{contents/chapter-3/skema_db_kanban_board_reduksi.png}
+  \caption[Contoh gambar]{Skema Penyimpanan Data Kartu Pembelajaran Kanban Mahasiswa Setelah Reduksi}
+  \label{Fig:schema_kanban_mongodb_reduksi}
+\end{figure}
+
+
+% Untuk memastikan data sintetis yang dihasilkan dapat merepresentasikan 
+% variasi perilaku mahasiswa di dunia nyata, lima kategori profil 
+% (Malas, Sedikit Malas, Cukup, Rajin, dan Sangat Rajin) dirumuskan. 
+Untuk mencapai tingkat representasi yang valid, data tersebut harus mampu 
+menangkap berbagai pola perilaku dan tingkat keterlibatan mahasiswa yang 
+berbeda-beda, mulai dari yang paling tidak aktif hingga yang sangat proaktif.
+Sebagai strategi utama untuk mengimplementasikan keragaman ini, sebuah 
+studi kasus telah dirumuskan yang berfokus pada pengkategorian mahasiswa ke 
+dalam profil-profil perilaku yang spesifik.
+Melalui studi kasus ini, telah diidentifikasi dan ditetapkan lima kategori 
+profil yang berbeda, di mana setiap kategori mewakili satu titik pada 
+spektrum tingkat kerajinan mahasiswa.
+Kelima kategori yang komprehensif ini yang diberi label \texttt{"MALAS"}, \texttt{"Sedikit 
+Malas"}, \texttt{"Cukup"}, \texttt{"Rajin"}, dan \texttt{"Sangat Rajin"}, akan digunakan sebagai dasar 
+untuk menghasilkan set data yang bervariasi.
+
+Untuk menyederhanakan penelitian ini, penggunaan asumsi akan digunakan dalam
+memberikan label kategori tingkat performa dan perilaku mahasiswa.
+Variabel atribut yang digunakan antara lain adalah jumlah total \texttt{card}
+yang dibuat oleh mahasiswa, tingkat penyelesaian tugas (\texttt{checklist}),
+aktivitas terkini dari kartu tersebut pada \texttt{column\_movements}, dan
+letak keberadaan \texttt{card} tersebut. Hal ini diharapkan dapat menjadi proksi 
+yang \textit{memadai dan terukur} untuk membedakan secara jelas antara kelima 
+profil perilaku dan performa tersebut, sehingga penyederhanaan ini tetap 
+dapat menghasilkan data yang representatif.
+
+Aturan-aturan tersebut dirumuskan dan diimplementasikan pada studi kasus
+seperti jumlah total kartu, persentase 
+penyelesaian \textit{checklist}, dan stempel waktu pergerakan kartu
+yang secara implementasinya dapat dilihat pada Tabel \ref{tab:matriks_studi_kasus_tabularx}.
+
+% Pastikan paket-paket ini ada di preamble Anda:
+% \usepackage{booktabs}
+% \usepackage{array}
+% \usepackage{float}
+
+% \begin{table}[H]
+%   \centering
+%   \caption{Matriks Aturan Studi Kasus Perilaku Mahasiswa}
+%   \label{tab:matriks_studi_kasus}
+%   % Menggunakan @{} untuk menghapus spasi ekstra di sisi tabel
+%   % Kolom 'l' untuk rata kiri, 'p{width}' untuk paragraf dengan text-wrap
+%   \begin{tabular}{@{} l l p{3cm} p{3.5cm} p{4.5cm} @{}}
+%     \toprule
+%     \textbf{Kategori} & \textbf{Studi Kasus} & \textbf{Jumlah Kartu} & \textbf{Penyelesaian Checklist (per kartu)} & \textbf{Aturan Aktivitas \& Posisi Kartu} \\
+%     \midrule
+
+%     \textbf{Malas} & MHS\_MALAS\_SK1 & 1 - 2 kartu & 0 - 2 item selesai (dari 3) & \textbf{Tidak ada aktivitas} (2 jam terakhir). \newline Kartu cenderung di list1 atau list2. \\
+%     \midrule
+
+%     \textbf{Sedikit Malas} & MHS\_SEDMALAS\_SK1 & 3 - 4 kartu & 0 - 2 item selesai (dari 3) & \textbf{Tidak ada aktivitas} (2 jam terakhir). \\
+%     \addlinespace % Menambah sedikit spasi antar sub-grup
+%     & MHS\_SEDMALAS\_SK2 & 3 - 4 kartu & 1 - 2 item selesai (dari 3) & \textbf{Tidak ada aktivitas} (2 jam terakhir). \\
+%     \midrule
+
+%     \textbf{Cukup} & MHS\_CUKUP\_SK1 & 4 - 5 kartu & 1 - 2 item selesai (dari 3) & \textbf{Ada aktivitas} (2 jam terakhir) untuk min. 3 kartu. \\
+%     \addlinespace
+%     & MHS\_CUKUP\_SK2 & 3 - 4 kartu & Semua 3 item selesai & \textbf{Ada aktivitas} (2 jam terakhir) untuk min. 3 kartu. \\
+%     \midrule
+
+%     \textbf{Rajin} & MHS\_RAJIN\_SK1 & Tepat 5 kartu & 2 - 3 item selesai (dari 3) & Hanya 1 kartu tersisa di list1 ("Planning (To Do)"). \\
+%     \addlinespace
+%     & MHS\_RAJIN\_SK2 & 4 - 5 kartu & Semua 3 item selesai & Hanya 1 kartu tersisa di list1 ("Planning (To Do)"). \\
+%     \midrule
+
+%     \textbf{Sangat Rajin} & MHS\_SANGRAJIN\_SK1 & Tepat 5 kartu & Semua 3 item selesai & Semua 5 kartu berada di list4 ("Reflection (Done)"). \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Tabel Aturan Studi Kasus Perilaku Mahasiswa}
+  \label{tab:matriks_studi_kasus_tabularx}
+
+  \begingroup
+  \setlength{\tabcolsep}{8pt}        % Mengatur spasi antar kolom
+  \renewcommand{\arraystretch}{1.5} % Mengatur tinggi baris
+  \scriptsize                        % <<< Menggunakan font \scriptsize
+  
+  % Menggunakan tabularx agar lebar tabel = \textwidth
+  % Kolom: l (rata kiri), l (rata kiri), l (rata kiri), Y (fleksibel), Y (fleksibel)
+  \begin{tabularx}{\textwidth}{@{} l l l Y Y @{}}
+    \toprule
+    \textbf{Kategori} & \textbf{Studi Kasus} & \textbf{Jumlah Kartu} & \textbf{Penyelesaian Checklist (per kartu)} & \textbf{Aturan Aktivitas \& Posisi Kartu} \\
+    \midrule
+
+    \textbf{Malas} & MHS\_MALAS\_SK1 & 1 - 2 kartu & 0 - 2 item selesai (dari 3) & \textbf{Tidak ada aktivitas} (2 jam terakhir). Kartu cenderung di list1 atau list2. \\
+    \midrule
+
+    \textbf{Sedikit Malas} & MHS\_SEDMALAS\_SK1 & 3 - 4 kartu & 0 - 2 item selesai (dari 3) & \textbf{Tidak ada aktivitas} (2 jam terakhir). \\
+    \addlinespace % Menambah sedikit spasi antar sub-grup
+    & MHS\_SEDMALAS\_SK2 & 3 - 4 kartu & 1 - 2 item selesai (dari 3) & \textbf{Tidak ada aktivitas} (2 jam terakhir). \\
+    \midrule
+
+    \textbf{Cukup} & MHS\_CUKUP\_SK1 & 4 - 5 kartu & 1 - 2 item selesai (dari 3) & \textbf{Ada aktivitas} (2 jam terakhir) untuk min. 3 kartu. \\
+    \addlinespace
+    & MHS\_CUKUP\_SK2 & 3 - 4 kartu & Semua 3 item selesai & \textbf{Ada aktivitas} (2 jam terakhir) untuk min. 3 kartu. \\
+    \midrule
+
+    \textbf{Rajin} & MHS\_RAJIN\_SK1 & Tepat 5 kartu & 2 - 3 item selesai (dari 3) & Hanya 1 kartu tersisa di list1 ("Planning (To Do)"). \\
+    \addlinespace
+    & MHS\_RAJIN\_SK2 & 4 - 5 kartu & Semua 3 item selesai & Hanya 1 kartu tersisa di list1 ("Planning (To Do)"). \\
+    \midrule
+
+    \textbf{Sangat Rajin} & MHS\_SANGRAJIN\_SK1 & Tepat 5 kartu & Semua 3 item selesai & Semua 5 kartu berada di list4 ("Reflection (Done)"). \\
+    \bottomrule
+  \end{tabularx}
+  
+  \endgroup
+\end{table}
+
+
+
+Kategori-kategori ini kemudian dijadikan dasar untuk membuat 
+\textit{prompt} generator data sintetis pembelajaran mahasiswa berbasis Kanban.
+Kumpulan aturan yang telah dirangkum dalam Tabel 
+\ref{tab:matriks_studi_kasus_tabularx} tersebut kemudian ditransformasi 
+menjadi sebuah \textit{prompt} instruksi yang terstruktur. 
+Proses transformasi ini melibatkan penerjemahan setiap studi 
+kasus—mulai dari MHS\_MALAS\_SK1 hingga MHS\_SANGRAJIN\_SK1, dari format 
+tabel tabular menjadi format teks naratif. Tujuan utamanya adalah 
+untuk menyajikan aturan-aturan tersebut dalam format bahasa alami 
+(\textit{natural language}) yang dapat dipahami dan dieksekusi 
+secara presisi oleh agen \textit{chatbot} (LLM). \textit{Prompt} 
+ini secara eksplisit merinci batasan untuk setiap variabel, 
+termasuk jumlah kartu yang harus dibuat, syarat penyelesaian 
+\textit{checklist}, dan aturan mengenai aktivitas pergerakan kartu.
+Terdapat sedikit penambahan aturan pada pembuatan \textit{prompt}
+yaitu adanya waktu kapan dibuatnya kartu sub-topik tersebut.
+Contoh \textit{prompt} lengkap yang telah diformulasikan untuk 
+agen generator tersebut dapat dilihat secara rinci pada potongan
+snipet pada Tabel \ref{tab:prompt_studi_kasus_generator}.
+% \ref{Fig:contoh_prompt}.
+
+% \begin{verbatim}
+% This text contains \LaTeX commands like \textbf{bold} and special characters like % and $.
+% It will be printed exactly as typed, with a monospaced font.
+% \end{verbatim}
+
+
+
+% Pastikan preamble memuat:
+% \usepackage{xcolor}
+% \usepackage{listings}
+
+% \lstset{...} (Ini bisa ditaruh di preamble atau di sini)
+\lstset{
+    language=Python,
+    basicstyle={\fontsize{8}{8}\selectfont\color{black}\ttfamily\bfseries},
+    keywordstyle=\color{black}\bfseries,
+    commentstyle=\color{black},
+    stringstyle=\color{black},
+    breaklines=true,
+    showstringspaces=false
+}
+
+%--- MULAI LINGKUNGAN TABEL ---
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt} untuk Studi Kasus Data Sintetis Mahasiswa}
+  \label{tab:prompt_studi_kasus_generator} % Saya ubah labelnya menjadi "tab:"
+  
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+"""
+
+Kategori: Malas
+
+* Aturan untuk Studi Kasus 1 (MHS_MALAS_SK1):
+
+* Buat 1 papan JSON dengan 1 atau 2 kartu.
+
+* Setiap kartu memiliki 3 checklist, dengan total 0 hingga 2 item yang dicentang (completed: true) per kartu.
+
+* Tidak ada kartu yang berpindah tempat dalam kurun waktu 2 jam terakhir (semua timestamp created_at atau column_movements terakhir harus <= 2025-06-07T15:00:00Z). Kartu cenderung berada di list1 atau list2.
+
+
+
+Kategori: Sedikit Malas
+
+* Aturan untuk Studi Kasus 1 (MHS_SEDMALAS_SK1):
+
+* Buat 1 papan JSON dengan 3 atau 4 kartu.
+
+* Setiap kartu memiliki 3 checklist, dengan total 0 hingga 2 item yang dicentang per kartu.
+
+* Tidak ada kartu yang berpindah tempat dalam kurun waktu 2 jam terakhir.
+
+* Aturan untuk Studi Kasus 2 (MHS_SEDMALAS_SK2):
+
+* Buat 1 papan JSON dengan 3 atau 4 kartu.
+
+* Setiap kartu memiliki 3 checklist, dengan total 1 hingga 2 item yang dicentang per kartu.
+
+* Tidak ada kartu yang berpindah tempat dalam kurun waktu 2 jam terakhir.
+
+
+# .... Diatas adalah potongan yang tidak lengkap dari kode yang utuh. ....
+
+"""
+\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+%--- SELESAI LINGKUNGAN TABEL ---
+
+Selanjutnya, untuk memperkecil area 
+
+% Aturan skema dan kategori perilaku ini kemudian disusun menjadi 
+% sebuah \textit{role-play prompt} yang komprehensif untuk diumpankan 
+% ke model generator (ChatGPT). \textit{Prompt} ini menginstruksikan 
+% model untuk berperan sebagai "AI yang ahli dalam pembuatan data 
+% sintetis" dan menggabungkan teknik \textit{Chain-of-Thought} 
+% (CoT) serta \textit{Few-shot} (contoh) untuk memandu LLM menghasilkan 
+% 40 \textit{dataset} papan Kanban dalam format JSON  yang valid dan 
+% sesuai dengan profil perilaku yang diminta.
+Setelah \textit{prompt} studi kasus mahasiswa telah selesai dibuat,
+tahapan selanjutnya adalah pembuatan \textit{prompt} intruksi yang
+spesifik mengarah pada bentuk hasil data sintetis yang akan dibuat.
+Instruksi \textit{prompt} yang digunakan yaitu \textit{role-play}, 
+\textit{Few-shot}, dan \textit{Chain-of-Thought} (CoT).
+
+Pada awal \textit{prompt} digunakan terlebih dahulu \textit{prompt role-play}. 
+Strategi \textit{prompting} ini secara spesifik menginstruksikan 
+model untuk mengadopsi persona sebagai "AI yang ahli dalam 
+pembuatan data sintetis". Penetapan peran (\textit{role-play}) ini 
+penting untuk mengatur konteks dan ekspektasi, mendorong 
+model agar tidak hanya memberikan jawaban umum, tetapi 
+bertindak sebagai pakar domain yang memahami nuansa validasi 
+skema JSON dan logika perilaku. Berikut adalah potongan
+\textit{prompt} dipaparkan pada Tabel \ref{tab:prompt_role_play}.
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt Role-Play} pada Pembuatan Data Sintetis}
+  \label{tab:prompt_role_play} % Saya ubah labelnya menjadi "tab:"
+  
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+"""
+Anda adalah AI yang ahli dalam pembuatan data sintetis. Tugas Anda adalah menghasilkan serangkaian data papan Kanban dalam format JSON. Setiap objek JSON mewakili satu papan Kanban milik seorang mahasiswa, yang mencerminkan profil perilaku tertentu. Anda akan menghasilkan objek JSON papan Kanban yang berbeda, sesuai dengan aturan spesifik untuk 5 kategori mahasiswa.
+Konteks Umum (Gunakan untuk semua data yang dihasilkan):
+"""
+\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+\textit{Prompt} yang ditunjukkan pada Tabel \ref{tab:prompt_role_play}
+mengatur kerangka kerja dan identitas dari model pembuat Data Sintetis. 
+Instruksi tersebut dimulai dengan penetapan peran yang spesifik sebagai 
+"AI yang ahli dalam pembuatan data sintetis". Penugasan peran 
+ini sangat penting untuk mengarahkan model agar bertindak sebagai 
+pakar domain alih-alih asisten umum. Tugas utamanya kemudian 
+didefinisikan secara eksplisit yaitu menghasilkan data papan Kanban 
+dengan format keluaran wajib berupa JSON. \textit{Prompt} ini juga 
+secara cerdas membangun koneksi ke konteks penelitian dengan 
+menyatakan bahwa setiap objek JSON mewakili satu mahasiswa dan 
+harus mencerminkan profil perilaku tertentu. Selain itu instruksi ini 
+mempersiapkan model untuk keragaman tugas dengan menyebutkan 
+bahwa akan ada variasi data berdasarkan lima kategori mahasiswa 
+yang spesifik. Kalimat terakhir "Konteks Umum" berfungsi sebagai 
+penjembatan yang menandakan bahwa aturan-aturan berikutnya yang akan 
+diberikan bersifat global atau berlaku untuk semua data yang akan 
+dihasilkan.
+
+Untuk lebih memandu model dan memastikan kepatuhan terhadap 
+aturan yang kompleks, \textit{prompt} tersebut diperkaya dengan 
+dua teknik lanjutan. Pertama, teknik \textit{Few-shot} 
+(pemberian contoh) digunakan dengan menyertakan beberapa contoh 
+keluaran JSON yang sudah jadi. Ini bertujuan untuk memberi model 
+pemahaman konkret mengenai format dan struktur data yang diharapkan.
+
+Kedua, \textit{prompt} ini juga mengintegrasikan metodologi 
+\textit{Chain-of-Thought} (CoT). Teknik ini mengharuskan model 
+untuk "berpikir langkah demi langkah" atau mengartikulasikan 
+proses logisnya sebelum menghasilkan keluaran akhir. Hal ini 
+sangat penting untuk memastikan model secara sadar memeriksa 
+dan menerapkan aturan heuristik untuk setiap profil perilaku—seperti 
+menghitung jumlah kartu atau memeriksa stempel waktu—sebelum 
+menulis data JSON-nya.
+
+Tujuan akhir dari \textit{prompt} gabungan yang canggih ini 
+adalah untuk memandu LLM secara sistematis dalam menghasilkan 
+40 \textit{dataset} papan Kanban. Setiap \textit{dataset} yang 
+dihasilkan harus memenuhi dua kriteria utama: (1) secara teknis 
+valid dan dapat diproses (valid JSON), dan (2) secara fungsional 
+akurat, di mana data di dalamnya harus benar-benar merepresentasikan 
+profil perilaku mahasiswa yang diminta.
+
+% \begin{enumerate}
+% 	\item Perancangan \textit{prompt}
+% 	\begin{itemize}
+% 		\item Menentukan tujuan setiap \textit{prompt} (mis. menghasilkan tugas, status, komentar reflektif).
+% 		\item Menyusun format keluaran yang konsisten (mis. JSON dengan field: id, task, status, timestamp, comment).
+% 		\item Menyertakan instruksi konteks agar output sesuai skenario SRL berbasis Kanban.
+% 	\end{itemize}
+
+% 	\item Generasi data sintetis
+% 	\begin{itemize}
+% 		\item Menggunakan ChatGPT untuk membuat contoh papan Kanban berbasis skenario mahasiswa.
+% 		\item Membuat variasi kondisi (mis. beban tugas, tingkat prokrastinasi, interaksi tim).
+% 		\item Menyimpan keluaran dalam berkas \texttt{.json} terstruktur.
+% 	\end{itemize}
+
+% 	\item Pengumpulan \textit{ground truth} ahli
+% 	\begin{itemize}
+% 		\item Merekrut ahli pembelajaran untuk menghasilkan umpan balik pedagogis pada contoh data.
+% 		\item Menstandarisasi format umpan balik (kategori: feedback, motivation, appreciation).
+% 		\item Menyimpan anotasi ahli sebagai pasangan input–ground truth untuk evaluasi.
+% 	\end{itemize}
+
+% 	\item Validasi dan pembersihan data
+% 	\begin{itemize}
+% 		\item Memeriksa konsistensi format dan menghapus entri duplikat atau tidak relevan.
+% 		\item Melakukan pemeriksaan kualitas anotasi oleh reviewer kedua jika diperlukan.
+% 	\end{itemize}
+
+% 	\item Pengelolaan versi dan penyimpanan
+% 	\begin{itemize}
+% 		\item Menyimpan versi dataset dengan penomoran dan catatan perubahan.
+% 		\item Menyimpan salinan aman (lokal dan/atau cloud) serta mencatat metadata (tanggal, pembuat).
+% 	\end{itemize}
+
+% 	\item Pertimbangan etis dan privasi
+% 	\begin{itemize}
+% 		\item Membuat data anonim dan memastikan tidak ada informasi identitas pribadi.
+% 		\item Mendokumentasikan izin penggunaan data jika diperlukan.
+% 	\end{itemize}
+% \end{enumerate}
 
 \section{Etika, Masalah, dan Keterbatasan Penelitian (Opsional))}
 
