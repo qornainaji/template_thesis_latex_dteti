@@ -450,6 +450,7 @@ yang cukup dan beban kognitif guru agar \textit{dashboard} tetap dapat
 dibaca sekejap sekaligus memberi sinyal tindakan yang jelas.
 
 \subsection{Perbandingan Metode Peningkatan Kualitas Respons LLM}
+\label{subsection:tinjauan_perbandingan_metode}
 Dapat dilihat, Tabel~\ref{tab:komparasi-llm-feedback} merangkum karya 
 kunci yang mewakili dua arus utama yakni penyelarasan \textit{model} 
 melalui \textit{fine-tuning} misalnya \textit{DPO} dan \textit{RLHF} 
@@ -1065,7 +1066,35 @@ LLM dalam konteks pendidikan.
 
 % \subsection{Metode Evaluasi Respons LLM dengan Ahli Pendidikan}
 
-\section{Hipotesis Penelitian}
+\section{Pertanyaan Penelitian}
+Berdasarkan tujuan penelitian yang telah diuraikan dan metode evaluasi 
+yang dipilih, serta mempertimbangkan sifat penelitian yang cenderung 
+\textbf{eksploratif}, maka fokus utama penelitian ini dirumuskan 
+ke dalam beberapa \textbf{pertanyaan penelitian} (\textit{Research Questions}/RQ) 
+sebagai berikut:
+
+\begin{enumerate}
+
+    % RQ 1 (Pengganti Hipotesis 1)
+    \item \textbf{(RQ 1)} Sejauh mana efektivitas metode \textit{context 
+    engineering} yang digabungkan dengan \textit{learning analytics} (LA) 
+    dapat meningkatkan kualitas umpan balik LLM, jika dibandingkan 
+    dengan metode \textit{Baseline}?
+
+    % RQ 2 (Pengganti Hipotesis 2)
+    \item \textbf{(RQ 2)} Bagaimana persepsi dan penilaian ahli manusia 
+    terhadap kualitas, relevansi, dan kelayakan umpan balik yang 
+    dihasilkan oleh metode \textit{context engineering} dengan LA?
+
+    % RQ 3 (Pengganti Hipotesis 3)
+    \item \textbf{(RQ 3)} Sejauh mana ukuran model bahasa (misalnya, 
+    model kecil vs. model besar) memengaruhi kualitas umpan balik 
+    yang dihasilkan dalam konteks penelitian ini?
+
+\end{enumerate}
+
+
+
 % Penelitian ini mengevaluasi kualitas umpan balik LLM berbahasa Indonesia terhadap konteks data pembelajaran
 % (SRL) dan membandingkannya dengan umpan balik ahli manusia. Peningkatan kualitas diupayakan melalui
 % perancangan \textit{prompt} serta integrasi \textit{learning analytics} (LA) yang menambah sinyal kontekstual.
@@ -1076,10 +1105,10 @@ LLM dalam konteks pendidikan.
 % yang sama. Selain itu, penelitian ini juga menelaah pengaruh ukuran model (kecil vs besar) terhadap kualitas
 % umpan balik dan potensi interaksinya dengan intervensi \textit{prompt}+LA.
 
-Berdasarkan tujuan penelitian yang telah diuraikan dan metode evaluasi 
-kuantitatif (\textit{BERTScore, BARTScore, dan LLM-as-a-judge}) serta kualitatif 
-(Penilaian skala Likert oleh pakar) yang dipilih, maka hipotesis 
-penelitian ini dirumuskan sebagai berikut:
+% Berdasarkan tujuan penelitian yang telah diuraikan dan metode evaluasi 
+% kuantitatif (\textit{BERTScore, BARTScore, dan LLM-as-a-judge}) serta kualitatif 
+% (Penilaian skala Likert oleh pakar) yang dipilih, maka hipotesis 
+% penelitian ini dirumuskan sebagai berikut:
 
 % \subsection*{Notasi Singkat}
 % Misalkan:
@@ -1091,31 +1120,63 @@ penelitian ini dirumuskan sebagai berikut:
 %   \item Ukuran model: \textit{Small} vs \textit{Large}.
 % \end{itemize}
 
-\subsection*{Hipotesis Efektivitas Metode(\textit{Context Engineering} dengan \textit{Learning Analytics})}
-\textbf{H0\textsubscript{1}}: Tidak ada perbedaan kualitas antara metode \textit{context engineering} digabungkan dengan LA dan \textit{Baseline}\\
-% \phantom{H0\textsubscript{1}:}\; (mis.\ $\mu^{\text{Interv}}_{Q_{\text{BERT}}} = \mu^{\text{Base}}_{Q_{\text{BERT}}}$ dan 
-% $\mu^{\text{Interv}}_{Q_{\text{Judge}}} = \mu^{\text{Base}}_{Q_{\text{Judge}}}$ serta 
-% $\mu^{\text{Interv}}_{Q_{\text{Human}}} = \mu^{\text{Base}}_{Q_{\text{Human}}}$).
+% \begin{enumerate}
 
-\textbf{H1\textsubscript{1}}: Ada perbedaan kualitas antara metode \textit{context engineering} digabungkan dengan LA dan \textit{Baseline}\\
-% \phantom{H1\textsubscript{1}:}\; (mis.\ $\mu^{\text{Interv}}_{Q_{\text{BERT}}} > \mu^{\text{Base}}_{Q_{\text{BERT}}}$,
-% $\mu^{\text{Interv}}_{Q_{\text{Judge}}} > \mu^{\text{Base}}_{Q_{\text{Judge}}}$,
-% dan $\mu^{\text{Interv}}_{Q_{\text{Human}}} > \mu^{\text{Base}}_{Q_{\text{Human}}}$).
+%     % Hipotesis 1
+%     \item \textbf{Hipotesis Efektivitas Metode (\textit{Context Engineering} dengan \textit{Learning Analytics})}
+    
+%     % Menggunakan \itemize atau \description untuk H0/H1
+%     \begin{itemize}
+%         \item\textbf{H0} : Tidak ada perbedaan kualitas antara metode \textit{context engineering} digabungkan dengan LA dan \textit{Baseline}.
+%         \item\textbf{H1} : Ada perbedaan kualitas antara metode \textit{context engineering} digabungkan dengan LA dan \textit{Baseline}.
+%     \end{itemize}
 
-\subsection*{Hipotesis Kualitas Metode (\textit{Context Engineering} dengan \textit{Learning Analytics}) Menurut Ahli Manusia}
-\textbf{H0\textsubscript{2}}: Hasil evaluasi dari ahli manusia menunjukkan metode \textit{context engineering} digabungkan dengan LA tidak layak digunakan\\
-% \phantom{H0\textsubscript{2}:}\; (mis.\ $\rho(Q_{\text{BERT}}, Q_{\text{Human}})=0$ dan 
-% $\rho(Q_{\text{Judge}}, Q_{\text{Human}})=0$).
+%     % Hipotesis 2
+%     \item \textbf{Hipotesis Kualitas Metode (\textit{Context Engineering} dengan \textit{Learning Analytics}) Menurut Ahli Manusia}
+    
+%     \begin{itemize}
+%         \item\textbf{H0} : Hasil evaluasi dari ahli manusia menunjukkan metode \textit{context engineering} digabungkan dengan LA tidak layak digunakan.
+%         \item\textbf{H1} : Hasil evaluasi dari ahli manusia menunjukkan metode \textit{context engineering} digabungkan dengan LA layak digunakan.
+%     \end{itemize}
 
-\textbf{H1\textsubscript{2}}: Hasil evaluasi dari ahli manusia menunjukkan metode \textit{context engineering} digabungkan dengan LA layak digunakan\\
-% \phantom{H1\textsubscript{2}:}\; (mis.\ $\rho(Q_{\text{BERT}}, Q_{\text{Human}}) > 0$ dan 
-% $\rho(Q_{\text{Judge}}, Q_{\text{Human}}) > 0$; uji Spearman/Kendall).
+%     % Hipotesis 3
+%     \item \textbf{Hipotesis Pengaruh Ukuran Model}
+    
+%     \begin{itemize}
+%         \item\textbf{H0} : Ukuran model tidak berpengaruh pada kualitas.
+%         \item\textbf{H1} : Model Bahasa berukuran lebih besar menghasilkan kualitas lebih tinggi.
+%     \end{itemize}
 
-\subsection*{Hipotesis Pengaruh Ukuran Model}
-\textbf{H0\textsubscript{3}}: Ukuran model tidak berpengaruh pada kualitas\\
-% \phantom{H0\textsubscript{3}:}\; (mis.\ $\mu^{\text{Large}}_{Q_{\cdot}} = \mu^{\text{Small}}_{Q_{\cdot}}$ untuk semua metrik).
+% \end{enumerate}
 
-\textbf{H1\textsubscript{3}}: Model Bahasa berukuran lebih besar menghasilkan kualitas lebih tinggi\\
+% \subsection{Hipotesis Efektivitas Metode(\textit{Context Engineering} dengan \textit{Learning Analytics})}
+% \textbf{H0\textsubscript{1}}: Tidak ada perbedaan kualitas antara metode \textit{context engineering} digabungkan dengan LA dan \textit{Baseline}\\
+% % \phantom{H0\textsubscript{1}:}\; (mis.\ $\mu^{\text{Interv}}_{Q_{\text{BERT}}} = \mu^{\text{Base}}_{Q_{\text{BERT}}}$ dan 
+% % $\mu^{\text{Interv}}_{Q_{\text{Judge}}} = \mu^{\text{Base}}_{Q_{\text{Judge}}}$ serta 
+% % $\mu^{\text{Interv}}_{Q_{\text{Human}}} = \mu^{\text{Base}}_{Q_{\text{Human}}}$).
+
+% \textbf{H1\textsubscript{1}}: Ada perbedaan kualitas antara metode \textit{context engineering} digabungkan dengan LA dan \textit{Baseline}\\
+% % \phantom{H1\textsubscript{1}:}\; (mis.\ $\mu^{\text{Interv}}_{Q_{\text{BERT}}} > \mu^{\text{Base}}_{Q_{\text{BERT}}}$,
+% % $\mu^{\text{Interv}}_{Q_{\text{Judge}}} > \mu^{\text{Base}}_{Q_{\text{Judge}}}$,
+% % dan $\mu^{\text{Interv}}_{Q_{\text{Human}}} > \mu^{\text{Base}}_{Q_{\text{Human}}}$).
+
+% \subsection{Hipotesis Kualitas Metode (\textit{Context Engineering} dengan \textit{Learning Analytics}) Menurut Ahli Manusia}
+% \textbf{H0\textsubscript{2}}: Hasil evaluasi dari ahli manusia menunjukkan metode \textit{context engineering} digabungkan dengan LA tidak layak digunakan\\
+% % \phantom{H0\textsubscript{2}:}\; (mis.\ $\rho(Q_{\text{BERT}}, Q_{\text{Human}})=0$ dan 
+% % $\rho(Q_{\text{Judge}}, Q_{\text{Human}})=0$).
+
+% \textbf{H1\textsubscript{2}}: Hasil evaluasi dari ahli manusia menunjukkan metode \textit{context engineering} digabungkan dengan LA layak digunakan\\
+% % \phantom{H1\textsubscript{2}:}\; (mis.\ $\rho(Q_{\text{BERT}}, Q_{\text{Human}}) > 0$ dan 
+% % $\rho(Q_{\text{Judge}}, Q_{\text{Human}}) > 0$; uji Spearman/Kendall).
+
+% \subsection{Hipotesis Pengaruh Ukuran Model}
+% \textbf{H0\textsubscript{3}}: Ukuran model tidak berpengaruh pada kualitas\\
+% % \phantom{H0\textsubscript{3}:}\; (mis.\ $\mu^{\text{Large}}_{Q_{\cdot}} = \mu^{\text{Small}}_{Q_{\cdot}}$ untuk semua metrik).
+
+% \textbf{H1\textsubscript{3}}: Model Bahasa berukuran lebih besar menghasilkan kualitas lebih tinggi\\
+
+
+
 % \phantom{H1\textsubscript{3}:}\; (mis.\ $\mu^{\text{Large}}_{Q_{\text{BERT}}} > \mu^{\text{Small}}_{Q_{\text{BERT}}}$,
 % $\mu^{\text{Large}}_{Q_{\text{Judge}}} > \mu^{\text{Small}}_{Q_{\text{Judge}}}$,
 % dan $\mu^{\text{Large}}_{Q_{\text{Human}}} > \mu^{\text{Small}}_{Q_{\text{Human}}}$).

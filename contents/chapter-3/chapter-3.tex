@@ -11,7 +11,7 @@ mencapai maksud dan tujuan seperti yang tertulis dalam sub-bab 1.3 yaitu:
 	\item Mengevaluasi apakah adanya peningkatan kualitas umpan balik 
 	LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
 	balik ahli manusia.
-	\item Melihat pengaruh besar ukuran model LLM terhadap kualitas umpan balik yang dihasilkan.
+	\item Melihat pengaruh besar ukuran LLM terhadap kualitas umpan balik yang dihasilkan.
 \end{enumerate}
 % [jika diinginkan, kalian dapat menuliskan Kembali tujuan penelitian yang ingin dicapai di sini].
 
@@ -97,9 +97,11 @@ penelitian ini adalah sebagai berikut:
 
 \begin{enumerate}
 	\item LLM dengan model \textbf{Llama 3.1 8B Instant}, dengan parameter
-	delapan miliar, yang diperoleh dari platform Groq API.
+	delapan miliar, yang diperoleh dari platform Groq API yang berfungsi
+	sebagai agen pemberi umpan balik (\textit{Feedback Agent}).
 	\item LLM dengan model \textbf{Llama 3.3 70B Versatile}, dengan parameter
-	lebih besar yaitu 70 miliar yang juga diperoleh dari platform Groq API.
+	lebih besar yaitu 70 miliar yang juga diperoleh dari platform Groq API yang
+	berfungsi sebagai agen pemberi umpan balik (\textit{Feedback Agent}).
 	\item \textbf{GPT-4o} sebagai model yang digunakan untuk evaluasi kuantitatif
 	\textit{LLM-as-a-judge}
 	\item \textbf{Dataset sintetis} dengan format data \texttt{.json} yang 
@@ -123,8 +125,8 @@ menilai kualitas \textit{context engineering} yang digabungkan dengan
 meningkatkan mutu umpan balik LLM berbahasa Indonesia pada 
 skenario SRL berbasis papan Kanban. Setiap variasi \textit{context engineering}
 diimplementasikan secara terpisah dan dipadukan dengan dua ukuran model 
-(Llama~3.1~8B \textit{Instant} dan Llama~3.3~70B 
-\textit{Versatile} melalui Groq API), menghasilkan beberapa kombinasi 
+(Llama~3.1~8B Instant dan Llama~3.3~70B 
+Versatile melalui Groq API), menghasilkan beberapa kombinasi 
 umpan balik yang diuji secara kuantitatif mapun kualitatif. Pengujian 
 kuantitatif berfokus pada kesamaan semantik (Subbab [2.1.7]) 
 menggunakan metrik berbasis \textit{embedding} kontekstual, 
@@ -133,12 +135,13 @@ antara respons LLM dengan data umpan balik ahli manusia
 \textit{(ground truth)} [32, 33]. Selain itu, evaluasi relevansi juga 
 dilakukan menggunakan pendekatan \textit{LLM-as-a-Judge} 
 yang terstruktur [24, 25]. Di sisi lain, pengujian 
-kualitatif—yang merupakan standar emas (Subbab[2.1.8])—
+kualitatif—yang merupakan standar emas Subbab \ref{subsection:tinjauan_evaluasi_kualitatif} yang
 melibatkan peninjauan langsung oleh pakar psikologi pendidikan [33]. 
 Pakar ini menilai keluaran LLM menggunakan rubrik penilaian 
 komprehensif yang didasarkan pada kerangka teoretis mapan 
-seperti model Hattie dan Timperley (2007) [27], Shute (2008) [26], 
-dan \textit{Self-Determination Theory} [28]. Penilaian ini mengukur 
+seperti model Hattie dan Timperley (2007) \cite{HattieTimperley2007PowerOfFeedback}, 
+Shute (2008) \cite{Shute2008FocusFormativeFeedback}, 
+dan \textit{Self-Determination Theory} \cite{DeciRyan1985IntrinsicMotivation}. Penilaian ini mengukur 
 tiga dimensi utama yakni \textit{feedback}, 
 \textit{motivation support}, dan \textit{appreciation support} 
 menggunakan skala Likert (1-5) untuk memastikan kualitas 
@@ -159,13 +162,13 @@ Umpan balik ini dihasilkan oleh dua model berbeda untuk
 perbandingan, yaitu Llama 3.1 8B \textit{Instant} dan 
 Llama 3.3 70B \textit{Versatile}.
 
-Keluaran dari model-model ini pertama-tama melalui 
+Luaran dari model-model ini pertama-tama melalui 
 tahap Uji Kuantitatif. Sejalan dengan metodologi yang telah 
 dijelaskan, tahap ini berfokus pada pengukuran kesamaan semantik 
 dan relevansi Subbab \ref{subsection:tinjauan_evaluasi_kuantitatif} menggunakan tiga metrik utama: 
 Uji BERTScore, BARTScore, dan GPT-4o as a Judge [22, 23, 24].
 
-Keluaran dari pengujian ini kemudian menjalani analisis 
+Luaran dari pengujian ini kemudian menjalani analisis 
 hasil Uji Kuantitatif. Berdasarkan analisis ini, model 
 terbaik dipilih—yaitu, kombinasi model dan teknik 
 \textit{context engineering} yang menghasilkan skor keselarasan 
@@ -335,7 +338,9 @@ Berikut adalah skema penyimpanan data kartu Kanban dalam MongoDB.
 
 Dapat dilihat pada Gambar \ref{Fig:schema_kanban_mongodb} terdapat banyak 
 atribut, khususnya pada entitas \texttt{Card}, yang menyimpan data-data kunci 
-untuk merefleksikan proses dan hasil belajar mahasiswa.
+untuk merefleksikan proses dan hasil belajar mahasiswa. Satu \texttt{Board}, hanya 
+bisa dimiliki oleh satu mahasiswa saja di mana \texttt{Board} sendiri adalah
+representasi dari keseluruhan papan pembelajaran berbasis Kanban.
 
 Beberapa atribut yang paling penting untuk mengevaluasi kemampuan belajar 
 ini meliputi \texttt{pre\_test\_grade} dan \texttt{post\_test\_grade}. 
@@ -502,7 +507,7 @@ kasus—mulai dari MHS\_MALAS\_SK1 hingga MHS\_SANGRAJIN\_SK1, dari format
 tabel tabular menjadi format teks naratif. Tujuan utamanya adalah 
 untuk menyajikan aturan-aturan tersebut dalam format bahasa alami 
 (\textit{natural language}) yang dapat dipahami dan dieksekusi 
-secara presisi oleh agen \textit{chatbot} (LLM). \textit{Prompt} 
+secara presisi oleh model LLM pembuat data tersebut. \textit{Prompt} 
 ini secara eksplisit merinci batasan untuk setiap variabel, 
 termasuk jumlah kartu yang harus dibuat, syarat penyelesaian 
 \textit{checklist}, dan aturan mengenai aktivitas pergerakan kartu.
@@ -527,7 +532,7 @@ snipet pada Tabel \ref{tab:prompt_studi_kasus_generator}.
 % \lstset{...} (Ini bisa ditaruh di preamble atau di sini)
 \lstset{
     language=Python,
-    basicstyle={\fontsize{8}{8}\selectfont\color{black}\ttfamily\bfseries},
+    basicstyle={\fontsize{10}{8}\selectfont\color{black}\ttfamily\bfseries},
     keywordstyle=\color{black}\bfseries,
     commentstyle=\color{black},
     stringstyle=\color{black},
@@ -592,8 +597,165 @@ Kategori: Sedikit Malas
 
 \end{table}
 %--- SELESAI LINGKUNGAN TABEL ---
+\clearpage
+Selanjutnya, untuk memperkecil topik pembelajaran yang akan dibuat pada
+data sintetisnya, dibatasi satu mata kuliah saja dengan 5 sub-topik yang
+dapat diambil. Pembuatan batasan sub-topik harus memiliki aturan yang
+perlu diberikan ke model LLM pembuat data sintetis tersebut. Hal ini agar
+model dapat memberikan data luaran yang baik serta variasi yang beragam
+dengan batasan yang jelas. Tabel \ref{tab:ringkasan_topik_oop} menunjukkan batasan sub-topik
+yang akan diberikan pada data sintetis.
 
-Selanjutnya, untuk memperkecil area 
+\begin{table}[H]
+  \centering
+  \caption{Ringkasan Topik OOP, Tujuan, dan Checklist}
+  \label{tab:ringkasan_topik_oop}
+
+  \begingroup
+  \setlength{\tabcolsep}{8pt}
+  \renewcommand{\arraystretch}{1.5}
+  \scriptsize
+
+  % Kolom fleksibel Y dan kolom fixed-width P
+  \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+  \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+  % Ubah 'l Y Y' -> 'P{0.20\textwidth} Y Y'
+  \begin{tabularx}{\textwidth}{@{} P{0.20\textwidth} Y Y @{}}
+    \toprule
+    \textbf{Topik} & \textbf{Tujuan} & \textbf{Checklist Items} \\
+    \midrule
+
+    \textbf{Topik 1: Konsep Dasar dan Pilar OOP}
+    &
+    Memahami fondasi dari OOP dan 4 pilar utamanya.
+    &
+    \begin{itemize}
+      \item Menjelaskan perbedaan paradigma pemrograman prosedural dan OOP.
+      \item Mengidentifikasi serta mendeskripsikan 4 pilar OOP: enkapsulasi, abstraksi, pewarisan, polimorfisme.
+      \item Menerapkan konsep dasar objek dan kelas dalam program sederhana.
+    \end{itemize}
+    \\ \addlinespace
+    \midrule
+
+    \textbf{Topik 2: Perancangan Kelas dan Interaksi Objek}
+    &
+    Mampu merancang struktur kelas dan interaksinya secara logis.
+    &
+    \begin{itemize}
+      \item Mendesain \textit{class diagram} berdasarkan kebutuhan dari studi kasus.
+      \item Menentukan relasi antar objek: asosiasi, agregasi, komposisi.
+      \item Mengimplementasikan rancangan interaksi objek dalam bentuk kode.
+    \end{itemize}
+    \\ \addlinespace
+    \midrule
+
+    \textbf{Topik 3: Enkapsulasi, Inheritance, dan Polimorfisme}
+    &
+    Menguasai teknik pewarisan dan fleksibilitas perilaku objek.
+    &
+    \begin{itemize}
+      \item Menerapkan enkapsulasi menggunakan modifier akses (private, public, protected).
+      \item Membuat kelas turunan dan meng-\textit{override} metode dari \textit{superclass}.
+      \item Menggunakan polimorfisme melalui \textit{overloading} dan \textit{overriding} metode.
+    \end{itemize}
+    \\ \addlinespace
+    \midrule
+
+    \textbf{Topik 4: Prinsip SOLID dan Adaptive Code}
+    &
+    Menulis kode yang fleksibel, \textit{maintainable}, dan \textit{scalable}.
+    &
+    \begin{itemize}
+      \item Menjelaskan dan memberi contoh penerapan dari masing-masing prinsip SOLID.
+      \item Melakukan \textit{refactoring} kode agar sesuai dengan prinsip SOLID.
+      \item Menerapkan prinsip desain adaptif dalam proyek mini berbasis OOP.
+    \end{itemize}
+    \\ \addlinespace
+    \midrule
+
+    \textbf{Topik 5: Kolaborasi Objek dan Pengorganisasian Kode}
+    &
+    Menyusun kode OOP secara terstruktur dan profesional.
+    &
+    \begin{itemize}
+      \item Mengorganisasi struktur folder proyek OOP berdasarkan lapisan fungsional.
+      \item Mengimplementasikan interaksi antar objek menggunakan \textit{interface} atau \textit{abstract class}.
+      \item Mengembangkan aplikasi kecil dengan arsitektur OOP yang modular.
+    \end{itemize}
+    \\
+
+    \bottomrule
+  \end{tabularx}
+  \endgroup
+\end{table}
+
+Tabel \ref{tab:ringkasan_topik_oop} merincikan batasan konten 
+pembelajaran yang digunakan dalam penelitian ini. Fokus mata kuliah 
+dikerucutkan pada Pemrograman Berbasis Objek (\textit{Object Oriented 
+Programming} atau OOP). Tabel tersebut menjabarkan lima sub-topik 
+utama yang akan digunakan sebagai materi kartu tugas, mulai dari 
+"Konsep Dasar dan Pilar OOP" hingga "Kolaborasi Objek". Untuk setiap 
+sub-topik, dirinci pula tujuan pembelajaran serta daftar \textit{checklist 
+items} yang spesifik. Rincian \textit{checklist} ini berkaitan dengan atribut
+\texttt{checklist} berfungsi sebagai 
+representasi tugas-tugas mendetail yang harus diselesaikan mahasiswa. 
+Seluruh batasan konten terstruktur inilah yang kemudian 
+diterjemahkan menjadi bagian dari \textit{prompt} instruksi yang 
+diberikan kepada model LLM pembuat data sintetis, guna memastikan 
+setiap \textit{dataset} yang dihasilkan tetap relevan dan fokus pada 
+materi pembelajaran yang telah ditentukan. \textit{Prompt} dari tabel tersebut 
+dapat dilihat pada Tabel \ref{tab:prompt_batasab_sub}.
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt} untuk Batasan Sub-topik Materi Pembelajaran Mahasiswa}
+  \label{tab:prompt_batasan_sub} % Saya ubah labelnya menjadi "tab:"
+  
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+* Topik 1: Konsep Dasar dan Pilar OOP
+	* Tujuan: Memahami fondasi dari OOP dan 4 pilar utamanya.
+	* Checklist Items:
+		1. "Menjelaskan perbedaan paradigma pemrograman prosedural dan OOP."
+		2. "Mengidentifikasi serta mendeskripsikan 4 pilar OOP: Enkapsulasi, Abstraksi, Pewarisan, Polimorfisme."
+		3. "Menerapkan konsep dasar objek dan kelas dalam program sederhana."
+* Topik 2: Perancangan Kelas dan Interaksi Objek
+	* Tujuan: Mampu merancang struktur kelas dan interaksinya secara logis.
+	* Checklist Items:
+		1. "Mendesain class diagram berdasarkan kebutuhan dari studi kasus."
+		2. "Menentukan relasi antar objek: asosiasi, agregasi, komposisi."
+		3. "Mengimplementasikan rancangan interaksi objek dalam bentuk kode."
+* Topik 3: Enkapsulasi, Inheritance, dan Polimorfisme
+	* Tujuan: Menguasai teknik pewarisan dan fleksibilitas perilaku objek.
+	* Checklist Items:
+		1. "Menerapkan enkapsulasi menggunakan modifier akses (private, public, protected)."
+		2. "Membuat kelas turunan dan meng-overriding metode dari superclass."
+		3. "Menggunakan polimorfisme melalui overloading dan overriding metode."
+* Topik 4: Prinsip SOLID dan Adaptive Code
+	* Tujuan: Menulis kode yang fleksibel, maintainable, dan scalable.
+	* Checklist Items:
+		1. "Menjelaskan dan memberi contoh penerapan dari masing-masing prinsip SOLID."
+		2. "Melakukan refactoring kode agar sesuai dengan prinsip SOLID."
+		3. "Menerapkan prinsip desain adaptif dalam proyek mini berbasis OOP."
+* Topik 5: Kolaborasi Objek dan Pengorganisasian Kode
+	* Tujuan: Menyusun kode OOP secara terstruktur dan profesional.
+	* Checklist Items:
+		1. "Mengorganisasi struktur folder proyek OOP berdasarkan lapisan fungsional."
+		2. "Mengimplementasikan interaksi antar objek menggunakan interface atau abstract class."
+		3. "Mengembangkan aplikasi kecil dengan arsitektur OOP yang modular."
+\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
 
 % Aturan skema dan kategori perilaku ini kemudian disusun menjadi 
 % sebuah \textit{role-play prompt} yang komprehensif untuk diumpankan 
@@ -609,7 +771,7 @@ spesifik mengarah pada bentuk hasil data sintetis yang akan dibuat.
 Instruksi \textit{prompt} yang digunakan yaitu \textit{role-play}, 
 \textit{Few-shot}, dan \textit{Chain-of-Thought} (CoT).
 
-Pada awal \textit{prompt} digunakan terlebih dahulu \textit{prompt role-play}. 
+Pada awal \textit{prompt} digunakan terlebih dahulu \textit{role-play prompt}. 
 Strategi \textit{prompting} ini secara spesifik menginstruksikan 
 model untuk mengadopsi persona sebagai "AI yang ahli dalam 
 pembuatan data sintetis". Penetapan peran (\textit{role-play}) ini 
@@ -620,26 +782,27 @@ skema JSON dan logika perilaku. Berikut adalah potongan
 \textit{prompt} dipaparkan pada Tabel \ref{tab:prompt_role_play}.
 
 \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
-  
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{\textit{Prompt Role-Play} pada Pembuatan Data Sintetis}
-  \label{tab:prompt_role_play} % Saya ubah labelnya menjadi "tab:"
+	\centering
+	
+	% Caption dan Label sekarang milik "table", bukan "lstlisting"
+	\caption{\textit{Role-Play Prompt} pada Pembuatan Data Sintetis}
+	\label{tab:prompt_role_play} % Saya ubah labelnya menjadi "tab:"
   
   % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
-    
-    % Mulai listing Anda (tanpa caption/label di sini)
-    \begin{lstlisting}
-"""
-Anda adalah AI yang ahli dalam pembuatan data sintetis. Tugas Anda adalah menghasilkan serangkaian data papan Kanban dalam format JSON. Setiap objek JSON mewakili satu papan Kanban milik seorang mahasiswa, yang mencerminkan profil perilaku tertentu. Anda akan menghasilkan objek JSON papan Kanban yang berbeda, sesuai dengan aturan spesifik untuk 5 kategori mahasiswa.
-Konteks Umum (Gunakan untuk semua data yang dihasilkan):
-"""
-\end{lstlisting}
-%--- Selesai listing ---
+	\begin{minipage}{\textwidth}
+		
+		% Mulai listing Anda (tanpa caption/label di sini)
+		\begin{lstlisting}
+		"""
+		Anda adalah AI yang ahli dalam pembuatan data sintetis. Tugas Anda adalah menghasilkan serangkaian data papan Kanban dalam format JSON. Setiap objek JSON mewakili satu papan Kanban milik seorang mahasiswa, yang mencerminkan profil perilaku tertentu. Anda akan menghasilkan objek JSON papan Kanban yang berbeda, sesuai dengan aturan spesifik untuk 5 kategori mahasiswa.
 
-  \end{minipage} 
-  %--- Selesai minipage ---
+		% Konteks Umum (Gunakan untuk semua data yang dihasilkan):
+		"""
+		\end{lstlisting}
+		%--- Selesai listing ---
+
+	\end{minipage} 
+	%--- Selesai minipage ---
 
 \end{table}
 
@@ -650,7 +813,7 @@ Instruksi tersebut dimulai dengan penetapan peran yang spesifik sebagai
 ini sangat penting untuk mengarahkan model agar bertindak sebagai 
 pakar domain alih-alih asisten umum. Tugas utamanya kemudian 
 didefinisikan secara eksplisit yaitu menghasilkan data papan Kanban 
-dengan format keluaran wajib berupa JSON. \textit{Prompt} ini juga 
+dengan format luaran wajib berupa JSON. \textit{Prompt} ini juga 
 secara cerdas membangun koneksi ke konteks penelitian dengan 
 menyatakan bahwa setiap objek JSON mewakili satu mahasiswa dan 
 harus mencerminkan profil perilaku tertentu. Selain itu instruksi ini 
@@ -661,35 +824,410 @@ penjembatan yang menandakan bahwa aturan-aturan berikutnya yang akan
 diberikan bersifat global atau berlaku untuk semua data yang akan 
 dihasilkan.
 
-Untuk lebih memandu model dan memastikan kepatuhan terhadap 
-aturan yang kompleks, \textit{prompt} tersebut diperkaya dengan 
-dua teknik lanjutan. Pertama, teknik \textit{Few-shot} 
-(pemberian contoh) digunakan dengan menyertakan beberapa contoh 
-keluaran JSON yang sudah jadi. Ini bertujuan untuk memberi model 
-pemahaman konkret mengenai format dan struktur data yang diharapkan.
+Selanjutnya, untuk lebih memandu model dan memastikan kepatuhan terhadap 
+aturan yang kompleks, \textit{prompt}-nya diperkaya dengan 
+dua teknik lanjutan yaitu \textit{Few-shot} dan \textit{Chain-of-Thought}. 
+Teknik \textit{Few-shot} digunakan dengan 
+menyertakan beberapa contoh luaran \texttt{JSON} yang sudah jadi. 
+Ini bertujuan untuk memberi model pemahaman konkret mengenai format dan 
+struktur data yang diharapkan. Dalam konteks pembuatan data sintetis,
+contoh luaran JSON yang diberikan ke model LLM adalah struktur objek papan 
+Kanban (\texttt{Board}) dan struktur objek kartu (\texttt{Card}). Dapat dilihat
+pada Tabel \ref{tab:prompt_few_shot} bentuk struktur JSON yang 
+diberikan ke model.
 
-Kedua, \textit{prompt} ini juga mengintegrasikan metodologi 
+\lstset{
+    language=Java,
+    basicstyle={\fontsize{8}{8}\selectfont\ttfamily\bfseries},
+    keywordstyle=\color{black}\bfseries,
+    commentstyle=\color{black},
+    stringstyle=\color{black},
+    breaklines=true,
+    showstringspaces=false
+}
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+	\centering
+	
+	% Caption dan Label sekarang milik "table", bukan "lstlisting"
+	\caption{\textit{Few-Shot Prompt} pada Pembuatan Data Sintetis}
+	\label{tab:prompt_few_shot} % Saya ubah labelnya menjadi "tab:"
+  
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+	\begin{minipage}{\textwidth}
+		
+		% Mulai listing Anda (tanpa caption/label di sini)
+		\begin{lstlisting}
+			// Struktur Objek Papan Kanban (Board):
+			{
+				"_id": { "$oid": "ID_BOARD_UNIK" },
+				"user_id": { "$oid": "ID_USER_UNIK" },
+				"name": "NAMA_PAPAN_KANBAN", // e.g., "Papan OOP - MHS Malas SK1"
+				"lists": [
+					{
+					"id": "list1",
+					"title": "Planning (To Do)",
+					"cards": [ /* Kartu yang saat ini ada di list ini */ ]
+					},
+					{
+					"id": "list2",
+					"title": "Monitoring (In Progress)",
+					"cards": [ /* Kartu yang saat ini ada di list ini */ ]
+					},
+					{
+					"id": "list3",
+					"title": "Controlling (Review)",
+					"cards": [ /* Kartu yang saat ini ada di list ini */ ]
+					},
+					{
+					"id": "list4",
+					"title": "Reflection (Done)",
+					"cards": [ /* Kartu yang saat ini ada di list ini */ ]
+					}
+				]
+			}
+
+			// Struktur Objek Kartu (Card):
+			{
+				"id": "ID_KARTU_UNIK", // e.g., "CS101-Konsep_Dasar_OOP-MALAS_SK1_1"
+				"title": "Object Oriented Programming [CS101]", // Tetap
+				"sub_title": "SUB_TOPIK_DARI_DAFTAR_DI_ATAS",
+				"created_at": "YYYY-MM-DDTHH:MM:SSZ",
+				"description": "Tujuan dari topik yang bersangkutan.",
+				"deleted": false, "archived": false,
+				"checklists": [
+					{
+					"id": "ID_CHECKLIST_UNIK",
+					"title": "Tugas untuk [sub_title]",
+					"items": [
+						{ "id": "ID_ITEM_UNIK_1", "text": "Teks item checklist 1 dari daftar di atas", "completed": true/false },
+						{ "id": "ITEM_UNIK_2", "text": "Teks item checklist 2 dari daftar di atas", "completed": true/false },
+						{ "id": "ITEM_UNIK_3", "text": "Teks item checklist 3 dari daftar di atas", "completed": true/false }
+					]
+					}
+				],
+				"column_movement_times": { "list_id": "timestamp_terakhir_masuk_list_tsb" },
+				"column_movements": [ { "fromColumn": "id_asal", "toColumn": "id_tujuan", "timestamp": "timestamp_gerak" } ]
+			}
+
+
+		\end{lstlisting}
+		%--- Selesai listing ---
+
+	\end{minipage} 
+	%--- Selesai minipage ---
+
+\end{table}
+
+Struktur-struktur \texttt{JSON} memberikan instruksi 
+seperti cetak biru (\textit{blueprint}) yang sangat eksplisit 
+bagi model LLM. Struktur \texttt{Board} menetapkan skema level atas 
+(\textit{top-level}), yang mendefinisikan kontainer utama dan 
+empat kolom statis yang wajib ada, mulai dari \texttt{"Planning (To Do)"} 
+hingga \texttt{"Reflection (Done)"}. Sementara itu, struktur \texttt{Card} 
+memberikan arahan yang jauh lebih granular dan krusial bagi penelitian. 
+Struktur ini secara detail menginstruksikan model tentang 
+atribut-atribut data apa saja yang harus ada di dalam setiap unit 
+tugas pembelajaran, termasuk penegasan bahwa \texttt{sub\_title} 
+dan \texttt{items} pada \texttt{checklists} harus diambil dari 
+daftar topik yang telah disediakan sebelumnya. Intinnya adalah, 
+contoh ini menunjukkan secara presisi di mana variabel-variabel kunci 
+untuk aturan ini harus ditempatkan, seperti status 
+\texttt{completed} pada setiap item \textit{checklist} dan data 
+\texttt{timestamp} pada atribut \texttt{column\_movements}.
+
+Instruksi \textit{Few-shot prompt} juga ditambahkan informasi mengenai
+struktur dari papan Kanban. Informasi ini diberikan agar model dapat 
+mengerti struktur Kanban yang sedang dikerjakan serta dapat memberikan
+penamaan kolom dengan benar. Berikut adalah \textit{prompt} informasi 
+struktur Kanban yang diberikan pada Tabel \ref{}
+
+\lstset{
+    language=Python,
+    basicstyle={\fontsize{10}{10}\selectfont\ttfamily\bfseries},
+    keywordstyle=\color{black}\bfseries,
+    commentstyle=\color{black},
+    stringstyle=\color{black},
+    breaklines=true,
+    showstringspaces=false
+}
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+	\centering
+	
+	% Caption dan Label sekarang milik "table", bukan "lstlisting"
+	\caption{\textit{Prompt} Struktur Papan Kanban}
+	\label{tab:prompt_few_shot} % Saya ubah labelnya menjadi "tab:"
+  
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+	\begin{minipage}{\textwidth}
+		
+		% Mulai listing Anda (tanpa caption/label di sini)
+		\begin{lstlisting}
+		Struktur List Kanban (Kolom pada Papan):
+		* list1: "Planning (To Do)"
+		* list2: "Monitoring (In Progress)"
+		* list3: "Controlling (Review)"
+		* list4: "Reflection (Done)"
+		\end{lstlisting}
+		%--- Selesai listing ---
+
+	\end{minipage} 
+	%--- Selesai minipage ---
+
+\end{table}
+
+
+Kemudian, jenis \textit{prompt} yang digunakan adalah 
 \textit{Chain-of-Thought} (CoT). Teknik ini mengharuskan model 
-untuk "berpikir langkah demi langkah" atau mengartikulasikan 
-proses logisnya sebelum menghasilkan keluaran akhir. Hal ini 
+untuk berpikir langkah penalaran proses logisnya 
+sebelum menghasilkan luaran akhir. Hal ini 
 sangat penting untuk memastikan model secara sadar memeriksa 
-dan menerapkan aturan heuristik untuk setiap profil perilaku—seperti 
-menghitung jumlah kartu atau memeriksa stempel waktu—sebelum 
-menulis data JSON-nya.
+dan menerapkan aturan \textit{prompt }untuk setiap profil perilaku.
+Potongan \textit{prompt} yang menggunakan jenis CoT ada pada
+Tabel \ref{tab:prompt_cot}.
 
-Tujuan akhir dari \textit{prompt} gabungan yang canggih ini 
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{CoT \textit{Prompt} pada Pembuatan Data Sintetis}
+  \label{tab:prompt_cot} % Saya ubah labelnya menjadi "tab:"
+  
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+"""Contoh Logika Penerapan Aturan: Untuk MHS_CUKUP_SK1, Anda bisa membuat 4 kartu. 3 di antaranya harus memiliki column_movements terbaru dengan timestamp misalnya 2025-06-07T16:30:00Z. Kartu-kartu ini bisa jadi pindah dari list1 ke list2 atau list2 ke list3. Kartu ke-4 bisa jadi tidak bergerak dalam 2 jam terakhir. Untuk setiap kartu, jumlah completed: true pada checklistnya adalah 1 atau 2.
+
+Petunjuk Tambahan untuk LLM: 
+Pastikan semua id unik. Untuk created_at kartu, gunakan tanggal dan waktu yang memenuhi syarat "tidak berpindah selama 2 jam" sebelum 2025-06-02T17:00:00Z. Misalnya, 2025-06-02T08:00:00Z, 2025-06-02T10:30:00Z, 2025-06-02T14:59:00Z, dll. Tempatkan objek kartu di dalam array cards pada list yang sesuai dengan tahapnya saat ini (untuk kasus "Malas" ini, semua akan ada di list1). Pastikan column_movement_times dan column_movements secara akurat mencerminkan (tidak adanya) pergerakan."""
+\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+Tabel \ref{tab:prompt_cot} memberikan "Contoh 
+Logika Penerapan Aturan" yang menelusuri proses 
+berpikir untuk satu studi kasus spesifik (MHS\_CUKUP\_SK1). 
+Contoh ini menguraikan bagaimana model harus mengalokasikan 
+jumlah kartu, bagaimana menginterpretasikan aturan "perpindahan 
+dalam 2 jam terakhir" secara konkret, dan bagaimana menerapkan 
+status penyelesaian \textit{checklist}.
+
+Lalu, bagian "Petunjuk Tambahan" menetapkan batasan-batasan 
+kritis yang sering kali ambigu bagi LLM. \textit{Prompt} ini 
+secara eksplisit mengklarifikasi logika penerapan \textit{timestamp}, 
+terutama untuk kasus "tidak ada aktivitas" dengan memberikan 
+contoh-contoh stempel waktu yang valid (yaitu, sebelum jam batas 
+yang ditentukan). Selain itu, instruksi ini juga sangat menekankan 
+pada aspek integritas data. Model diperintahkan untuk memastikan 
+bahwa lokasi final kartu di dalam sebuah \textit{list} harus 
+secara logis konsisten dengan riwayat yang tercatat pada 
+atribut \texttt{column\_movements} dan \texttt{column\_movement\_times}, 
+sehingga data yang dihasilkan tidak kontradiktif.
+
+Setelah pembuatan \textit{prompt}, dilakukan penggabungan semua instruksi
+\textit{prompt} tersebut dengan menambahkan beberapa tambahan instruksi 
+untuk merapikan serta memperhalus kesinambungan antar \textit{prompt}.
+Hasil akhirnya dapat dilihat pada Gambar \ref{Fig:prompt_pembuatan}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{contents/chapter-3/Prompt_Pembuatan_Data_Sintetis.png}
+  \caption[Contoh gambar]{Diagram Alur Urutan \textit{Prompt} Pembuatan Data Sintetis.}
+  \label{Fig:prompt_pembuatan}
+\end{figure}
+
+\subsubsection{Pembuatan Data Sintetis}
+Tujuan akhir dari \textit{prompt} gabungan ini 
 adalah untuk memandu LLM secara sistematis dalam menghasilkan 
-40 \textit{dataset} papan Kanban. Setiap \textit{dataset} yang 
-dihasilkan harus memenuhi dua kriteria utama: (1) secara teknis 
-valid dan dapat diproses (valid JSON), dan (2) secara fungsional 
-akurat, di mana data di dalamnya harus benar-benar merepresentasikan 
-profil perilaku mahasiswa yang diminta.
+40 \textit{dataset} sintetis papan Kanban. Pembuatan data sintetis
+tersebut akan diserahkan pada model \textbf{ChatGPT 5 Thinking} yang dapat
+secara baik mengikuti instruksi dan menghasilkan file \texttt{.json}
+di bagian luarannya. Berikut adalah contoh hasil luaran data sintetis
+yang telah dibuat.
+
+\lstset{
+    language=Python,
+    basicstyle={\fontsize{8}{10}\selectfont\ttfamily\bfseries},
+    keywordstyle=\color{black}\bfseries,
+    commentstyle=\color{black},
+    stringstyle=\color{black},
+    breaklines=true,
+    showstringspaces=false
+}
+\begin{lstlisting}
+[
+  {
+    "_id": {
+      "$oid": "d17a5b11-e3d7-427f-9f67-8b1a10e43507"
+    },
+    "user_id": {
+      "$oid": "0674118b-fd74-472d-8745-7a0d8b120a9c"
+    },
+    "name": "Papan OOP - MHS_MALAS_SK1",
+    "lists": [
+      {
+        "id": "list1",
+        "title": "Planning (To Do)",
+        "cards": [
+          {
+            "id": "CS101-Konsep_Dasar_dan_Pilar_OOP-MHS_MALAS_SK1_1",
+            "title": "Object Oriented Programming [CS101]",
+            "sub_title": "Konsep Dasar dan Pilar OOP",
+            "created_at": "2025-06-07T08:00:00+00:00",
+            "description": "Memahami fondasi dari OOP dan 4 pilar utamanya.",
+            "deleted": false,
+            "archived": false,
+            "checklists": [
+              {
+                "id": "92b43982-ed23-43f2-ad7e-6992212b1e16",
+                "title": "Tugas untuk Konsep Dasar dan Pilar OOP",
+                "items": [
+                  {
+                    "id": "c8751c49-555e-4990-8539-198b1775f87f",
+                    "text": "Menjelaskan perbedaan paradigma pemrograman prosedural dan OOP.",
+                    "completed": true
+                  },
+                  {
+                    "id": "a7c54bf0-957a-49d6-a3d5-0c4de31b9441",
+                    "text": "Mengidentifikasi serta mendeskripsikan 4 pilar OOP: Enkapsulasi, Abstraksi, Pewarisan, Polimorfisme.",
+                    "completed": false
+                  },
+                  {
+                    "id": "dcef3e0a-1ec3-4a5d-8d2e-9a8b9bc213f5",
+                    "text": "Menerapkan konsep dasar objek dan kelas dalam program sederhana.",
+                    "completed": false
+                  }
+                ]
+              }
+            ],
+            "column_movement_times": {
+              "list1": "2025-06-07T08:00:00+00:00"
+            },
+            "column_movements": []
+          }
+        ]
+      },
+      {
+        "id": "list2",
+        "title": "Monitoring (In Progress)",
+        "cards": []
+      },
+      {
+        "id": "list3",
+        "title": "Controlling (Review)",
+        "cards": []
+      },
+      {
+        "id": "list4",
+        "title": "Reflection (Done)",
+        "cards": []
+      }
+    ]
+  },
+  ...
+]
+\end{lstlisting}
+
+Untuk mempermudah pengambilan data umpan balik dari ahli manusia,
+data sintetis tersebut akan dilakukan transformasi ke bentuk tabel
+yang mudah dipahami dan secara bersamaan tetap memberikan gambaran
+yang utuh mengenai struktur dari papan Kanban pembelajaran mahasiswa.
+Transformasi ini dilakukan dengan menggunakan model LLM 
+\textbf{ChatGPT 5 Thinking} dengan memerintahkan untuk mengkonversi
+data berformat \texttt{JSON} untuk diubah menjadi format tabel yang
+mudah dibaca oleh manusia. Setelah melakukan beberapa iterasi dalam
+eksekusinya, didapatkan hasil akhir dengan contoh pada Tabel \ref{tab:data_sintetis_mahasiswa_tabel}.
+
+\clearpage
+\begin{landscape}
+\scriptsize  % Add this line to reduce font size
+\begin{table}[h]
+\centering
+\caption{Ringkasan Aktivitas Kanban per Mahasiswa}
+\label{tab:data_sintetis_mahasiswa_tabel}
+\begin{tabular}{|p{0.08\linewidth}|p{0.12\linewidth}|p{0.22\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|p{0.08\linewidth}|}
+\hline
+\textbf{MHS} & \textbf{Kolom} & \textbf{Sub-judul} & \textbf{Dibuat (UTC)} & \textbf{Checklist lengkap} & \textbf{Riwayat pergerakan} \\
+\hline
+MHS\_1 & Planning & Prinsip SOLID dan Adaptive Code & 2025-06-05 01:00 &
+\ding{51}\;Menjelaskan dan memberi contoh penerapan dari masing-masing prinsip SOLID.
+\ding{51}\;Melakukan refactoring kode agar sesuai dengan prinsip SOLID.
+\ding{55}\;Menerapkan prinsip desain adaptif dalam proyek mini berbasis OOP. & - \\
+\hline
+MHS\_2 & Planning & Konsep Dasar dan Pilar OOP & 2025-06-07 08:00 &
+
+\ding{51}\;Menjelaskan perbedaan paradigma pemrograman prosedural dan OOP.
+
+\ding{55}\;Mengidentifikasi serta mendeskripsikan 4 pilar OOP: Enkapsulasi, Abstraksi, Pewarisan, Polimorfisme.
+
+\ding{55}\;Menerapkan konsep dasar objek dan kelas dalam program sederhana. & - \\
+
+\hline
+\end{tabular}
+\end{table}
+\end{landscape}
+\clearpage
+
+Tabel tersebut sudah dihilangkan penamaan yang mengindikasikan perilaku 
+mahasiswa seperti "MALAS" dan "RAJIN" karena akan digunakan untuk diberikan
+pada ahli manusia untuk diberikan penilaian umpan balik secara netral.
+
+\subsubsection{Pengambilan Data Umpan Balik Ahli Manusia}
+Data sintetis papan pembelajaran Kanban tersebut setelah 
+ditransformasi ke bentuk tabel, akan diberikan ke ahli manusia
+untuk diberikan penilaian umpan balik nya. Umpan balik yang
+diberikan memiliki tiga jenis, yaitu \textit{feedback}, 
+\textit{motivation}, dan \textit{appreciation}. Untuk
+mempermudah ahli dalam pengisian, data sintetis tersebut
+akan ditampilkan menggunakan platform \textbf{Google Sheets}
+dan menambahkan kolom \textit{feedback} \textit{motivation},
+dan \textit{appreciation} sebagai tempat untuk memberikan umpan
+balik nya. Kuesioner juga dibuatkan agar ahli manusia dapat
+memberikan jawaban sesuai dengan instruksi yang diinginkan.
+Kuesioner dibuat dengan menggunakan platform \textbf{Google Docs}
+agar dapat dengan mudah dibagikan ke ahli manusia. Berikut adalah
+contoh hasil umpan balik yang dihasilkan oleh ahli manusia yang
+sudah dikonversi ke dalam data berformat \texttt{JSON}.
+
+% \lstset{
+%     language=Python,
+%     basicstyle={\fontsize{10}{10}\selectfont\color{black}\ttfamily},
+%     keywordstyle=\color{black}\bfseries,
+%     commentstyle=\color{black},
+%     stringstyle=\color{black},
+%     breaklines=true,
+%     showstringspaces=false,
+    
+%     inputencoding=utf8,     % <-- TAMBAHKAN INI
+%     extendedchars=true      % <-- TAMBAHKAN INI (opsional, tapi disarankan)
+% }
+
+\begin{lstlisting}
+"""
+[
+    {
+    "feedback": "Rutin cek ulang sebelum berpindah topik. Fokus menuntaskan satu kartu sampai `Done` sebelum membuka yang lain. Tuliskan `next step` singkat di setiap perpindahan kolom. Rapikan urutan kerja agar tidak sering ganti konteks. Prioritaskan checklist inti terlebih dahulu.",
+    "motivasi": "Konsistensi akan membuat progresmu terasa. Targetkan minimal satu item selesai per hari. Tingkatkan ritme sedikit demi sedikit. Kamu di jalur yang benar\u2014teruskan. Bangun momentum dengan kemenangan kecil.",
+    "apresiasi": "Good job, tinggal dipertahankan. Upaya step-by-step menunjukkan komitmen. Kamu sudah bergerak ke arah yang tepat. Progres mulai terlihat dan patut diapresiasi. Terus jaga usaha ini agar stabil."
+  },
+  ...
+
+]
+"""
+\end{lstlisting}
 
 % \begin{enumerate}
 % 	\item Perancangan \textit{prompt}
 % 	\begin{itemize}
 % 		\item Menentukan tujuan setiap \textit{prompt} (mis. menghasilkan tugas, status, komentar reflektif).
-% 		\item Menyusun format keluaran yang konsisten (mis. JSON dengan field: id, task, status, timestamp, comment).
+% 		\item Menyusun format luaran yang konsisten (mis. JSON dengan field: id, task, status, timestamp, comment).
 % 		\item Menyertakan instruksi konteks agar output sesuai skenario SRL berbasis Kanban.
 % 	\end{itemize}
 
@@ -697,7 +1235,7 @@ profil perilaku mahasiswa yang diminta.
 % 	\begin{itemize}
 % 		\item Menggunakan ChatGPT untuk membuat contoh papan Kanban berbasis skenario mahasiswa.
 % 		\item Membuat variasi kondisi (mis. beban tugas, tingkat prokrastinasi, interaksi tim).
-% 		\item Menyimpan keluaran dalam berkas \texttt{.json} terstruktur.
+% 		\item Menyimpan luaran dalam berkas \texttt{.json} terstruktur.
 % 	\end{itemize}
 
 % 	\item Pengumpulan \textit{ground truth} ahli
@@ -726,7 +1264,601 @@ profil perilaku mahasiswa yang diminta.
 % 	\end{itemize}
 % \end{enumerate}
 
-\section{Etika, Masalah, dan Keterbatasan Penelitian (Opsional))}
+\subsection{Pemilihan LLMs}
+% Pemilihan LLMs yang akan digunakan dalam penelitian pemberian
+% ini bukan menjadi
+% fokus utama.
 
-Bagian ini membahas pertimbangan etis penelitian dan [potensi] masalah serta
-keterbatasannya. Jika menyangkut penelitian dengan makhluk hidup, maka dibutuhkan adanya \textit{ethical clearance}, di bagian ini hal itu akan dibahas. Demikian juga tentang keterbatasan ataupun masalah yang akan timbul.
+Penelitian ini menggunakan dua model dari keluarga Llama yang 
+tersedia melalui Groq API yaitu \textbf{Llama 3.1 8B Instant} dan 
+Llama 3.3 70B Versatile untuk menghasilkan feedback pedagogis 
+yang mendukung SRL mahasiswa. 
+Pemilihan LLMs yang akan digunakan dalam penelitian
+ini bukan menjadi fokus utama.
+Pemilihan kedua model ini didasarkan pada beberapa pertimbangan.
+
+% Kedua model tersebut diketahui bisa digunakan untuk ....
+
+Keterbatasan sumber daya finansial dan komputasi yang 
+dimiliki peneliti. Justifikasi berbasis 
+\textit{resource constraints} merupakan pendekatan yang valid 
+dalam penelitian akademis pendidikan. Groq API menyediakan 
+kedua model dengan biaya yang kompetitif 
+($0.05-0.08 per juta token untuk 8B dan $0.59-0.79 per 
+juta token untuk 70B), memungkinkan eksperimen dengan volume 
+yang memadai untuk menghasilkan \textit{sufficient} pedagogical 
+variasi dan \textit{robust} statistical analysis. 
+Lebih lanjut, Steinert et al. \cite{steinert2024harnessing} menekankan pentingnya 
+platform sumber terbuka agar teknologi LLM terjangkau dan 
+inklusif. Hal ini mendukung alasan pemilihan model Llama 
+(yang bersifat open-source) jika dibanding model proprietary 
+berbiaya tinggi. Efisiensi biaya ini penting karena 
+memungkinkan penelitian empiris dalam 
+praktik pendidikan yang sering menghadapi \textit{constraint} 
+sumber daya. \cite{groq_pricing}
+
+
+% intinya belum ada yang neliti besar vs kecil
+
+Didapatkan bahwa belum ada studi komparatif yang
+membandingkan model LLM berukuran kecil (8B)
+dengan model berukuran besar (70B) dalam konteks
+pemberian \textit{feedback} pedagogis yang mendukung
+\textit{Self-Regulated Learning} (SRL) mahasiswa.
+% Pertimbangan ilmiah yang kuat untuk mengeksplorasi
+Eksplorasi perbedaan ukuran model adalah penting
+dalam konteks ini karena
+ukuran model LLM akan mempengaruhi sumber daya komputasi, biaya operasional,
+dan kemampuan adaptasi \textit{feedback} yang dihasilkan.
+Penulis ingin menyelidiki bagaimana perbedaan kapasitas
+model ini mempengaruhi kualitas \textit{feedback} yang dihasilkan
+dalam mendukung SRL mahasiswa. Hasil penelitian ini dapat menjawab
+research question mengenai pengaruh ukuran model terhadap
+kualitas \textit{feedback} pedagogis yang dihasilkan.
+
+% Ketiga, kedua model telah terbukti dalam penelitian sebelumnya 
+% mampu menghasilkan pedagogically-sound \textit{feedback} 
+% yang \textit{aligned} dengan prinsip-prinsip pembelajaran. 
+% Studi terbaru (2025) menunjukkan bahwa Llama 3.1 secara 
+% spesifik dapat mengekstrak indikator \textit{feedback} 
+% dengan \textit{alignment} yang signifikan terhadap 
+% \textit{teacher ratings} dalam \textit{learning assessment}. 
+% Penelitian lebih luas menunjukkan bahwa LLM termasuk model 
+% Llama dapat diintegrasikan dalam sistem pedagogical yang 
+% menyediakan \textit{adaptive scaffolding} berbasis teori 
+% kognitif sosial dan \textit{framework} SRL Zimmerman. Dengan 
+% demikian, kedua model dipilih karena \textit{track record} 
+% mereka dalam menghasilkan \textit{feedback} yang mendukung 
+% pembelajaran siswa, khususnya dalam konteks \textit{formative 
+% assessment} dan \textit{self-regulated learning} support.
+
+% Keempat, kedua model berasal dari \textit{family} yang sama 
+% (Llama 3.x) dengan arsitektur serupa dan \textit{context window} 
+% identik (128K tokens), memastikan bahwa ukuran model adalah 
+% variabel utama yang diamati, bukan perbedaan arsitektural 
+% fundamental. Kontrol metodologis ini penting untuk isolasi 
+% variabel, memungkinkan peneliti untuk mengatribusikan perbedaan 
+% dalam kualitas \textit{feedback} semata-mata pada perbedaan 
+% kapasitas model dan bukan pada faktor-faktor teknis lainnya.
+
+% Kelima, berbagai teknik \textit{prompt engineering} yang 
+% akan diterapkan dalam penelitian ini dirancang untuk 
+% mengeksplorasi bagaimana instruksi yang berbeda menghasilkan 
+% tingkat adaptabilitas \textit{feedback} yang berbeda. 
+% Penelitian menunjukkan bahwa kualitas \textit{metacognitive 
+% scaffolding} dan \textit{personalized feedback} dipengaruhi 
+% tidak hanya oleh ukuran model tetapi juga oleh 
+% \textit{design of prompting instructions}. Dengan 
+% membandingkan \textit{prompt engineering} yang berbeda 
+% \textit{across model sizes}, penelitian ini dapat 
+% memberikan \textit{insights} tentang strategi optimal 
+% untuk menghasilkan \textit{feedback} yang lebih efektif 
+% dalam mendukung SRL pada model dengan ukuran berbeda.
+
+% Dengan demikian, pilihan kedua model ini tidak hanya 
+% \textit{feasible} secara praktis dan finansial, tetapi 
+% juga memenuhi persyaratan ilmiah untuk studi komparatif 
+% yang valid mengenai pengaruh ukuran model dan teknik 
+% \textit{prompt engineering} terhadap kualitas 
+% \textit{feedback} pedagogis yang mendukung 
+% \textit{Self-Regulated Learning} mahasiswa. 
+% Penelitian ini berkontribusi pada pemahaman tentang 
+% bagaimana LLM dapat dioptimalkan untuk memberikan 
+% \textit{adaptive scaffolding} dan \textit{metacognitive 
+% support} yang efektif dalam konteks pendidikan.
+
+
+
+% Pemilihan LLMs yang akan digunakan dalam penelitian pemberian
+% ini bukan menjadi
+% fokus utama, namun penulis memilih model LLMs yang memiliki kemampuan
+% untuk mengikuti instruksi \textit{prompt} dengan baik serta dapat
+% m
+
+% Penelitian ini bertujuan untuk mengevaluasi dampak dari berbagai
+% strategi rekayasa \textit{prompt} terhadap kualitas penilaian mahasiswa
+% yang diotomatisasi, dan bagaimana dampak ini dimoderasi oleh ukuran
+% \textit{Large Language Model} (LLM). Untuk menyelidiki pertanyaan
+% ini, dua model dari seri Llama Meta yang di-\textit{hosting} di
+% \textit{Groq API} dipilih untuk analisis komparatif: Llama 3.1 8B Instant
+% dan Llama 3.3 70B Versatile[1].
+% % [1] https://console.groq.com/docs/models 
+
+% Pemilihan ini bersifat metodologis dan disengaja, 
+% didasarkan pada tiga pilar justifikasi.
+
+% Pertama, kedua model ini mewakili titik-titik yang berbeda secara 
+% signifikan pada spektrum biaya-kinerja. Model 8B menawarkan efisiensi 
+% biaya yang tinggi (\$0.05/juta token input) dan kecepatan inferensi 
+% yang superior ($\sim 560-840$ TPS), mewakili skenario yang terbatas 
+% sumber daya[2]. Sebaliknya, model 70B mewakili kinerja canggih (SOTA) dengan 
+% biaya operasional yang $\sim 10-12$ kali lebih tinggi 
+% (\$0.59/juta token input) dan kecepatan yang lebih lambat 
+% ($\sim 280-394$ TPS)[2]. Pilihan ini memungkinkan dilakukannya 
+% analisis biaya-manfaat yang ketat, sebuah pertimbangan strategis 
+% utama dalam penerapan AI praktis[3].
+% % [2] https://console.groq.com/docs/models
+% % [3] https://groq.com/pricing
+
+% Kedua, dan yang paling penting secara teoretis, pemilihan 
+% model 8B (kecil) \textit{versus} 70B (besar) menyediakan kerangka 
+% kerja yang ideal untuk menguji hipotesis inti penelitian ini. 
+% Literatur telah menetapkan bahwa model yang lebih kecil secara 
+% signifikan lebih sensitif terhadap variasi dalam format dan kualitas 
+% \textit{prompt}, sedangkan model yang lebih besar cenderung lebih kuat 
+% (\textit{robust}) dan konsisten terhadap variasi tersebut. Secara paralel, 
+% penelitian menunjukkan bahwa rekayasa \textit{prompt} yang cermat dapat 
+% secara signifikan meningkatkan kinerja model yang lebih kecil hingga 
+% mendekati tingkat model yang lebih besar. Oleh karena itu, penelitian 
+% ini secara eksplisit akan menguji efek interaksi ini: hipotesisnya 
+% adalah bahwa dampak dari intervensi rekayasa \textit{prompt} akan jauh 
+% lebih besar pada Llama 3.1 8B daripada pada Llama 3.3 70B yang sudah kuat.
+
+% Ketiga, pilihan model dan domain tugas ini didukung kuat oleh preseden 
+% akademis. Penelitian terbaru (2024-2025) telah menggunakan model 
+% Llama 3 (termasuk varian 70B) secara ekstensif untuk tugas-tugas 
+% penilaian pendidikan, seperti penilaian pekerjaan rumah dan esai. 
+% Studi-studi ini mengonfirmasi kelayakan penggunaan Llama 70B untuk 
+% tugas-tugas penalaran dan menyoroti peran penting dari '\textit{prompt} 
+% yang dirancang dengan baik' untuk mencapai akurasi yang sebanding 
+% dengan manusia. Penelitian ini berupaya untuk memperluas 
+% temuan-temuan ini dengan secara langsung membandingkan efektivitas 
+% \textit{prompt} antara model SOTA (70B) dan model yang efisien 
+% secara komputasi (8B).
+
+
+\subsection{Metode Peningkatan Hasil Umpan Balik}
+Tahap ini menjelaskan metode-metode yang digunakan untuk
+meningkatkan hasil umpan balik pedagogis yang dihasilkan oleh
+LLMs. Metode-metode ini bertujuan untuk mengoptimalkan
+kualitas umpan balik yang diberikan kepada siswa.
+Peningkatan mutu umpan balik pedagogis dilakukan
+melalui tiga pendekatan utama, yaitu rekayasa konteks
+(\textit{context engineering}), integrasi metode \textit{learning analytics},
+dan pembuatan variasi \textit{prompt}.
+
+\subsubsection{Rekayasa Konteks (\textit{Context Engineering})}
+Pembuatan \textit{prompt} yang kaya akan konteks sangat dilakukan
+dengan mengikuti beberapa tujuan pembuatan. Agar penelitian ini 
+dapat berjalan dengan baik, dibuat beberapa tujuan pembuatan 
+\textit{prompt} yaitu dapat memberikan umpan balik yang jelas, 
+terstruktur, dan bersifat adaptif secara pedagogis, mampu 
+memberikan dorongan untuk meningkatkan efikasi diri (motivasi), 
+serta memandu penetapan tujuan (bimbingan) yang selaras dengan 
+tahapan belajar individual mahasiswa.
+
+Beberapa strategi rekayasa konteks yang diterapkan meliputi:
+\begin{itemize}
+  	\item Penjelasan peran model sebagai \textit{pedagogical feedback
+  	generator} yang mendukung SRL mahasiswa. 
+  	\item Penyertaan data pembelajaran Kanban mahasiswa untuk menyesuaikan
+  	umpan balik berdasarkan kemajuan sebelumnya.
+  	\item Mengikuti ketentuan \textit{theory-driven prompt manual} Subbab \ref{subsection:tinjauan_perbandingan_metode} 
+	untuk mengoptimalkan \textit{prompt}.
+	\item Mengikuti prinsip-prinsip yang diuraikan dalam literatur \cite{Shute2008FocusFormativeFeedback, HattieTimperley2007PowerOfFeedback,
+	DeciRyan1985IntrinsicMotivation, Fredrickson2001BroadenBuild} agar dihasilkan
+	umpan balik feedback, motivation, dan appreciation yang sesuai.
+	\item Format luaran yang terstruktur dalam format \texttt{JSON} untuk
+	memudahkan dilakukan evaluasi.
+	\item \textit{Prompt} tidak boleh melebihi batas konteks (\textit{context length}) model LLM yang digunakan.
+\end{itemize}
+% ...existing code...
+Struktur prompt yang diusulkan terdiri dari beberapa komponen utama 
+yang dirancang untuk memastikan keluaran LLM bersifat pedagogis dan mudah 
+dievaluasi. Komponen tersebut harus memberikan informasi mengenai. 
+Pembagian komponen ini dimaksudkan agar prompt menjadi 
+sistematis sehingga model dapat menghasilkan respons yang relevan, 
+konsisten, dan siap dianalisis.
+% ...existing code...
+\begin{enumerate}
+  	\item \textbf{Definisi Peran dan Persona Inti}: instruksi dasar 
+	yang mengatur identitas, nada, dan batasan utama dari agen penilai.
+  	\item \textbf{Logika Internal dan Rubrik Penilaian}: Rubrik penilaian  internal 
+	yang digunakan agen untuk menganalisis data mentah.
+  	\item \textbf{Informasi Kontekstual}: Pengetahuan domain yang spesifik untuk 
+	tugas pembelajaran
+  	\item \textbf{\textit{Prompt} Penilaian}: Instruksi eksekusi 
+	utama yang menggabungkan semua elemen untuk menghasilkan 
+	respons dengan variasi instruksi tertentu.
+  	\item \textbf{Format Input dan Output}: Templat yang digunakan untuk 
+	memasukkan data dan mendefinisikan format keluaran akhir.
+\end{enumerate}
+
+Untuk lebih detailnya, pembagian struktur \textit{Prompt} tersebut 
+dibahas lebih rinci seperti berikut ini.
+\subsubsection*{Definisi Peran dan Persona Inti}
+% tolong buatkan setidaknya 5 kalimat yang menjelaskan bagian ini.
+Pembuatan \textit{prompt} menggunakan jenis \textit{Role-play}
+untuk mendefinisikan peran dan persona inti dari \textit{Feedback Agent}.
+Bagian ini menetapkan identitas dan batasan utama dari \textit{Feedback Agent}.
+Instruksi ini mengarahkan model untuk berperan sebagai Agen Pedagogis
+yang bertugas membantu dan membimbing mahasiswa dalam proses belajar
+khususnya pada mata kuliah Teknologi Informasi (IT).
+Instruksi ini menekankan pentingnya penggunaan nada bicara yang
+ramah, personal, dan mudah didekati, serta konsisten menggunakan sapaan 'Anda'.
+Selain itu, instruksi ini juga menetapkan batasan-batasan penting
+agar \textit{Feedback Agent} tidak menyimpang dari topik pendidikan atau
+tujuan pembelajaran mahasiswa. Tabel \ref{tab:prompt_definisi} menunjukkan
+contoh potongan \textit{prompt} yang digunakan untuk mendefinisikan
+peran dan batasan \textit{Feedback Agent}.
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt} Definisi Peran dan Batasan Agen Penilai}
+  \label{tab:prompt_definisi} % Saya ubah labelnya menjadi "tab:"
+  
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+		INITIAL_PROMPT = (
+
+			"Anda adalah Agen Pedagogis yang bertugas untuk membantu dan membimbing mahasiswa dalam proses belajar kuliah IT mereka. "
+
+			"Tugas Anda adalah memantau, menyesuaikan strategi jika diperlukan, dan memastikan bahwa mahasiswa tetap termotivasi untuk menyelesaikan pembelajaran mereka. "
+
+			"Gunakan nada bicara yang ramah, personal, mudah didekati, dan konsisten menggunakan sapaan 'Anda'. "
+
+			"Anda harus menanyakan tentang kemajuan belajar mereka untuk memastikan keterlibatan. "
+
+			"Selalu rujuk data papan (nama kartu, isi checklist, perpindahan kolom/waktu) saat memberi saran. "
+
+			"Jangan menyimpang dari topik pendidikan atau tujuan pembelajaran mahasiswa. "
+
+			"Jangan membocorkan jawaban/solusi akhir; gunakan pertanyaan pemandu dan hint bertahap (scaffolding). "
+
+			"Jangan menampilkan label kategori internal kepada mahasiswa."
+
+		)
+	\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+% ki
+
+
+\subsubsection*{Logika Internal dan Rubrik Penilaian}
+% tolong buatkan setidaknya 5 kalimat yang menjelaskan bagian ini.
+Bagian ini menyajikan logika internal dan rubrik penilaian
+yang digunakan oleh \textit{Feedback Agent} untuk menganalisis data
+pembelajaran mahasiswa. Rubrik ini mendefinisikan kriteria
+yang digunakan untuk mengkategorikan perilaku belajar mahasiswa
+berdasarkan aktivitas mereka pada papan Kanban. Rubrik ini mencakup lima kategori
+perilaku belajar, mulai dari "Malas" hingga "Sangat Rajin",
+dengan kriteria spesifik yang mengacu pada jumlah kartu,
+jumlah item checklist yang diselesaikan, dan frekuensi perpindahan
+kolom dalam jangka waktu tertentu. Tabel \ref{tab:prompt_kriteria} menunjukkan
+contoh potongan \textit{prompt} yang digunakan untuk menyajikan
+logika internal dan rubrik penilaian \textit{Feedback Agent}.
+
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt} Kriteria Mahasiswa}
+  \label{tab:prompt_kriteria} % Saya ubah labelnya menjadi "tab:"
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+		KRITERIA_MAHASISWA= (
+
+			"Catatan: Kategori ini HANYA untuk penalaran internal model, JANGAN disebutkan ke mahasiswa.\n\n"
+
+			"Kategori: Malas\n"
+
+			"- Papan JSON 1-2 kartu; tiap kartu 3 checklist; total 0-2 item dicentang/kartu; tidak ada perpindahan $\\leq$2 jam terakhir.\n\n"
+
+			"Kategori: Sedikit Malas\n"
+
+			"- Papan JSON 3-4 kartu; tiap kartu 3 checklist; total 0-2 item dicentang/kartu; tidak ada perpindahan $\\leq$2 jam terakhir.\n\n"
+
+			"Kategori: Cukup\n"
+
+			"- Papan JSON 4-5 kartu; tiap kartu 3 checklist; total 1-2 item dicentang/kartu; ada \\geq 3 perpindahan dalam \\leq 2 jam terakhir.\n\n"
+
+			"Kategori: Rajin\n"
+
+			"- Tepat 5 kartu; tiap kartu 3 checklist; total 2-3 dicentang/kartu; hanya 1 kartu di Planning, sisanya di kolom lain.\n\n"
+
+			"Kategori: Sangat Rajin\n"
+
+			"- Tepat 5 kartu; tiap kartu 3 checklist dan semua dicentang; semua 5 kartu di 'Reflection (Done)'."
+
+		)
+	\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+Selain itu, bagian ini juga menyajikan logika internal
+yang menghubungkan kolom pada papan Kanban dengan fase
+pembelajaran mahasiswa. Setiap kolom pada papan Kanban
+dikaitkan dengan fase pembelajaran tertentu, yaitu
+Perencanaan, Pemantauan, Pengendalian, dan Refleksi. 
+Tabel \ref{tab:prompt_fase} menunjukkan
+contoh potongan \textit{prompt} yang digunakan untuk menyajikan
+logika internal penghubung kolom dengan fase pembelajaran.
+
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt} Fase Pembelajaran Mahasiswa}
+  \label{tab:prompt_fase} % Saya ubah labelnya menjadi "tab:"
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+		FASE_SRL_KOLOM= (
+
+			"Hubungan kolom dengan fase pembelajaran:\n"
+
+			"* List1: 'Planning (To Do)' - fase perencanaan.\n"
+
+			"* List2: 'Monitoring (In Progress)' - fase pemantauan progres.\n"
+
+			"* List3: 'Controlling (Review)' - fase kontrol & penyesuaian tugas.\n"
+
+			"* List4: 'Reflection (Done)' - fase refleksi & penandaan selesai."
+
+		)
+	\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+\subsubsection*{Informasi Kontekstual}
+% tolong buatkan setidaknya 5 kalimat yang menjelaskan bagian ini.
+Bagian ini menyajikan informasi kontekstual yang relevan
+untuk mendukung proses penilaian oleh \textit{Feedback Agent}.
+Informasi ini mencakup daftar materi pembelajaran
+yang dapat diambil oleh mahasiswa, termasuk mata kuliah
+dan sub-topik yang tersedia. Daftar materi ini
+memberikan konteks tambahan bagi \textit{Feedback Agent}
+untuk memahami ruang lingkup pembelajaran mahasiswa.
+Tabel \ref{tab:prompt_listmateri} menunjukkan
+contoh potongan \textit{prompt} yang digunakan untuk menyajikan
+daftar materi pembelajaran mahasiswa.
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt} Daftar Materi Mahasiswa}
+  \label{tab:prompt_listmateri} % Saya ubah labelnya menjadi "tab:"
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+		LIST_MATERI_MAHASISWA = """
+
+			List Materi yang dapat diambil oleh mahasiswa:
+
+			a. Mata Kuliah: Object Oriented Programming [CS101]
+
+			b. Sub Topik ada 5 (boleh ambil kurang tp maksimal 5):
+
+			- Konsep Dasar dan Pilar OOP
+
+			- Perancangan Kelas dan Interaksi Objek
+
+			- Enkapsulasi, Inheritance, dan Polimorfisme
+
+			- Prinsip SOLID dan Adaptive Code
+
+			- Kolaborasi Objek dan Pengorganisasian Kode
+
+
+
+		"""
+	\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+List materi ini diharapkan dapat membantu \textit{Feedback Agent}
+dalam memberikan umpan balik yang lebih relevan dan kontekstual
+terhadap aktivitas pembelajaran mahasiswa. Namun, bagian ini juga
+menambahkan \textit{context length} yang lebih besar untuk
+memungkinkan pemrosesan informasi yang lebih kompleks. Hal ini
+dapat mempengaruhi performa model LLM, terutama untuk model
+dengan kapasitas konteks yang lebih kecil. Oleh karena itu,
+bagian ini menjadi variasi dalam rekayasa konteks yang
+akan dieksplorasi dalam penelitian ini.
+
+\subsubsection*{\textit{Prompt} Penilaian}
+% tolong buatkan setidaknya 5 kalimat yang menjelaskan bagian ini.
+Bagian ini menyajikan \textit{prompt} penilaian utama
+yang menggabungkan semua komponen sebelumnya untuk
+menghasilkan respons umpan balik pedagogis. \textit{Prompt} ini memberikan instruksi
+terperinci kepada \textit{Feedback Agent} tentang bagaimana
+menggunakan data pembelajaran mahasiswa, rubrik penilaian, dan informasi kontekstual
+untuk menghasilkan umpan balik yang relevan dan konstruktif. \textit{Prompt} ini menekankan pentingnya
+penggunaan bahasa yang jelas, lugas, dan mudah dipahami, serta
+menyediakan pedoman spesifik untuk format keluaran
+yang diharapkan. Bagian ini juga menegaskan kembali
+pentingnya memberikan umpan balik yang bersifat
+analitis, berbasis bukti, dan konstruktif, serta
+menyertakan elemen motivasi yang sesuai dengan
+prinsip Self-Determination Theory.
+Bagian ini akan memiliki variasi dalam rekayasa konteks
+dengan menyertakan atau menghilangkan informasi
+kontekstual untuk mengevaluasi dampaknya terhadap
+kualitas umpan balik yang dihasilkan.
+Tabel \ref{tab:prompt_penilaian} menunjukkan
+contoh potongan \textit{prompt} yang digunakan untuk menyajikan
+\textit{prompt} penilaian \textit{Feedback Agent}.
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt} Penilaian Umpan Balik Pedagogis}
+  \label{tab:prompt_penilaian} % Saya ubah labelnya menjadi "tab:"
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+		ASSESSMENT_PROMPT= (
+
+			"Anda adalah seorang dosen yang mengevaluasi mahasiswa dalam proses pembelajaran. "
+
+			"Tugas Anda: beri komentar objektif dan konstruktif berdasarkan data.\n\n"
+
+			"Fase-kolom:\n{FASE_SRL_KOLOM}\n\n"
+
+			"Informasi kategori internal (untuk penalaran saja, jangan disebutkan ke mahasiswa):\n{KRITERIA_MAHASISWA}\n\n"
+
+			"Kriteria Output (WAJIB):\n"
+
+			"- Pastikan semua respons menggunakan bahasa yang jelas, lugas, dan mudah dipahami.\n"
+
+			"- Berikan 'feedback' yang berisi analisis singkat, bukti dari data, dan langkah berikutnya yang konstruktif.\n"
+
+			"- Berikan 'motivasi' yang singkat, empatik, dan berdasarkan prinsip Self-Determination Theory:\n"
+
+			" - Dukung Otonomi: Tawarkan pilihan atau ajukan pertanyaan reflektif, jangan hanya memerintah. Contoh: 'Ada dua kartu prioritas, A atau B. Menurut Anda, mana yang ingin diselesaikan dulu?'\n"
+
+			" - Tingkatkan Kompetensi: Kaitkan progres dengan kemampuan spesifik yang ditunjukkan. Contoh: 'Cara Anda memecah tugas di kartu X menunjukkan kemampuan perencanaan yang baik.'\n"
+
+			" - Jaga Keterhubungan: Tunjukkan pemahaman jika ada tanda-tanda kesulitan dari data.\n"
+
+			"- Jangan berikan solusi/jawaban langsung.\n"
+
+			"- Keluarkan HANYA JSON dengan kunci 'feedback','motivasi','apresiasi', tanpa teks lain, dalam Bahasa Indonesia baku ('Anda')."
+
+		)
+	\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+\subsubsection*{Format Input dan Output}
+% tolong buatkan setidaknya 5 kalimat yang menjelaskan bagian ini.
+Bagian ini menyajikan format input dan output
+yang digunakan dalam \textit{prompt} penilaian. Format input
+menyediakan struktur yang jelas untuk memasukkan data
+pembelajaran mahasiswa, termasuk indikator ringkas,
+analitik mahasiswa dalam format JSON, dan data papan
+Kanban dalam format JSON mentah. Format output
+menyediakan struktur yang jelas untuk menyajikan umpan
+balik yang dihasilkan oleh sistem.
+Bagian ini menegaskan pentingnya konsistensi
+dalam format input dan output untuk memastikan
+integritas data dan kemudahan evaluasi.
+Terdapat variasi dalam rekayasa konteks
+dengan menyesuaikan format input untuk
+mengakomodasi data tambahan atau pengurangan.
+Tabel \ref{tab:prompt_format_input_output}
+menunjukkan contoh format input dan output yang digunakan
+dalam \textit{prompt} penilaian.
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{\textit{Prompt} Format Input dan Output}
+  \label{tab:prompt_format_input_output} % Saya ubah labelnya menjadi "tab:"
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+		FORMAT_RESPONSE = (
+
+			"{\n"
+
+			" \"feedback\": \"...\",\n"
+
+			" \"motivasi\": \"...\",\n"
+
+			" \"apresiasi\": \"...\"\n"
+
+			"}\n"
+
+		)
+
+		USER_PROMPT_LA_DATA = (
+
+			"Gunakan indikator ringkas berikut sebagai dasar alasan (jangan salin mentah-mentah). "
+
+			"Tetap keluarkan hasil dalam Bahasa Indonesia berupa JSON sesuai format.\n\n"
+
+			"Indikator ringkas mahasiswa (LA): {INDIKATOR_RINGKAS}\n"
+
+			"Analitik mahasiswa (JSON):\n{ANALISIS_JSON}\n\n"
+
+			"Data papan mahasiswa (JSON mentah):\n{DATA}\n\n"
+
+			"Format keluaran (persis):\n"
+
+			"{FORMAT_RESPONSE}"
+
+		)
+	\end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+
+\subsubsection{Integrasi Metode \textit{Learning Analytics}}
+Integrasi metode \textit{learning analytics} memungkinkan pengumpulan dan analisis data tentang interaksi siswa dengan materi pembelajaran. Dengan memanfaatkan data ini, umpan balik dapat disesuaikan secara dinamis untuk memenuhi kebutuhan individu siswa, meningkatkan relevansi dan dampaknya.
+
+
+
+\subsubsection{Pembuatan Variasi \textit{Prompt}}
+Pembuatan variasi \textit{prompt} melibatkan pengembangan berbagai versi \textit{prompt} yang digunakan untuk menghasilkan umpan balik. Dengan menciptakan variasi ini, diharapkan dapat meningkatkan keberagaman dan kedalaman umpan balik yang diberikan kepada siswa, serta mendorong eksplorasi yang lebih luas terhadap materi pembelajaran.
+
+% \section{Etika, Masalah, dan Keterbatasan Penelitian (Opsional))}
+
+% Bagian ini membahas pertimbangan etis penelitian dan [potensi] masalah serta
+% keterbatasannya. Jika menyangkut penelitian dengan makhluk hidup, maka dibutuhkan adanya \textit{ethical clearance}, di bagian ini hal itu akan dibahas. Demikian juga tentang keterbatasan ataupun masalah yang akan timbul.
