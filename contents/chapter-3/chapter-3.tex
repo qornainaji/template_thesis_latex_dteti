@@ -1,10 +1,12 @@
 \chapter{Metode Penelitian}
 
 Bab ini menjelaskan metode atau cara yang digunakan dalam penelitian ini untuk 
-mencapai maksud dan tujuan seperti yang tertulis dalam sub-bab 1.3 yaitu:
+mencapai maksud dan tujuan seperti yang tertulis dalam Subbab \ref{subsection:tujuan_penelitian} yaitu:
 \begin{enumerate}
-	\item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
-	yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
+	\item Merancang metode yang sesuai untuk meningkatkan performa LLM dalam memberikan 
+  	umpan balik terhadap proses SRL mahasiswa yang direpresentasikan melalui data papan Kan
+	% \item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
+	% yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
 	% \item Mengevaluasi secara empiris apakah adanya peningkatan kualitas umpan balik 
 	% LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
 	% balik ahli manusia.
@@ -118,9 +120,180 @@ penelitian ini adalah sebagai berikut:
 
 
 \section{Metode yang Digunakan}
-\subsection{Evaluasi Kualitas Umpan Balik LLM}
+\subsection{Metode Pembuatan Data Sintetis}
+Penelitian ini memerlukan sebuah \textit{dataset} 
+khusus yang mampu merefleksikan proses belajar 
+mahasiswa dalam platform \textit{learning analytics} 
+berbasis Kanban, sekaligus memiliki \textit{ground truth} 
+pedagogis berkualitas tinggi. Karena \textit{dataset} 
+publik dengan spesifikasi tersebut tidak tersedia, 
+dirancang sebuah metodologi komprehensif untuk 
+pembuatan data sintetis. Proses ini bertujuan untuk 
+menghasilkan \textit{dataset} yang realistis dan 
+bervariasi, yang mencakup dua komponen utama: 
+(1) data jejak digital (\textit{digital trace data}) 
+mahasiswa dalam format \texttt{JSON} yang 
+merepresentasikan aktivitas papan Kanban mereka, dan 
+(2) data umpan balik ahli manusia yang selaras 
+dengan setiap data jejak tersebut.
+
+Gambaran besar dari metodologi ini dimulai 
+dengan analisis mendalam terhadap platform 
+pembelajaran Gamatutor \cite{azmi2025pengembangan}. 
+Analisis ini berfokus pada dekonstruksi skema 
+\textit{database} MongoDB yang ada untuk 
+mengidentifikasi atribut-atribut kunci yang merefleksikan 
+proses SRL mahasiswa, seperti yang terlihat pada 
+Gambar \ref{Fig:schema_kanban_mongodb}. Untuk memfokuskan 
+proses generasi data, skema ini kemudian direduksi 
+menjadi komponen-komponen yang paling esensial, 
+sebagaimana dirinci dalam Gambar 
+\ref{Fig:schema_kanban_mongodb_reduksi}.
+
+Langkah krusial berikutnya adalah mendefinisikan 
+realisme perilaku. Untuk menangkap spektrum 
+keterlibatan mahasiswa yang luas, dirumuskan 
+lima kategori profil perilaku yang berbeda, mulai 
+dari \texttt{"MALAS"} hingga \texttt{"SANGAT RAJIN"}. 
+Setiap profil ini dioperasionalkan ke dalam serangkaian 
+aturan studi kasus yang ketat, yang menentukan variabel 
+terukur seperti jumlah total kartu, persentase 
+penyelesaian \textit{checklist}, dan aktivitas pergerakan 
+kartu terbaru.
+
+Untuk memastikan relevansi konten, \textit{dataset} 
+ini juga dibatasi pada satu domain mata kuliah tertentu, 
+yaitu Pemrograman Berbasis Objek (OOP). Lima subtopik 
+spesifik dari mata kuliah ini telah didefinisikan, lengkap 
+dengan tujuan pembelajaran dan \textit{checklist items} 
+yang mendetail, seperti yang dipaparkan pada 
+Tabel \ref{tab:ringkasan_topik_oop}.
+
+Seluruh aturan ini mencakup skema data, profil perilaku, 
+dan batasan konten yang kemudian ditransformasi menjadi 
+serangkaian \textit{prompt} instruksi yang sangat t
+erstruktur. \textit{Prompt} ini dirancang menggunakan 
+teknik \textit{prompt engineering} lanjutan, termasuk 
+\textit{role-play}, \textit{Few-shot} untuk memberikan 
+contoh format \texttt{JSON} yang diharapkan, dan 
+\textit{Chain-of-Thought} (CoT) untuk memandu logika 
+penalaran LLM.
+
+Menggunakan \textit{prompt} gabungan ini 
+[Gambar \ref{Fig:prompt_pembuatan}], sebuah model 
+LLM (ChatGPT 5 Thinking) ditugaskan untuk menghasilkan 
+40 \textit{dataset} papan Kanban sintetis yang unik 
+dan valid.[1] Setelah data \texttt{JSON} mentah 
+berhasil dibuat, proses dilanjutkan ke tahap 
+pengumpulan \textit{ground truth}. Data \texttt{JSON} 
+yang kompleks tersebut ditransformasi oleh LLM menjadi 
+format tabel yang mudah dibaca manusia, dengan 
+menghilangkan label kategori untuk memastikan 
+penilaian yang netral.
+
+Terakhir, data tabular ini disajikan kepada ahli 
+manusia (dosen) melalui Google Sheets dan kuesioner 
+Google Docs. Para ahli kemudian memberikan umpan balik 
+pedagogis terstruktur yang mencakup tiga 
+fungsi utama: \textit{feedback}, \textit{motivation}, 
+dan \textit{appreciation}. Kumpulan umpan balik ahli 
+inilah yang akan menjadi \textit{ground truth} definitif 
+untuk melatih dan mengevaluasi agen LLM dalam penelitian 
+ini. Sub-bab berikutnya akan menguraikan setiap langkah 
+dalam alur kerja pembuatan \textit{dataset} ini secara 
+lebih rinci.
+
+\subsection{Metode Peningkatan Hasil Umpan Balik}
+Untuk menjawab rumusan masalah penelitian, bagian 
+ini merinci metodologi yang digunakan untuk 
+meningkatkan kualitas umpan balik pedagogis 
+yang dihasilkan oleh LLMs agar mendekati standar 
+ahli manusia. Alur peningkatan ini tidak bergantung 
+pada satu teknik tunggal, melainkan merupakan 
+pendekatan multifaset yang sistematis. Metodologi 
+ini didasarkan pada tiga pilar utama yang akan 
+diuraikan dalam sub-bab berikut: 
+(1) rekayasa konteks (\textit{context engineering}) 
+secara mendalam, 
+(2) integrasi metode \textit{learning analytics} 
+yang bersifat deskriptif, dan 
+(3) perancangan eksperimen variasi \textit{prompt} 
+untuk menguji dampak setiap perlakuan.
+
+Pilar pertama, \textit{context engineering}, 
+berfokus pada perancangan \textit{prompt} dasar 
+(\textit{baseline}) yang kuat secara teoretis. 
+\textit{Prompt} ini dirancang untuk memenuhi 
+tujuan-tujuan pedagogis spesifik, seperti memberikan 
+bimbingan adaptif dan meningkatkan efikasi diri, yang 
+berlandaskan pada literatur psikologi pendidikan 
+\cite{Shute2008FocusFormativeFeedback, 
+HattieTimperley2007PowerOfFeedback, 
+DeciRyan1985IntrinsicMotivation}. Untuk memastikan 
+struktur dan konsistensi, \textit{prompt} ini dibagi 
+menjadi lima komponen logis: Definisi Peran, Logika 
+Internal, Informasi Kontekstual, \textit{Prompt} 
+Penilaian, dan Format Input/Output. Kualitas dari 
+arsitektur \textit{prompt} ini kemudian divalidasi 
+menggunakan \textit{theory-driven prompt manual} 
+\cite{jacobsen2025promises}, di mana \textit{prompt} 
+yang digunakan dalam penelitian ini berhasil mencapai 
+skor 13 dari 16, yang termasuk dalam kategori "Tinggi".
+
+Pilar kedua adalah integrasi \textit{learning analytics} 
+untuk menyuntikkan kesadaran situasional 
+(\textit{situational awareness}) ke dalam model. 
+Pendekatan ini mentransformasi data mentah \texttt{JSON} 
+papan Kanban mahasiswa menjadi \textit{insight} yang 
+dapat ditindaklanjuti. Dengan menerapkan 
+\textit{Descriptive Analytics}, serangkaian 
+12 indikator kunci—seperti \texttt{aging\_wip\_h}, 
+\texttt{stuck}, dan \texttt{alerts}—diekstraksi dari 
+data papan. Indikator-indikator ini didasarkan pada 
+praktik manajemen Kanban yang telah mapan 
+\cite{AndersonCarmichael2016EKC, 
+Pisoni_TrelloDynamics_Unknown} dan dikalibrasi 
+dengan ambang batas 2 jam yang relevan dengan studi 
+kasus penelitian. Alur proses analitik ini 
+[Gambar \ref{fig:descriptive_analytics}] menghasilkan 
+sebuah ringkasan analitik yang padat, yang kemudian 
+dimasukkan ke dalam \textit{prompt} untuk memungkinkan 
+LLM memberikan umpan balik yang terpersonalisasi 
+berdasarkan data.
+
+Pilar ketiga adalah pembuatan variasi \textit{prompt} 
+untuk mengukur efektivitas dari dua pilar pertama secara 
+empiris. Seperti yang diilustrasikan pada Gambar 
+\ref{fig:uji_coba_variasi}, sebuah eksperimen sistematis 
+dirancang untuk membandingkan empat kondisi \textit{prompt} 
+yang berbeda. Variasi ini mencakup: (1) 
+\textit{Baseline Prompt}, (2) \textit{Prompt} 
+dengan tambahan konteks "Lis Materi", (3) 
+\textit{Prompt} yang diperkaya dengan data 
+\textit{learning analytics}, dan (4) \textit{Prompt} 
+yang menggabungkan \textit{learning analytics} dengan 
+mekanisme \textit{ReAct} (\textit{Reasoning} + 
+\textit{Acting}). Mekanisme \textit{ReAct} ini, yang 
+diimplementasikan menggunakan \textit{framework} 
+LangGraph [Gambar \ref{fig:react_la_flow}], dirancang 
+untuk memaksa model melakukan penalaran internal 
+terhadap data analitik sebelum menghasilkan keluaran.
+
+Seluruh eksperimen ini akan dijalankan pada dua model 
+LLM dengan ukuran berbeda, yaitu Llama 3.1 8B Instant 
+dan Llama 3.3 70B Versatile. Tujuan akhirnya adalah 
+untuk menganalisis secara kuantitatif dan kualitatif 
+dampak dari setiap strategi peningkatan—konteks, 
+\textit{learning analytics}, dan \textit{ReAct} terhadap 
+kualitas umpan balik pedagogis yang dihasilkan, 
+sekaligus menjawab pertanyaan penelitian mengenai 
+pengaruh ukuran model.
+
+\subsection{Metode Evaluasi Kualitas Umpan Balik LLM}
+\label{subsection:evaluasi_kualitas_LLM}
 Penelitian ini menggunakan desain eksperimen untuk 
-menilai kualitas \textit{context engineering} yang digabungkan dengan 
+melakukan perbandingan dan menilai kualitas 
+dari beberapa variasi \textit{context engineering} yang digabungkan dengan 
 \textit{learning-analytics} dalam 
 meningkatkan mutu umpan balik LLM berbahasa Indonesia pada 
 skenario SRL berbasis papan Kanban. Setiap variasi \textit{context engineering}
@@ -135,7 +308,7 @@ antara respons LLM dengan data umpan balik ahli manusia
 \textit{(ground truth)} [32, 33]. Selain itu, evaluasi relevansi juga 
 dilakukan menggunakan pendekatan \textit{LLM-as-a-Judge} 
 yang terstruktur [24, 25]. Di sisi lain, pengujian 
-kualitatif—yang merupakan standar emas Subbab \ref{subsection:tinjauan_evaluasi_kualitatif} yang
+kualitatif yang merupakan standar emas Subbab \ref{subsection:tinjauan_evaluasi_kualitatif} yang
 melibatkan peninjauan langsung oleh pakar psikologi pendidikan [33]. 
 Pakar ini menilai keluaran LLM menggunakan rubrik penilaian 
 komprehensif yang didasarkan pada kerangka teoretis mapan 
@@ -292,7 +465,7 @@ dan \textit{checklist} progres. Fitur utamanya meliputi pembuatan
 dan pengelolaan kartu tugas, pemantauan \textit{progress} melalui 
 \textit{learning analytics}, serta manajemen profil pengguna.
 
-Untuk satu kartunya merepresentasikan satu sub-topik dari salah satu mata kuliah.
+Untuk satu kartunya merepresentasikan satu subtopik dari salah satu mata kuliah.
 Jadi mahasiswa bisa membuat banyak kartu untuk mata kuliah yang sama.
 Untuk mengakses detail informasi-informasi tersebut, pengguna (mahasiswa)
 dapat melihatnya pada tiap-tiap kartu dengan menekan kartunya. Tampilan 
@@ -312,7 +485,7 @@ mahasiswa dalam menerapkan SRL (seperti: \textit{Start Timer},
 \textit{Checklists}, dan "Add Link") serta secara bersamaan 
 memberikan data proses yang kaya untuk \textit{learning analytics}. 
 Data ini mencakup \textit{Total study time} (yang dihasilkan dari fitur 
-\textit{Start Timer}), progres penyelesaian tugas melalui Checklists, 
+\textit{Start Timer}), progres penyelesaian tugas melalui \textit{Checklists}, 
 hingga data metakognitif dan performa seperti \textit{Priority, 
 Difficulty, Learning Strategy} yang dipilih, serta nilai \textit{Pre-test 
 Grade} dan \textit{Post-test Grade}. Kumpulan data proses inilah yang dapat 
@@ -358,12 +531,12 @@ aktif (di kolom "In Progress"), atau bahkan mendeteksi adanya revisi. Terdapat j
 atribut \texttt{notes} yang berisikan catatan dari mahasiswa ketika kartu
 sudah berada di tahap \textit{Controlling (Review)}. Isi catatan ini bisa menjadi
 gambaran penting tentang rangkuman pembelajaran yang dilakukan mahasiswa terhadap 
-sub-topik tersebut yang menjadikannya data yang cukup penting.
+subtopik tersebut yang menjadikannya data yang cukup penting.
 
 Atribut lain yang relevan adalah \texttt{checklists} untuk melihat progres 
 granular pengerjaan sub-tugas, \texttt{learning\_strategy} untuk 
 memahami pendekatan belajar yang dipilih mahasiswa, dan \texttt{rating} untuk
-memberikan penilaian terhadap pengalaman belajar terhadap sub-topik yang dipelajari.
+memberikan penilaian terhadap pengalaman belajar terhadap subtopik yang dipelajari.
 Kombinasi dari atribut-atribut inilah yang memberikan gambaran komprehensif 
 mengenai pola dan kemampuan belajar mahasiswa.
 
@@ -512,7 +685,7 @@ ini secara eksplisit merinci batasan untuk setiap variabel,
 termasuk jumlah kartu yang harus dibuat, syarat penyelesaian 
 \textit{checklist}, dan aturan mengenai aktivitas pergerakan kartu.
 Terdapat sedikit penambahan aturan pada pembuatan \textit{prompt}
-yaitu adanya waktu kapan dibuatnya kartu sub-topik tersebut.
+yaitu adanya waktu kapan dibuatnya kartu subtopik tersebut.
 Contoh \textit{prompt} lengkap yang telah diformulasikan untuk 
 agen generator tersebut dapat dilihat secara rinci pada potongan
 snipet pada Tabel \ref{tab:prompt_studi_kasus_generator}.
@@ -599,11 +772,11 @@ Kategori: Sedikit Malas
 %--- SELESAI LINGKUNGAN TABEL ---
 \clearpage
 Selanjutnya, untuk memperkecil topik pembelajaran yang akan dibuat pada
-data sintetisnya, dibatasi satu mata kuliah saja dengan 5 sub-topik yang
-dapat diambil. Pembuatan batasan sub-topik harus memiliki aturan yang
+data sintetisnya, dibatasi satu mata kuliah saja dengan 5 subtopik yang
+dapat diambil. Pembuatan batasan subtopik harus memiliki aturan yang
 perlu diberikan ke model LLM pembuat data sintetis tersebut. Hal ini agar
 model dapat memberikan data luaran yang baik serta variasi yang beragam
-dengan batasan yang jelas. Tabel \ref{tab:ringkasan_topik_oop} menunjukkan batasan sub-topik
+dengan batasan yang jelas. Tabel \ref{tab:ringkasan_topik_oop} menunjukkan batasan subtopik
 yang akan diberikan pada data sintetis.
 
 \begin{table}[H]
@@ -693,10 +866,10 @@ yang akan diberikan pada data sintetis.
 Tabel \ref{tab:ringkasan_topik_oop} merincikan batasan konten 
 pembelajaran yang digunakan dalam penelitian ini. Fokus mata kuliah 
 dikerucutkan pada Pemrograman Berbasis Objek (\textit{Object Oriented 
-Programming} atau OOP). Tabel tersebut menjabarkan lima sub-topik 
+Programming} atau OOP). Tabel tersebut menjabarkan lima subtopik 
 utama yang akan digunakan sebagai materi kartu tugas, mulai dari 
 "Konsep Dasar dan Pilar OOP" hingga "Kolaborasi Objek". Untuk setiap 
-sub-topik, dirinci pula tujuan pembelajaran serta daftar \textit{checklist 
+subtopik, dirinci pula tujuan pembelajaran serta daftar \textit{checklist 
 items} yang spesifik. Rincian \textit{checklist} ini berkaitan dengan atribut
 \texttt{checklist} berfungsi sebagai 
 representasi tugas-tugas mendetail yang harus diselesaikan mahasiswa. 
@@ -705,13 +878,13 @@ diterjemahkan menjadi bagian dari \textit{prompt} instruksi yang
 diberikan kepada model LLM pembuat data sintetis, guna memastikan 
 setiap \textit{dataset} yang dihasilkan tetap relevan dan fokus pada 
 materi pembelajaran yang telah ditentukan. \textit{Prompt} dari tabel tersebut 
-dapat dilihat pada Tabel \ref{tab:prompt_batasab_sub}.
+dapat dilihat pada Tabel \ref{tab:prompt_batasan_sub}.
 
 \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
   \centering
   
   % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{\textit{Prompt} untuk Batasan Sub-topik Materi Pembelajaran Mahasiswa}
+  \caption{\textit{Prompt} untuk Batasan Subtopik Materi Pembelajaran Mahasiswa}
   \label{tab:prompt_batasan_sub} % Saya ubah labelnya menjadi "tab:"
   
   % Gunakan minipage untuk "membungkus" listing dengan aman
@@ -1427,7 +1600,7 @@ kualitas \textit{feedback} pedagogis yang dihasilkan.
 % secara komputasi (8B).
 
 
-\subsection{Metode Peningkatan Hasil Umpan Balik}
+\subsection{Alur Peningkatan Hasil Umpan Balik}
 Tahap ini menjelaskan metode-metode yang digunakan untuk
 meningkatkan hasil umpan balik pedagogis yang dihasilkan oleh
 LLMs. Metode-metode ini bertujuan untuk mengoptimalkan
@@ -1651,7 +1824,7 @@ Bagian ini menyajikan informasi kontekstual yang relevan
 untuk mendukung proses penilaian oleh \textit{Feedback Agent}.
 Informasi ini mencakup daftar materi pembelajaran
 yang dapat diambil oleh mahasiswa, termasuk mata kuliah
-dan sub-topik yang tersedia. Daftar materi ini
+dan subtopik yang tersedia. Daftar materi ini
 memberikan konteks tambahan bagi \textit{Feedback Agent}
 untuk memahami ruang lingkup pembelajaran mahasiswa.
 Tabel \ref{tab:prompt_listmateri} menunjukkan
@@ -1698,7 +1871,7 @@ daftar materi pembelajaran mahasiswa.
 
 \end{table}
 
-List materi ini diharapkan dapat membantu \textit{Feedback Agent}
+Lis materi ini diharapkan dapat membantu \textit{Feedback Agent}
 dalam memberikan umpan balik yang lebih relevan dan kontekstual
 terhadap aktivitas pembelajaran mahasiswa. Namun, bagian ini juga
 menambahkan \textit{context length} yang lebih besar untuk
@@ -1849,14 +2022,629 @@ dalam \textit{prompt} penilaian.
 
 \end{table}
 
+\subsubsection*{Penilaian Kualitas \textit{Prompt}}
+Dari semua komponen di atas, dilakukan penilaian kualitas
+\textit{prompt} yang telah dibuat berdasarkan kriteria 
+dari literatur \cite{jacobsen2025promises} yaitu 
+\textit{theory-driven prompt manual} di mana akan di hasilkan nilai
+skor dari 0 hingga 2 untuk setiap sub berikut:
+\begin{itemize}
+	\item Context:
+		\begin{itemize}
+			\item Role
+			\item Target audience
+			\item Medium/channel
+		\end{itemize}
+	\item Mission:
+		\begin{itemize}
+			\item Mission/question
+		\end{itemize}
+	\item Clarity dan specificity:
+		\begin{itemize}
+			\item Format and constraints
+			\item Conciseness
+			\item Domain specificity
+			\item Logic
+		\end{itemize}
+\end{itemize}
+
+Berdasarkan literatur tersebut, penilaian kualitas
+\textit{prompt} dilakukan oleh penulis literatur itu sendiri
+yaitu Jacobsen et al. (2025). Hasil dari komponen \textit{prompt}
+yang digunakan dalam penelitian ini beserta analisisnya akan
+disajikan pada Tabel \ref{tab:analisis_prompt} sebagai berikut.
+
+
+\begin{table}[htbp]
+\centering
+\caption{Penilaian Kualitas Prompt}
+\label{tab:analisis_prompt}
+\scriptsize
+\begingroup
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.2}
+
+\begin{tabularx}{\textwidth}{@{} p{5.0cm} p{1.0cm} X @{}}
+\hline
+\textbf{Subkategori} & \textbf{Skor} & \textbf{Justifikasi} \\
+\hline
+
+Context -- Role & 1 & (\textbf{Sedang}). Peran LLM didefinisikan dengan jelas ``\texttt{Anda adalah seorang dosen}''. Namun, peran ``orang yang bertanya'' (sistem) tidak dijelaskan. Sesuai kriteria (``Hanya satu peran yang dijelaskan'').\\ 
+\hline
+
+Context -- Target audience & 1 & (\textbf{Sedang}). Target audiens ``\texttt{mahasiswa}'' disebutkan, tetapi hanya dijelaskan secara umum (``dijelaskan secara kasar''). \\ 
+\hline
+
+Context -- Medium/channel & 2 & (\textbf{Tinggi}). Medium/saluran output didefinisikan dengan sangat jelas dan ketat: ``\texttt{Keluarkan HANYA JSON}''. \\ 
+\hline
+
+Mission -- Mission/question & 2 & (\textbf{Tinggi}). Misi LLM ``\texttt{beri komentar objektif dan konstruktif berdasarkan data}'' sangat jelas dan dijabarkan secara rinci dalam ``Kriteria Output''. \\ 
+\hline
+
+Clarity -- Format/constraints & 1 & (\textbf{Sedang}). Properti stilistika dijelaskan dengan sangat baik seperti ``\texttt{bahasa yang jelas, lugas}'', ``\texttt{singkat, empatik}'', ``\texttt{Bahasa Indonesia baku ('Anda')}''. Namun, tidak ada batasan panjang (spesifikasi panjang) yang spesifik. \\ 
+\hline
+
+Clarity -- Conciseness & 2 & (\textbf{Tinggi}). Prompt padat informasi. Setiap bagian (\texttt{Fase, Kriteria Mahasiswa, Kriteria Output}) adalah informasi yang relevan dan penting untuk tugas tersebut, tanpa informasi yang berlebihan. \\ 
+\hline
+
+Clarity -- Domain specificity & 2 & (\textbf{Tinggi}). Istilah teknis digunakan dengan benar dan sangat spesifik untuk domain psikologi pendidikan (``\texttt{Self-Determination Theory}'', ``\texttt{Otonomi}'', ``\texttt{Kompetensi}'', ``\texttt{Keterhubungan}'' ) dan konteks tugas (``\texttt{JSON}'', ``\texttt{Fase-kolom}''). \\ 
+\hline
+
+Clarity -- Logic & 2 & (\textbf{Tinggi}). Alur prompt sangat logis. Dimulai dari penetapan Peran $\to$ Misi Utama $\to$ Injeksi Konteks (Fase, Kriteria) $\to$ Kriteria Output yang rinci (termasuk batasan). \\ 
+\hline
+\textbf{Total Skor} & \textbf{13 / 16}  \\
+\hline
+\end{tabularx}
+
+\endgroup
+\end{table}
+\clearpage
+
+Dari Tabel \ref{tab:analisis_prompt} di atas, dapat dilihat bahwa hasil skor 
+total dari penilaian kualitas \textit{prompt} yang digunakan dalam penelitian ini
+adalah 13 dari total skor maksimal 16. Hal ini menunjukkan bahwa \textit{prompt}
+yang digunakan memiliki kualitas yang "Tinggi" secara keseluruhan. Klaim ini
+didukung oleh literatur \cite{jacobsen2025promises} yang menyatakan bahwa
+prompt dengan nilai 8 dari 16 termasuk kategori "Sedang" dan nilai 15 dari 16
+termasuk kategori "Tinggi". Oleh karena itu, dengan skor 13,
+\textit{prompt} yang digunakan dalam penelitian ini dapat dianggap
+masuk dalam kategori "Tinggi". Dapat dilihat juga bahwa pada subkategori
+"Context -- Role", "Context -- Target audience", dan "Clarity -- Format/constraints"
+mendapatkan skor 1 yang menunjukkan bahwa ada ruang untuk perbaikan. 
+Terdapat beberapa alasan dibalik skor tersebut, yaitu terbatasnya 
+waktu pelaksanaan penelitian dan \textit{prompt} yang paling optimal
+telah dicapai setelah melalui beberapa iterasi pengembangan dan uji coba
+pada pengujian kuantitatif untuk variasi \textit{Baseline}. 
+Pada literatur \cite{jacobsen2025promises} juga tidak dijelaskan 
+alasan spesifik mengapa skor paling tinggi yang dihasilkan oleh
+pembuat literatur tersebut adalah 15 dari 16. Beberapa hal ini
+menjadi catatan penting untuk penelitian selanjutnya untuk
+diteliti lebih lanjut.
 
 \subsubsection{Integrasi Metode \textit{Learning Analytics}}
-Integrasi metode \textit{learning analytics} memungkinkan pengumpulan dan analisis data tentang interaksi siswa dengan materi pembelajaran. Dengan memanfaatkan data ini, umpan balik dapat disesuaikan secara dinamis untuk memenuhi kebutuhan individu siswa, meningkatkan relevansi dan dampaknya.
+Integrasi metode \textit{learning analytics} memungkinkan 
+pengumpulan dan analisis data tentang interaksi siswa 
+dengan materi pembelajaran. Dengan memanfaatkan data ini, 
+umpan balik dapat disesuaikan secara dinamis untuk memenuhi 
+kebutuhan individu siswa, meningkatkan relevansi dan dampaknya.
+
+Metode \textit{learning analytics} yang digunakan 
+pada penelitian ini bersifat \textit{Descriptive Analytics}.
+Dengan menggunakan \textit{Descriptive Analytics}, data pembelajaran
+mahasiswa dapat diolah menjadi indikator ringkas dan analitik
+yang memberikan wawasan tentang kemajuan dan tantangan yang dihadapi siswa.
+Data pembelajaran mahasiswa yang digunakan dalam penelitian ini
+berasal dari aktivitas data sintetis pada papan Kanban yang berformat JSON.
+Dari data tersebut, dilakukan ekstraksi indikator ringkas
+dan analitik mahasiswa yang kemudian dimasukkan ke dalam
+\textit{prompt} untuk menghasilkan umpan balik pedagogis
+yang lebih informatif dan kontekstual. Berikut adalah
 
 
+\begin{table}[H]
+	\centering
+	\caption{Ringkasan Agregasi untuk Descriptive Analytics}
+	\label{tab:la_indikator_ringkas}
+	\scriptsize
+	\begingroup
+	\setlength{\tabcolsep}{8pt}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabularx}{\textwidth}{@{} l X @{}}
+		\toprule
+		\textbf{Indikator (kunci)} & \textbf{Deskripsi} \\
+		\midrule
+		Distribusi kartu per kolom (\texttt{by\_col}) &
+			Objek yang berisi jumlah kartu per kategori ringkas untuk analisis cepat distribusi tugas (kunci: \texttt{planning}, \texttt{monitoring}, \texttt{review}, \texttt{done}). \\
+		\addlinespace
+		Total kartu pada papan (\texttt{total\_cards}) &
+			Jumlah seluruh kartu pada board; digunakan sebagai dasar untuk normalisasi metrik lain. \\
+		\addlinespace
+		Persentase \textit{checklist} selesai (\texttt{checklist\_pct}) &
+			Persentase item \textit{checklist} yang telah ditandai selesai di seluruh kartu (0–100), menunjukkan tingkat penyelesaian granular. \\
+		\addlinespace
+		Rasio kartu selesai (\texttt{done\_ratio}) &
+			Proporsi kartu yang berada di kolom 'Done' (0–1), mengukur proporsi tugas yang tuntas. \\
+		\addlinespace
+		Jumlah kartu dalam \textit{Work in Progress} (WIP) (\texttt{wip}) &
+			Banyaknya kartu pada kolom Monitoring/In Progress; indikator beban kerja aktif. \\
+		\addlinespace
+		Rata-rata jeda antar aktivitas (jam) (\texttt{avg\_gap\_h}) &
+			Rata-rata gap waktu (dalam jam) antar pergerakan atau aktivitas pada kartu; berguna untuk menilai frekuensi interaksi. \\
+			% https://ris.utwente.nl/ws/files/209746552/10.1109_ICETA48886.2019.9039972.pdf#:~:text=and%20identify%20their%20distinctive%20patterns,by%20assigning
+		\addlinespace
+		Rata-rata usia kartu di WIP (jam) (\texttt{aging\_wip\_h}) &
+			Durasi rata-rata kartu berada di kolom WIP dalam jam; dipakai untuk mendeteksi stagnasi. \\
+% 			@book{AndersonCarmichael2016EKC,
+%   author    = {David J. Anderson and Andy Carmichael},
+%   title     = {Essential Kanban Condensed},
+%   publisher = {Lean Kanban University Press},
+%   year      = {2016},
+%   edition   = {First},
+%   note      = {First edition, digital version, 17 April, 2016}
+% }
+		\addlinespace
+		Ambang batas aging WIP (jam) (\texttt{aging\_thr\_h}) &
+			Threshold (dalam jam) untuk menandai keadaan terlambat/terhambat pada WIP. \\
+		% @book{AndersonCarmichael2016EKC,
+%   author    = {David J. Anderson and Andy Carmichael},
+%   title     = {Essential Kanban Condensed},
+%   publisher = {Lean Kanban University Press},
+%   year      = {2016},
+%   edition   = {First},
+%   note      = {First edition, digital version, 17 April, 2016}
+% }
+		\addlinespace
+		Jumlah kartu terhambat (\texttt{stuck}) &
+			Jumlah kartu yang memenuhi kriteria 'stuck' (mis. \texttt{aging\_wip\_h} > \texttt{aging\_thr\_h} atau tidak ada pergerakan dalam periode tertentu). \\
+			% https://ris.utwente.nl/ws/files/209746552/10.1109_ICETA48886.2019.9039972.pdf#:~:text=and%20identify%20their%20distinctive%20patterns,by%20assigning
+		\addlinespace
+		Hutang refleksi (\texttt{reflection\_debt}) &
+			Jumlah kartu yang belum dipindahkan ke 'Reflection (Done)' meskipun \textit{checklist} sebagian/seluruhnya selesai; indikator kebutuhan refleksi/penyelesaian administratif. \\
+		\addlinespace
+		Aktivitas terbaru (\texttt{recent}) &
+			Array berisi entri aktivitas/pergerakan paling baru (bisa kosong); digunakan untuk tampilan log singkat atau pengecekan timeline. \\
+		\addlinespace
+		Peringatan dan notifikasi (\texttt{alerts}) &
+			Daftar string peringatan yang dihasilkan (mis. \texttt{"AGING\_WIP:..."} atau \texttt{"REFLECTION\_DEBT:3"}), untuk alarm otomatis atau highlight pada UI dan analisis lanjut. \\
+		\bottomrule
+	\end{tabularx}
+	\endgroup
+\end{table}
+
+Dari Tabel \ref{tab:la_indikator_ringkas} di atas, dapat 
+dilihat bahwa terdapat
+12 indikator ringkas yang digunakan untuk mendukung
+\textit{descriptive analytics} dalam penelitian ini. 
+Indikator-indikator ini
+memberikan gambaran menyeluruh tentang aktivitas 
+pembelajaran. Hal ini didukung
+oleh literatur \cite{AndersonCarmichael2016EKC, Pisoni_TrelloDynamics_Unknown}.
+Galena Pisoni et al. (2020) \cite{Pisoni_TrelloDynamics_Unknown} dalam 
+penelitiannya menunjukkan bahwa dengan mengamati log 
+aktivitas tim mahasiswa 
+(seperti siapa membuat kartu, memindahkan kartu, menetapkan 
+\textit{due-date}, dan seterusnya) 
+pada platform berbasis Kanban seperti Trello, didapati bahwa
+tim mahasiswa dengan \textit{activity gap} paling rendah
+(periode inaktivitas panjang)
+memiliki kinerja terbaik dalam menyelesaikan proyek.
+\textit{Activity gap} yang tinggi juga menunjukkan adanya
+permasalahan yang serius pada tim.
+Ditemukan juga bahwa tim dengan distribusi kartu baik serta
+memiliki frekuensi pergerakan antar kolom Kanban yang tinggi
+cenderung memiliki produktivitas yang lebih baik.
+
+Selain itu, David J. Anderson dan Andy Carmichael (2016)
+\cite{AndersonCarmichael2016EKC} pada bukunya, 
+"\textit{Essential Kanban Condensed}" menjelaskan bahwa
+metrik seperti \textit{Work In Progress} (WIP) sangat erat
+kaitannya dengan \textit{Delivery Rate} (DR) atau 
+tingkat penyelesaian tugas.
+WIP perlu dipantau dan dibatasi agar tidak melebihi kapasitas tim.
+Pembatasan WIP yang efektif dapat meningkatkan fokus dan efisiensi kerja
+dan memperpendek \textit{lead-time} penyelesaian 
+tugas. Dalam penelitian ini,
+indikator WIP digunakan untuk menilai beban kerja aktif
+mahasiswa serta memberikan umpan balik yang sesuai. Indikator WIP
+dimodifikasi dari membatasi jumlah kartu pada kolom
+Monitoring/In Progress menjadi membatasi durasi waktu kartu 
+yang berada dalam status tersebut "\texttt{aging\_thr\_h}".
+Rata-rata jeda antar aktivitas "\texttt{avg\_gap\_h}" juga
+diadopsi untuk menilai frekuensi interaksi mahasiswa.
+
+Dilakukan juga penetapan ambang batas
+untuk mendeteksi keadaan terhambat atau
+"\texttt{stuck}" pada kartu di WIP. Kartu dianggap
+terhambat jika durasi rata-rata kartu berada di WIP
+melebihi ambang batas "\texttt{aging\_thr\_h}"
+atau tidak ada pergerakan dalam periode tertentu.
+Batas tersebut ditentukan oleh variabel MOVEMENT\_RECENT\_HOURS
+untuk periode pengecekan pergerakan terbaru
+dan variabel AGING\_WIP\_THRESHOLD\_H untuk ambang batas durasi
+kartu di WIP. Pada penelitian ini, nilai yang digunakan adalah:
+\begin{itemize}
+	\item MOVEMENT\_RECENT\_HOURS = 2 jam
+	\item AGING\_WIP\_THRESHOLD\_H = 2 jam
+\end{itemize}
+Nilai tersebut dipilih berdasarkan batasan waktu yang 
+sudah ditentukan pada aturan studi kasus perilaku mahasiswa
+yang tertera pada Tabel \ref{tab:matriks_studi_kasus_tabularx} di mana
+pergerakan kartu dalam jangka waktu 2 jam terakhir.
+
+Dengan begitu, indikator-indikator yang akan digunakan dalam
+\textit{descriptive analytics} pada penelitian ini mencakup
+aspek-aspek penting dari aktivitas pembelajaran mahasiswa
+yang dapat memberikan insight pada \textit{Feedback Agent}
+untuk menghasilkan umpan balik yang lebih informatif.
+Diagram alur proses \textit{descriptive analytics}
+yang digunakan dalam penelitian ini ditunjukkan pada Gambar 
+\ref{fig:descriptive_analytics}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{contents/chapter-3/Indikator_ringkas.png}
+	\caption{Proses Descriptive Analytics untuk Mendukung Umpan Balik Pedagogis}
+	\label{fig:descriptive_analytics}
+\end{figure}
+Proses \textit{descriptive analytics} dimulai dengan
+menggunakan data papan Kanban mentah dalam format JSON
+sebagai input. Data ini kemudian diproses untuk mengekstrak
+data analitik seperti, menghitung distribusi kartu
+per kolom, total kartu pada papan, persentase \textit{checklist} dan seterusnya.
+Hasil ekstraksi data analitik dilakukan agregasi dan berlanjut
+ke proses penyusunan ringkasan seperti pada Tabel \ref{tab:la_indikator_ringkas}
+Setelah itu, dilakukan pembuatan ringkasan analitik mahasiswa
+yang akan dimasukkan ke dalam \textit{prompt} penilaian
+sebagai konteks tambahan untuk \textit{Feedback Agent} menghasilkan
+umpan balik pedagogis.
+
+Berikut adalah contoh potongan ringkasan analitik mahasiswa
+dalam format JSON yang dihasilkan dari proses ini.
+
+\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  
+  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+  \caption{Ringkasan Analitik Mahasiswa}
+  \label{tab:ringkasan_analitik} % Saya ubah labelnya menjadi "tab:"
+  % Gunakan minipage untuk "membungkus" listing dengan aman
+  \begin{minipage}{\textwidth}
+    
+    % Mulai listing Anda (tanpa caption/label di sini)
+    \begin{lstlisting}
+    "Total kartu: 5; Distribusi - Planning 2, Monitoring 1, Review 0, Done 2; Checklist selesai (agregat): 66.67%; Rasio selesai: 40%; Proses belajar terhambat (stuck): 2; Rata-rata selisih pergerakan: 1.25 jam; Alerts: AGING\_WIP:Implementasi Pythagoras, REFLECTION\_DEBT:3"
+  \end{lstlisting}
+%--- Selesai listing ---
+
+  \end{minipage} 
+  %--- Selesai minipage ---
+
+\end{table}
+
+Dengan begitu, \textit{Feedback Agent} dapat memanfaatkan
+data analitik mahasiswa ini untuk
+menghasilkan umpan balik pedagogis yang lebih
+terarah dan bermanfaat bagi mahasiswa.
+
+% Pada gambar \ref{fig:descriptive_analytics} ditunjukkan proses
+% \textit{descriptive analytics} yang digunakan dalam penelitian ini.
+
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.7\textwidth]{contents/chapter-3//}
+% 	\caption{Proses Descriptive Analytics untuk Mendukung Umpan Balik Pedagogis}
+% 	\label{fig:descriptive_analytics}
+% \end{figure}
 
 \subsubsection{Pembuatan Variasi \textit{Prompt}}
-Pembuatan variasi \textit{prompt} melibatkan pengembangan berbagai versi \textit{prompt} yang digunakan untuk menghasilkan umpan balik. Dengan menciptakan variasi ini, diharapkan dapat meningkatkan keberagaman dan kedalaman umpan balik yang diberikan kepada siswa, serta mendorong eksplorasi yang lebih luas terhadap materi pembelajaran.
+% Intinya adalah, dibuat variasi prompt untuk membandingkan 
+% baseline prompt dengan prompt yang sudah diberikan perlakukan tertentu.
+% perlakuannya diantara lain memberikan konteks tambahan (list_materi),
+% learning analytics (indikator ringkas), dan pembuatan mekanisme
+% ReAct (Reasoning + Acting) yang digabungkan dengan learning analytics
+% untuk feedback agent.
+Pembuatan variasi \textit{prompt} bertujuan membandingkan
+performa \textit{baseline prompt} dengan
+\textit{prompt} yang diberi perlakuan khusus sehingga 
+dapat menilai dampak setiap modifikasi terhadap keluaran 
+model. Variasi dapat meliputi penambahan informasi kontekstual berupa 
+"Lis Materi" seperti yang tertera pada Tabel \ref{tab:prompt_listmateri}. 
+Perlakuan lain adalah memasukkan data analitik dari 
+\textit{learning analytics} yang sudah dibuat sebelumnya. 
+Selanjutnya, dibuat juga variasi mekanisme \textit{ReAct} 
+(\textit{Reasoning} + \textit{Acting}) yang digabungkan dengan
+data analitik. Hal ini diterapkan untuk 
+memisahkan fase penalaran internal model dari tindakan 
+eksternal seperti memberikan umpan balik atau menyarankan 
+langkah berikutnya. Menggabungkan \textit{ReAct} dengan 
+\textit{learning analytics} juga memungkinkan agen memberi 
+penjelasan langkah demi langkah sekaligus rekomendasi 
+yang relevan berdasarkan indikator pembelajaran. 
+
+Berikut skema diagram alur uji coba variasi \textit{prompt}
+yang akan dilakukan dapat dilihat pada Gambar \ref{fig:uji_coba_variasi}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{contents/chapter-3/uji_coba_variasi.png}
+	\caption{Skema Uji Coba Variasi \textit{Prompt}}
+	\label{fig:uji_coba_variasi}
+\end{figure}
+
+Dari Gambar \ref{fig:uji_coba_variasi} di atas, dapat dilihat
+bahwa terdapat 4 variasi \textit{prompt} yang akan diuji coba.
+Variasi pertama adalah \textit{Baseline Prompt} yang
+tidak memiliki perlakuan khusus. Variasi kedua adalah
+\textit{Prompt} dengan konteks tambahan berupa "Lis Materi"
+seperti yang tertera pada Tabel \ref{tab:prompt_listmateri}.
+Variasi ketiga adalah \textit{Prompt} yang memasukkan
+data analitik dari \textit{learning analytics}
+seperti yang tertera pada Tabel \ref{tab:ringkasan_analitik}.
+Variasi keempat adalah \textit{Prompt} dengan
+mekanisme \textit{ReAct} yang digabungkan dengan
+data analitik dari \textit{learning analytics}.
+
+Hal yang sama dilakukan pada setiap ukuran model LLM
+yaitu Llama 3.1 8B Instant dan Llama 3.3 70B Versatile.
+Hasil dari uji coba variasi \textit{prompt} ini akan
+disajikan pada bab hasil dan pembahasan untuk 
+menganalisis dampak setiap perlakuan terhadap
+kualitas umpan balik pedagogis yang dihasilkan.
+
+Untuk detail ReAct yang digunakan pada variasi keempat,
+adalah sebagai Gambar \ref{fig:react_la_flow}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{contents/chapter-3/Alur_ReAct.png}
+	\caption{Skema Mekanisme ReAct dengan Learning Analytics}
+	\label{fig:react_la_flow}
+\end{figure}
+
+ReAct \textit{Agent} yang dibangun pada penelitian ini
+menggunakan \textit{framework} dari LangGraph. Alur kerja
+ReAct sendiri dibuat agar model LLM dapat memiliki \textit{checkpoint}
+pada setiap langkah penalaran internalnya sebelum
+menghasilkan umpan balik. Dengan begitu, diharapkan
+model dapat lebih mudah untuk melakukan refleksi dan
+perbaikan terhadap proses penalarannya sendiri.
+ReAct Agent yang dikembangkan juga dilengkapi dengan
+\textit{Error Checker} yang berfungsi untuk
+memeriksa kesalahan pada format keluaran
+sehingga dapat meminimalisir kesalahan format.
+
+\subsection{Alur Evaluasi Kualitas Umpan Balik Pedagogis}
+\subsubsection{Evaluasi Kuantitatif}
+Metode evaluasi kuantitatif digunakan untuk mengukur
+kualitas umpan balik pedagogis yang dihasilkan oleh
+\textit{Feedback Agent}. Evaluasi ini menggunakan metrik
+seperti F1-Score, Precision, dan Recall. Metode-metode yang
+digunakan seperti yang sudah dibahas pada Subbab \ref{subsection:evaluasi_kualitas_LLM}
+yaitu BERTScore, BARTScore, dan \textit{LLM-as-a-Judge}.
+Berikut adalah penjelasan alur evaluasi kuantitatif
+yang digunakan dalam penelitian ini untuk tiap-tiap metodenya.
+
+\subsubsection*{BERTScore}
+Alur evaluasi kuantitatif menggunakan BERTScore adalah sebagai berikut:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{contents/chapter-3/Alur_BERTScore.png}
+	\caption{Alur Evaluasi Kuantitatif dengan BERTScore}
+	\label{fig:bert_score_flow}
+\end{figure}
+Dari Gambar \ref{fig:bert_score_flow} di atas, dapat dilihat bahwa
+proses evaluasi dimulai dengan
+mengumpulkan umpan balik pedagogis yang dihasilkan oleh
+\textit{Feedback Agent} dari berbagai variasi \textit{prompt}.
+Setelah itu, dilakukan persiapan data dengan mempasangkan
+data umpan balik yang dihasilkan dengan data ground truth
+dari ahli manusia. Kemudian, dilakukan perhitungan
+BERTScore untuk setiap pasangan umpan balik yang ada.
+Hasil perhitungan BERTScore adalah skor numerik F1-Score,
+Precision, dan Recall dari setiap kategori umpan balik
+(yaitu \textit{feedback}, \textit{motivation}, dan \textit{appreciation}).
+Selanjutnya, dihitung juga untuk skor rata-rata keseluruhan
+dari semua kategori untuk F1-Score, Precision, dan Recall.
+
+\subsubsection*{BARTScore}
+Alur evaluasi kuantitatif menggunakan BARTScore adalah sebagai berikut:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{contents/chapter-3/Alur_BARTScore.png}
+	\caption{Alur Evaluasi Kuantitatif dengan BARTScore}
+	\label{fig:bart_score_flow}
+\end{figure}
+Dari Gambar \ref{fig:bart_score_flow} di atas, sama seperti BERTScore, 
+dapat dilihat bahwa
+proses evaluasi dimulai dengan mengumpulkan umpan balik pedagogis 
+yang dihasilkan oleh
+\textit{Feedback Agent} dari berbagai variasi \textit{prompt}.
+Setelah itu, dilakukan persiapan data dengan mempasangkan
+data umpan balik yang dihasilkan dengan data ground truth
+dari ahli manusia. Kemudian, dilakukan perhitungan
+BARTScore untuk setiap pasangan umpan balik yang ada.
+Model yang digunakan adalah model \textit{facebook/mbart-large-50}.
+
+Hasil perhitungan BARTScore adalah skor numerik F1-Score,
+Precision, dan Recall dari setiap kategori umpan balik
+(yaitu \textit{feedback}, \textit{motivation}, dan \textit{appreciation}).
+Selanjutnya, dihitung juga untuk skor rata-rata keseluruhan
+dari semua kategori untuk F1-Score, Precision, dan Recall.
+
+\subsubsection*{LLM-as-a-Judge}
+Alur evaluasi kuantitatif menggunakan \textit{LLM-as-a-Judge} adalah sebagai berikut:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{contents/chapter-3/Alur_LLM_as_a_Judge.png}
+	\caption{Alur Evaluasi Kuantitatif dengan LLM-as-a-Judge}
+	\label{fig:llm_as_a_judge_flow}
+\end{figure}
+Pada proses evaluasi dengan \textit{LLM-as-a-Judge}, digunakan
+model LLM GPT-4o dengan alur kerja seperti pada Gambar
+\ref{fig:llm_as_a_judge_flow} di atas. Proses evaluasi dimulai dengan
+mengumpulkan umpan balik pedagogis yang dihasilkan oleh
+\textit{Feedback Agent} dari berbagai variasi \textit{prompt}.
+Lalu, pasangan data umpan balik yang dihasilkan dengan
+data ground truth dari ahli manusia akan melalui proses penilaian dari
+model GPT-4o. Model melalui serangkaian \textit{prompt} "Dimensi Penilaian"
+yang diambil dari literatur \cite{Shute2008FocusFormativeFeedback, 
+HattieTimperley2007PowerOfFeedback, DeciRyan1985IntrinsicMotivation, 
+Fredrickson2001BroadenBuild}, literatur yang sama yang digunakan untuk
+mengevaluasi umpan balik secara kualitatif,
+ untuk menilai kualitas umpan balik
+berdasarkan kriteria tertentu. Kriteria tersebut dapat dilihat pada Tabel
+\ref{tab:dimensi_penilaian} sebagai berikut.
+\begin{table}[H]
+	\centering
+	\caption{Dimensi Penilaian Umpan Balik Pedagogis}
+	\label{tab:dimensi_penilaian}
+	\scriptsize
+	\begingroup
+	\setlength{\tabcolsep}{8pt}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{@{} l X @{}}
+		\toprule
+		\multicolumn{2}{@{}l}{\textbf{Feedback (F)}} \\
+		\midrule
+		F1 & Teks jelas, mudah dipahami, tidak bertele-tele. \\
+		\addlinespace
+		F2 & Menyebut detail spesifik konteks/kanban (kartu, kolom, checklist, waktu/pergerakan). \\
+		\addlinespace
+		F3 & Sesuai dengan tugas/konteks; tidak generik. \\
+		\addlinespace
+		F4 & Memberi saran perbaikan proses, mendiagnosis hambatan. \\
+		\addlinespace
+		F5 & Memberi langkah selanjutnya (next step) yang konkret. \\
+		\midrule
+		\multicolumn{2}{@{}l}{\textbf{Motivasi (M)}} \\
+		\midrule
+		M1 & Menumbuhkan motivasi intrinsik (dorongan dari dalam). \\
+		\addlinespace
+		M2 & Mengaitkan pada tujuan yang jelas/terukur. \\
+		\addlinespace
+		M3 & Mendorong otonomi/kendali diri pembelajar. \\
+		\addlinespace
+		M4 & Menguatkan keyakinan diri/kompetensi (self-efficacy). \\
+		\addlinespace
+		M5 & Menunjukkan empati/keterhubungan. \\
+		\midrule
+		\multicolumn{2}{@{}l}{\textbf{Apresiasi (A)}} \\
+		\midrule
+		A1 & Mengakui usaha dan proses. \\
+		\addlinespace
+		A2 & Pujian selaras capaian, tidak berlebihan. \\
+		\addlinespace
+		A3 & Meningkatkan kepercayaan diri. \\
+		\addlinespace
+		A4 & Memberi dukungan emosional/menenangkan. \\
+		\addlinespace
+		A5 & Penguatan positif yang mendorong keberlanjutan. \\
+		\bottomrule
+	\end{tabularx}
+	\endgroup
+\end{table}
+
+Setelah melalui proses penilaian oleh model dengan melihat dimensi
+penilaian pada Tabel \ref{tab:dimensi_penilaian}, data Sintetis
+papan pembelajaran Kanban, dan data ground truth dari ahli manusia.
+Penilaian oleh model GPT-4o memberikan nilai 0 atau 1 untuk setiap
+dimensi penilaian pada Tabel \ref{tab:dimensi_penilaian}.
+Nilai 1 menunjukkan bahwa umpan balik memenuhi kriteria dan 0 
+menunjukkan bahwa umpan balik tidak memenuhi kriteria.
+Hasil tersebut akan digunakan untuk menghitung skor
+F1-Score, Precision, dan Recall dari setiap kategori.
+Lalu, diakhir penghitungan, dihitung skor rata-rata keseluruhan
+dari semua kategori untuk F1-Score, Precision, dan Recall.
+
+
+\subsubsection{Evaluasi Kualitatif}
+Metode evaluasi kualitatif digunakan untuk menilai
+kualitas umpan balik pedagogis yang dihasilkan oleh
+penilai manusia ahli di bidang psikologi pendidikan. 
+Evaluasi ini menggunakan dimensi penilaian yang diadaptasi dari literatur
+\cite{Shute2008FocusFormativeFeedback, 
+HattieTimperley2007PowerOfFeedback, DeciRyan1985IntrinsicMotivation, 
+Fredrickson2001BroadenBuild}. Dimensi penilaian tersebut
+terdiri dari tiga kategori utama yaitu \textit{Feedback},
+\textit{Motivation}, dan \textit{Appreciation} dengan
+masing-masing kategori memiliki lima sub-dimensi penilaian.
+Dari literatur tersebut, dilakukan adaptasi dimensi penilaian
+yang menghasilkan Tabel \ref{tab:dimensi_penilaian} yang sudah
+ditampilkan pada Subbab sebelumnya. Namun, untuk memudahkan
+penilai manusia dalam melakukan evaluasi, dibuatlah kuesioner
+yang digunakan oleh ahli penilai. Kuesioner terdiri dari dua bagian
+yakni bagian penilaian skala Likert 1-5 untuk setiap sub-dimensi
+dan bagian komentar terbuka untuk memberikan masukan tambahan.
+Berikut adalah bagian pertama dari kuesioner yang digunakan 
+untuk evaluasi secara kualitatif pada Tabel \ref{tab:kuesioner_bagian_1}.
+
+\begin{table}[H]
+	\centering
+	\caption{Kuesioner Bagian 1 untuk Evaluasi Kualitatif}
+	\label{tab:kuesioner_bagian_1}
+	\scriptsize
+	\begingroup
+	\setlength{\tabcolsep}{8pt}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{@{} X c c c c c @{}}
+		\toprule
+		\textbf{Dimensi Penilaian} \\
+		\midrule
+		\multicolumn{6}{@{}l}{\textbf{Feedback (F)}} \\
+		\midrule
+		{\raggedright F1: Kejelasan\\\small Umpan balik dari chatbot mudah dipahami dan tidak membingungkan.\par} \\
+		{\raggedright F2: Spesifisitas\\\small Chatbot memberikan umpan balik yang spesifik terhadap kemajuan saya, bukan hanya komentar umum.\par} \\
+		{\raggedright F3: Relevansi\\\small Umpan balik yang diberikan sesuai dengan tugas atau aktivitas yang sedang saya kerjakan.\par} \\
+		{\raggedright F4: Konstruktivitas\\\small Umpan balik membantu saya memperbaiki kesalahan atau meningkatkan kinerja belajar saya.\par} \\
+		{\raggedright F5: Feed-forward\\\small Chatbot memberikan saran atau langkah selanjutnya yang dapat saya lakukan untuk memperbaiki hasil belajar.\par} \\
+		\midrule
+		\multicolumn{6}{@{}l}{\textbf{Motivasi (M)}} \\
+		\midrule
+		{\raggedright M1: Dorongan intrinsik\\\small Chatbot membuat saya lebih termotivasi untuk belajar karena saya merasa mampu berkembang.\par} \\
+		{\raggedright M2: Dorongan tujuan\\\small Umpan balik dari chatbot membantu saya tetap fokus pada tujuan pembelajaran.\par} \\
+		{\raggedright M3: Otonomi\\\small Chatbot memberi saya ruang untuk mengambil keputusan sendiri dalam proses belajar.\par} \\
+		{\raggedright M4: Kompetensi\\\small Respon dari chatbot membuat saya merasa lebih kompeten dalam mengerjakan tugas.\par} \\
+		{\raggedright M5: Keterhubungan\\\small Chatbot memberikan dukungan yang terasa empatik dan memahami kondisi saya.\par} \\
+		\midrule
+		\multicolumn{6}{@{}l}{\textbf{Apresiasi (A)}} \\
+		\midrule
+		{\raggedright A1: Pengakuan usaha\\\small Chatbot memberikan apresiasi terhadap usaha saya, bukan hanya hasilnya.\par} \\
+		{\raggedright A2: Pujian proporsional\\\small Pujian dari chatbot terasa tulus dan sesuai dengan pencapaian saya.\par} \\
+		{\raggedright A3: Peningkatan rasa percaya diri\\\small Ucapan apresiasi membuat saya lebih percaya diri terhadap kemampuan saya.\par} \\
+		{\raggedright A4: Dukungan emosional\\\small Chatbot memberikan respon yang menenangkan atau menyemangati ketika saya mengalami kesulitan.\par} \\
+		{\raggedright A5: Penguatan positif\\\small Chatbot menggunakan bahasa positif yang membuat saya merasa dihargai sebagai pelajar.\par} \\
+		\bottomrule
+	\end{tabularx}
+	\endgroup
+\end{table}
+
+Lalu, berikut adalah bagian kedua dari kuesioner yang digunakan 
+untuk evaluasi secara kualitatif pada Tabel \ref{tab:kuesioner_bagian_2}.
+
+\begin{table}[H]
+	\centering
+	\caption{Kuesioner Bagian 2 untuk Evaluasi Kualitatif (Isian)}
+	\label{tab:kuesioner_bagian_2}
+	\begin{tabularx}{\textwidth}{@{} X @{}}
+		\toprule
+		1. Menurut Anda, aspek apa yang paling penting untuk dinilai dalam kualitas respon chatbot pembelajaran? \\ \midrule
+		2. Apa saran Anda untuk pengembangan chatbot ini agar dapat memberikan dukungan belajar yang lebih efektif? \\ \midrule
+		3. Menurut Anda, bagaimana peran chatbot seperti ini dapat berkontribusi terhadap peningkatan motivasi dan kemandirian belajar peserta didik? \\ \midrule
+		Pernyataan Kesimpulan Penilaian Pakar:\\[4pt]
+		\ \ \ - Dapat digunakan tanpa revisi\\
+		\ \ \ - Dapat digunakan dengan revisi minor\\
+		\ \ \ - Perlu dikembangkan ulang secara menyeluruh \\ \midrule
+		Catatan tambahan (jika ada): \vspace{2em}\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+Bagian kedua dari kuesioner ini berisi pertanyaan terbuka
+yang memungkinkan penilai manusia memberikan masukan
+lebih mendalam tentang kualitas umpan balik pedagogis
+yang dihasilkan oleh \textit{Feedback Agent}.
+
+
+% Pembuatan variasi \textit{prompt} melibatkan pengembangan berbagai versi \textit{prompt} yang digunakan untuk menghasilkan umpan balik. Dengan menciptakan variasi ini, diharapkan dapat meningkatkan keberagaman dan kedalaman umpan balik yang diberikan kepada siswa, serta mendorong eksplorasi yang lebih luas terhadap materi pembelajaran.
 
 % \section{Etika, Masalah, dan Keterbatasan Penelitian (Opsional))}
 

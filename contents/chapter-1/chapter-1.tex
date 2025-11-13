@@ -33,7 +33,7 @@ jumlah tugas yang diselesaikan, tetapi juga pada proses belajar dan regulasi dir
 merupakan katalis kuat untuk perbaikan [15, 16]\cite{10.3389/fpsyg.2022.1027266, Bock14032024}. Namun standar emas ini menghadapi krisis 
 skalabilitas dengan meningkatnya jumlah mahasiswa dan kebutuhan dukungan yang beragam membuat 
 model bimbingan satu-satu sulit diterapkan dalam skala besar. Hal ini diperkuat
-dengan studi-studi yang dilakukan dan menunjukkan bahwa  tekanan anggaran mendorong ukuran kelas 
+dengan studi-studi yang dilakukan dan menunjukkan bahwa tekanan anggaran mendorong ukuran kelas 
 yang semakin besar, sehingga interaksi personal antara dosen dan mahasiswa sangat terbatas \cite{schaffer2017automating, pardo2019using}. 
 Ini menciptakan kebutuhan mendesak akan solusi inovatif berbasis teknologi yang dapat melengkapi keahlian manusia.
 % ------------------------------------------------
@@ -87,9 +87,11 @@ data proses (perpindahan kartu, checklist, waktu pengerjaan) yang dapat dipetaka
 ke fase SRL (perencanaan–monitoring–refleksi) \cite{strickroth2022kanban}. 
 Penggunaan papan Kanban
 hanya sebagai salah satu instrumen pengaya data agar evaluasi dan perbaikan kualitas 
-umpan balik LLM bisa berjalan lebih terarah. Fokus kebaruan terletak pada rangkaian 
-evaluasi dan perbaikan \textit{prompt} LLM yang menargetkan tiga fungsi
-pedagogis utama yakni feedback kognitif, dukungan motivasional, dan dukungan apresiatif dengan
+umpan balik LLM bisa berjalan lebih terarah. Pada penelitian ini,
+dijelaskan pada bab berikutnya bahwa fokus kebaruan terletak pada rangkaian 
+evaluasi dan perbaikan \textit{prompt} LLM. Penelitian ini akan memperbaiki
+tiga fungsi pedagogis utama yakni feedback kognitif, 
+dukungan motivasional, dan dukungan apresiatif dengan
 tujuan praktis yaitu menyamai kualitas ahli manusia pada metrik kuantitatif sekaligus memenuhi
 standar kualitas kualitatif \cite{10.3389/fpsyg.2022.1027266, Bock14032024, Usher2025GenAIAssessments, Maurya2025UnifyingAITutorEvaluation}. 
 Dengan membandingkan keluaran LLM dan pakar ahli, studi ini menilai peningkatan performa LLM agar 
@@ -204,18 +206,75 @@ yang masif dan personal.
 % performa LLM dalam memberikan umpan balik yang lebih baik dan lebih relevan bagi mahasiswa.
 
 % ========== versi 2 ==========
-Berdasarkan latar belakang yang telah dipaparkan, penelitian ini mengidentifikasi 
-Secara spesifik, penelitian ini berfokus pada pengembangan umpan balik yang 
-menargetkan tiga fungsi pedagogis: \textit{feedback}, \textit{motivation}, dan 
-\textit{appreciation}. Rumusan masalah yang diangkat dalam penelitian ini adalah 
+% Berdasarkan latar belakang yang telah dipaparkan, penelitian ini mengidentifikasi 
+% Secara spesifik, penelitian ini berfokus pada pengembangan umpan balik yang 
+% menargetkan tiga fungsi pedagogis: \textit{feedback}, \textit{motivation}, dan 
+% \textit{appreciation}. Rumusan masalah yang diangkat dalam penelitian ini adalah 
+% sebagai berikut:
+% \begin{enumerate}
+%     \item Bagaimana strategi optimal untuk meningkatkan performa LLM dalam 
+% 	menghasilkan umpan balik yang mencakup ketiga fungsi pedagogis tersebut?
+% 	\item Bagaimana kualitas umpan balik yang dihasilkan LLM terhadap proses SRL 
+% 	mahasiswa dibandingkan dengan umpan balik ahli manusia?
+% 	\item Bagaimana pengaruh besar ukuran model LLM terhadap kualitas umpan balik yang dihasilkan?
+% \end{enumerate}
+
+% ========== versi 3 ==========
+Berdasarkan latar belakang yang telah dipaparkan, 
+penelitian ini mengidentifikasi 
+Secara spesifik, penelitian ini berfokus pada 
+pengembangan umpan balik yang 
+menargetkan tiga fungsi pedagogis: \textit{feedback}, 
+\textit{motivation}, dan 
+\textit{appreciation}. Rumusan masalah yang diangkat 
+dalam penelitian ini adalah 
 sebagai berikut:
 \begin{enumerate}
-    \item Bagaimana strategi optimal untuk meningkatkan performa LLM dalam 
-	menghasilkan umpan balik yang mencakup ketiga fungsi pedagogis tersebut?
-	\item Bagaimana kualitas umpan balik yang dihasilkan LLM terhadap proses SRL 
-	mahasiswa dibandingkan dengan umpan balik ahli manusia?
-	\item Bagaimana pengaruh besar ukuran model LLM terhadap kualitas umpan balik yang dihasilkan?
+  \item Terdapat kebutuhan untuk mengembangkan
+  suatu metode yang efektif dalam meningkatkan performa LLM 
+  agar menghasilkan umpan balik yang sesuai dengan
+  ketiga fungsi pedagogis tersebut.
+  % \item Belum adanya strategi rekayasa konteks 
+  % (\textit{context engineering}) yang terstruktur dan 
+  % teruji, termasuk pemanfaatan data 
+  % \textit{learning analytics} yang digunakan 
+  % untuk meningkatkan performa 
+  % LLM dalam menghasilkan umpan balik yang efektif pada tiga 
+  % fungsi pedagogis: \textit{feedback}, \textit{motivation}, 
+  % dan \textit{appreciation}.
+  \item Belum diketahui sejauh mana kualitas umpan balik 
+  yang dihasilkan LLM terhadap proses SRL mahasiswa yang 
+  direpresentasikan melalui data papan Kanban dapat mendekati 
+  atau setara dengan kualitas umpan balik ahli manusia, 
+  baik secara kuantitatif maupun kualitatif.
+  \item Belum jelas pengaruh ukuran model LLM terhadap 
+  kualitas umpan balik yang dihasilkan di mana semakin
+  besar ukuran model LLM, semakin mahal biayanya. 
 \end{enumerate}
+
+
+% \begin{enumerate}
+%   \item \textit{Umpan Balik Kognitif}: Bagaimana membimbing 
+% mahasiswa melalui proses belajar 
+% (mendukung \textit{ZPD} mereka) tanpa memberikan 
+% jawaban langsung.
+
+%   \item \textit{Dukungan Motivasional}: Bagaimana memberikan 
+% dorongan yang tulus untuk meningkatkan 
+% \textit{self-efficacy} mahasiswa saat mereka 
+% menghadapi kesulitan.
+
+%   \item \textit{Dukungan Apresiatif}: Bagaimana 
+%   memvalidasi usaha dan pencapaian (bukan hanya hasil) 
+%   untuk memperkuat perilaku belajar yang positif.
+% \end{enumerate}
+
+% Penelitian ini berfokus pada masalah pengembangan 
+% dan evaluasi strategi intervensi 
+% (berbasis \textit{prompt}) untuk meningkatkan 
+% performa LLM dalam ketiga fungsi tersebut, dengan 
+% menggunakan jejak data pembelajaran mahasiswa 
+% (dari papan Kanban) sebagai pemicu umpan balik.
 
 % \begin{enumerate}
 % 	\item Belum adanya penelitian yang membahas peningkatan kualitas umpan balik LLM dalam .
@@ -262,14 +321,20 @@ sebagai berikut:
 %-------------------------------------------------	
 
 \section{Tujuan Penelitian}
+\label{subsection:tujuan_penelitian}
 
 Tujuan penelitian ini adalah sebagai berikut:
 \begin{enumerate}
-	\item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
-	yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
-	\item Mengevaluasi secara empiris apakah adanya peningkatan kualitas umpan balik 
-	LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
-	balik ahli manusia.
+  \item Merancang metode yang sesuai untuk meningkatkan performa LLM dalam memberikan 
+  umpan balik terhadap proses SRL mahasiswa yang direpresentasikan melalui data papan Kan
+	% \item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
+	% yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
+  \item Mengevaluasi kualitas umpan balik yang dihasilkan LLM dari berbagai
+  skema metode yang dirancang terhadap proses SRL mahasiswa baik secara 
+  kuantitatif maupun kualitatif dengan umpan balik ahli manusia.
+	% \item Mengevaluasi apakah adanya peningkatan kualitas umpan balik 
+	% LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
+	% balik ahli manusia.
 	\item Melihat pengaruh besar ukuran model LLM terhadap kualitas umpan balik yang dihasilkan.
 \end{enumerate}
 %Secara umum, tujuan penelitian pada skripsi bidang teknik adalah untuk:
