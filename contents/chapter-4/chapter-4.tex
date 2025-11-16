@@ -40,6 +40,7 @@ tiga pertanyaan penelitian.
 % Dapat ditambahkan beberapa sub bab jika diperlukan.
 
 \section{Analisis Perbandingan Metode Peningkatan Umpan Balik (RQ 1)}
+\label{subsection:pembahasan_rq_1}
 Pada bagian ini, disajikan hasil eksperimen yang dilakukan
 dengan menggunakan empat variasi prompt yang berbeda
 untuk menghasilkan umpan balik pedagogis. Hasil dari
@@ -356,22 +357,433 @@ menunjukkan potensi terbaik dalam efisiensinya.
 % kombinasi metode dan model yang digunakan.
 
 \section{Analisis Pengaruh Ukuran Model (RQ 3)}
-Tapi kenapa untuk model yang 8B semakin diberikan tugas teknik context engineering yang kompleks, semakin bagus nilai BERTScore dan BARTScore nya? Tidak seperti 70B yang berkebalikan
+Pada bagian ini, dilakukan analisis untuk menjawab 
+\textit{research question} ketiga (RQ 3) mengenai 
+pengaruh ukuran model \textit{Large Language Model} 
+(LLM) terhadap kualitas umpan balik pedagogis. 
+Analisis ini membandingkan performa antara model Llama 
+3.1 8B (model kecil) dan Llama 3.3 70B (model besar) 
+menggunakan data kuantitatif yang telah disajikan pada
+Subbab \ref{subsection:pembahasan_rq_1}.
+
+\subsection{Perbandingan Kapasitas Dasar (Baseline Performance)} 
+Untuk memahami pengaruh ukuran model, langkah pertama adalah 
+membandingkan performa dasar (\textit{Baseline}) kedua model, 
+yaitu ketika tidak ada \textit{context-engineering} tambahan 
+yang diterapkan.
+
+\begin{table}[H]
+\centering
+\caption{Perbandingan Kinerja \textit{Baseline} Antara Model 8B dan 70B}
+\label{tab:baseline_comparison}
+\begin{tabularx}{\textwidth}{l >{\centering\arraybackslash}X >{\centering\arraybackslash}X c}
+    \hline
+    Metrik (F1-Score) & 8B (Llama 3.1 8B) & 70B (Llama 3.3 70B) & Pemenang \\
+    \hline
+    BERTScore       & 0.6608   & 0.6687   & \textbf{70B} \\
+    BARTScore       & -11.7282 & -11.6905 & \textbf{70B} \\
+    LLM-as-a-Judge  & 0.5371   & 0.7271   & \textbf{70B} \\
+    \hline
+\end{tabularx}
+\end{table}
+
+Tabel \ref{tab:baseline_comparison} menunjukkan tren yang 
+sangat jelas. Model 70B secara konsisten mengungguli model 
+8B di semua metrik evaluasi pada kondisi \textit{Baseline}. 
+Keunggulan paling signifikan terlihat pada metrik 
+\textit{LLM-as-a-Judge}, di mana model 70B (0,7271) 
+menunjukkan skor relevansi yang jauh lebih tinggi 
+dibandingkan model 8B (0,5371). Pada metrik semantik 
+(BERTScore dan BARTScore), model 70B juga menunjukkan 
+skor yang sedikit lebih baik. Hal ini mengindikasikan 
+bahwa model yang lebih besar (70B) memiliki kapasitas 
+internal yang lebih superior dalam menghasilkan umpan 
+balik yang relevan dan koheren secara semantik, bahkan 
+tanpa konteks tambahan.
+
+\subsection{Analisis Responsivitas terhadap \textit{Context-Engineering}} 
+Tren yang lebih kompleks muncul ketika 
+menganalisis bagaimana kedua model merespons 
+penambahan konteks (\textit{context-engineering}). 
+Gambar \ref{fig:pgfplots_bars} membandingkan skor \textit{Baseline} 
+dengan skor terbaik yang dicapai oleh variasi 
+\textit{prompt} untuk masing-masing model.
+
+\begin{figure}[H]
+  \centering
+  % --- BERTScore (positif: label di atas batang) ---
+  \begin{subfigure}{0.9\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        ybar,
+        bar width=18pt,
+        width=\textwidth,
+        height=5cm,
+        symbolic x coords={8B Model,70B Model},
+        xtick=data,
+        ymin=0.65,ymax=0.68,
+        ylabel={BERTScore (F1)},
+        title={Perbandingan Kualitas Semantik (BERTScore)},
+        nodes near coords,
+        every node near coord/.append style={
+          font=\scriptsize,
+          anchor=south,   % label di atas batang
+          yshift=2pt,     % geser sedikit ke atas
+          inner sep=1pt
+        },
+        nodes near coords style={
+          /pgf/number format/fixed,
+          /pgf/number format/precision=4
+        },
+        enlarge x limits=0.4,
+        legend style={at={(0.5,-0.25)},anchor=north,legend columns=2}
+      ]
+        \addplot+[fill=blue!60] coordinates {(8B Model,0.6608) (70B Model,0.6687)};
+        \addplot+[fill=orange!80] coordinates {(8B Model,0.6663) (70B Model,0.6710)};
+        \legend{Baseline, Best Variant (ReAct+LA / Lis Materi)}
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}
+
+  \vspace{6pt}
+
+  % --- BARTScore (negatif: gunakan anchor=north dan yshift negatif) ---
+  \begin{subfigure}{0.9\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        ybar,
+        bar width=18pt,
+        width=\textwidth,
+        height=5cm,
+        symbolic x coords={8B Model,70B Model},
+        xtick=data,
+        ymin=-11.9,ymax=-11.3,
+        ylabel={BARTScore},
+        title={Perbandingan Kualitas Semantik (BARTScore)},
+        nodes near coords,
+        every node near coord/.append style={
+          font=\scriptsize,
+          anchor=north,  % untuk batang negatif, anchor ke utara (agar label "di atas" batang)
+          yshift=-2pt,   % geser sedikit ke atas relatif ke batang negatif
+          inner sep=1pt
+        },
+        nodes near coords style={
+          /pgf/number format/fixed,
+          /pgf/number format/precision=4
+        },
+        enlarge x limits=0.4,
+        legend style={at={(0.5,-0.25)},anchor=north,legend columns=2}
+      ]
+        \addplot+[fill=blue!60] coordinates {(8B Model,-11.7282) (70B Model,-11.6905)};
+        \addplot+[fill=orange!80] coordinates {(8B Model,-11.4073) (70B Model,-11.6125)};
+        \legend{Baseline, Best Variant (ReAct+LA / Lis Materi)}
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}
+
+  \vspace{6pt}
+
+  % --- LLM-as-a-Judge (positif: label di atas batang) ---
+  \begin{subfigure}{0.9\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        ybar,
+        bar width=18pt,
+        width=\textwidth,
+        height=5cm,
+        symbolic x coords={8B Model,70B Model},
+        xtick=data,
+        ymin=0.5,ymax=0.8,
+        ylabel={LLM-as-a-Judge (F1)},
+        title={Perbandingan Kualitas Relevansi (LLM-as-a-Judge)},
+        nodes near coords,
+        every node near coord/.append style={
+          font=\scriptsize,
+          anchor=south,   % label di atas batang
+          yshift=2pt,     % geser sedikit ke atas
+          inner sep=1pt
+        },
+        nodes near coords style={
+          /pgf/number format/fixed,
+          /pgf/number format/precision=4
+        },
+        enlarge x limits=0.4,
+        legend style={at={(0.5,-0.25)},anchor=north,legend columns=2}
+      ]
+        \addplot+[fill=blue!60] coordinates {(8B Model,0.5371) (70B Model,0.7271)};
+        \addplot+[fill=orange!80] coordinates {(8B Model,0.6121) (70B Model,0.7571)};
+        \legend{Baseline, Best Variant (ReAct+LA / Lis Materi)}
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}
+
+  \caption{Perbandingan Kinerja Model 8B vs 70B pada metrik evaluasi berbeda.}
+  \label{fig:pgfplots_bars}
+\end{figure}
+
+Perbandingan kinerja antara model 8B dan 70B 
+pada ketiga metrik evaluasi (BERTScore, 
+BARTScore, dan \textit{LLM-as-a-Judge}) dapat dilihat 
+pada gambar berikut. Gambar \ref{fig:pgfplots_bars} 
+ini membandingkan 
+skor F1 dari variasi \textit{Baseline} dengan 
+skor F1 dari variasi \textit{prompt} terbaik 
+untuk setiap model.
+
+Pada metrik BERTScore, model 70B \textit{Baseline} 
+(0.6687) sudah lebih tinggi daripada skor terbaik 
+model 8B (0.6663). Model 70B hanya mengalami sedikit 
+peningkatan ke 0.6710 dengan \textit{Lis Materi}. 
+Sebaliknya, model 8B menunjukkan peningkatan yang 
+lebih besar dari \textit{Baseline} (0.6608) ke \textit{ReAct + LA} 
+(0.6663).
+
+Pada metrik BARTScore, model 8B menunjukkan peningkatan 
+paling substansial, bergerak dari -11.7282 
+(\textit{Baseline}) ke -11.4073 (\textit{ReAct + LA}), 
+sebuah peningkatan yang signifikan. Model 70B juga 
+meningkat, namun dengan margin yang lebih kecil, dari 
+-11.6905 (\textit{Baseline}) ke -11.6125 (\textit{Lis Materi}).
+
+Pada metrik \textit{LLM-as-a-Judge}, kedua model menunjukkan 
+peningkatan. Model 8B meningkat dari 0.5371 
+(\textit{Baseline}) ke 0.6121 (\textit{ReAct + LA}). 
+Model 70B, meskipun sudah memiliki \textit{Baseline} 
+yang sangat tinggi (0.7271), masih dapat meningkat ke 
+0.7571 dengan \textit{Lis Materi}.
+
+Temuan kuantitatif ini, khususnya perbedaan performa 
+yang signifikan pada metrik \textit{LLM-as-a-Judge}, 
+dapat dijelaskan lebih lanjut melalui analisis 
+kualitatif terhadap luaran aktual dari kedua 
+model dibandingkan dengan \textit{ground-truth}. 
+Analisis kualitatif menunjukkan bahwa Llama 70B 
+secara jelas lebih unggul daripada Llama 8B. Alasan 
+utamanya adalah Llama 70B lebih berhasil menangkap 
+\textit{niat pedagogis} dari \textit{Ground-truth}, 
+sementara Llama 8B cenderung gagal dalam eksekusi dan 
+hanya melaporkan data secara harfiah.
+Perbedaan mendalam ini dapat diuraikan menjadi tiga poin utama:
+
+\begin{enumerate} 
+    \item \textbf{Kualitas Feedback: Preskriptif (70B) vs. Deskriptif (8B)}
+    Perbedaan paling signifikan terletak pada \textit{apa}
+yang dilakukan oleh \textit{feedback} tersebut.
+\begin{itemize}
+    \item \textbf{\textit{Ground-truth}:} \textit{Feedback} bersifat
+    preskriptif dan metakognitif. Ia tidak hanya melaporkan
+    masalah, tetapi memberikan strategi belajar yang konkret
+    dan dapat ditindaklanjuti.
+    \begin{quote}
+    Contoh: "Fokus menuntaskan satu kartu sampai 'Done'...",
+    "Hindari pindah kolom sebelum item inti selesai."
+    \end{quote}
+    
+    \item \textbf{Llama 3.3 70B (Baik):} Model ini \textit{mencoba}
+    menjadi preskriptif. Ia menganalisis data dan memberikan
+    saran langkah berikutnya yang spesifik.
+    \begin{quote}
+    Contoh: "Pertimbangkan untuk menyelesaikan checklist
+    yang tersisa...", "Untuk memperbaiki ini, Anda perlu
+    memfokuskan diri pada..."
+    \end{quote}
+    
+    \item \textbf{Llama 3.1 8B (Kurang):} Model ini hampir
+    seluruhnya bersifat deskriptif. Ia hanya melaporkan
+    data yang dilihatnya dan kemudian mengajukan
+    pertanyaan generik, tanpa memberikan solusi atau strategi.
+    \begin{quote}
+    Contoh: "Saya melihat bahwa Anda memiliki satu kartu
+    di Planning...", "Saya ingin tahu apa yang menyebabkan
+    Anda terhambat..."
+    \end{quote}
+\end{itemize}
+Kesimpulannya, Llama 3.3 70B bertindak sebagai pembimbing
+(sesuai \textit{ground-truth}), sedangkan Llama 3.1 8B
+hanya bertindak sebagai pelapor data.
+
+\item \textbf{Pemisahan Fungsi: Apresiasi (70B) vs. Kritik (8B)}
+
+Terdapat kegagalan pada Llama 3.1 8B yang berhasil
+diatasi oleh Llama 3.3 70B, yang juga sejalan dengan kritik
+ahli pada Subbab \ref{subsection:analisis_kualitatif_terbuka}.
+\begin{itemize}
+    \item \textbf{\textit{Ground-truth} (Target):} Apresiasinya
+    bernilai murni, singkat, dan positif. Tujuannya hanya
+    untuk validasi emosional.
+    \begin{quote}
+    Contoh: "Good job, tinggal dipertahankan.",
+    "Keberanian memulai adalah langkah penting."
+    \end{quote}
+    
+    \item \textbf{Llama 3.3 70B (Baik):} Model ini berhasil
+    menjaga apresiasi tetap murni. Responnya fokus pada
+    validasi usaha dan tidak mencampurnya dengan kritik.
+    \begin{quote}
+    Contoh: "Anda telah mengambil langkah awal yang baik...",
+    "Ini adalah langkah yang sangat baik dan patut diapresiasi."
+    \end{quote}
+    
+    \item \textbf{Llama 3.1 8B (Gagal):} Sementara model ini mengalami
+    "kontaminasi respon". Ia tidak bisa memberikan apresiasi
+    murni dan hampir selalu mencampurnya dengan \textit{feedback}
+    korektif, yang ditandai dengan kata "tetapi".
+    \begin{quote}
+    Contoh: "Saya mengapresiasi usaha Anda..., \textbf{tetapi}
+    saya ingin Anda terus maju...", "Saya mengapresiasi
+    usaha Anda..., \textbf{tetapi} masih ada banyak
+    yang belum diselesaikan."
+    \end{quote}
+\end{itemize}
+Kesimpulannya, Llama 70B memahami bahwa \textit{apresiasi}
+memiliki fungsi afektif yang terpisah, sementara Llama 8B
+gagal membedakan fungsi ini.
+
+\item \textbf{Variasi Linguistik dan Kepatuhan Persona}
+
+Ukuran model yang lebih besar secara langsung
+berdampak pada kekayaan linguistik.
+\begin{itemize}
+    \item \textbf{\textit{Ground-truth} :} Memiliki variasi
+    yang tinggi. Kata-kata motivasinya beragam: "Bangun
+    momentum...", "Jaga ritme...", "Tetapkan target kecil...".
+    
+    \item \textbf{Llama 3.3 70B (Baik):} Menunjukkan variasi
+    yang jauh lebih baik. Respon \textit{motivasi}-nya
+    lebih kontekstual dan tidak terlalu formulaik.
+    \begin{quote}
+    Contoh: "Sekarang, cobalah untuk meningkatkan
+    kompetensi Anda...", "Apa yang Anda pikirkan tentang
+    memulai dengan menyelesaikan satu checklist lagi...?"
+    \end{quote}
+    
+    \item \textbf{Llama 3.1 8B (Kurang):} Sangat monoton dan
+    repetitif. Model ini terjebak pada beberapa frasa
+    formulaik, terutama pada \textit{motivasi}.
+    \begin{quote}
+    Contoh: "Saya percaya bahwa Anda memiliki kemampuan
+    untuk..." dan "Anda memiliki kemampuan untuk..."
+    diulang di hampir setiap respon (temuan ini juga
+    dikonfirmasi oleh ahli pada 4.4.2).
+    \end{quote}
+\end{itemize}
+Kesimpulannya, ukuran model 70B yang lebih besar
+memungkinkannya memiliki variasi linguistik yang
+lebih kaya, membuatnya terdengar lebih natural
+dan tidak robotik.
+\end{enumerate}
+
+\subsection{Interpretasi Tren dan Kesimpulan} 
+Setelah dilakukannya analisis komparatif antara model 8B dan 70B,
+dapat disimpulkan beberapa hal terkait pengaruh ukuran model
+terhadap kualitas umpan balik pedagogis yang dihasilkan.
+% Analisis komparatif ini menghasilkan dua temuan utama:
+
+\begin{enumerate} 
+    \item \textbf{Kapasitas Dasar Unggul pada Model Besar}: 
+    Model 70B memiliki kapasitas dasar yang jauh lebih tinggi, 
+    terutama dalam hal relevansi (\textit{LLM-as-a-Judge}). 
+    Skor \textit{Baseline}-nya bahkan melampaui skor 
+    terbaik yang bisa dicapai model 8B dengan konteks 
+    paling kompleks sekalipun. 
+    \item \textbf{Responsivitas Konteks Berbeda}: Model 
+    8B (kecil) menunjukkan \textbf{responsivitas yang lebih tinggi} 
+    terhadap \textit{context-engineering} yang kompleks pada 
+    pengukuran BERTScore, BARTScore, dan \textit{LLM-as-a-Judge}. 
+    Peningkatan performa terbesar pada model 8B terjadi 
+    pada variasi "ReAct + LA", seperti yang terlihat jelas 
+    pada peningkatan skor BARTScore. Hal ini mengindikasikan 
+    bahwa model kecil sangat bergantung pada \textit{prompt} 
+    yang terstruktur dan kaya konteks untuk mengkompensasi 
+    keterbatasan kapasitas internalnya. Hal ini juga didukung
+    oleh literatur \cite{Tang2025FewShot, pawlik2025choice} yang 
+    menyatakan bahwa model
+    kecil cenderung lebih sensitif terhadap jumlah teknik 
+    \textit{prompt engineering} yang digunakan dibandingkan model besar.
+
+    \item \textbf{Efisiensi Konteks pada Model Besar}: 
+    Sebaliknya, LLM 70B (besar) \textbf{tidak terlalu diuntungkan} 
+    oleh konteks yang kompleks. Performa terbaiknya justru dicapai 
+    dengan konteks yang lebih sederhana ("Lis Materi"). Penambahan 
+    konteks "ReAct + LA" yang kompleks bahkan cenderung menurunkan 
+    performanya (misalnya pada BERTScore dan \textit{LLM-as-a-Judge}) 
+    dibandingkan dengan "Lis Materi". Hal ini juga didukung oleh literatur
+    \cite{Tang2025FewShot, pawlik2025choice} di mana model 
+    besar cenderung kurang sensitif 
+    terhadap penambahan jumlah teknik \textit{prompt engineering} yang
+    digunakan dibandingkan model kecil. Namun, perlu dicatat,
+    pada literatur \cite{Tang2025FewShot}, model dengan ukuran 70B
+    tidak disebutkan secara eksplisit, sehingga perlu penelitian lebih lanjut
+    untuk mengonfirmasi temuan ini pada model Llama 3.3 70B.
+    Penulis menduga bahwa dalam eksperimen penelitian ini, Ketika
+    \textit{context-engineering} menjadi terlalu kompleks membuat
+    model besar performanya "dipaksa" meniru luaran dari model Llama 3.1 8B,
+    alih-alih mendekati \textit{ground-truth}. Terbukti dengan
+    contoh luaran yang dihasilkan pada variasi "ReAct + LA" oleh
+    Llama 3.3 70B yang cenderung meniru gaya bahasa
+    Llama 3.1 8B yang deskriptif dan kurang preskriptif.
+    Contoh luaran ini adalah seperti ini.
+    \begin{itemize}
+        \item \textbf{Llama 3.3 70B (ReAct + LA):}
+        \begin{quote}
+            "Anda memiliki 1 kartu di fase Planning...", 
+            "rasio selesai masih 0\%. Perlu diperhatikan juga bahwa ada alert REFLECTION\_DEBT...", 
+            "Ini menunjukkan bahwa proses belajar Anda sedang terhambat."
+        \end{quote}
+        \item \textbf{Llama 3.1 8B (ReAct + LA):}
+        \begin{quote}
+            "Saya melihat bahwa Anda 
+            memiliki satu kartu di Planning...", 
+            "Checklist selesai hanya 33,33\%...", 
+            "Saya ingin tahu apa yang menyebabkan Anda terhambat..."
+        \end{quote}
+    \end{itemize}
+    Luaran Llama 3.3 70B di atas menunjukkan gaya bahasa
+    yang sangat mirip dengan Llama 3.1 8B,
+    yang bersifat deskriptif dan kurang memberikan
+    solusi konkret, berbeda dengan \textit{ground-truth} yang
+    bersifat preskriptif. Hal ini mengindikasikan bahwa adanya
+    kemungkinan penambahan konteks yang 
+    terlalu kompleks pada model besar
+    justru memaksa model untuk meniru gaya bahasa
+    model kecil, sehingga menurunkan kualitas umpan balik
+    yang dihasilkannya.
+    
+\end{enumerate}
+
+Kesimpulannya, pengaruh ukuran model bersifat dua arah. 
+Model besar (70B) memberikan kualitas dasar yang lebih 
+baik, namun model kecil (8B) memperoleh manfaat yang jauh 
+lebih besar dari strategi \textit{context-engineering} yang 
+canggih. Hal ini juga menjelaskan keputusan yang diambil 
+pada RQ 1 di mana model 70B tidak dianalisis lebih lanjut karena 
+penambahan konteks kompleks justru menurunkan kinerjanya, 
+sehingga hasil tersebut yang perlu diinvestigasi 
+terpisah dipenelitian berikutnya. Sebaliknya, 
+model 8B dengan "ReAct + LA" dipilih karena menunjukkan pola 
+yang logis (peningkatan performa sejalan dengan penambahan 
+konteks) dan menawarkan efisiensi komputasi yang lebih 
+praktis.
+
+% Tapi kenapa untuk model yang 8B semakin diberikan tugas teknik context engineering yang kompleks, semakin bagus nilai BERTScore dan BARTScore nya? Tidak seperti 70B yang berkebalikan
 
 
-The differences in how 8B and 70B large language models (LLMs) respond to complex context engineering can be attributed to several factors:
+% The differences in how 8B and 70B large language models (LLMs) respond to complex context engineering can be attributed to several factors:
 
-Capacity and Efficiency: The 70B model has a larger parameter size, enabling it to naturally capture more intricate patterns and nuances in the language without relying heavily on complex prompts. Conversely, the 8B model, being smaller, might benefit more from detailed prompts, which can provide additional cues and context it might not capture on its own.
+% Capacity and Efficiency: The 70B model has a larger parameter size, enabling it to naturally capture more intricate patterns and nuances in the language without relying heavily on complex prompts. Conversely, the 8B model, being smaller, might benefit more from detailed prompts, which can provide additional cues and context it might not capture on its own.
 
-Focus and Disambiguation: For a smaller model like the 8B, complex prompts can help disambiguate instructions and focus the model's attention on the specific task, potentially boosting its performance. Meanwhile, the 70B model might already excel at handling diverse linguistic structures, making complex prompts less necessary and sometimes even counterproductive if they introduce noise or irrelevant complexity.
+% Focus and Disambiguation: For a smaller model like the 8B, complex prompts can help disambiguate instructions and focus the model's attention on the specific task, potentially boosting its performance. Meanwhile, the 70B model might already excel at handling diverse linguistic structures, making complex prompts less necessary and sometimes even counterproductive if they introduce noise or irrelevant complexity.
 
-Prompt Engineering Benefits: Smaller models often gain more from prompt engineering because it can serve as a guide or scaffold, assisting these models in focusing on specific details that they might not inherently prioritize. In contrast, larger models typically have more inherent capacity and don't need as much external guidance through tailored prompts.
+% Prompt Engineering Benefits: Smaller models often gain more from prompt engineering because it can serve as a guide or scaffold, assisting these models in focusing on specific details that they might not inherently prioritize. In contrast, larger models typically have more inherent capacity and don't need as much external guidance through tailored prompts.
 
-Data Dependency and Specialization: The performance improvements in the 8B model with complex prompts might also be a result of how its training data aligns with the prompt strategy used. Models can have optimizations and learnings that align better with certain styles of prompts, leading to benefits when such prompts are used.
+% Data Dependency and Specialization: The performance improvements in the 8B model with complex prompts might also be a result of how its training data aligns with the prompt strategy used. Models can have optimizations and learnings that align better with certain styles of prompts, leading to benefits when such prompts are used.
 
-Differential Performance across Models: As larger models often require substantial resources and finely tuned prompts may not make as significant a difference in outcome because slight improvements are already achieved through their sheer size, smaller models can exhibit more visible gains when complex prompts are correctly applied, as these guide their more limited capacity toward optimal performance.
+% Differential Performance across Models: As larger models often require substantial resources and finely tuned prompts may not make as significant a difference in outcome because slight improvements are already achieved through their sheer size, smaller models can exhibit more visible gains when complex prompts are correctly applied, as these guide their more limited capacity toward optimal performance.
 
-Thus, while both models may derive some benefit from engineered prompts, the additional complexity can be more salient and beneficial for the 8B model as a support mechanism for its smaller capacity, enhancing its BERTScore and BARTScore significantly compared to the 70B model, which naturally excels with simpler prompts due to its larger inherent capabilities.
+% Thus, while both models may derive some benefit from engineered prompts, the additional complexity can be more salient and beneficial for the 8B model as a support mechanism for its smaller capacity, enhancing its BERTScore and BARTScore significantly compared to the 70B model, which naturally excels with simpler prompts due to its larger inherent capabilities.
 
 \section{Validasi dan Persepsi Ahli Manusia (RQ 2)}
 Untuk menjawab \textit{research question} kedua (\textit{RQ 2}) mengenai 
@@ -606,6 +1018,7 @@ uplifting" (\textit{timestamp} [00:00:01,553]).
 
 
 \subsection{Analisis Kualitatif Terbuka}
+\label{subsection:analisis_kualitatif_terbuka}
 Analisis kualitatif dilakukan terhadap jawaban pakar 
 pada tiga pertanyaan terbuka. Umpan balik ini diuraikan 
 berdasarkan struktur pertanyaan kuesioner untuk 
