@@ -4,16 +4,22 @@ Bab ini menjelaskan metode atau cara yang digunakan dalam penelitian ini untuk
 mencapai maksud dan tujuan seperti yang tertulis dalam Subbab \ref{subsection:tujuan_penelitian} yaitu:
 \begin{enumerate}
 	\item Merancang metode yang sesuai untuk meningkatkan performa LLM dalam memberikan 
-  	umpan balik terhadap proses SRL mahasiswa yang direpresentasikan melalui data papan Kan
-	% \item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
-	% yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
-	% \item Mengevaluasi secara empiris apakah adanya peningkatan kualitas umpan balik 
+  	umpan balik terhadap proses SRL mahasiswa jika dibandingkan dengan ahli manusia.
+	\item Mengevaluasi kualitas umpan balik yang dihasilkan LLM dari berbagai
+  	skema metode yang dirancang terhadap proses SRL mahasiswa baik secara 
+  	kuantitatif maupun kualitatif dengan umpan balik ahli manusia.
+	\item Melihat pengaruh besar ukuran model LLM terhadap kualitas umpan balik yang dihasilkan.
+	% \item Merancang metode yang sesuai untuk meningkatkan performa LLM dalam memberikan 
+  	% umpan balik terhadap proses SRL mahasiswa yang direpresentasikan melalui data papan Kan
+	% % \item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
+	% % yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
+	% % \item Mengevaluasi secara empiris apakah adanya peningkatan kualitas umpan balik 
+	% % LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
+	% % balik ahli manusia.
+	% \item Mengevaluasi apakah adanya peningkatan kualitas umpan balik 
 	% LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
 	% balik ahli manusia.
-	\item Mengevaluasi apakah adanya peningkatan kualitas umpan balik 
-	LLM atas proses SRL mahasiswa baik secara kuantitatif maupun kualitatif dengan umpan 
-	balik ahli manusia.
-	\item Melihat pengaruh besar ukuran LLM terhadap kualitas umpan balik yang dihasilkan.
+	% \item Melihat pengaruh besar ukuran LLM terhadap kualitas umpan balik yang dihasilkan.
 \end{enumerate}
 % [jika diinginkan, kalian dapat menuliskan Kembali tujuan penelitian yang ingin dicapai di sini].
 
@@ -272,8 +278,8 @@ dengan tambahan konteks "Lis Materi", (3)
 \textit{Prompt} yang diperkaya dengan data 
 \textit{learning analytics}, dan (4) \textit{Prompt} 
 yang menggabungkan \textit{learning analytics} dengan 
-mekanisme \textit{ReAct} (\textit{Reasoning} + 
-\textit{Acting}). Mekanisme \textit{ReAct} ini, yang 
+mekanisme ReAct (\textit{Reasoning} + 
+\textit{Acting}). Mekanisme ReAct ini, yang 
 diimplementasikan menggunakan \textit{framework} 
 LangGraph [Gambar \ref{fig:react_la_flow}], dirancang 
 untuk memaksa model melakukan penalaran internal 
@@ -339,7 +345,7 @@ Luaran dari model-model ini pertama-tama melalui
 tahap Uji Kuantitatif. Sejalan dengan metodologi yang telah 
 dijelaskan, tahap ini berfokus pada pengukuran kesamaan semantik 
 dan relevansi Subbab \ref{subsection:tinjauan_evaluasi_kuantitatif} menggunakan tiga metrik utama: 
-Uji BERTScore, BARTScore, dan GPT-4o as a Judge [22, 23, 24].
+Uji BERTScore, BARTScore, dan \textit{LLM-as-a-Judge} [22, 23, 24].
 
 Luaran dari pengujian ini kemudian menjalani analisis 
 hasil Uji Kuantitatif. Berdasarkan analisis ini, model 
@@ -2641,7 +2647,37 @@ untuk evaluasi secara kualitatif pada Tabel \ref{tab:kuesioner_bagian_2}.
 Bagian kedua dari kuesioner ini berisi pertanyaan terbuka
 yang memungkinkan penilai manusia memberikan masukan
 lebih mendalam tentang kualitas umpan balik pedagogis
-yang dihasilkan oleh \textit{Feedback Agent}.
+yang dihasilkan oleh \textit{Feedback Agent}. Masukan
+tersebut bertujuan untuk menilai kualitas respons chatbot 
+pembelajaran, khususnya terkait kejelasan umpan balik, 
+efektivitas dukungan belajar, serta kontribusinya terhadap 
+motivasi dan kemandirian peserta didik. Pertanyaan ini juga 
+bertujuan mengumpulkan masukan langsung dari pakar mengenai 
+aspek yang perlu diperbaiki, sehingga pengembangan chatbot 
+dapat diarahkan berdasarkan kebutuhan pedagogis nyata. Selain itu, 
+bagian penilaian akhir memungkinkan ahli memberikan evaluasi 
+menyeluruh tentang kelayakan chatbot, apakah sudah layak 
+digunakan atau masih memerlukan revisi. Dengan demikian, 
+kuesioner ini berfungsi sebagai instrumen untuk memvalidasi 
+kualitas pedagogis chatbot sekaligus mengidentifikasi area 
+peningkatan yang relevan.
+
+Penilai akan disajikan data umpan balik hasil dari 
+\textit{Feedback Agent} dengan skema 
+\textit{context engineering} terbaik. Data umpan balik
+tersebut dipasangkan dengan data sintetis Kanban
+sehingga penilai dapat menilai kualitas umpan balik
+dengan konteks yang lengkap. Selanjutnya, data sintetis
+yang diberikan terlebih dahulu di \textit{sampling}
+secara acak untuk tiap kategori studi kasus perilaku
+mahasiswa yakni sebanyak 3 data per kategorinya. Hal
+ini dilakukan untuk mengurangi beban kerja penilai manusia. 
+Setelah itu, penilai manusia akan mengisi kuesioner yang
+sudah disediakan berdasarkan data umpan balik
+yang diberikan. Hasil dari kuesioner ini akan dianalisis
+secara deskriptif untuk mendapatkan wawasan
+mengenai kualitas umpan balik pedagogis yang dihasilkan
+yang akan dibahas pada Bab Hasil dan Pembahasan.
 
 
 % Pembuatan variasi \textit{prompt} melibatkan pengembangan berbagai versi \textit{prompt} yang digunakan untuk menghasilkan umpan balik. Dengan menciptakan variasi ini, diharapkan dapat meningkatkan keberagaman dan kedalaman umpan balik yang diberikan kepada siswa, serta mendorong eksplorasi yang lebih luas terhadap materi pembelajaran.

@@ -30,9 +30,10 @@ ini \cite{chitra2022srl, 10.3389/feduc.2024.1418297}.
 Metode tradisional yang paling efektif untuk mengembangkan keterampilan ini adalah umpan balik 
 personal dari ahli manusia. Umpan balik berkualitas tinggi yang berfokus tidak hanya pada 
 jumlah tugas yang diselesaikan, tetapi juga pada proses belajar dan regulasi diri mahasiswa 
-merupakan katalis kuat untuk perbaikan [15, 16]\cite{10.3389/fpsyg.2022.1027266, Bock14032024}. Namun standar emas ini menghadapi krisis 
+merupakan katalis kuat untuk perbaikan [15, 16]\cite{10.3389/fpsyg.2022.1027266, Bock14032024}. 
+Namun "standar emas" ini menghadapi krisis 
 skalabilitas dengan meningkatnya jumlah mahasiswa dan kebutuhan dukungan yang beragam membuat 
-model bimbingan satu-satu sulit diterapkan dalam skala besar. Hal ini diperkuat
+model bimbingan secara personal sulit diterapkan dalam skala besar. Hal ini diperkuat
 dengan studi-studi yang dilakukan dan menunjukkan bahwa tekanan anggaran mendorong ukuran kelas 
 yang semakin besar, sehingga interaksi personal antara dosen dan mahasiswa sangat terbatas \cite{schaffer2017automating, pardo2019using}. 
 Ini menciptakan kebutuhan mendesak akan solusi inovatif berbasis teknologi yang dapat melengkapi keahlian manusia.
@@ -84,7 +85,7 @@ Untuk mendukung proses pengukuran tersebut, skripsi ini memanfaatkan jejak prose
 yang terstruktur. Data pembelajaran mahasiswa yang dipresentasikan ke dalam bentuk
 papan Kanban dipakai sebatas alat operasional untuk menata dan mengekstraksi
 data proses (perpindahan kartu, checklist, waktu pengerjaan) yang dapat dipetakan
-ke fase SRL (perencanaan–monitoring–refleksi) \cite{strickroth2022kanban}. 
+ke fase SRL (perencanaan-\textit{monitoring}-refleksi) \cite{strickroth2022kanban}. 
 Penggunaan papan Kanban
 hanya sebagai salah satu instrumen pengaya data agar evaluasi dan perbaikan kualitas 
 umpan balik LLM bisa berjalan lebih terarah. Pada penelitian ini,
@@ -230,23 +231,20 @@ menargetkan tiga fungsi pedagogis: \textit{feedback},
 dalam penelitian ini adalah 
 sebagai berikut:
 \begin{enumerate}
-  \item Terdapat kebutuhan untuk mengembangkan
-  suatu metode yang efektif dalam meningkatkan performa LLM 
-  agar menghasilkan umpan balik yang sesuai dengan
-  ketiga fungsi pedagogis tersebut.
-  % \item Belum adanya strategi rekayasa konteks 
-  % (\textit{context engineering}) yang terstruktur dan 
-  % teruji, termasuk pemanfaatan data 
-  % \textit{learning analytics} yang digunakan 
-  % untuk meningkatkan performa 
-  % LLM dalam menghasilkan umpan balik yang efektif pada tiga 
-  % fungsi pedagogis: \textit{feedback}, \textit{motivation}, 
-  % dan \textit{appreciation}.
-  \item Belum diketahui sejauh mana kualitas umpan balik 
-  yang dihasilkan LLM terhadap proses SRL mahasiswa yang 
-  direpresentasikan melalui data papan Kanban dapat mendekati 
-  atau setara dengan kualitas umpan balik ahli manusia, 
-  baik secara kuantitatif maupun kualitatif.
+  \item Belum layaknya kualitas umpan balik LLM terhadap proses 
+  SRL mahasiswa yang direpresentasikan melalui data papan Kanban
+  jika dibandingkan dengan umpan balik ahli manusia.
+
+  % \item Belum diketahui sejauh mana kualitas umpan balik 
+  % yang dihasilkan LLM terhadap proses SRL mahasiswa yang 
+  % direpresentasikan melalui data papan Kanban dapat mendekati 
+  % atau setara dengan kualitas umpan balik ahli manusia, 
+  % baik secara kuantitatif maupun kualitatif.
+  \item Butuhnya metode evaluasi yang melibatkan acuan ahli manusia
+  sebagai \textit{ground truth} dan penilaian kualitas yang menilai 
+  dimensi-dimensi pedagogis relevan untuk mengukur
+  kualitas umpan balik LLM terhadap proses SRL mahasiswa.
+
   \item Belum jelas pengaruh ukuran model LLM terhadap 
   kualitas umpan balik yang dihasilkan di mana semakin
   besar ukuran model LLM, semakin mahal biayanya. 
@@ -326,7 +324,7 @@ sebagai berikut:
 Tujuan penelitian ini adalah sebagai berikut:
 \begin{enumerate}
   \item Merancang metode yang sesuai untuk meningkatkan performa LLM dalam memberikan 
-  umpan balik terhadap proses SRL mahasiswa yang direpresentasikan melalui data papan Kan
+  umpan balik terhadap proses SRL mahasiswa jika dibandingkan dengan ahli manusia.
 	% \item Merancang skema \textit{prompt} serta memberikan metode \textit{learning analytics} 
 	% yang efektif untuk meningkatkan kualitas umpan balik LLM agar mendekati ahli manusia.
   \item Mengevaluasi kualitas umpan balik yang dihasilkan LLM dari berbagai
