@@ -330,7 +330,7 @@ Berikut adalah diagram alur metode evaluasinya.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{contents/chapter-3/Flowchart-Alur-Evaluasi-Kualitas-Umpan-Balik-LLM.png}
-  \caption[Contoh gambar]{Diagram Alir Metode Evaluasi.}
+  \caption{Diagram Alir Metode Evaluasi.}
   \label{Fig:diagram-alur-evaluasi}
 \end{figure}
 \clearpage
@@ -390,7 +390,7 @@ Gambar \ref{Fig:flowchart-alur-penelitian}.
 \begin{figure}[H]
   \centering
   \includegraphics[height=24cm]{contents/chapter-3/Flowchart-Alur-Tugas-Akhir.png}
-  \caption[Contoh gambar]{Flowchart Alur Penelitian Tugas Akhir.}
+  \caption{Flowchart Alur Penelitian Tugas Akhir.}
   \label{Fig:flowchart-alur-penelitian}
 \end{figure}
 
@@ -453,7 +453,7 @@ platform pembelajaran tersebut yang ditampilkan pada Gambar \ref{Fig:gamatutor_1
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{contents/chapter-3/gamatutor_1.png}
-  \caption[Contoh gambar]{Tampilan Utama Platform Gamatutor.}
+  \caption{Tampilan Utama Platform Gamatutor.}
   \label{Fig:gamatutor_1}
 \end{figure}
 
@@ -481,7 +481,7 @@ dari informasinya dapat dilihat pada Gambar \ref{Fig:gamatutor_2}
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{contents/chapter-3/gamatutor_2.png}
-  \caption[Contoh gambar]{Tampilan Informasi Tiap Kartu Gamatutor.}
+  \caption{Tampilan Informasi Tiap Kartu Gamatutor.}
   \label{Fig:gamatutor_2}
 \end{figure}
 \clearpage
@@ -511,7 +511,7 @@ Berikut adalah skema penyimpanan data kartu Kanban dalam MongoDB.
 \begin{figure}[H]
   \centering
   \includegraphics[height=18cm]{contents/chapter-3/skema_db_kanban_board.png}
-  \caption[Contoh gambar]{Skema Penyimpanan Data Kartu Pembelajaran Kanban Mahasiswa.}
+  \caption{Skema Penyimpanan Data Kartu Pembelajaran Kanban Mahasiswa.}
   \label{Fig:schema_kanban_mongodb}
 \end{figure}
 
@@ -557,7 +557,7 @@ dilakukan reduksi data yang ada pada Gambar \ref{Fig:schema_kanban_mongodb_reduk
 \begin{figure}[H]
   \centering
   \includegraphics[height=16cm]{contents/chapter-3/skema_db_kanban_board_reduksi.png}
-  \caption[Contoh gambar]{Skema Penyimpanan Data Kartu Pembelajaran Kanban Mahasiswa Setelah Reduksi}
+  \caption{Skema Penyimpanan Data Kartu Pembelajaran Kanban Mahasiswa Setelah Reduksi}
   \label{Fig:schema_kanban_mongodb_reduksi}
 \end{figure}
 
@@ -1218,7 +1218,7 @@ Hasil akhirnya dapat dilihat pada Gambar \ref{Fig:prompt_pembuatan}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{contents/chapter-3/Prompt_Pembuatan_Data_Sintetis.png}
-  \caption[Contoh gambar]{Diagram Alur Urutan \textit{Prompt} Pembuatan Data Sintetis.}
+  \caption{Diagram Alur Urutan \textit{Prompt} Pembuatan Data Sintetis.}
   \label{Fig:prompt_pembuatan}
 \end{figure}
 
@@ -1461,12 +1461,43 @@ Pemilihan kedua model ini didasarkan pada beberapa pertimbangan.
 Keterbatasan sumber daya finansial dan komputasi yang 
 dimiliki peneliti. Justifikasi berbasis 
 \textit{resource constraints} merupakan pendekatan yang valid 
-dalam penelitian akademis pendidikan. Groq API menyediakan 
-kedua model dengan biaya yang kompetitif 
-($0.05-0.08 per juta token untuk 8B dan $0.59-0.79 per 
-juta token untuk 70B), memungkinkan eksperimen dengan volume 
-yang memadai untuk menghasilkan \textit{sufficient} pedagogical 
-variasi dan \textit{robust} statistical analysis. 
+dalam penelitian akademis pendidikan. Berikut adalah tabel 
+harga dari model-model yang disediakan oleh Groq API yang 
+dapat dilihat pada Tabel \ref{tab:harga_groq_api}.
+
+\begin{table}[H]
+	\centering
+	\caption{Harga dan Spesifikasi Model (Groq API)}
+	\label{tab:harga_groq_api}
+	\scriptsize
+	\begingroup
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.15}
+	\begin{tabularx}{\textwidth}{@{} X c c c c c @{}}
+		\toprule
+		\textbf{Model (Konfigurasi)} & \textbf{TPS} & \textbf{Input (\$/token)} & \textbf{Input (tokens/\$1)} & \textbf{Output (\$/token)} & \textbf{Output (tokens/\$1)} \\
+		\midrule
+		Llama 4 Scout (17Bx16E) 128k & 594 & \$0.11 & 9.09M & \$0.34 & 2.94M \\
+		Llama 4 Maverick (17Bx128E) 128k & 562 & \$0.20 & 5.00M & \$0.60 & 1.60M \\
+		Llama Guard 4 12B 128k & 325 & \$0.20 & 5.00M & \$0.20 & 5.00M \\
+		Qwen3 32B 131k & 662 & \$0.29 & 3.44M & \$0.59 & 1.69M \\
+		Llama 3.3 70B Versatile 128k & 394 & \$0.59 & 1.69M & \$0.79 & 1.27M \\
+		Llama 3.1 8B Instant 128k & 840 & \$0.05 & 20.00M & \$0.08 & 12.50M \\
+		\bottomrule
+	\end{tabularx}
+	\endgroup
+
+	\vspace{4pt}
+	% \scriptsize{Catatan: nilai ``tokens/\$1'' sesuai keterangan sumber layanan; tanda bintang pada sumber asli diabaikan di sini.}
+\end{table}
+
+Groq API menyediakan 
+kedua model dengan biaya
+USD 0.05-0.08 per juta token untuk 8B dan USD 0.59-0.79 per 
+juta token untuk 70B. Harga model Llama 3.3 70B bukanlah yang paling murah.
+Namun, untuk model berukuran besar, Llama 3.3 70B
+merupakan model dengan harga yang relatif paling masuk akal untuk 
+keperluan penelitian ini.
 Lebih lanjut, Steinert et al. \cite{steinert2024harnessing} menekankan pentingnya 
 platform sumber terbuka agar teknologi LLM terjangkau dan 
 inklusif. Hal ini mendukung alasan pemilihan model Llama 
@@ -1479,7 +1510,7 @@ sumber daya. \cite{groq_pricing}
 
 % intinya belum ada yang neliti besar vs kecil
 
-Didapatkan bahwa belum ada studi komparatif yang
+Diketahui juga bahwa sejauh ini belum ada studi komparatif yang
 membandingkan model LLM berukuran kecil (8B)
 dengan model berukuran besar (70B) dalam konteks
 pemberian \textit{feedback} pedagogis yang mendukung

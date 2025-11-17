@@ -162,14 +162,14 @@ semua variasi
 prompt menunjukkan nilai negatif, yang merupakan 
 karakteristik dari metrik ini dalam pengukuran 
 kualitas teks. Model 8B menunjukkan peningkatan 
-performa dari \textit{Baseline} (-11,7282) ke variasi "\textit{ReAct + LA}" 
+performa dari \textit{Baseline} (-11,7282) ke variasi "ReAct + LA" 
 (-11,4073), yang berarti kualitas umpan balik secara 
 keseluruhan membaik dengan penambahan konteks dan metode 
-\textit{reasoning}. Model 70B juga menunjukkan pola serupa, 
-meskipun variasi "Lis Materi" dan "\textit{ReAct + LA}" 
+ReAct. Model 70B juga menunjukkan pola serupa, 
+meskipun variasi "Lis Materi" dan "ReAct+ LA" 
 memiliki nilai yang cukup berdekatan, dengan "Lis Materi" 
 sedikit lebih baik. Untuk model kecil, metrik ini mendukung 
-temuan bahwa penambahan konteks dan metode \textit{reasoning} 
+temuan bahwa penambahan konteks dan metode ReAct 
 memberikan kontribusi positif terhadap kualitas semantik 
 umpan balik. Namun, untuk model besar, semakin diberikan
 konteks yang kompleks tidak selalu menghasilkan
@@ -227,11 +227,11 @@ menunjukkan pola yang konsisten terkait pengaruh variasi
 pedagogis yang dihasilkan. Berdasarkan metrik BERTScore dan 
 BARTScore, model 8B (Llama 3.1 8B) menunjukkan peningkatan 
 kualitas semantik yang paling signifikan ketika metode 
-\textit{reasoning} dan konteks \textit{learning analytics} (\textit{ReAct + LA}) 
+ReAct dan konteks \textit{learning analytics} (ReAct + LA) 
 diterapkan, dengan nilai F1 BERTScore tertinggi sebesar 
 0,6663 dan peningkatan BARTScore dari -11,7282 (\textit{Baseline}) 
 menjadi -11,4073 (ReAct + LA). Hal ini mengindikasikan 
-bahwa penambahan konteks yang kompleks dan metode \textit{reasoning} 
+bahwa penambahan konteks yang kompleks dan metode ReAct 
 mampu memperbaiki akurasi dan kualitas semantik umpan 
 balik pada model yang lebih kecil.
 
@@ -253,7 +253,7 @@ Dari sisi relevansi umpan balik yang diukur menggunakan
 metode \textit{LLM-as-a-Judge}, model 8B kembali menunjukkan 
 performa terbaik dengan variasi ReAct + LA, yang 
 menghasilkan F1-Score tertinggi 0,6121. Ini menegaskan 
-bahwa \textit{reasoning} dan analisis \textit{learning analytics} 
+bahwa ReAct dan analisis \textit{learning analytics} 
 memberikan kontribusi positif dalam meningkatkan relevansi 
 umpan balik pada model berukuran kecil. Sedangkan pada 
 model 70B, variasi Lis Materi mendominasi dengan F1-Score 
@@ -266,7 +266,7 @@ Secara keseluruhan, evaluasi kuantitatif ini mengindikasikan
 bahwa strategi peningkatan umpan balik pedagogis perlu 
 disesuaikan dengan kapasitas model LLM yang digunakan. 
 Model kecil memperoleh manfaat lebih besar dari penambahan 
-konteks yang kompleks dan metode \textit{reasoning}, sedangkan 
+konteks yang kompleks dan metode ReAct, sedangkan 
 model besar lebih efektif dengan konteks yang sederhana 
 dan fokus pada materi pembelajaran. Pendekatan ini 
 penting untuk mengoptimalkan kualitas semantik dan 
@@ -559,11 +559,11 @@ Temuan kuantitatif ini, khususnya perbedaan performa
 yang signifikan pada metrik \textit{LLM-as-a-Judge}, 
 dapat dijelaskan lebih lanjut melalui analisis 
 kualitatif terhadap luaran aktual dari kedua 
-model dibandingkan dengan \textit{ground-truth}. 
+model dibandingkan dengan \textit{ground truth}. 
 Analisis kualitatif menunjukkan bahwa Llama 70B 
 secara jelas lebih unggul daripada Llama 8B. Alasan 
 utamanya adalah Llama 70B lebih berhasil menangkap 
-\textit{niat pedagogis} dari \textit{Ground-truth}, 
+\textit{niat pedagogis} dari \textit{ground truth}, 
 sementara Llama 8B cenderung gagal dalam eksekusi dan 
 hanya melaporkan data secara harfiah.
 Perbedaan mendalam ini dapat diuraikan menjadi tiga poin utama:
@@ -573,7 +573,7 @@ Perbedaan mendalam ini dapat diuraikan menjadi tiga poin utama:
     Perbedaan paling signifikan terletak pada \textit{apa}
 yang dilakukan oleh \textit{feedback} tersebut.
 \begin{itemize}
-    \item \textbf{\textit{Ground-truth}:} \textit{Feedback} bersifat
+    \item \textbf{\textit{Ground truth}:} \textit{Feedback} bersifat
     preskriptif dan metakognitif. Ia tidak hanya melaporkan
     masalah, tetapi memberikan strategi belajar yang konkret
     dan dapat ditindaklanjuti.
@@ -602,7 +602,7 @@ yang dilakukan oleh \textit{feedback} tersebut.
     \end{quote}
 \end{itemize}
 Kesimpulannya, Llama 3.3 70B bertindak sebagai pembimbing
-(sesuai \textit{ground-truth}), sedangkan Llama 3.1 8B
+(sesuai \textit{ground truth}), sedangkan Llama 3.1 8B
 hanya bertindak sebagai pelapor data.
 
 \item \textbf{Pemisahan Fungsi: Apresiasi (70B) vs. Kritik (8B)}
@@ -611,7 +611,7 @@ Terdapat kegagalan pada Llama 3.1 8B yang berhasil
 diatasi oleh Llama 3.3 70B, yang juga sejalan dengan kritik
 ahli pada Subbab \ref{subsection:analisis_kualitatif_terbuka}.
 \begin{itemize}
-    \item \textbf{\textit{Ground-truth} (Target):} Apresiasinya
+    \item \textbf{\textit{Ground truth} (Target):} Apresiasinya
     bernilai murni, singkat, dan positif. Tujuannya hanya
     untuk validasi emosional.
     \begin{quote}
@@ -647,7 +647,7 @@ gagal membedakan fungsi ini.
 Ukuran model yang lebih besar secara langsung
 berdampak pada kekayaan linguistik.
 \begin{itemize}
-    \item \textbf{\textit{Ground-truth} :} Memiliki variasi
+    \item \textbf{\textit{Ground truth} :} Memiliki variasi
     yang tinggi. Kata-kata motivasinya beragam: "Bangun
     momentum...", "Jaga ritme...", "Tetapkan target kecil...".
     
@@ -721,7 +721,7 @@ terhadap kualitas umpan balik pedagogis yang dihasilkan.
     Penulis menduga bahwa dalam eksperimen penelitian ini, Ketika
     \textit{context-engineering} menjadi terlalu kompleks membuat
     model besar performanya "dipaksa" meniru luaran dari model Llama 3.1 8B,
-    alih-alih mendekati \textit{ground-truth}. Terbukti dengan
+    alih-alih mendekati \textit{ground truth}. Terbukti dengan
     contoh luaran yang dihasilkan pada variasi "ReAct + LA" oleh
     Llama 3.3 70B yang cenderung meniru gaya bahasa
     Llama 3.1 8B yang deskriptif dan kurang preskriptif.
@@ -744,7 +744,7 @@ terhadap kualitas umpan balik pedagogis yang dihasilkan.
     Luaran Llama 3.3 70B di atas menunjukkan gaya bahasa
     yang sangat mirip dengan Llama 3.1 8B,
     yang bersifat deskriptif dan kurang memberikan
-    solusi konkret, berbeda dengan \textit{ground-truth} yang
+    solusi konkret, berbeda dengan \textit{ground truth} yang
     bersifat preskriptif. Hal ini mengindikasikan bahwa adanya
     kemungkinan penambahan konteks yang 
     terlalu kompleks pada model besar
@@ -1081,7 +1081,7 @@ tidak memiliki instruksi sekunder untuk memparafrasa data negatif
 menjadi kalimat yang \textit{uplifting}. Hal ini menunjukkan perlunya 
 penambahan \textit{guardrail} dalam \textit{prompt} untuk menghindari 
 penggunaan diksi negatif secara eksplisit di penelitian selanjutnya.
-    \item \textbf{Tumpang Tindih Kategori Respon}: Pakar mengobservasi 
+    \item \textbf{Tumpang Tindih Kategori Respons}: Pakar mengobservasi 
 adanya tumpang tindih (overlap) konseptual, terutama 
 antara feedback dengan motivasi, dan motivasi dengan 
 apresiasi. Ditemukan bahwa bagian motivasi terkadang masih 
@@ -1299,3 +1299,77 @@ mereka.
 
 
 \section{Kelebihan dan Kekurangan Penelitian}
+Kelebihan utama dari penelitian ini adalah sebagai berikut.
+\begin{enumerate}
+    \item Penelitian ini merupakan penelitian 
+    pertama (sejauh pengetahuan penulis) yang 
+    menggabungkan data pembelajaran mahasiswa 
+    berbasis Kanban dengan LLM 
+    untuk menghasilkan umpan balik pedagogis 
+    yang dirancang khusus mendukung proses pembelajaran 
+    mandiri (SRL).
+    \item Penelitian ini juga (sejauh pengetahuan penulis)
+    merupakan penelitian pertama yang meneliti dan mengevaluasi
+    performa LLM dalam konteks pendidikan terutama 
+    yang berfokus pada dukungan SRL mahasiswa di dalam
+    bahasa Indonesia.
+    Hal ini memberikan kontribusi penting terhadap literatur 
+    yang masih sangat minim di bidang ini terutama dalam bahasa Indonesia.
+    \item Penelitian ini berhasil menemukan hasil yang jarang 
+    ditemukan dalam literatur sebelumnya, yaitu bahwa model yang lebih 
+    besar (Llama 3.3 70B) tidak selalu lebih baik dalam menghasilkan 
+    umpan balik pedagogis jika diberikan konteks yang kompleks. 
+    \item Penelitian ini juga berhasil menerapkan metode validasi
+    pakar manusia untuk menilai dan menganalisa 
+    kualitas umpan balik pedagogis
+    yang dihasilkan oleh LLM, sehingga memberikan perspektif
+    kualitatif yang mendalam mengenai efektivitas \textit{Feedback Agent}.
+    \item Penelitian ini berhasil mengembangkan metode 
+    \textit{context-engineering} yang digabungkan dengan metode
+    \textit{learning analytics} dari data pembelajaran Kanban mahasiswa 
+    untuk meningkatkan performa LLM model kecil (Llama 3.3 8B) 
+    dalam menghasilkan umpan balik pedagogis.
+    Hal tersebut merupakan bagian penelitian yang belum terjawab
+    serta belum dikembangkan di literatur sebelumnya 
+    \cite{Strickroth2025LiveTeacherDashboard}.
+    \item Hasil penelitian ini jika diterapkan secara nyata
+    dapat menjadi solusi yang tergolong murah serta 
+    memberikan manfaat signifikan dalam mendukung
+    proses pembelajaran mandiri mahasiswa, terutama dalam
+    konteks pembelajaran jarak jauh (PJJ) yang semakin
+    umum di era digital saat ini.
+\end{enumerate}
+
+Dari semua kelebihan tersebut, terdapat beberapa kekurangan 
+dalam penelitian ini yang perlu dicatat sebagai berikut.
+\begin{enumerate}
+    \item Penelitian ini masih dalam tahap eksplorasi awal
+    dengan jumlah sampel data yang terbatas (40 sample). Perlu
+    dilakukannya penelitian lanjutan dengan jumlah sampel yang lebih besar,
+    penggunaan data hasil pembelajaran mahasiswa yang asli,
+    ahli manusia yang lebih banyak, serta variasi konteks pembelajaran
+    yang lebih luas untuk menguji generalisasi temuan penelitian ini.
+    \item Penelitian ini belum dilakukan uji hipotesis statistik
+    untuk mengukur signifikansi perbedaan performa antara 
+    variasi \textit{prompt} dan hanya melihat tren performa
+    berdasarkan metrik BERTScore dan BARTScore.
+    \item Penelitian ini hanya menguji dua model LLM (Llama 3.3 8B dan 70B)
+    dikarenakan keterbatasan sumber daya dan biaya. 
+    Pengujian pada model lain, termasuk model komersial seperti GPT-5
+    atau GPT-OSS dapat memberikan wawasan yang 
+    lebih komprehensif mengenai performa LLM dalam konteks ini.
+    \item Penelitian ini belum dapat menguji performa
+    \textit{Feedback Agent} dalam konteks penggunaan nyata,
+    sehingga akan diujikan pada penelitian selanjutnya.
+    \item Masih banyak faktor yang dapat diperbaiki dalam
+    penelitian ini seperti substansi \textit{prompt} yang 
+    digunakan, metode \textit{context-engineering}, serta
+    teknik \textit{learning analytics} yang diterapkan.
+    \item Penelitian ini juga belum dapat menjawab secara pasti
+    mengapa model yang besar (70B) tidak selalu lebih baik
+    dibandingkan model yang lebih kecil (8B) dalam konteks
+    penelitian ini. Hal ini memerlukan analisis yang lebih mendalam
+    mengenai perilaku model LLM dalam konteks pembelajaran
+\end{enumerate}
+
+% \section{Hasil }

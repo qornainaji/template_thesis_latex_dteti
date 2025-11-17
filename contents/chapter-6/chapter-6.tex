@@ -1,17 +1,162 @@
 \chapter{Kesimpulan dan Saran}
 
 \section{Kesimpulan}
+Penelitian ini telah dilakukan eksperimen untuk 
+merancang, meningkatkan, dan mengevaluasi kualitas 
+umpan balik pedagogis yang dihasilkan oleh 
+LLM. Fokus utama penelitian adalah pada 
+peningkatan tiga fungsi pedagogis yaitu \textit{feedback}, 
+\textit{motivation}, dan \textit{appreciation} yang untuk 
+mendukung proses SRL mahasiswa. Peningkatan ini dicapai 
+melalui metode \textit{context engineering} yang 
+diperkaya dengan \textit{learning analytics} (LA) 
+yang diekstraksi dari data sintetis pembelajaran Mahasiswa
+berbasis papan Kanban. Eksperimen dilakukan, 
+tanpa melakukan pelatihan ulang (\textit{fine-tuning}) 
+pada model. Empat variasi \textit{prompt} 
+(\textit{Baseline}, Lis Materi, LA, dan ReAct + LA) diujikan 
+pada dua model LLM dengan ukuran berbeda 
+(Llama 3.1 8B dan Llama 3.3 70B). Evaluasi dilakukan 
+secara kuantitatif menggunakan metrik BERTScore, 
+BARTScore, dan \textit{LLM-as-a-Judge} terhadap 
+data umpan balik ahli (\textit{ground truth}) , 
+serta secara kualitatif melalui validasi pakar psikologi pendidikan. 
+Berdasarkan hasil analisis dan pembahasan pada Bab 4, berikut adalah 
+kesimpulan yang ditarik untuk menjawab tiga rumusan 
+masalah penelitian:
+\begin{enumerate} 
+    \item \textbf{(Menjawab RQ 1)} Metode \textit{context engineering} 
+    yang digabungkan dengan \textit{learning analytics} (LA) 
+    terbukti \textbf{berhasil meningkatkan kualitas umpan balik LLM} 
+    dibandingkan dengan \textit{Baseline}, namun efektivitasnya 
+    sangat bergantung pada ukuran model. Pada model kecil (Llama 3.1 8B), 
+    penambahan konteks yang kompleks dan metode ReAct dan 
+    \textit{learning analytics}
+    ("ReAct + LA") secara konsisten memberikan peningkatan performa 
+    tertinggi di ketiga metrik evaluasi kuantitatif. Hal ini 
+    menunjukkan bahwa model kecil sangat diuntungkan oleh panduan 
+    konteks yang kaya dan terstruktur untuk menghasilkan umpan 
+    balik yang lebih relevan dan berkualitas secara semantik.
+    % Selain itu, ditemukan juga bahwa model kecil 
+    % sangat sensitif terhadap variasi konteks,
+    % di mana konteks yang sederhana ("Lis Materi")
+    % memberikan peningkatan yang minimal, sedangkan konteks yang 
+    % lebih terstruktur dan informatif ("LA" dan "ReAct + LA")
+    % memberikan peningkatan yang signifikan. Sebaliknya, pada model besar 
+    % (Llama 3.3 70B), penambahan konteks yang kompleks
+    % tidak selalu menghasilkan peningkatan performa. Justru, konteks yang sederhana 
+    % ("Lis Materi") sudah cukup untuk memaksimalkan performa model besar.
+    \item \textbf{(Menjawab RQ 3)} Ukuran model \textbf{memiliki 
+    pengaruh yang signifikan dan bersifat dua arah} terhadap kualitas 
+    umpan balik. Model besar (Llama 3.3 70B) menunjukkan performa 
+    \textit{Baseline} yang jauh lebih superior dibandingkan model 8B, 
+    terutama dalam hal relevansi (skor F1 \textit{LLM-as-a-Judge} 0,7271 
+    vs 0,5371). Namun, model 70B tidak 
+    diuntungkan oleh konteks yang kompleks di mana performa terbaiknya 
+    justru dicapai dengan konteks sederhana ("Lis Materi"). 
+    Penambahan konteks "ReAct + LA" yang kompleks 
+    bahkan menurunkan kinerjanya, diduga karena \textit{prompt} 
+    tersebut terlalu membatasi dan memaksa model besar meniru gaya 
+    deskriptif model kecil, alih-alih mendekati jawaban dari \textit{ground truth}.
+    % \item \textbf{(Menjawab RQ 2)} Berdasarkan penilaian ahli 
+    % manusia, umpan balik terbaik yang dihasilkan oleh 
+    % Llama 3.1 8B dengan ReAct + LA dinilai 
+    % \textbf{``Dapat digunakan dengan revisi minor''}. 
+    % Pakar melihat potensi \textit{chatbot} sebagai alat 
+    % \textit{scaffolding} yang mudah diakses, dan 
+    % merekomendasikan revisi minor yang fokus pada tiga 
+    % kegagalan eksekusi model, yakni umpan balik yang 
+    % kurang spesifik karena tidak menyebut nama kartu yang 
+    % dimaksud sehingga relevansi menurun, motivasi yang 
+    % terasa monoton dan robotik sehingga keterhubungan 
+    % berkurang, serta apresiasi yang tercampur dengan kritik 
+    % sehingga penguatan positif menjadi kurang efektif.
+    \item \textbf{(Menjawab RQ 2)} Berdasarkan persepsi ahli manusia,
+    umpan balik yang dihasilkan oleh model terbaik (Llama 3.1 8B 
+    dengan "ReAct + LA") dinyatakan \textbf{"Dapat digunakan 
+    dengan revisi minor"}. Pakar mengonfirmasi 
+    potensi \textit{chatbot} sebagai sistem \textit{scaffolding} 
+    yang aksesibel. Revisi minor yang disarankan 
+    berfokus pada penyesuaian tonalitas bahasa, eliminasi diksi negatif,
+    tumpang tindihnya kategori respons, kurangnya spesifitas feedback,
+    dan minimnya variasi respons pada motivasi.
+    % berfokus pada tiga kegagalan eksekusi model, yang ternyata 
+    % telah diinstruksikan dalam \textit{prompt} seperti pada 
+    % \textit{feedback} kurang spesifik karena gagal 
+    % menyebutkan nama kartu yang dibahas sehingga menyebabkan indikator 
+    % F3 (Relevansi) 
+    % dinilai "Netral". Lalu pada \textit{motivation} yang 
+    % terlalu monoton dan robotik yang menyebabkan 
+    % indikator M5 (Keterhubungan) dinilai "Netral".  Terakhir pada 
+    % \textit{Appreciation} yang terkontaminasi oleh kritik 
+    % ("pujian dengan 'tetapi'"), yang membatalkan penguatan positif 
+    % sehingga menyebabkan indikator A2 (Pujian Proporsional) dan 
+    % A5 (Penguatan) dinilai "Netral". 
+    Perlu dicatat bahwa 
+    beberapa instruksi dari \textit{prompt} juga turut andil
+    dalam beberapa revisi minor yang disarankan. Hal ini juga
+    menegaskan pada penilaian kualitas \textit{prompt} yang digunakan
+    berdasarkan penelitian dari \cite{jacobsen2025promises} yaitu 
+    \textit{theory-driven prompt manual},
+    di mana nilai yang baik dari sebuah \textit{prompt}
+    belum tentu menjamin keluaran yang optimal dari model.
+    Faktor-faktor lain seperti ukuran model,
+    kapabilitas bahasa, dan kompleksitas konteks juga berperan 
+    penting dalam menentukan kualitas keluaran. Hal tersebut 
+    perlu diteliti lebih lanjut pada penelitian selanjutnya.
+\end{enumerate}
 
-Kesimpulan dapat diawali dengan apa yang dilakukan dengan tugas akhir ini lalu 
-dilanjutkan dengan poin-poin yang menjawab tujuan penelitian, apakah tujuan sudah tercapai atau belum, tentunya berdasarkan data ataupun hasil dari Bab pembahasan sebelumnya. Dalam beberapa hal, kesimpulan dapat juga berisi tentang temuan/\textit{findings} yang Anda dapatkan setelah melakukan pengamatan dan atau analisis terhadap hasil penelitian. 
+Kesimpulan yang dihasilkan, penelitian ini menyimpulkan bahwa 
+\textit{context engineering} yang diperkaya 
+\textit{learning analytics} adalah strategi yang efektif, 
+praktis, dan efisien secara komputasi untuk meningkatkan 
+umpan balik pedagogis, terutama pada model LLM berukuran kecil.
 
-Kesimpulan menjawab seberapa jauh rumusan masalah tercapai berdasarkan hasil penelitian. Semua rumusan masalah harus disimpulkan berdasarkan data penelitian.
+% Kesimpulan dapat diawali dengan apa yang dilakukan dengan tugas akhir ini lalu 
+% dilanjutkan dengan poin-poin yang menjawab tujuan penelitian, apakah tujuan sudah tercapai atau belum, tentunya berdasarkan data ataupun hasil dari Bab pembahasan sebelumnya. Dalam beberapa hal, kesimpulan dapat juga berisi tentang temuan/\textit{findings} yang Anda dapatkan setelah melakukan pengamatan dan atau analisis terhadap hasil penelitian. 
+
+% Kesimpulan menjawab seberapa jauh rumusan masalah tercapai berdasarkan hasil penelitian. Semua rumusan masalah harus disimpulkan berdasarkan data penelitian.
 
 \section{Saran}
+Dengan melihat berbagai kekurangan yang ada serta
+kemungkinan potensi pengembangan yang bisa dilakukan
+pada penelitian kali ini, penelitian
+selanjutnya dapat dipertimbangkan berbagai pengembangan sebagai berikut.
+\begin{enumerate}
+    \item Meneliti lebih lanjut mengenai pengaruh 
+    \textit{context engineering} yang kompleks pada LLM
+    berukuran besar, untuk memahami batasan dan
+    karakteristiknya dalam merespons konteks yang kaya.
+    \item Melakukan eksperimen dengan variasi
+    \textit{prompt} yang lebih beragam, termasuk
+    variasi yang menyesuaikan tonalitas bahasa
+    sesuai karakteristik demografis pengguna.
+    \item Meneliti lebih lanjut \textit{prompt}
+    yang optimal untuk menghasilkan umpan balik
+    yang berkualitas, tidak hanya berdasarkan 
+    penilaian dari \textit{theory-driven prompt manual}.
+    \item Melakukan uji hipotesis statistik
+    untuk memperkuat validitas temuan kuantitatif, serta
+    mengembangkan arah penelitian yang sekarang berfokus
+    pada eksploratif menjadi hipotesis yang kuat.
+    \item Melakukan evaluasi terhadap LLM yang memiliki
+    performa bahasa Indonesia yang lebih baik, untuk
+    melihat dampaknya terhadap kualitas umpan balik.
+    \item Menggunakan data pembelajaran nyata dari
+    mahasiswa untuk mengekstraksi \textit{learning analytics},
+    serta jumlah ahli yang lebih banyak untuk
+    validasi pakar dan pengambilan \textit{ground truth}, guna 
+    meningkatkan keakuratan dan relevansi hasil penelitian.
+    % \item Membandingkan dengan model komersil terbaru
+    % seperti GPT-5 untuk melihat bagaimana
+    % teknik \textit{context engineering} dan \textit{learning analytics}
+    % berperan pada model dengan kemampuan yang lebih
+    % maju.
+    
+\end{enumerate}
+% Saran berisi hal-hal yang bisa dilanjutkan dari penelitian atau skripsi ini, yang belum dilakukan karena batasan permasalahan. Saran bukan berisi saran kepada sistem atau pengguna, tetapi saran diberikan kepada aspek penelitian yang dapat dikembangkan dan ditambahkan di penelitian atau skripsi selanjutnya.
+% % Apa yang akan di kerjakan di masa depan, 
+% % jangan keluar dari scope penelitian yang sudah dilakukan.
+% % Membuat saran untuk penelitian selanjutnya,
 
-Saran berisi hal-hal yang bisa dilanjutkan dari penelitian atau skripsi ini, yang belum dilakukan karena batasan permasalahan. Saran bukan berisi saran kepada sistem atau pengguna, tetapi saran diberikan kepada aspek penelitian yang dapat dikembangkan dan ditambahkan di penelitian atau skripsi selanjutnya.
-% Apa yang akan di kerjakan di masa depan, 
-% jangan keluar dari scope penelitian yang sudah dilakukan.
-% Membuat saran untuk penelitian selanjutnya,
-
-\noindent \textcolor{red}{Catatan: Mahasiswa perlu melihat sinkronisasi antara rumusan masalah, tujuan, metode, hasil penelitian, dan kesimpulan.}
+% \noindent \textcolor{red}{Catatan: Mahasiswa perlu melihat sinkronisasi antara rumusan masalah, tujuan, metode, hasil penelitian, dan kesimpulan.}
