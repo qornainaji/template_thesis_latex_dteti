@@ -77,43 +77,54 @@ dalam mengatasi keterbatasan-keterbatasan yang masih ada pada penelitian-penelit
 sebelumnya.
 
 \subsection{Peningkatan Umpan Balik LLM dengan \textit{Direct Preference Optimization} (DPO)}
-Para penulis yaitu, Juliette Woodrow, Sanmi Koyejo, dan Chris Piech (Stanford), mengajukan makalah 
+Juliette Woodrow, Sanmi Koyejo, dan Chris Piech (Stanford), mengajukan makalah 
 “\textit{Improving Generative AI Student Feedback: Direct Preference Optimization with Teachers in 
 the Loop}” pada EDM 2025 \cite{woodrow2025dpo_feedback}. Mereka memotret persoalan klasik 
 pada umpan balik berbasis LLM yaitu, walau model mampu menghasilkan 
 teks yang koheren, gaya, ketelitian, dan terminologi, 
 sering kali tidak selaras dengan preferensi pengajar dan konteks spesifik mata kuliah. 
-Penulis menyebutnya “\textit{Feedback Alignment Challenge}” yaitu tantangan menyesuaikan keluaran 
+“\textit{Feedback Alignment Challenge}” disebutkan sebagai tantangan menyesuaikan keluaran 
 AI dengan ketelitian, terminologi, dan gaya respons yang diharapkan tim pengajar, sehingga 
 \textit{feedback} terasa “\textit{course-specific}”, bukan \textit{feedback} generik.
 
-Solusi yang ditawarkan adalah Direct Preference Optimization (DPO) dengan guru/TA di 
-dalam loop. Inti dari DPO adalah selama proses penilaian, 
+Solusi yang ditawarkan adalah \textit{Direct Preference Optimization} (DPO) 
+dengan guru atau \textit{teaching assistant} (TA) di 
+dalam loopnya. Inti dari DPO adalah selama proses penilaian, 
 sistem menampilkan dua kandidat umpan balik AI untuk 
 setiap jawaban mahasiswa, asisten dosen dapat memilih, mengedit, atau 
 menulis ulang. Pilihan ini menjadi pasangan preferensi (menang\-kalah) yang 
 kemudian dipakai untuk \textit{fine-tuning} model menggunakan DPO, 
 tanpa perlu membangun reward model seperti pada 
-\textit{Reinforcement Learning from Human Feedback} (RLHF) 
+\textit{Reinforcement Learning from Human Feedback} (RLHF) pada Subbab \ref{subsection:rlhf} 
 sehingga alurnya lebih sederhana dan langsung menekan 
-probabilitas keluaran yang disukai dibanding yang tidak disukai. Penulis merancang 
-pipa tiga tahap—koleksi preferensi saat grading, pelatihan DPO antar tugas, dan 
-inferensi untuk tugas berikutnya—mewujudkan sistem self-improving yang semakin selaras 
-dengan preferensi pengajar dari satu \textit{assignment} ke \textit{assignment} berikutnya. 
+probabilitas keluaran yang disukai dibanding yang tidak disukai. Dirancang 
+pipa tiga tahap yaitu koleksi preferensi saat grading, pelatihan DPO antar tugas, dan 
+inferensi untuk tugas berikutnya sehingga mewujudkan sistem \textit{self-improving} yang semakin selaras 
+dengan preferensi pengajar dari satu \textit{assignment} ke \textit{assignment} berikutnya.
+Ilustrasi alur DPO dapat dilihat pada Gambar \ref{Fig:fig_dpo}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{contents/chapter-2/fig_dpo.png}
+    \caption{Alur Kerja \textit{Direct Preference Optimization} (DPO) dengan Guru di Dalam Loop
+    \cite{woodrow2025dpo_feedback}}
+    \label{Fig:fig_dpo}
+\end{figure}
+
 % Dalam implementasinya, mereka men-fine-tune Llama 3.1 8B Instruct (Hugging Face DPOTrainer), 
 % satu periode latih $\approx 7$ jam pada 3 $\times$ A6000, rata-rata 1.408 pasangan preferensi 
 % per gelombang; tahap “noticing” (mengumpulkan observasi atas pekerjaan mahasiswa) 
 % mengandalkan rubrik/tes otomatis/LLM lain—di sini GPT-4o—yang kemudian disisipkan 
 % ke prompt terstruktur untuk memicu respons yang lebih tepat sasaran.
 Dalam implementasinya, mereka melakukan \textit{fine-tuning} pada model Llama 3.1 8B Instruct 
-menggunakan Hugging Face DPOTrainer. Proses pelatihan berlangsung sekitar tujuh jam 
+menggunakan HuggingFace DPOTrainer. Proses pelatihan berlangsung sekitar tujuh jam 
 pada tiga GPU A6000 dengan rata-rata 1.408 pasangan preferensi per gelombang. 
 Pada tahap noticing, yaitu pengumpulan observasi atas pekerjaan mahasiswa, mereka 
 memanfaatkan rubrik, tes otomatis, dan juga bantuan model LLM lain (GPT-4o). Hasil 
 dari tahap ini kemudian disusun ke dalam prompt terstruktur agar model dapat 
 menghasilkan respons yang lebih tepat sasaran.
 
-Penulis menguji pendekatan ini pada dua skenario. Pertama, studi terkontrol 
+Pengujian pendekatan ini dilakukan pada dua skenario. Pertama, studi terkontrol 
 buta yakni digunakan 10 evaluator ahli (staf pengajar) membandingkan umpan 
 balik dari beberapa model pada kiriman mahasiswa yang dianonimkan di mana
 mereka tidak mengetahui identitas 
@@ -123,18 +134,18 @@ nyata di dua penyelenggaraan mata kuliah universitas besar
 ($\approx 330$ dan $\approx 289$ mahasiswa; >10 \textit{teaching assistants} 
 (TA) per semester), di mana setiap generasi 
 model dilatih dari preferensi tugas sebelumnya lalu dipakai pada tugas berikutnya. 
-Penulis juga mencatat potensi \textit{confounding variable} dalam deployment 
+Dilakukan juga pencatatan potensi \textit{confounding variable} dalam deployment 
 (mis. setiap soal dinilai oleh satu TA sehingga preferensi pribadi bisa 
 memengaruhi pemilihan \textit{feedback}; variasi soal antar generasi menyulitkan isolasi 
 efek model).
 
-Untuk evaluasi, penulis memadukan penilaian manusia secara buta dan penilaian otomatis 
+Untuk evaluasi, dilakukan pemadanan penilaian manusia secara buta dan penilaian otomatis 
 berbasis \textit{critic model}. Pada sisi otomatis, mereka mengadopsi kerangka Scarlatos 
 et al. \cite{scarlatos2024validity} guna menilai lima dimensi yaitu,
 \textit{Correctness, Not-revealing-the-answer, Suggestions, Positive tone}, serta skor total. 
 Kerangka ini juga harusnya memuat \textit{“diagnosing errors”} namun 
 tidak difokuskan di hasil tabel karena tidak sejalan dengan tugas utama studi ini. 
-Di luar itu, penulis memperkenalkan \textit{critic model} baru dengan tiga dimensi yaitu 
+Di luar itu, dilakukan juga pengenalan \textit{critic model} baru dengan tiga dimensi yaitu 
 \textit{Assertiveness}, \textit{Accuracy}, dan \textit{Helpfulness} yang lebih 
 umum untuk berbagai tipe jawaban (benar/salah). 
 Kedua kerangka ini menggunakan GPT-4o sebagai evaluator otomatis; prompts dan kode 
@@ -188,7 +199,7 @@ balik LLM vs manusia masih jarang, dan belum ada manual/kerangka berbasis teori
 untuk menilai kualitas prompt di konteks pendidikan tinggi, padahal umpan 
 balik berkualitas penting namun sumber daya manusia dan waktu dosen sering terbatas.
 
-Sebagai respons, penulis mengembangkan sebuah manual prompt berbasis teori. 
+Sebagai respons, dilakukan pengembangan sebuah manual prompt berbasis teori. 
 Manual ini merangkum kategori-kategori kualitas prompt (mencakup aspek 
 konteks/peran-audiens-medium, misi, kejernihan dan spesifikasi—misalnya format, 
 kekonkretan, spesifik domain, dan logika instruksi). Berdasarkan manual tersebut, 
@@ -202,7 +213,7 @@ balik manusia.
 Tugas yang dipakai berupa learning goal di topik geometri (mengenali segitiga 
 siku-siku dan teorema Pythagoras), lengkap dengan tiga jenis kesalahan yang 
 umum pada perumusan tujuan pembelajaran. Dari tiga kualitas prompt 
-(rendah-menengah-tinggi), penulis menghasilkan 20 umpan balik per prompt 
+(rendah-menengah-tinggi), dihasilkan 20 umpan balik per prompt 
 (total 60 keluaran LLM) yang kemudian dikodekan oleh tiga coder terlatih. 
 Untuk pembandingan antar penyedia umpan balik, kelompok novice dan expert 
 juga diminta menulis umpan balik dengan menggunakan prompt terbaik (kualitas tinggi), 
@@ -216,7 +227,7 @@ activation (mis. keberadaan pertanyaan pemandu), empathy
 (nada, penggunaan orang pertama), specificity, serta errors (kesalahan isi). 
 Analisis statistik dilakukan untuk membandingkan LLM vs novice vs expert, 
 dengan pengujian post hoc (Bonferroni) pada beberapa subkategori. Dengan 
-pendekatan ini, penulis tidak hanya menilai “siapa yang lebih baik”, tetapi 
+pendekatan ini, dilakukan penilaian tidak hanya pada “siapa yang lebih baik”, tetapi 
 juga pada aspek apa LLM unggul/kurang, sehingga relevan bagi desain intervensi 
 dan prompting ke depan. 
 
@@ -233,9 +244,9 @@ dalam waktu yang sama ketika seorang pakar hanya menyusun satu, sehingga LLM
 berpotensi menjadi alternatif yang skalabel untuk umpan balik berkualitas 
 asalkan perancangan prompt dilakukan dengan tepat.
 
-Penulis menekankan bahwa kualitas prompt harus diajarkan sebagai 
-keterampilan bagi pendidik; manual yang mereka kembangkan dapat dijadikan 
-panduan praktis. Namun, mereka juga mengingatkan keterbatasan—misalnya, 
+Dilakukan penekanan bahwa kualitas prompt harus diajarkan sebagai 
+keterampilan bagi pendidik; manual yang dikembangkan dapat dijadikan 
+panduan praktis. Namun, terdapat keterbatasan yang perlu diperhatikan misalnya, 
 halusinasi masih mungkin terjadi pada prompt tertentu, dan persepsi siswa 
 terhadap umpan balik LLM serta transfer ke konteks/mata kuliah lain perlu 
 diteliti lebih lanjut. Dengan kata lain, LLM berpotensi menjadi alternatif 
@@ -245,6 +256,7 @@ dengan kebutuhan dan konteks kursus.
 
 
 \subsection{\textit{Reinforcement Learning from Human Feedback} (RLHF) untuk Peningkatan Kualitas Respons}
+\label{subsection:rlhf}
 Makalah berjudul “\textit{Training language models to follow instructions 
 with human feedback}” ini ditulis oleh Long Ouyang, Jeff Wu, Xu Jiang, 
 Diogo Almeida, Carroll L. Wainwright, dkk. 
@@ -299,7 +311,7 @@ Secara konsisten, InstructGPT menunjukkan perbaikan yang berarti: model
 lebih kecil; ada peningkatan truthfulness dan penurunan toksisitas, sambil 
 menjaga regresi kinerja pada dataset publik tetap minimal. Ini memperlihatkan 
 bahwa penyelarasan dengan umpan balik manusia lebih menentukan daripada 
-sekadar memperbesar parameter. Penulis tetap mencatat keterbatasan model yang 
+sekadar memperbesar parameter. Selain itu terdapat keterbatasan model yang 
 masih bisa melakukan kesalahan sederhana. Namun, arah ini dinilai menjanjikan 
 untuk menyelaraskan model dengan niat pengguna di banyak aplikasi.
 
@@ -321,7 +333,7 @@ monitoring, dan refleksi—relatif kurang. Kekhawatiran lain adalah ketergantung
 mahasiswa pada jawaban instan LLM, yang berisiko mengurangi upaya kognitif mendalam 
 yang dibutuhkan pemula untuk membangun kemandirian belajar.
 
-Untuk menjawab celah tersebut, penulis merancang CodeRunner Agent, sebuah alat 
+Untuk menjawab celah tersebut, dirancang solusi bernama CodeRunner Agent, sebuah alat 
 LLM yang menempel langsung pada ekosistem Moodle. Ia memadukan \textit{lecture viewer} 
 untuk penyajian materi, plugin CodeRunner guna menjalankan dan menilai kode secara 
 otomatis, serta \textit{xAPI logging} ke Learning Record Store sehingga setiap 
@@ -354,13 +366,13 @@ latihan, waktu, dan tipe bantuan tercatat sebagai xAPI. Dengan demikian
 terbentuk alur \textit{end-to-end} dari log pembelajaran, rekayasa 
 konteks, dan respons LLM yang dapat dianalisis untuk penyelarasan 
 pedagogis dan perbaikan berkelanjutan. Pada tahap ini, makalah berposisi sebagai 
-paper rancangan; penulis merencanakan \textit{pilot} jangka pendek dan 
+paper rancangan dengan merencanakan \textit{pilot} jangka pendek dan 
 eksperimen satu semester lintas beberapa kelas untuk memvalidasi rancangan pada 
 situasi nyata.
 
 Rencana evaluasi memanfaatkan log xAPI untuk melihat perubahan pola percobaan, 
 akurasi, waktu penyelesaian, serta pergeseran strategi SRL ketika dukungan AI 
-diaktifkan. Di luar metrik kuantitatif, penulis juga merencanakan studi kelas 
+diaktifkan. Di luar metrik kuantitatif, dirancang juga studi kelas 
 guna menilai kualitas, relevansi, dan keamanan pedagogis dari umpan balik LLM, 
 termasuk apakah agen berhasil menjaga SRL (memberi \textit{scaffold} dan 
 pertanyaan pemandu) alih-alih langsung membocorkan jawaban. Pendekatan evaluasi 
@@ -406,7 +418,7 @@ komunikasi WebSocket untuk sinkronisasi perubahan secara langsung, dan opsi
 \textit{deployment} via Docker. Mekanisme bergabung untuk siswa menggunakan kode 
 grup agar tetap ramah privasi tanpa akun individual.
 
-Penulis melakukan dua studi evaluasi. Pertama, studi lapangan di kelas TIK tingkat 
+Dilakukan dua studi evaluasi. Pertama, studi lapangan di kelas TIK tingkat 
 8 pada topik \textit{CAD} selama tiga minggu dengan dua sesi per minggu. Desainnya 
 \textit{within-subjects}. Satu minggu pertama menggunakan versi \textit{offline}, 
 lalu beralih ke versi jaringan untuk membandingkan pengalaman secara adil. 
@@ -445,7 +457,7 @@ konteks evaluasi. Solusi ini menjembatani celah antara alat perencanaan
 yang kuat dan kebutuhan pemantauan langsung di kelas. Hasilnya menyiratkan 
 kesiapan untuk dilanjutkan ke tahap produksi dan pengayaan fitur 
 \textit{learning analytics} seperti waktu penyelesaian dan deviasi dari 
-target. Penulis menekankan pentingnya menjaga keseimbangan antara informasi 
+target. Ditekankan juga pentingnya menjaga keseimbangan antara informasi 
 yang cukup dan beban kognitif guru agar \textit{dashboard} tetap dapat 
 dibaca sekejap sekaligus memberi sinyal tindakan yang jelas.
 
@@ -1187,29 +1199,114 @@ sebagai berikut:
 
 
 \section{Dasar Teori}
+\section{Dasar Teori}
+
+Bab ini menyajikan landasan konseptual dan kerangka 
+teoretis yang menopang rancangan sistem, metodologi 
+eksperimen, serta evaluasi penelitian. Pembahasan 
+disusun secara sistematis mulai dari fondasi pedagogis 
+hingga implementasi teknis dan metode pengujian.
+
+Pertama, diuraikan \textbf{Tinjauan Teoretis Psikologi Pendidikan} 
+yang menjadi standar acuan kualitas sistem, mencakup prinsip 
+\textit{Self-Regulated Learning} (SRL) dalam lingkungan berbasis 
+Kanban , teori umpan balik formatif, serta kerangka motivasi 
+\textit{Self-Determination Theory} (SDT)  dan psikologi positif. 
+Kedua, dibahas karakteristik \textbf{Large Language Models (LLM)}
+sebagai mesin utama agen cerdas, dengan fokus pada arsitektur 
+model Llama dan implikasi teoritis perbedaan ukuran parameter 
+(8B vs 70B) terhadap kapasitas penalaran model.
+Ketiga, dijelaskan strategi \textbf{Rekayasa Konteks 
+(\textit{Context Engineering})} dan \textit{Prompt Engineering} 
+sebagai jembatan antara pedagogi dan teknologi, termasuk 
+penerapan mekanisme \textit{ReAct (Reasoning + Acting)} 
+untuk meningkatkan logika internal model. 
+Keempat, dipaparkan pendekatan \textbf{Learning Analytics} (LA) 
+tipe deskriptif yang digunakan untuk mentransformasi data 
+mentah aktivitas Kanban menjadi wawasan kontekstual bagi 
+LLM. Terakhir, bab ini menjelaskan metodologi 
+\textbf{Evaluasi} yang menggabungkan metrik kesamaan 
+semantik (\textit{BERTScore}, \textit{BARTScore}) dan 
+pendekatan \textit{LLM-as-a-Judge} untuk mengukur kualitas 
+respons secara objektif.
 
 % buatkan saya text pengantar dasar teorinya.
-Bagian ini menyajikan landasan konseptual yang menopang rancangan dan metode penelitian. 
-Pertama, diringkas prinsip \textit{Self-Regulated Learning} (SRL)—termasuk peran umpan balik 
-dalam fase perencanaan, pelaksanaan, dan refleksi—serta kaitannya dengan tiga fungsi pedagogis 
-yang dinilai pada penelitian ini: \textit{feedback} kognitif, dukungan motivasional, 
-dan dukungan apresiatif. Kedua, diuraikan konsep \textit{prompt engineering} sebagai 
-praktik perumusan instruksi bagi LLM dan \textit{context engineering} sebagai pengelolaan 
-muatan informasi/konteks yang dipasok ke model; perbedaan keduanya serta implikasinya bagi 
-desain tutor-AI juga dibahas untuk menegaskan peran masing-masing. Ketiga, dipaparkan 
-\textit{learning analytics} (LA) yang mencakup definisi, ruang lingkup, dan jenis data proses (mis. 
-log LMS, urutan aktivitas, \textit{time-on-task}, perpindahan tugas, beban/WIP) beserta 
-cara ekstraksinya. Pada akhirnya, dijelaskan bagaimana sinyal-sinyal LA tersebut direkayasa 
-menjadi konteks \textit{prompt} agar LLM menghasilkan umpan balik yang lebih terstruktur, 
-\textit{actionable}, koheren, dan berempati, sekaligus menekankan kebutuhan evaluasi hibrida 
-(acuan pakar + metrik kuantitatif–kualitatif) untuk memastikan kualitas respons LLM mendekati 
-mutu pakar manusia. 
+% Bagian ini menyajikan landasan konseptual yang menopang rancangan dan metode penelitian. 
+% Pertama, diringkas prinsip \textit{Self-Regulated Learning} (SRL)—termasuk peran umpan balik 
+% dalam fase perencanaan, pelaksanaan, dan refleksi—serta kaitannya dengan tiga fungsi pedagogis 
+% yang dinilai pada penelitian ini: \textit{feedback} kognitif, dukungan motivasional, 
+% dan dukungan apresiatif. Kedua, diuraikan konsep \textit{prompt engineering} sebagai 
+% praktik perumusan instruksi bagi LLM dan \textit{context engineering} sebagai pengelolaan 
+% muatan informasi/konteks yang dipasok ke model; perbedaan keduanya serta implikasinya bagi 
+% desain tutor-AI juga dibahas untuk menegaskan peran masing-masing. Ketiga, dipaparkan 
+% \textit{learning analytics} (LA) yang mencakup definisi, ruang lingkup, dan jenis data proses (mis. 
+% log LMS, urutan aktivitas, \textit{time-on-task}, perpindahan tugas, beban/WIP) beserta 
+% cara ekstraksinya. Pada akhirnya, dijelaskan bagaimana sinyal-sinyal LA tersebut direkayasa 
+% menjadi konteks \textit{prompt} agar LLM menghasilkan umpan balik yang lebih terstruktur, 
+% \textit{actionable}, koheren, dan berempati, sekaligus menekankan kebutuhan evaluasi hibrida 
+% (acuan pakar + metrik kuantitatif–kualitatif) untuk memastikan kualitas respons LLM mendekati 
+% mutu pakar manusia. 
 % Urutan pembahasan pada bagian ini mengikuti alur: 
 % (i) \textit{Prompt Engineering}, 
 % (ii) \textit{Context Engineering}, 
 % (iii) perbedaan keduanya, 
 % dan (iv) \textit{Learning Analytics}, 
 % yang kemudian menjadi pijakan operasional pada bab metode. 
+
+\subsection{Tinjauan Teoritis Psikologi Pendidikan}
+Pada bagian ini dibahas teori-teori psikologi pendidikan yang
+menjadi landasan konseptual bagi penelitian ini, meliputi
+\textit{Self-Regulated Learning} (SRL), teori umpan balik formatif,
+\textit{Self-Determination Theory} (SDT), dan \textit{Positive Psychology}.
+Hal ini penting untuk memahami bagaimana umpan balik yang dihasilkan
+oleh LLM dapat dirancang agar efektif mendukung proses belajar
+mandiri mahasiswa. Selain itu, teori-teori ini memberikan kerangka
+untuk mengevaluasi kualitas umpan balik dari perspektif pedagogis
+yang akan dilakukan oleh ahli manusia pada bab evaluasi.
+
+\subsubsection{\textit{Self-Regulated Learning} (SRL)}
+\textit{Self-Regulated Learning} (SRL) merujuk pada kapasitas mahasiswa untuk secara aktif merencanakan, 
+memantau, dan mengevaluasi proses belajarnya sendiri, melalui siklus 
+perencanaan, pelaksanaan, dan refleksi yang saling terkait [1], [2]. Pada fase perencanaan, 
+mahasiswa menetapkan tujuan serta strategi. Lalu, pada fase pelaksanaan, mereka menerapkan strategi 
+kognitif dan melakukan pemantauan metakognitif (mis. manajemen waktu, monitoring pemahaman). 
+Kemudian, pada fase refleksi, mahasiswa melibatkan penilaian diri terhadap kemajuan dan hasil untuk 
+menyesuaikan strategi berikutnya [1], [2]. Berbekal mekanisme siklikal ini, SRL menggabungkan 
+dimensi kognitif, motivasional, dan perilaku yang bersama-sama menentukan kualitas belajar 
+mandiri di pendidikan tinggi [1], [2].
+
+Di konteks pendidikan tinggi, SRL berperan krusial karena lingkungan belajar menuntut kemandirian,
+terutama pada pembelajaran digital (daring atau campuran) yang memerlukan disiplin diri lebih tinggi
+serta kemampuan mengelola distraksi. Kajian terkini menunjukkan bahwa SRL berkorelasi dengan
+kinerja akademik, keterlibatan, dan ketahanan studi. Sebaliknya, kekurangan SRL di
+pembelajaran daring atau campuran dapat memperlebar kesenjangan capaian yang diperoleh 
+mahasiswa [3]. Dengan demikian,
+pengembangan kompetensi SRL termasuk penetapan tujuan, strategi, monitoring, dan
+refleksi—menjadi prasyarat penting untuk keberhasilan mahasiswa di ekosistem belajar
+modern [2], [3].
+\subsubsection{Teori Umpan Balik}
+\subsubsection{\textit{Self-Determination Theory} (SDT)}
+\subsubsection{\textit{Positive Psychology} (Appreciation)}
+
+\subsection{\textit{Large Language Models} (LLM)}
+\subsubsection{Dasar Teori LLM}
+\subsubsection{Llama}
+
+\subsection{\textit{Prompt Engineering} dan \textit{Context Engineering}}
+\subsubsection{\textit{Prompt Engineering}} 
+% membahas dasar teori prompt engineering dan jenis-jenis prompt engineering
+\subsubsection{\textit{Context Engineering}}
+
+\subsection{\textit{Learning Analytics} (LA) dan Papan Kanban}
+\subsubsection{Papan Kanban dalam Pendidikan}
+\subsubsection{\textit{Learning Analytics} (LA)}
+
+\subsection{Metodologi Evaluasi}
+\subsubsection{Evaluasi Berbasis Semantik}
+% Jelaskan mengapa metrik tradisional (seperti BLEU/ROUGE yang berbasis kecocokan kata per kata) tidak cocok untuk tugas kreatif seperti feedback. BERTScore: Mengukur kesamaan makna menggunakan contextual embedding. BARTScore: Menggunakan probabilitas generasi teks untuk menilai kualitas.
+\subsubsection{\textit{LLM-as-a-Judge}}
+
+% ==========================================================================
 
 \subsection{\textit{Self Regulated Learning} (SRL) dan Peran Umpan Balik}
 % Self-Regulated Learning (SRL) atau pembelajaran regulasi diri adalah konsep di mana peserta didik 

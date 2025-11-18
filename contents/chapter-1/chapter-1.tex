@@ -4,7 +4,7 @@
 
 Dunia pendidikan tinggi saat ini menuntut mahasiswa untuk bisa belajar secara mandiri.
 Namun banyak dari mereka belum siap menghadapi tuntutan tersebut. Hal ini menimbulkan 
-kesenjangan yang serius dalam keterampilan Self-Regulated Learning (SRL), yang dapat 
+kesenjangan yang serius dalam keterampilan \textit{Self-Regulated Learning} (SRL), yang dapat 
 menghambat keberhasilan belajar dan mengganggu pemerataan akses pendidikan \cite{liu2025srl, xiao2019relationships}. 
 Tantangan ini justru diperburuk oleh teknologi digital yang menjadi ciri khas pembelajaran 
 masa kini. Meskipun menawarkan fleksibilitas, teknologi tersebut juga menghadirkan distraksi 
@@ -14,20 +14,33 @@ juga masalah sosial yang berdampak pada prospek karier jangka panjang mahasiswa 
 sistem pendidikan \cite{liu2025srl}.
 % ------------------------------------------------
 
-Untuk mengatasi kesenjangan SRL, Zimmerman mengemukakan kerangka kerja yang mencakup tahap 
-perencanaan (\textit{forethought}), pelaksanaan (\textit{performance}), dan refleksi diri 
+Untuk mengatasi kesenjangan SRL, Zimmerman mengemukakan kerangka kerja 
+yang mencakup tahap 
+perencanaan (\textit{forethought}), pelaksanaan (\textit{performance}), 
+dan refleksi diri 
 (\textit{self-reflection}) 
-di mana SRL merupakan gabungan strategi kognitif, motivasional, dan perilaku \cite{liu2025srl, akdeniz2022srl}. 
-Individu dengan kemampuan regulasi diri yang efektif terbentuk melalui penetapan tujuan, perancangan strategi, 
-pemantauan diri secara aktif, dan evaluasi diri yang bijaksana. Sejumlah besar penelitian 
-mengonfirmasi hubungan kuat antara keterampilan ini dan pencapaian akademik \cite{liu2025srl, xiao2019relationships}. 
-Namun, pengembangannya kerap terhambat oleh hambatan personal, kontekstual, dan sosial—mulai dari 
-manajemen waktu yang buruk dan distraksi digital hingga rendahnya kesadaran metakognitif—sehingga 
-intervensi terstruktur diperlukan untuk membimbing mahasiswa menjalani proses yang kompleks 
-ini \cite{chitra2022srl, 10.3389/feduc.2024.1418297}.
+di mana SRL merupakan gabungan strategi kognitif, motivasional, 
+dan perilaku \cite{liu2025srl, akdeniz2022srl}. 
+Individu dengan kemampuan regulasi diri yang efektif terbentuk 
+melalui penetapan tujuan, perancangan strategi, 
+pemantauan diri secara aktif, dan evaluasi diri yang bijaksana. 
+Sejumlah besar penelitian 
+mengonfirmasi hubungan kuat antara keterampilan ini dan 
+pencapaian akademik \cite{liu2025srl, xiao2019relationships}. 
+Namun, pengembangannya kerap terhambat oleh faktor personal, 
+kontekstual, dan sosial, mulai dari manajemen waktu yang buruk 
+dan distraksi digital hingga rendahnya kesadaran metakognitif.
+Metakognisi sendiri merupakan pengetahuan, kesadaran, dan 
+regulasi atas pemikiran diri sendiri, yang berperan penting 
+dalam membangun kesadaran mahasiswa akan proses belajarnya
+\cite{zimmerman2009selfregulation}.
+Hambatan tersebut tersebut menyebabkan intervensi terstruktur 
+diperlukan untuk membimbing 
+mahasiswa menjalani proses yang kompleks ini 
+\cite{chitra2022srl, 10.3389/feduc.2024.1418297}.
 % ------------------------------------------------
 
-Metode tradisional yang paling efektif untuk mengembangkan keterampilan ini adalah umpan balik 
+Metode tradisional yang paling efektif untuk mengembangkan keterampilan SRL adalah umpan balik 
 personal dari ahli manusia. Umpan balik berkualitas tinggi yang berfokus tidak hanya pada 
 jumlah tugas yang diselesaikan, tetapi juga pada proses belajar dan regulasi diri mahasiswa 
 merupakan katalis kuat untuk perbaikan [15, 16]\cite{10.3389/fpsyg.2022.1027266, Bock14032024}. 
@@ -39,9 +52,9 @@ yang semakin besar, sehingga interaksi personal antara dosen dan mahasiswa sanga
 Ini menciptakan kebutuhan mendesak akan solusi inovatif berbasis teknologi yang dapat melengkapi keahlian manusia.
 % ------------------------------------------------
 
-Salah satu teknologi tersebut adalah penggunaan Large Language Models (LLM). LLM dapat 
+Salah satu teknologi tersebut adalah penggunaan \textit{Large Language Models} (LLM). LLM dapat 
 digunakan sebagai tutor virtual yang mampu memberi umpan balik yang cepat dan konsisten.
-LLM telah digunakan di berbagai penelitian dalam konteks pendidikan dengan bermacam terobosan
+LLM telah digunakan di berbagai penelitian dalam konteks pendidikan dengan bermacam terobosan.
 Temuan terbaru memperlihatkan bahwa ketika LLM digunakan untuk penilaian dan umpan balik, 
 \textit{artificial intelligence} (AI) cenderung murah hati dalam memberikan nilai sehingga nilainya
 lebih tinggi daripada nilai yang diberikan ahli manusia. 
@@ -51,15 +64,14 @@ Umpan balik AI sering terstruktur, tetapi tetap
 memerlukan pengawasan ahli manusia agar relevan secara pedagogis sehingga pendekatan 
 hibrida (penggabungan AI dan ahli manusia) direkomendasikan \cite{Usher2025GenAIAssessments}.
 Pendekatan hibrida direkomendasikan karena dapat menggabungkan kecepatan dan skalabilitas AI dengan
-penguasaan konteks, pemahaman empati dan nuansa pedagogis dari penilaian manusia \cite{Usher2025GenAIAssessments}.
-Anjuran penulis terhadap pendekatan hibrida menegaskan bahwa respons LLM masih membutuhkan pengawasan pakar agar relevan.
+penguasaan konteks, pemahaman empati, dan nuansa pedagogis dari penilaian manusia \cite{Usher2025GenAIAssessments}.
+Rekomendasi tersebut menegaskan bahwa respons LLM masih membutuhkan pengawasan pakar agar relevan.
 Di sisi lain, upaya standarisasi evaluasi tutor-AI menunjukkan bahwa meskipun model terkini seperti GPT-4 
 kuat dalam menjawab pertanyaan, mereka cenderung terlalu 
 cepat memberikan jawaban kepada mahasiswa 
 dan kurang menuntun proses. Fakta ini menunjukkan bahwa LLM belum 
 ideal sebagai tutor dan belum dapat menggantikan 
 ahli manusia dalam penilaian kualitas pedagogis \cite{Maurya2025UnifyingAITutorEvaluation}.
-%-------------------------------------------------
 
 % Oleh karena itu, skripsi ini berfokus pada peningkatan kualitas performa respons 
 % LLM sebagai pemberi umpan balik agar mendekati mutu ahli manusia secara kuantitatif 

@@ -694,7 +694,7 @@ Terdapat sedikit penambahan aturan pada pembuatan \textit{prompt}
 yaitu adanya waktu kapan dibuatnya kartu subtopik tersebut.
 Contoh \textit{prompt} lengkap yang telah diformulasikan untuk 
 agen generator tersebut dapat dilihat secara rinci pada potongan
-snipet pada Tabel \ref{tab:prompt_studi_kasus_generator}.
+snipet pada Gambar \ref{Fig:contoh_prompt}.
 % \ref{Fig:contoh_prompt}.
 
 % \begin{verbatim}
@@ -720,17 +720,21 @@ snipet pada Tabel \ref{tab:prompt_studi_kasus_generator}.
 }
 
 %--- MULAI LINGKUNGAN TABEL ---
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+%   \centering
   
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{\textit{Prompt} untuk Studi Kasus Data Sintetis Mahasiswa}
-  \label{tab:prompt_studi_kasus_generator} % Saya ubah labelnya menjadi "tab:"
+%   % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   \caption{\textit{Prompt} untuk Studi Kasus Data Sintetis Mahasiswa}
+%   \label{tab:prompt_studi_kasus_generator} % Saya ubah labelnya menjadi "tab:"
   
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+%   \begin{minipage}{\textwidth}
     
     % Mulai listing Anda (tanpa caption/label di sini)
+\begin{figure}[H]
+  \centering
+	\caption{Contoh \textit{Prompt} untuk Studi Kasus Data Sintetis Mahasiswa.}
+  \label{Fig:contoh_prompt}
     \begin{lstlisting}
 """
 
@@ -769,12 +773,15 @@ Kategori: Sedikit Malas
 
 """
 \end{lstlisting}
+\end{figure}
+  
+
 %--- Selesai listing ---
 
-  \end{minipage} 
-  %--- Selesai minipage ---
+%   \end{minipage} 
+%   %--- Selesai minipage ---
 
-\end{table}
+% \end{table}
 %--- SELESAI LINGKUNGAN TABEL ---
 \clearpage
 Selanjutnya, untuk memperkecil topik pembelajaran yang akan dibuat pada
@@ -884,20 +891,26 @@ diterjemahkan menjadi bagian dari \textit{prompt} instruksi yang
 diberikan kepada model LLM pembuat data sintetis, guna memastikan 
 setiap \textit{dataset} yang dihasilkan tetap relevan dan fokus pada 
 materi pembelajaran yang telah ditentukan. \textit{Prompt} dari tabel tersebut 
-dapat dilihat pada Tabel \ref{tab:prompt_batasan_sub}.
+dapat dilihat pada Gambar \ref{Fig:prompt_batasan_subtopik}.
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+%   \centering
   
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{\textit{Prompt} untuk Batasan Subtopik Materi Pembelajaran Mahasiswa}
-  \label{tab:prompt_batasan_sub} % Saya ubah labelnya menjadi "tab:"
+%   % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   \caption{\textit{Prompt} untuk Batasan Subtopik Materi Pembelajaran Mahasiswa}
+%   \label{tab:prompt_batasan_sub} % Saya ubah labelnya menjadi "tab:"
   
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+%   \begin{minipage}{\textwidth}
     
     % Mulai listing Anda (tanpa caption/label di sini)
-    \begin{lstlisting}
+% \begin{lstlisting}[label={tab:prompt_batasan_sub}, caption={\textit{Prompt} untuk Batasan Subtopik Materi Pembelajaran Mahasiswa}]
+\begin{figure}[H]
+  \centering
+	\caption{\textit{Prompt} untuk Batasan Subtopik Materi Pembelajaran Mahasiswa.}
+  \label{Fig:prompt_batasan_subtopik}
+\begin{lstlisting}
+
 * Topik 1: Konsep Dasar dan Pilar OOP
 	* Tujuan: Memahami fondasi dari OOP dan 4 pilar utamanya.
 	* Checklist Items:
@@ -929,12 +942,14 @@ dapat dilihat pada Tabel \ref{tab:prompt_batasan_sub}.
 		2. "Mengimplementasikan interaksi antar objek menggunakan interface atau abstract class."
 		3. "Mengembangkan aplikasi kecil dengan arsitektur OOP yang modular."
 \end{lstlisting}
+\end{figure}
+% \clearpage
 %--- Selesai listing ---
 
-  \end{minipage} 
-  %--- Selesai minipage ---
+%   \end{minipage} 
+%   %--- Selesai minipage ---
 
-\end{table}
+% \end{table}
 
 % Aturan skema dan kategori perilaku ini kemudian disusun menjadi 
 % sebuah \textit{role-play prompt} yang komprehensif untuk diumpankan 
@@ -958,19 +973,23 @@ penting untuk mengatur konteks dan ekspektasi, mendorong
 model agar tidak hanya memberikan jawaban umum, tetapi 
 bertindak sebagai pakar domain yang memahami nuansa validasi 
 skema JSON dan logika perilaku. Berikut adalah potongan
-\textit{prompt} dipaparkan pada Tabel \ref{tab:prompt_role_play}.
+\textit{prompt} dipaparkan pada Gambar \ref{Fig:prompt_role_play}.
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-	\centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+% 	\centering
 	
-	% Caption dan Label sekarang milik "table", bukan "lstlisting"
-	\caption{\textit{Role-Play Prompt} pada Pembuatan Data Sintetis}
-	\label{tab:prompt_role_play} % Saya ubah labelnya menjadi "tab:"
+% 	% Caption dan Label sekarang milik "table", bukan "lstlisting"
+% 	\caption{\textit{Role-Play Prompt} pada Pembuatan Data Sintetis}
+% 	\label{tab:prompt_role_play} % Saya ubah labelnya menjadi "tab:"
   
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-	\begin{minipage}{\textwidth}
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+% 	\begin{minipage}{\textwidth}
 		
 		% Mulai listing Anda (tanpa caption/label di sini)
+\begin{figure}[H]
+  \centering
+	\caption{\textit{Role-Play Prompt} pada Pembuatan Data Sintetis.}
+  \label{Fig:prompt_role_play}
 		\begin{lstlisting}
 		"""
 		Anda adalah AI yang ahli dalam pembuatan data sintetis. Tugas Anda adalah menghasilkan serangkaian data papan Kanban dalam format JSON. Setiap objek JSON mewakili satu papan Kanban milik seorang mahasiswa, yang mencerminkan profil perilaku tertentu. Anda akan menghasilkan objek JSON papan Kanban yang berbeda, sesuai dengan aturan spesifik untuk 5 kategori mahasiswa.
@@ -979,13 +998,13 @@ skema JSON dan logika perilaku. Berikut adalah potongan
 		"""
 		\end{lstlisting}
 		%--- Selesai listing ---
+\end{figure}
+% 	\end{minipage} 
+% 	%--- Selesai minipage ---
 
-	\end{minipage} 
-	%--- Selesai minipage ---
+% \end{table}
 
-\end{table}
-
-\textit{Prompt} yang ditunjukkan pada Tabel \ref{tab:prompt_role_play}
+\textit{Prompt} yang ditunjukkan pada Gambar \ref{Fig:prompt_role_play}
 mengatur kerangka kerja dan identitas dari model pembuat Data Sintetis. 
 Instruksi tersebut dimulai dengan penetapan peran yang spesifik sebagai 
 "AI yang ahli dalam pembuatan data sintetis". Penugasan peran 
@@ -1012,7 +1031,7 @@ Ini bertujuan untuk memberi model pemahaman konkret mengenai format dan
 struktur data yang diharapkan. Dalam konteks pembuatan data sintetis,
 contoh luaran JSON yang diberikan ke model LLM adalah struktur objek papan 
 Kanban (\texttt{Board}) dan struktur objek kartu (\texttt{Card}). Dapat dilihat
-pada Tabel \ref{tab:prompt_few_shot} bentuk struktur JSON yang 
+pada Gambar \ref{Fig:prompt_few_shot} bentuk struktur JSON yang 
 diberikan ke model.
 
 \lstset{
@@ -1025,16 +1044,20 @@ diberikan ke model.
     showstringspaces=false
 }
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-	\centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+% 	\centering
 	
-	% Caption dan Label sekarang milik "table", bukan "lstlisting"
-	\caption{\textit{Few-Shot Prompt} pada Pembuatan Data Sintetis}
-	\label{tab:prompt_few_shot} % Saya ubah labelnya menjadi "tab:"
+% 	% Caption dan Label sekarang milik "table", bukan "lstlisting"
+% 	\caption{\textit{Few-Shot Prompt} pada Pembuatan Data Sintetis}
+% 	\label{tab:prompt_few_shot} % Saya ubah labelnya menjadi "tab:"
   
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-	\begin{minipage}{\textwidth}
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+% 	\begin{minipage}{\textwidth}
 		
+\begin{figure}[H]
+  \centering
+	\caption{\textit{Few-Shot Prompt} pada Pembuatan Data Sintetis.}
+  \label{Fig:prompt_few_shot} % Saya ubah labelnya menjadi
 		% Mulai listing Anda (tanpa caption/label di sini)
 		\begin{lstlisting}
 			// Struktur Objek Papan Kanban (Board):
@@ -1092,11 +1115,12 @@ diberikan ke model.
 
 		\end{lstlisting}
 		%--- Selesai listing ---
+\end{figure}
+% 	\end{minipage} 
+% 	%--- Selesai minipage ---
 
-	\end{minipage} 
-	%--- Selesai minipage ---
+% \end{table}
 
-\end{table}
 
 Struktur-struktur \texttt{JSON} memberikan instruksi 
 seperti cetak biru (\textit{blueprint}) yang sangat eksplisit 
@@ -1119,7 +1143,7 @@ Instruksi \textit{Few-shot prompt} juga ditambahkan informasi mengenai
 struktur dari papan Kanban. Informasi ini diberikan agar model dapat 
 mengerti struktur Kanban yang sedang dikerjakan serta dapat memberikan
 penamaan kolom dengan benar. Berikut adalah \textit{prompt} informasi 
-struktur Kanban yang diberikan pada Tabel \ref{}
+struktur Kanban yang diberikan pada Gambar \ref{Fig:prompt_struktur_kanban}
 
 \lstset{
     language=Python,
@@ -1131,16 +1155,20 @@ struktur Kanban yang diberikan pada Tabel \ref{}
     showstringspaces=false
 }
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-	\centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+% 	\centering
 	
-	% Caption dan Label sekarang milik "table", bukan "lstlisting"
-	\caption{\textit{Prompt} Struktur Papan Kanban}
-	\label{tab:prompt_few_shot} % Saya ubah labelnya menjadi "tab:"
+% 	% Caption dan Label sekarang milik "table", bukan "lstlisting"
+% 	\caption{\textit{Prompt} Struktur Papan Kanban}
+% 	\label{tab:prompt_few_shot} % Saya ubah labelnya menjadi "tab:"
   
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-	\begin{minipage}{\textwidth}
-		
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+% 	\begin{minipage}{\textwidth}
+
+\begin{figure}[H]
+  \centering
+	\caption{\textit{Prompt} Struktur Papan Kanban.}
+  \label{Fig:prompt_struktur_kanban} % Saya ubah labelnya
 		% Mulai listing Anda (tanpa caption/label di sini)
 		\begin{lstlisting}
 		Struktur List Kanban (Kolom pada Papan):
@@ -1151,10 +1179,11 @@ struktur Kanban yang diberikan pada Tabel \ref{}
 		\end{lstlisting}
 		%--- Selesai listing ---
 
-	\end{minipage} 
-	%--- Selesai minipage ---
+\end{figure}
+% 	\end{minipage} 
+% 	%--- Selesai minipage ---
 
-\end{table}
+% \end{table}
 
 
 Kemudian, jenis \textit{prompt} yang digunakan adalah 
@@ -1164,18 +1193,22 @@ sebelum menghasilkan luaran akhir. Hal ini
 sangat penting untuk memastikan model secara sadar memeriksa 
 dan menerapkan aturan \textit{prompt }untuk setiap profil perilaku.
 Potongan \textit{prompt} yang menggunakan jenis CoT ada pada
-Tabel \ref{tab:prompt_cot}.
+Gambar \ref{Fig:prompt_cot}.
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+%   \centering
   
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{CoT \textit{Prompt} pada Pembuatan Data Sintetis}
-  \label{tab:prompt_cot} % Saya ubah labelnya menjadi "tab:"
+%   % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   \caption{CoT \textit{Prompt} pada Pembuatan Data Sintetis}
+%   \label{tab:prompt_cot} % Saya ubah labelnya menjadi "tab:"
   
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+%   \begin{minipage}{\textwidth}
     
+\begin{figure}[H]
+  \centering
+	\caption{CoT \textit{Prompt} pada Pembuatan Data Sintetis.}
+  \label{Fig:prompt_cot} % Saya ubah labelnya menjadi
     % Mulai listing Anda (tanpa caption/label di sini)
     \begin{lstlisting}
 """Contoh Logika Penerapan Aturan: Untuk MHS_CUKUP_SK1, Anda bisa membuat 4 kartu. 3 di antaranya harus memiliki column_movements terbaru dengan timestamp misalnya 2025-06-07T16:30:00Z. Kartu-kartu ini bisa jadi pindah dari list1 ke list2 atau list2 ke list3. Kartu ke-4 bisa jadi tidak bergerak dalam 2 jam terakhir. Untuk setiap kartu, jumlah completed: true pada checklistnya adalah 1 atau 2.
@@ -1185,12 +1218,13 @@ Pastikan semua id unik. Untuk created_at kartu, gunakan tanggal dan waktu yang m
 \end{lstlisting}
 %--- Selesai listing ---
 
-  \end{minipage} 
+%   \end{minipage} 
   %--- Selesai minipage ---
 
-\end{table}
+  \end{figure}
+% \end{table}
 
-Tabel \ref{tab:prompt_cot} memberikan "Contoh 
+Gambar \ref{Fig:prompt_cot} memberikan "Contoh 
 Logika Penerapan Aturan" yang menelusuri proses 
 berpikir untuk satu studi kasus spesifik (MHS\_CUKUP\_SK1). 
 Contoh ini menguraikan bagaimana model harus mengalokasikan 
@@ -1361,7 +1395,13 @@ pada ahli manusia untuk diberikan penilaian umpan balik secara netral.
 \subsubsection{Pengambilan Data Umpan Balik Ahli Manusia}
 Data sintetis papan pembelajaran Kanban tersebut setelah 
 ditransformasi ke bentuk tabel, akan diberikan ke ahli manusia
-untuk diberikan penilaian umpan balik nya. Umpan balik yang
+yang berjumlah 3 orang yang memiliki latar belakang sebagai
+dosen di universitas untuk diberikan penilaian umpan baliknya. 
+Ahli manusia tersebut adalah
+WWahyu Nur Hidayat (Dosen IT Universitas Malang), Resti Dian Luthvianti
+(Dosen SV Universitas Sebelas Maret), dan Asa Hari Wibowo 
+(Dosen IT Universitas Halu Oleo).
+Umpan balik yang
 diberikan memiliki tiga jenis, yaitu \textit{feedback}, 
 \textit{motivation}, dan \textit{appreciation}. Untuk
 mempermudah ahli dalam pengisian, data sintetis tersebut
@@ -1520,7 +1560,8 @@ Eksplorasi perbedaan ukuran model adalah penting
 dalam konteks ini karena
 ukuran model LLM akan mempengaruhi sumber daya komputasi, biaya operasional,
 dan kemampuan adaptasi \textit{feedback} yang dihasilkan.
-Penulis ingin menyelidiki bagaimana perbedaan kapasitas
+Dengan begitu, terdapat kebutuhan untuk
+ menyelidiki bagaimana perbedaan kapasitas
 model ini mempengaruhi kualitas \textit{feedback} yang dihasilkan
 dalam mendukung SRL mahasiswa. Hasil penelitian ini dapat menjawab
 research question mengenai pengaruh ukuran model terhadap
@@ -1708,20 +1749,24 @@ Instruksi ini menekankan pentingnya penggunaan nada bicara yang
 ramah, personal, dan mudah didekati, serta konsisten menggunakan sapaan 'Anda'.
 Selain itu, instruksi ini juga menetapkan batasan-batasan penting
 agar \textit{Feedback Agent} tidak menyimpang dari topik pendidikan atau
-tujuan pembelajaran mahasiswa. Tabel \ref{tab:prompt_definisi} menunjukkan
+tujuan pembelajaran mahasiswa. Gambar \ref{Fig:prompt_definisi} menunjukkan
 contoh potongan \textit{prompt} yang digunakan untuk mendefinisikan
 peran dan batasan \textit{Feedback Agent}.
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+%   \centering
   
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{\textit{Prompt} Definisi Peran dan Batasan Agen Penilai}
-  \label{tab:prompt_definisi} % Saya ubah labelnya menjadi "tab:"
+%   % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   \caption{\textit{Prompt} Definisi Peran dan Batasan Agen Penilai}
+%   \label{tab:prompt_definisi} % Saya ubah labelnya menjadi "tab:"
   
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+%   \begin{minipage}{\textwidth}
     
+\begin{figure}[H]
+	  \centering
+	  \caption{Contoh Potongan \textit{Prompt} Definisi Peran dan Batasan Agen Penilai.}
+	  \label{tab:prompt_definisi}
     % Mulai listing Anda (tanpa caption/label di sini)
     \begin{lstlisting}
 		INITIAL_PROMPT = (
@@ -1744,12 +1789,14 @@ peran dan batasan \textit{Feedback Agent}.
 
 		)
 	\end{lstlisting}
+
+\end{figure}
 %--- Selesai listing ---
 
-  \end{minipage} 
-  %--- Selesai minipage ---
+%   \end{minipage} 
+%   %--- Selesai minipage ---
 
-\end{table}
+% \end{table}
 
 % ki
 
@@ -1764,19 +1811,24 @@ berdasarkan aktivitas mereka pada papan Kanban. Rubrik ini mencakup lima kategor
 perilaku belajar, mulai dari "Malas" hingga "Sangat Rajin",
 dengan kriteria spesifik yang mengacu pada jumlah kartu,
 jumlah item checklist yang diselesaikan, dan frekuensi perpindahan
-kolom dalam jangka waktu tertentu. Tabel \ref{tab:prompt_kriteria} menunjukkan
+kolom dalam jangka waktu tertentu. Gambar \ref{Fig:prompt_kriteria} menunjukkan
 contoh potongan \textit{prompt} yang digunakan untuk menyajikan
 logika internal dan rubrik penilaian \textit{Feedback Agent}.
 
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+%   \centering
   
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{\textit{Prompt} Kriteria Mahasiswa}
-  \label{tab:prompt_kriteria} % Saya ubah labelnya menjadi "tab:"
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   \caption{\textit{Prompt} Kriteria Mahasiswa}
+%   \label{tab:prompt_kriteria} % Saya ubah labelnya menjadi "tab:"
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+%   \begin{minipage}{\textwidth}
+
+\begin{figure}[H]
+	  \centering
+	  \caption{Contoh Potongan \textit{Prompt} Kriteria Mahasiswa.}
+	  \label{Fig:prompt_kriteria}
     
     % Mulai listing Anda (tanpa caption/label di sini)
     \begin{lstlisting}
@@ -1806,31 +1858,29 @@ logika internal dan rubrik penilaian \textit{Feedback Agent}.
 
 		)
 	\end{lstlisting}
+\end{figure}
 %--- Selesai listing ---
 
-  \end{minipage} 
-  %--- Selesai minipage ---
-
-\end{table}
 
 Selain itu, bagian ini juga menyajikan logika internal
 yang menghubungkan kolom pada papan Kanban dengan fase
 pembelajaran mahasiswa. Setiap kolom pada papan Kanban
 dikaitkan dengan fase pembelajaran tertentu, yaitu
 Perencanaan, Pemantauan, Pengendalian, dan Refleksi. 
-Tabel \ref{tab:prompt_fase} menunjukkan
+Gambar \ref{Fig:prompt_fase} menunjukkan
 contoh potongan \textit{prompt} yang digunakan untuk menyajikan
 logika internal penghubung kolom dengan fase pembelajaran.
 
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+\begin{figure}[H]
+	  \centering
   \centering
   
   % Caption dan Label sekarang milik "table", bukan "lstlisting"
   \caption{\textit{Prompt} Fase Pembelajaran Mahasiswa}
-  \label{tab:prompt_fase} % Saya ubah labelnya menjadi "tab:"
+  \label{Fig:prompt_fase} % Saya ubah labelnya menjadi "tab:"
   % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   \begin{minipage}{\textwidth}
     
     % Mulai listing Anda (tanpa caption/label di sini)
     \begin{lstlisting}
@@ -1849,11 +1899,12 @@ logika internal penghubung kolom dengan fase pembelajaran.
 		)
 	\end{lstlisting}
 %--- Selesai listing ---
+\end{figure}
 
-  \end{minipage} 
-  %--- Selesai minipage ---
+%   \end{minipage} 
+%   %--- Selesai minipage ---
 
-\end{table}
+% \end{table}
 
 \subsubsection*{Informasi Kontekstual}
 % tolong buatkan setidaknya 5 kalimat yang menjelaskan bagian ini.
@@ -1864,18 +1915,22 @@ yang dapat diambil oleh mahasiswa, termasuk mata kuliah
 dan subtopik yang tersedia. Daftar materi ini
 memberikan konteks tambahan bagi \textit{Feedback Agent}
 untuk memahami ruang lingkup pembelajaran mahasiswa.
-Tabel \ref{tab:prompt_listmateri} menunjukkan
+Gambar \ref{Fig:prompt_listmateri} menunjukkan
 contoh potongan \textit{prompt} yang digunakan untuk menyajikan
 daftar materi pembelajaran mahasiswa.
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+%   \centering
   
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{\textit{Prompt} Daftar Materi Mahasiswa}
-  \label{tab:prompt_listmateri} % Saya ubah labelnya menjadi "tab:"
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   \caption{\textit{Prompt} Daftar Materi Mahasiswa}
+%   \label{tab:prompt_listmateri} % Saya ubah labelnya menjadi "tab:"
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+%   \begin{minipage}{\textwidth}
+\begin{figure}[H]
+	  \centering
+	  \caption{Contoh Potongan \textit{Prompt} Daftar Materi Mahasiswa.}
+	  \label{Fig:prompt_listmateri}
     
     % Mulai listing Anda (tanpa caption/label di sini)
     \begin{lstlisting}
@@ -1903,11 +1958,11 @@ daftar materi pembelajaran mahasiswa.
 	\end{lstlisting}
 %--- Selesai listing ---
 
-  \end{minipage} 
-  %--- Selesai minipage ---
+%   \end{minipage} 
+%   %--- Selesai minipage ---
 
-\end{table}
-
+% \end{table}
+\end{figure}
 Lis materi ini diharapkan dapat membantu \textit{Feedback Agent}
 dalam memberikan umpan balik yang lebih relevan dan kontekstual
 terhadap aktivitas pembelajaran mahasiswa. Namun, bagian ini juga
@@ -1937,18 +1992,22 @@ Bagian ini akan memiliki variasi dalam rekayasa konteks
 dengan menyertakan atau menghilangkan informasi
 kontekstual untuk mengevaluasi dampaknya terhadap
 kualitas umpan balik yang dihasilkan.
-Tabel \ref{tab:prompt_penilaian} menunjukkan
+Gambar \ref{Fig:prompt_penilaian} menunjukkan
 contoh potongan \textit{prompt} yang digunakan untuk menyajikan
 \textit{prompt} penilaian \textit{Feedback Agent}.
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+%   \centering
   
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   \caption{\textit{Prompt} Penilaian Umpan Balik Pedagogis}
+%   \label{tab:prompt_penilaian} % Saya ubah labelnya menjadi "tab:"
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+%   \begin{minipage}{\textwidth}
+\begin{figure}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
   \caption{\textit{Prompt} Penilaian Umpan Balik Pedagogis}
-  \label{tab:prompt_penilaian} % Saya ubah labelnya menjadi "tab:"
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+  \label{Fig:prompt_penilaian} % Saya ubah labelnya menjadi "
     
     % Mulai listing Anda (tanpa caption/label di sini)
     \begin{lstlisting}
@@ -1982,12 +2041,13 @@ contoh potongan \textit{prompt} yang digunakan untuk menyajikan
 
 		)
 	\end{lstlisting}
-%--- Selesai listing ---
+	\end{figure}
+% %--- Selesai listing ---
 
-  \end{minipage} 
-  %--- Selesai minipage ---
+%   \end{minipage} 
+%   %--- Selesai minipage ---
 
-\end{table}
+% \end{table}
 
 \subsubsection*{Format Input dan Output}
 % tolong buatkan setidaknya 5 kalimat yang menjelaskan bagian ini.
@@ -2005,18 +2065,18 @@ integritas data dan kemudahan evaluasi.
 Terdapat variasi dalam rekayasa konteks
 dengan menyesuaikan format input untuk
 mengakomodasi data tambahan atau pengurangan.
-Tabel \ref{tab:prompt_format_input_output}
+Gambar \ref{Fig:prompt_format_input_output}
 menunjukkan contoh format input dan output yang digunakan
 dalam \textit{prompt} penilaian.
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+\begin{figure}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
   \centering
   
   % Caption dan Label sekarang milik "table", bukan "lstlisting"
   \caption{\textit{Prompt} Format Input dan Output}
-  \label{tab:prompt_format_input_output} % Saya ubah labelnya menjadi "tab:"
+  \label{Fig:prompt_format_input_output} % Saya ubah labelnya menjadi "tab:"
   % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   \begin{minipage}{\textwidth}
     
     % Mulai listing Anda (tanpa caption/label di sini)
     \begin{lstlisting}
@@ -2054,10 +2114,10 @@ dalam \textit{prompt} penilaian.
 	\end{lstlisting}
 %--- Selesai listing ---
 
-  \end{minipage} 
+%   \end{minipage} 
   %--- Selesai minipage ---
 
-\end{table}
+\end{figure}
 
 \subsubsection*{Penilaian Kualitas \textit{Prompt}}
 Dari semua komponen di atas, dilakukan penilaian kualitas
@@ -2328,7 +2388,7 @@ sebagai input. Data ini kemudian diproses untuk mengekstrak
 data analitik seperti, menghitung distribusi kartu
 per kolom, total kartu pada papan, persentase \textit{checklist} dan seterusnya.
 Hasil ekstraksi data analitik dilakukan agregasi dan berlanjut
-ke proses penyusunan ringkasan seperti pada Tabel \ref{tab:la_indikator_ringkas}
+ke proses penyusunan ringkasan seperti pada Gambar \ref{Fig:la_indikator_ringkas}
 Setelah itu, dilakukan pembuatan ringkasan analitik mahasiswa
 yang akan dimasukkan ke dalam \textit{prompt} penilaian
 sebagai konteks tambahan untuk \textit{Feedback Agent} menghasilkan
@@ -2337,14 +2397,19 @@ umpan balik pedagogis.
 Berikut adalah contoh potongan ringkasan analitik mahasiswa
 dalam format JSON yang dihasilkan dari proses ini.
 
-\begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
-  \centering
+% \begin{table}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+%   \centering
   
-  % Caption dan Label sekarang milik "table", bukan "lstlisting"
-  \caption{Ringkasan Analitik Mahasiswa}
-  \label{tab:ringkasan_analitik} % Saya ubah labelnya menjadi "tab:"
-  % Gunakan minipage untuk "membungkus" listing dengan aman
-  \begin{minipage}{\textwidth}
+%   % Caption dan Label sekarang milik "table", bukan "lstlisting"
+%   \caption{Ringkasan Analitik Mahasiswa}
+%   \label{tab:ringkasan_analitik} % Saya ubah labelnya menjadi "tab:"
+%   % Gunakan minipage untuk "membungkus" listing dengan aman
+%   \begin{minipage}{\textwidth}
+
+\begin{figure}[H] % Anda bisa ganti [H] dengan [htbp] jika perlu
+  \centering
+  \caption{Contoh Potongan Ringkasan Analitik Mahasiswa dalam Format JSON}
+  \label{Fig:la_indikator_ringkas}
     
     % Mulai listing Anda (tanpa caption/label di sini)
     \begin{lstlisting}
@@ -2352,10 +2417,11 @@ dalam format JSON yang dihasilkan dari proses ini.
   \end{lstlisting}
 %--- Selesai listing ---
 
-  \end{minipage} 
-  %--- Selesai minipage ---
+\end{figure}
+%   \end{minipage} 
+%   %--- Selesai minipage ---
 
-\end{table}
+% \end{table}
 
 Dengan begitu, \textit{Feedback Agent} dapat memanfaatkan
 data analitik mahasiswa ini untuk
@@ -2596,7 +2662,8 @@ dari semua kategori untuk F1-Score, Precision, dan Recall.
 \subsubsection{Evaluasi Kualitatif}
 Metode evaluasi kualitatif digunakan untuk menilai
 kualitas umpan balik pedagogis yang dihasilkan oleh
-penilai manusia ahli di bidang psikologi pendidikan. 
+penilai ahli manusia bernama Shafira Anissa yang 
+memiliki latar belakang di bidang Psikologi Pendidikan. 
 Evaluasi ini menggunakan dimensi penilaian yang diadaptasi dari literatur
 \cite{Shute2008FocusFormativeFeedback, 
 HattieTimperley2007PowerOfFeedback, DeciRyan1985IntrinsicMotivation, 
