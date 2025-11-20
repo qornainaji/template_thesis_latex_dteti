@@ -1013,7 +1013,7 @@ Secara keseluruhan, penilaian kualitas umpan balik LLM oleh ahli manusia
 menggabungkan evaluasi objektif berdasarkan rubrik yang dikategorikan menjadi
 tiga jenis yaitu penilaian secara \textit{feedback}, \textit{motivation support}, dan
 \textit{appreciation support}. Setiap kategori dievaluasi menggunakan
-skala likert (1-5) untuk mengukur berbagai dimensi kualitas umpan balik
+skala Likert (1-5) untuk mengukur berbagai dimensi kualitas umpan balik
 dari perspektif pedagogis dan psikologis. Dengan cara ini, evaluasi manusia
 menyediakan gambaran yang kaya dan bernuansa tentang efektivitas umpan balik
 LLM dalam konteks pendidikan.
@@ -1265,165 +1265,370 @@ untuk mengevaluasi kualitas umpan balik dari perspektif pedagogis
 yang akan dilakukan oleh ahli manusia pada bab evaluasi.
 
 \subsubsection{\textit{Self-Regulated Learning} (SRL)}
-\textit{Self-Regulated Learning} (SRL) merujuk pada kapasitas mahasiswa untuk secara aktif merencanakan, 
-memantau, dan mengevaluasi proses belajarnya sendiri, melalui siklus 
-perencanaan, pelaksanaan, dan refleksi yang saling terkait [1], [2]. Pada fase perencanaan, 
-mahasiswa menetapkan tujuan serta strategi. Lalu, pada fase pelaksanaan, mereka menerapkan strategi 
-kognitif dan melakukan pemantauan metakognitif (mis. manajemen waktu, monitoring pemahaman). 
-Kemudian, pada fase refleksi, mahasiswa melibatkan penilaian diri terhadap kemajuan dan hasil untuk 
-menyesuaikan strategi berikutnya [1], [2]. Berbekal mekanisme siklikal ini, SRL menggabungkan 
-dimensi kognitif, motivasional, dan perilaku yang bersama-sama menentukan kualitas belajar 
-mandiri di pendidikan tinggi [1], [2].
+\textit{Self-Regulated Learning} (SRL), atau Pembelajaran yang Diregulasi Diri, 
+merujuk pada otonomi dan kontrol yang dilakukan oleh individu, 
+yang secara aktif memantau, mengarahkan, dan meregulasi tindakan 
+untuk mencapai tujuan seperti perolehan informasi, 
+peningkatan keahlian, dan pengembangan diri \cite{ParisParis2001SRL}.
+Dijelaskan juga oleh Zimmerman \cite{Zimmerman1990SRLOverview}
+definisi dari SRL bahwa kondisi pelajar yang aktif baik secara metakognitif, 
+motivasional, maupun perilaku dalam pembelajaran mereka.
+Secara metakognitif, pelajar terampil dalam merencanakan, mengorganisasi, 
+menginstruksi diri, memantau diri, dan mengevaluasi diri pada berbagai 
+tahap proses belajar. Secara motivasional, pelajar memiliki pandangan diri 
+sebagai individu yang otonom, kompeten, dan yakin terhadap kemampuan 
+mereka untuk berprestasi. Sementara itu, dari sisi perilaku, pelajar 
+mampu memilih, menyusun, dan menciptakan lingkungan yang dapat 
+mengoptimalkan proses belajar \cite{Zimmerman1990SRLOverview}.
 
-Di konteks pendidikan tinggi, SRL berperan krusial karena lingkungan belajar menuntut kemandirian,
-terutama pada pembelajaran digital (daring atau campuran) yang memerlukan disiplin diri lebih tinggi
-serta kemampuan mengelola distraksi. Kajian terkini menunjukkan bahwa SRL berkorelasi dengan
-kinerja akademik, keterlibatan, dan ketahanan studi. Sebaliknya, kekurangan SRL di
-pembelajaran daring atau campuran dapat memperlebar kesenjangan capaian yang diperoleh 
-mahasiswa [3]. Dengan demikian,
+Untuk mencapai tujuan pembelajaran, SRL memiliki banyak 
+model teoretis. Salah satu model yang paling banyak digunakan 
+adalah model siklus tiga fase dari Zimmerman dan Moylan 
+\cite{ZimmermanMoylan2009ModelSRL},
+melalui siklus perencanaan (\textit{forethought}), 
+pelaksanaan (\textit{performance}), dan 
+refleksi (\textit{self-reflection}) yang saling 
+terkait. Dalam fase \textit{forethought}, pelajar menganalisis tugas, 
+menetapkan tujuan, dan merencanakan strategi untuk mencapai 
+tujuan tersebut, yang didorong oleh keyakinan motivasional. 
+Fase \textit{performance} melibatkan eksekusi tugas yang sebenarnya, 
+di mana pelajar memantau kemajuan mereka dan menggunakan 
+strategi kontrol diri untuk mempertahankan keterlibatan 
+kognitif dan motivasi hingga tugas selesai. Terakhir, fase 
+\textit{self-reflection} adalah saat pelajar menilai kinerja mereka 
+dan membuat atribusi terhadap keberhasilan atau kegagalan 
+(misalnya melalui penilaian diri formatif), yang kemudian 
+menghasilkan reaksi diri yang akan memengaruhi bagaimana 
+pelajar mendekati tugas serupa di masa mendatang.
+Gambar \ref{fig:SRL-Zimmerman} mengilustrasikan model siklus tiga fase SRL ini.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{contents/chapter-2/SRL-Zimmerman.png}
+    \caption{Model Siklus Tiga Fase \textit{Self-Regulated Learning} (SRL) 
+    menurut Zimmerman dan Moylan \cite{ZimmermanMoylan2009ModelSRL}.}
+    \label{fig:SRL-Zimmerman}
+\end{figure}
+
+% autonomy and control by the individual who monitors, 
+% directs, and regulates actions towards goals of information 
+% acquisition, expanding expertise and self-improvement
+% kapasitas mahasiswa untuk secara aktif merencanakan, 
+% memantau, dan mengevaluasi proses belajarnya sendiri. 
+% Melalui siklus 
+% perencanaan (\textit{forethought}), pelaksanaan (\textit{performance}), dan 
+% refleksi (\textit{self-reflection}) yang saling 
+% terkait [1], [2]. Pada fase perencanaan, 
+% mahasiswa menetapkan tujuan serta strategi. Lalu, pada 
+% fase pelaksanaan, mereka menerapkan strategi 
+% kognitif dan melakukan pemantauan metakognitif seperti 
+% manajemen waktu, monitoring pemahaman). 
+% Kemudian, pada fase refleksi, mahasiswa melibatkan 
+% penilaian diri terhadap kemajuan dan hasil untuk 
+% menyesuaikan strategi berikutnya [1], [2]. Berbekal 
+% mekanisme siklikal ini, SRL menggabungkan 
+% dimensi kognitif, motivasional, dan perilaku yang 
+% bersama-sama menentukan kualitas belajar 
+% mandiri di pendidikan tinggi [1], [2].
+
+Di konteks pendidikan tinggi, SRL berperan krusial 
+karena lingkungan belajar menuntut kemandirian,
+terutama pada pembelajaran digital (daring atau campuran) 
+yang memerlukan disiplin diri lebih tinggi
+serta kemampuan mengelola distraksi. Kajian terkini 
+menunjukkan bahwa SRL berkorelasi dengan
+kinerja akademik, keterlibatan, dan ketahanan studi. 
+Sebaliknya, kekurangan SRL di
+pembelajaran daring atau campuran dapat memperlebar 
+kesenjangan capaian yang diperoleh 
+mahasiswa \cite{Lobos2024NewChallenges}. 
+Namun, tanpa bimbingan yang baik, 
+mahasiswa sering kesulitan menafsirkan 
+pemahaman mereka dalam melakukan 
+pemikiran reflektif tersebut \cite{Lobos2024NewChallenges}.
+Dengan demikian,
 pengembangan kompetensi SRL termasuk penetapan tujuan, strategi, monitoring, dan
-refleksi—menjadi prasyarat penting untuk keberhasilan mahasiswa di ekosistem belajar
-modern [2], [3].
+refleksi—menjadi prasyarat penting untuk keberhasilan 
+mahasiswa di ekosistem belajar
+modern \cite{Lobos2024NewChallenges}.
+
 \subsubsection{Teori Umpan Balik}
+Dalam konteks pendidikan, umpan balik 
+didefinisikan sebagai informasi yang 
+dikomunikasikan kepada pelajar dengan 
+niat untuk memodifikasi pemikiran atau 
+perilaku guna meningkatkan pembelajaran. 
+Hattie dan Timperley memandang umpan balik 
+sebagai konsekuensi dari kinerja yang 
+disediakan oleh agen seperti guru atau 
+teman sebaya yang bertujuan untuk mengurangi 
+kesenjangan antara pemahaman saat ini dan 
+tujuan yang diinginkan \cite{HattieTimperley2007PowerOfFeedback}. 
+Shute \cite{Shute2008FocusFormativeFeedback} memperluas 
+perspektif ini dengan menekankan bahwa umpan 
+balik formatif harus bersifat non evaluatif 
+suportif tepat waktu dan spesifik agar efektif. 
+Secara kognitif umpan balik berfungsi untuk 
+mengurangi ketidakpastian mengenai seberapa baik 
+kinerja mahasiswa dan mengurangi beban kognitif atau 
+\textit{cognitive load} terutama bagi mahasiswa 
+baru atau yang mengalami kesulitan belajar.
+
+Efektivitas umpan balik dalam menutup kesenjangan 
+pembelajaran bergantung pada kemampuannya 
+menjawab tiga pertanyaan fundamental. Pertanyaan 
+pertama adalah "\textbf{Ke mana saya akan pergi}" yang 
+berkaitan dengan penetapan tujuan yang jelas 
+dan menantang. Pertanyaan kedua adalah "\textbf{Bagaimana 
+saya menjalaninya}" yang memberikan informasi 
+mengenai kemajuan siswa relatif terhadap tujuan 
+tersebut. Pertanyaan ketiga adalah "\textbf{Langkah 
+selanjutnya}" yang mengarahkan siswa pada aktivitas 
+lanjutan untuk memperdalam pemahaman \cite{HattieTimperley2007PowerOfFeedback}. 
+Shute menambahkan bahwa umpan balik yang efektif dapat 
+memfasilitasi pergeseran orientasi tujuan siswa 
+dari orientasi kinerja menjadi orientasi 
+\textit{learning orientation} yang 
+mendorong kegigihan dan penguasaan keterampilan \cite{Shute2008FocusFormativeFeedback}.
+
+Hattie dan Timperley mengategorikan fokus umpan 
+balik ke dalam empat tingkatan utama. Tingkat 
+tugas atau \textit{Task Level} berfokus pada kebenaran 
+faktual dari kinerja dan sering disebut sebagai 
+umpan balik korektif. Tingkat proses atau \textit{Process 
+Level} menyasar strategi kognitif yang mendasari 
+penyelesaian tugas. Tingkat regulasi diri atau 
+\textit{Self Regulation Level} mendukung otonomi dan 
+pemantauan diri siswa. Tingkat diri atau \textit{Self Level} 
+yang berupa pujian pribadi dinilai paling tidak 
+efektif karena mengalihkan perhatian dari tugas \cite{HattieTimperley2007PowerOfFeedback}. 
+Shute  \cite{Shute2008FocusFormativeFeedback} mendukung pandangan ini dengan temuan bahwa 
+umpan balik yang bersifat spesifik atau terelaborasi 
+(\textit{elaborated feedback}) umumnya lebih efektif daripada 
+umpan balik yang hanya berupa verifikasi benar atau 
+salah terutama untuk pembelajaran mendalam. Namun 
+kompleksitas umpan balik harus dikelola agar tidak 
+membebani siswa dengan informasi yang berlebihan.
+
+
+% Dalam konteks pendidikan, Hattie dan Timperley 
+% \cite{HattieTimperley2007PowerOfFeedback} 
+% mengonseptualisasikan umpan balik sebagai informasi 
+% yang disediakan oleh agen mengenai aspek kinerja 
+% atau pemahaman seseorang. Agen pemberi informasi 
+% tersebut dapat meliputi guru teman sebaya buku orang 
+% tua atau pengalaman diri sendiri. Umpan balik dipandang 
+% sebagai konsekuensi dari kinerja. Tujuan utama dari 
+% pemberian umpan balik adalah untuk mengurangi kesenjangan 
+% atau diskrepanasi antara pemahaman maupun kinerja saat ini 
+% dengan tujuan pembelajaran yang diinginkan. Proses pengurangan 
+% kesenjangan ini dapat ditempuh melalui peningkatan usaha 
+% siswa, penggunaan strategi yang lebih efektif, atau 
+% penyesuaian tujuan pembelajaran oleh guru agar lebih 
+% spesifik dan menantang.
+
+% Efektivitas umpan balik dalam rangka meningkatkan pembelajaran 
+% sangat bergantung pada kemampuannya untuk menjawab tiga 
+% pertanyaan mendasar yang saling berkaitan. Pertanyaan 
+% pertama adalah "Ke mana saya akan pergi" atau 
+% "\textit{Where am I going}" yang berkaitan dengan
+% penetapan tujuan atau \textit{feed up}. 
+% Pertanyaan ini menekankan pentingnya kejelasan tujuan 
+% bagi mahasiswa agar umpan balik dapat terarah. Pertanyaan 
+% kedua adalah "Bagaimana saya menjalaninya" atau 
+% "\textit{How am I going}" yang disebut sebagai 
+% \textit{feed back}. Dimensi ini 
+% memberikan informasi mengenai kemajuan mahasiswa relatif 
+% terhadap tujuan awal atau kinerja sebelumnya. Pertanyaan 
+% ketiga adalah "Langkah selanjutnya" atau "\textit{Where to next}" 
+% yang dikenal sebagai \textit{feed forward}. Pertanyaan ini 
+% mengarahkan mahasiswa pada aktivitas lanjutan yang dapat 
+% memperdalam pemahaman dan meningkatkan regulasi diri.
+
+% Diajukan model yang membedakan fokus 
+% umpan balik ke dalam empat tingkatan yang berbeda yang 
+% masing masing memiliki dampak berbeda terhadap pembelajaran.
+% Pertama adalah umpan balik tingkat tugas atau \textit{Task Level} 
+% yang berfokus pada seberapa baik tugas dipahami atau 
+% dilakukan. Jenis ini sering disebut sebagai umpan balik 
+% korektif yang membedakan jawaban benar dan salah serta memberikan 
+% informasi faktual.
+% Kedua adalah umpan balik tingkat proses atau \textit{Process Level} yang 
+% menyasar proses utama yang diperlukan untuk memahami atau 
+% menyelesaikan tugas. Umpan balik pada tingkat ini lebih efektif 
+% untuk pembelajaran mendalam karena membantu siswa membangun 
+% hubungan antar ide dan strategi kognitif.
+
+% Ketiga adalah umpan balik tingkat regulasi diri atau 
+% \textit{Self-Regulation Level} yang berfokus pada pemantauan 
+% pengarahan dan pengaturan tindakan oleh diri sendiri. 
+% Tingkat ini melibatkan aspek otonomi disiplin diri dan 
+% efikasi diri yang memungkinkan siswa untuk mengevaluasi 
+% kinerja mereka sendiri dan mencari umpan balik lebih 
+% lanjut secara mandiri.
+
+% \textit{Self Level} yang memberikan evaluasi pribadi dan 
+% afeksi positif terhadap siswa sebagai individu. Contoh 
+% dari tingkat ini adalah pujian umum yang sering kali 
+% tidak memuat informasi spesifik mengenai tugas atau 
+% pembelajaran.
+
+% Analisis literatur menunjukkan bahwa efektivitas 
+% umpan balik sangat dipengaruhi oleh tingkatan fokusnya. 
+% Umpan balik tingkat proses dan regulasi diri dinilai 
+% paling efektif dalam meningkatkan penguasaan tugas 
+% dan pemahaman mendalam. Umpan balik tingkat tugas 
+% tergolong efektif jika digunakan untuk memperbaiki 
+% interpretasi yang keliru namun bisa menjadi kurang 
+% efektif jika terlalu berfokus pada detail yang tidak 
+% mendukung pengembangan strategi. Sebaliknya umpan 
+% balik tingkat diri atau Self Level merupakan bentuk 
+% yang paling tidak efektif karena sering kali 
+% mengalihkan perhatian siswa dari tugas dan tidak 
+% memberikan informasi yang dapat digunakan untuk menutup 
+% kesenjangan pembelajaran. Oleh karena itu guru 
+% disarankan untuk meminimalkan umpan balik yang hanya 
+% bersifat evaluasi diri dan lebih fokus pada proses 
+% serta regulasi diri untuk memaksimalkan hasil belajar 
+% siswa.
+
+
+
+
 \subsubsection{\textit{Self-Determination Theory} (SDT)}
+Teori Determinasi Diri atau \textit{Self Determination Theory} 
+dijelaskan sebagai pendekatan organismik terhadap motivasi yang 
+\textbf{memandang manusia sebagai makhluk aktif dengan kecenderungan 
+alamiah menuju pertumbuhan psikologis serta integrasi diri} 
+\cite{DeciRyan1985IntrinsicMotivation}. 
+Perspektif ini menekankan pentingnya pemenuhan \textbf{tiga kebutuhan 
+psikologis dasar yang bersifat bawaan: kebutuhan akan kompetensi, 
+kebutuhan akan otonomi (determinasi diri), dan kebutuhan akan 
+keterhubungan interpersonal}. Kebutuhan akan kompetensi berkaitan dengan 
+keinginan individu untuk merasa efektif dalam berinteraksi dengan lingkungan 
+sedangkan kebutuhan akan determinasi diri mengacu pada keinginan individu 
+untuk menjadi sumber kausalitas dari perilakunya sendiri tanpa paksaan dari 
+kekuatan luar \cite{DeciRyan1985IntrinsicMotivation}.
+
+Dalam kerangka teori ini, motivasi intrinsik didefinisikan 
+sebagai energi yang didasarkan pada kebutuhan bawaan untuk 
+merasa kompeten dan menentukan nasib sendiri yang mendorong 
+individu mencari tantangan optimal demi kepuasan yang melekat 
+pada aktivitas itu sendiri \cite{DeciRyan1985IntrinsicMotivation}. 
+Melalui subteori yang disebut Teori Evaluasi Kognitif (\textit{Cognitive Evaluation Theory:}) 
+dijelaskan bahwa peristiwa eksternal seperti imbalan atau umpan balik 
+\textbf{mempengaruhi motivasi intrinsik berdasarkan makna fungsionalnya bagi penerima,
+apakah bersifat informasional yang mendukung kompetensi, atau bersifat mengontrol 
+yang membatasi otonomi}. Peristiwa yang memfasilitasi persepsi lokus kausalitas 
+internal akan meningkatkan motivasi intrinsik sedangkan peristiwa yang 
+dipersepsikan mengontrol perilaku akan menggeser lokus kausalitas menjadi 
+eksternal dan menurunkan motivasi intrinsik.
+
+Teori ini juga dijelaskan motivasi ekstrinsik melalui Teori 
+Integrasi Organismik (\textit{Organismic Integration Theory}) 
+yang menggambarkan proses internalisasi regulasi eksternal ke dalam struktur 
+diri individu \cite{DeciRyan1985IntrinsicMotivation}. Proses internalisasi ini 
+berlangsung dalam sebuah rangkaian mulai dari regulasi eksternal yang sepenuhnya 
+dikendalikan oleh kontingensi luar menuju introjeksi identifikasi dan akhirnya 
+integrasi di mana nilai eksternal berasimilasi sepenuhnya dengan diri sendiri. 
+\textbf{Semakin terintegrasi suatu regulasi eksternal maka perilaku tersebut menjadi 
+semakin otonom (self-determined) dan pada akhirnya berkontribusi pada kesehatan 
+psikologis serta kualitas kinerja yang lebih baik dibandingkan regulasi yang 
+hanya bersifat patuh atau terkontrol.}
+% Teori Determinasi Diri atau \textit{Self Determination Theory} \cite{DeciRyan1985IntrinsicMotivation} 
+% merupakan pendekatan organismik terhadap motivasi manusia 
+% dan kepribadian yang dikembangkan oleh Edward L. Deci dan 
+% Richard M. Ryan. Teori ini dibangun di atas asumsi fundamental 
+% bahwa manusia adalah organisme yang aktif dan memiliki 
+% kecenderungan alamiah menuju pertumbuhan psikologis serta 
+% integrasi diri. Dalam perspektif ini manusia tidak dipandang 
+% sebagai makhluk pasif yang hanya bereaksi terhadap dorongan 
+% fisiologis atau stimulus lingkungan semata melainkan sebagai 
+% individu yang secara proaktif terlibat dengan lingkungannya 
+% untuk menguasai tantangan dan mengintegrasikan pengalaman 
+% baru ke dalam kesatuan diri yang koheren. Energi yang 
+% mendasari aktivitas proaktif ini disebut sebagai motivasi 
+% intrinsik yang berbeda secara fundamental dari motivasi 
+% yang didasarkan pada dorongan fisiologis atau kontrol 
+% lingkungan.
+
+% Inti dari \textit{Self-Determination Theory} adalah postulat 
+% mengenai keberadaan kebutuhan psikologis dasar yang 
+% bersifat bawaan dan universal. Pemenuhan kebutuhan 
+% ini dipandang esensial bagi kesehatan psikologis 
+% integritas diri dan pertumbuhan yang optimal. Teori 
+% ini mengidentifikasi kebutuhan akan kompetensi dan 
+% kebutuhan akan determinasi diri sebagai dua elemen 
+% motivasional utama. Kebutuhan akan kompetensi mengacu 
+% pada keinginan individu untuk merasa efektif dalam 
+% berinteraksi dengan lingkungannya dan untuk melatih serta 
+% memperluas kapasitas dirinya. Sementara itu kebutuhan 
+% akan determinasi diri atau otonomi berkaitan dengan 
+% keinginan individu untuk menjadi asal mula atau sumber 
+% kausalitas dari perilakunya sendiri. Ketika perilaku 
+% dialami sebagai pilihan yang berasal dari diri sendiri 
+% maka individu tersebut sedang berfungsi dengan determinasi 
+% diri. Sebaliknya jika perilaku dirasakan sebagai akibat dari 
+% tekanan atau paksaan maka individu tersebut kehilangan 
+% rasa determinasi diri.
+
+
+
 \subsubsection{\textit{Positive Psychology} (Appreciation)}
+Psikologi positif memiliki misi fundamental untuk 
+memahami serta membina faktor faktor yang memungkinkan 
+individu komunitas dan masyarakat untuk berkembang atau 
+\textit{flourish} secara optimal \cite{Fredrickson2001BroadenBuild}. 
+Dalam perspektif ini emosi positif 
+tidak sekadar dipandang sebagai penanda kesejahteraan 
+subjektif semata melainkan juga berperan aktif dalam 
+menghasilkan pertumbuhan psikologis yang berkelanjutan. 
+Berbeda dengan \textbf{pendekatan tradisional yang seringkali berfokus 
+pada emosi negatif} pendekatan ini menekankan bahwa \textbf{emosi 
+positif} seperti kegembiraan ketertarikan kepuasan dan cinta 
+memiliki nilai adaptif yang krusial karena emosi tersebut 
+\textbf{berfungsi sebagai sarana untuk mencapai pertumbuhan psikologis} 
+dan meningkatkan \textbf{kesejahteraan individu}, dalam hal ini mahasiswa, 
+dalam jangka panjang \cite{Fredrickson2001BroadenBuild}.
+
+Kerangka teoritis utama yang menjelaskan mekanisme fungsi 
+emosi positif ini disebut sebagai \textbf{\textit{broaden and build theory}} 
+yang mempostulatkan bahwa pengalaman emosi positif memperluas 
+atau \textbf{\textit{broaden repertoar}} pemikiran dan tindakan sesaat individu.
+\cite{Fredrickson2001BroadenBuild} 
+Mekanisme perluasan ini berbeda secara signifikan dari emosi 
+negatif yang cenderung menyempitkan fokus pikiran dan tindakan 
+pada perilaku spesifik untuk kelangsungan hidup segera dalam 
+situasi mengancam. Sebaliknya emosi positif memperluas cakupan 
+kognisi dan perhatian yang memungkinkan munculnya fleksibilitas 
+kognitif kreativitas serta keinginan untuk mengeksplorasi dan 
+mengintegrasikan informasi baru yang pada akhirnya memperkaya 
+repertoar pemikiran dan tindakan individu pada saat tersebut.
+
+Konsekuensi kumulatif dari perluasan pola pikir tersebut adalah 
+terbangunnya atau \textit{build} berbagai sumber daya personal yang 
+bersifat tahan lama atau \textit{enduring personal resources} yang 
+mencakup sumber daya fisik intelektual sosial dan psikologis. 
+Sumber daya yang terakumulasi ini berfungsi sebagai cadangan 
+berharga yang dapat dimanfaatkan kembali di masa depan untuk 
+mengelola ancaman serta memfasilitasi ketahanan psikologis atau 
+resiliensi melalui efek pemulihan atau \textit{undoing effect} terhadap 
+dampak fisiologis emosi negatif. Dengan demikian kapasitas untuk 
+mengalami emosi positif merupakan kekuatan fundamental yang dapat 
+memicu spiral ke atas atau \textit{upward spirals} menuju peningkatan 
+kesejahteraan emosional dan transformasi diri yang 
+lebih baik \cite{Fredrickson2001BroadenBuild}.
 
 \subsection{\textit{Large Language Models} (LLM)}
+Pada bagian ini dibahas konsep dasar mengenai 
+\textit{Large Language Models} (LLM) yang menjadi
+komponen inti dari \textit{Feedback Agent}. Pembahasan 
+mencakup arsitektur LLM, karakteristik model Llama, 
+serta implikasi perbedaan ukuran model (8B vs 70B)
+terhadap kapasitas penalaran dan performa dalam
+menghasilkan umpan balik berkualitas tinggi.
+
 \subsubsection{Dasar Teori LLM}
-\subsubsection{Llama}
-
-\subsection{\textit{Prompt Engineering} dan \textit{Context Engineering}}
-\subsubsection{\textit{Prompt Engineering}} 
-% membahas dasar teori prompt engineering dan jenis-jenis prompt engineering
-\subsubsection{\textit{Context Engineering}}
-
-\subsection{\textit{Learning Analytics} (LA) dan Papan Kanban}
-\subsubsection{Papan Kanban dalam Pendidikan}
-\subsubsection{\textit{Learning Analytics} (LA)}
-
-\subsection{Metodologi Evaluasi}
-\subsubsection{Evaluasi Berbasis Semantik}
-% Jelaskan mengapa metrik tradisional (seperti BLEU/ROUGE yang berbasis kecocokan kata per kata) tidak cocok untuk tugas kreatif seperti feedback. BERTScore: Mengukur kesamaan makna menggunakan contextual embedding. BARTScore: Menggunakan probabilitas generasi teks untuk menilai kualitas.
-\subsubsection{\textit{LLM-as-a-Judge}}
-
-% ==========================================================================
-
-\subsection{\textit{Self Regulated Learning} (SRL) dan Peran Umpan Balik}
-% Self-Regulated Learning (SRL) atau pembelajaran regulasi diri adalah konsep di mana peserta didik 
-% secara aktif mengarahkan dan mengontrol proses belajarnya sendiri. Menurut teori sosial-kognitif 
-% Zimmerman (2000), SRL merupakan proses siklikal yang mencakup fase perencanaan, pelaksanaan, 
-% dan evaluasi [7]. Dalam fase perencanaan, mahasiswa menetapkan tujuan belajar dan merencanakan 
-% strategi; fase pelaksanaan melibatkan penerapan strategi kognitif (misalnya membaca, membuat 
-% catatan) serta pemantauan metakognitif (misalnya manajemen waktu) untuk menyelesaikan tugas; 
-% sedangkan fase evaluasi mencakup penilaian diri terhadap kemajuan belajar dan hasil yang dicapai [7]. 
-% Melalui siklus ini, mahasiswa dengan SRL tinggi akan merefleksikan capaian mereka dan menyesuaikan 
-% pendekatan belajarnya secara mandiri agar tujuan pembelajaran tercapai [7].
-
-% Di tingkat pendidikan tinggi, SRL memegang peran krusial dalam menentukan keberhasilan akademik. 
-% Penelitian menunjukkan bahwa kemampuan regulasi diri berhubungan erat dengan kesuksesan mahasiswa 
-% di perguruan tinggi [7]. Mahasiswa yang terampil dalam SRL cenderung lebih berhasil karena mereka 
-% mampu merencanakan, menetapkan tujuan, mengorganisasi kegiatan belajar, serta melakukan evaluasi 
-% diri secara berkelanjutan selama proses pembelajaran [7]. Kemampuan-kemampuan ini membantu 
-% mahasiswa belajar lebih efektif dan mandiri.
-
-% Lebih lanjut, berbagai studi di pendidikan tinggi telah mengaitkan SRL dengan sejumlah indikator 
-% positif: kinerja akademik yang lebih baik, tingkat retensi (ketahanan studi) yang lebih tinggi, 
-% keterlibatan yang lebih mendalam dalam aktivitas perkuliahan, dan kemampuan adaptasi yang lebih 
-% baik terhadap kehidupan kampus [7]. Sebagai contoh, mahasiswa yang menguasai strategi SRL 
-% dilaporkan memiliki prestasi yang lebih tinggi dan risiko putus studi yang lebih rendah [7]. 
-% Intervensi pendidikan yang dirancang untuk meningkatkan keterampilan regulasi diri juga 
-% terbukti efektif memperbaiki performa akademis dan mencegah dropout mahasiswa [7]. Hal ini 
-% menegaskan bahwa mengembangkan kompetensi SRL pada mahasiswa merupakan investasi penting 
-% dalam meningkatkan kualitas pembelajaran di pendidikan tinggi.
-
-% Pendidikan tinggi menuntut mahasiswa untuk lebih mandiri dan proaktif dalam belajar. Mahasiswa 
-% tidak selalu dibimbing secara intens seperti di jenjang sebelumnya; karena itu, kemampuan 
-% regulasi diri menjadi kunci. Apalagi dengan berkembangnya pembelajaran daring dan blended 
-% learning, SRL semakin esensial. Studi terbaru menekankan bahwa dalam lingkungan belajar 
-% online, mahasiswa dituntut memiliki kapasitas regulasi diri lebih besar dibandingkan 
-% pendidikan tatap muka [7]. Tanpa SRL yang memadai, kesenjangan dalam penguasaan materi dan 
-% keterampilan belajar dapat semakin lebar saat pembelajaran beralih ke moda daring [7]. 
-% Oleh sebab itu, perguruan tinggi masa kini menghadapi tantangan untuk membekali mahasiswa 
-% dengan keterampilan SRL agar mereka dapat sukses, baik dalam konteks pembelajaran 
-% konvensional maupun digital.
-
-
-
-
-
-% [1] Panadero, E., & Alonso-Tapia, J. (2016). Self-assessment: Theoretical and practical connotations, when it happens, how is it acquired, and what to do to develop it in our students. Electronic Journal of Research in Educational Psychology, 14(1), 551-576.
-% [2] Zimmerman, B. J. (2000). Attaining self-regulation: A social cognitive perspective. In Handbook of self-regulation (pp. 13-39). Academic Press.
-% [3] Hattie, J., & Timperley, H. (2007). The power of feedback. Review of Educational Research, 77(1), 81-112.
-% [4] Wisniewski, B., Zierer, K., & Hattie, J. (2020). The power of feedback revisited: A meta-analysis of educational feedback research. Frontiers in Psychology, 10, 3087.
-% [5] Sun, D., Xu, P., Zhang, J., Liu, R., & Zhang, J. (2025). How Self-Regulated Learning Is Affected by Feedback Based on Large Language Models: Data-Driven Sustainable Development in Computer Programming Learning. Electronics, 14(1), 194.
-% [6] Nakata, Y., Wang, C., & Yamamoto, Y. (2025). Student perceptions of feedback and self-regulated language learning: A mixed-methods investigation. System, 131, 103654.
-% [7] Lobos, K., Cobo-Rendón, R., Jofré, D. B., & Santana, J. (2024). New challenges for higher education: self-regulated learning in blended learning contexts. Frontiers in Education, 9, 1457367.
-% [8] Steinert, S., Küchemann, S., Avila, K. E., et al. (2024). Harnessing large language models to develop research-based learning assistants for formative feedback. Smart Learning Environments, 11(1), 30.
-
-\textit{Self-Regulated Learning} (SRL) merujuk pada kapasitas mahasiswa untuk secara aktif merencanakan, 
-memantau, dan mengevaluasi proses belajarnya sendiri, melalui siklus 
-perencanaan, pelaksanaan, dan refleksi yang saling terkait [1], [2]. Pada fase perencanaan, 
-mahasiswa menetapkan tujuan serta strategi. Lalu, pada fase pelaksanaan, mereka menerapkan strategi 
-kognitif dan melakukan pemantauan metakognitif (mis. manajemen waktu, monitoring pemahaman). 
-Kemudian, pada fase refleksi, mahasiswa melibatkan penilaian diri terhadap kemajuan dan hasil untuk 
-menyesuaikan strategi berikutnya [1], [2]. Berbekal mekanisme siklikal ini, SRL menggabungkan 
-dimensi kognitif, motivasional, dan perilaku yang bersama-sama menentukan kualitas belajar 
-mandiri di pendidikan tinggi [1], [2].
-
-Di konteks pendidikan tinggi, SRL berperan krusial karena lingkungan belajar menuntut kemandirian,
-terutama pada pembelajaran digital (daring atau campuran) yang memerlukan disiplin diri lebih tinggi
-serta kemampuan mengelola distraksi. Kajian terkini menunjukkan bahwa SRL berkorelasi dengan
-kinerja akademik, keterlibatan, dan ketahanan studi. Sebaliknya, kekurangan SRL di
-pembelajaran daring atau campuran dapat memperlebar kesenjangan capaian yang diperoleh 
-mahasiswa [3]. Dengan demikian,
-pengembangan kompetensi SRL termasuk penetapan tujuan, strategi, monitoring, dan
-refleksi—menjadi prasyarat penting untuk keberhasilan mahasiswa di ekosistem belajar
-modern [2], [3].
-
-Kemajuan \textit{Large Language Models} (LLM) membuka peluang penyediaan 
-bimbingan pengarahan (\textit{feedback}) yang personal, 
-cepat, dan interaktif untuk menopang SRL. 
-Studi eksperimental di konteks pemrograman (pendidikan tinggi) menunjukkan 
-\textit{feedback} berbasis LLM dapat meningkatkan strategi metakognitif, 
-motivasi, dan performa mahasiswa dibanding kondisi 
-tanpa \textit{feedback} dari AI [6]. Riset pengembangan menunjukkan asisten belajar 
-berbasis LLM yang dirancang dengan prinsip-prinsip pedagogis 
-mampu menyajikan \textit{feedback} yang scaffolded (bertahap), memicu \textit{self-explanation}, 
-dan menuntun refleksi [7]. Dengan dialog natural, LLM dapat membantu ketiga fase 
-SRL yaitu, (i) perencanaan (menyusun tujuan dan rencana aksi), 
-(ii) pelaksanaan (memberi hint/pertanyaan pemandu saat buntu), 
-dan (iii) refleksi (merangkum kekuatan-kelemahan dan langkah tindak lanjut) [6], [7]. 
-Agar efektif dan aman, \textit{feedback} LLM sebaiknya disejajarkan dengan praktik pedagogis berbasis 
-bukti (fokus pada proses, \textit{actionability}, dan nada empatik) dan dievaluasi kualitasnya 
-secara sistematis.
-
-% \paragraph{Landasan tiga fungsi pedagogis.}
-Dalam kerangka SRL, efektivitas umpan balik dipahami melalui fokus bertingkat pada 
-\textit{task}, \textit{process}, dan \textit{self-regulation}, serta dampaknya pada 
-keyakinan diri dan ketekunan belajar [4]. Menurut artikel jurnal ini [4], disebutkan bahwa 
-\textit{feedback} kognitif efektif bila spesifik, mendiagnosis miskonsepsi, dan 
-menyarankan langkah perbaikan yang terstruktur. Lalu, \textbf{dukungan motivasional} 
-menjaga \textit{self-efficacy} (keyakinan diri), menetapkan tujuan yang menantang namun realistis, 
-serta mendorong komitmen rencana aksi. Terakhir, pemberian apresiasi yang spesifik 
-terhadap usaha/progres dapat berkontribusi pada afek positif dan keterlibatan yang 
-disertai arahan perbaikan agar tidak menjadi pujian kosong [4]. Oleh karena itu, 
-penelitian ini menilai kualitas respons LLM pada ketiga fungsi tersebut karena ketiganya 
-(\textit{feedback}, \textit{motivation}, dan \textit{appreciation}) 
-secara langsung mendukung fase perencanaan–pelaksanaan–refleksi dalam SRL [1], [2], [4].
-
-
-% [1] B. J. Zimmerman, “Becoming a self-regulated learner: An overview,” Theory Into Practice, vol. 41, no. 2, pp. 64–70, 2002.
-% [2] E. Panadero, “A review of self-regulated learning: Six models and four directions for research,” Educational Psychology Review, vol. 29, no. 4, pp. 1–28, 2017.
-% [3] K. Lobos, R. Cobo-Rendón, D. B. Jofré, and J. Santana, “New challenges for higher education: Self-regulated learning in blended learning contexts,” Frontiers in Education, vol. 9, art. 1457367, 2024.
-% [4] D. J. Nicol and D. Macfarlane-Dick, “Formative assessment and self-regulated learning: A model and seven principles of good feedback practice,” Studies in Higher Education, vol. 31, no. 2, pp. 199–218, 2006.
-% [5] J. Hattie and H. Timperley, “The power of feedback,” Review of Educational Research, vol. 77, no. 1, pp. 81–112, 2007.
-% [6] D. Sun, P. Xu, J. Zhang, R. Liu, and J. Zhang, “How self-regulated learning is affected by feedback based on large language models: Data-driven sustainable development in computer programming learning,” Electronics, vol. 14, no. 1, art. 194, 2025.
-% [7] S. Steinert et al., “Harnessing large language models to develop research-based learning assistants for formative feedback,” Smart Learning Environments, vol. 11, no. 1, art. 30, 2024.
-
-% LLM dalam dunia pendidikan undergraduate
-
-\subsection{\textit{Large Language Model} (LLM)}
-
 \textit{Kecerdasan Buatan} adalah cabang ilmu komputer yang berfokus 
 pada pembuatan sistem yang mampu meniru kecerdasan manusia dalam 
 pemecahan masalah dan pengambilan keputusan. Pendekatan awal AI banyak 
@@ -1440,588 +1645,768 @@ seluruh teks internet mampu melakukan beragam tugas tekstual secara
 mendekati kecerdasan umum manusia [1]. Perkembangan ini menandai lompatan 
 signifikan dalam upaya mewujudkan AI yang lebih cerdas dan serbaguna.
 
-% referensi:
-% [1]https://www.ejmste.com/article/user-acceptance-and-adoption-dynamics-of-chatgpt-in-educational-settings-14151#:~:text=Recent%20developments%20in%20natural%20language,days%20of%20artificial%20intelligence%20research
+\textit{Large Language Models} (LLM) merepresentasikan terobosan signifikan dalam ranah 
+Pemrosesan Bahasa Alami (\textit{Natural Language Processing} atau NLP). Teknologi ini 
+mendayagunakan jaringan saraf tiruan dengan miliaran parameter untuk mengidentifikasi 
+pola bahasa dan memproduksi teks yang kualitasnya setara dengan komunikasi manusia. 
+Melalui pelatihan pada himpunan data berskala masif dengan metode \textit{self-supervised learning}, 
+LLM mampu melaksanakan berbagai tugas NLP yang kompleks, meliputi pembangkitan teks, 
+penerjemahan, peringkasan, sistem tanya-jawab, hingga analisis sentimen. Kehadiran 
+teknologi ini telah mengubah lanskap NLP secara mendasar dengan mengatasi keterbatasan 
+metode konvensional berbasis aturan dan statistik, seperti \textit{n-grams}, yang 
+sebelumnya kurang efektif dalam menangkap ketergantungan jangka panjang maupun nuansa 
+kontekstual dalam teks \cite{Sindhu2024Evolution}.
 
-Salah satu pendekatan utama untuk mencapai AI adalah pembelajaran mesin 
-(machine learning), yakni algoritme yang memungkinkan komputer belajar 
-dari data tanpa diprogram secara eksplisit. Alih-alih merancang aturan 
-manual, pendekatan ini membuat sistem mengekstraksi pola dan pengetahuan 
-langsung dari data. Khususnya, deep learning (pembelajaran mendalam) 
-yang menggunakan jaringan saraf tiruan berlapis banyak telah merevolusi 
-berbagai bidang, mulai dari pengenalan gambar hingga pemrosesan bahasa. 
-Model deep learning mampu mempelajari representasi fitur tingkat tinggi 
-secara hierarkis, sehingga melampaui pendekatan statistik konvensional. 
-Dalam konteks pemodelan bahasa, pendekatan ini menggantikan model n-gram 
-sederhana dengan model neural probabilistik yang memahami semantik lebih 
-dalam [1]. Penerapan jaringan saraf berstruktur dalam (recurrent neural 
-networks dan transformer) terbukti meningkatkan performa sistem NLP 
-secara drastis, membuka jalan bagi terciptanya model bahasa yang semakin 
-kompleks dan akurat.
+Sejarah perkembangan LLM dicirikan oleh kemajuan bertahap dalam arsitektur jaringan 
+saraf. Fase awal dimulai dengan penggunaan \textit{Recurrent Neural Networks} (RNNs) 
+di mana digunakan untuk pengolahan data sekuensial, meskipun model ini sering terkendala oleh isu 
+\textit{vanishing gradients} yang menghambat proses pembelajaran jangka panjang. 
+Kemajuan berikutnya dicapai melalui penerapan \textit{word embeddings} dan representasi 
+vektor yang meningkatkan pemahaman semantik dengan memetakan relasi kata dalam ruang 
+berdimensi tinggi. Namun, lompatan teknologi terbesar terjadi melalui introduksi 
+arsitektur \textit{transformer} yang menerapkan mekanisme \textit{self-attention}. 
+Mekanisme ini memungkinkan model untuk memahami hubungan kontekstual secara jauh lebih 
+akurat, sekaligus menjadi landasan bagi pengembangan model-model canggih kontemporer 
+seperti GPT dan BERT.
 
-% referensi:
-% [1]https://www.preprints.org/manuscript/202408.1483#:~:text=essential%20for%20applications%20requiring%20natural,16
-
-Pemrosesan Bahasa Alami (natural language processing atau NLP) adalah 
-cabang AI yang berfokus pada interaksi antara komputer dan bahasa manusia. 
-Tugas-tugas NLP mencakup pemahaman teks, terjemahan otomatis, chatbot, 
-ekstraksi informasi, dan lain-lain. Inti dari banyak sistem NLP adalah 
-model bahasa (language model), yaitu model probabilistik yang mempelajari 
-pola dan kecenderungan dalam sekumpulan teks untuk memprediksi kata atau 
-frasa berikutnya dalam sebuah kalimat. Generasi awal model bahasa 
-menggunakan metode statistik (misalnya unigram dan n-gram) yang terbatas 
-dalam menangkap konteks panjang. Perkembangan kemudian beralih ke model 
-berbasis jaringan saraf seperti Recurrent Neural Networks (RNN) dan 
-variannya LSTM/GRU, yang mampu mempertimbangkan urutan kata secara dinamis. 
-Terobosan terbesar datang dengan diperkenalkannya arsitektur Transformer 
-oleh Vaswani dkk. (2017), yang menggunakan mekanisme self-attention. 
-Arsitektur transformer ini membawa perubahan mendasar dalam rancangan 
-model bahasa dengan menangani dependensi jarak jauh secara lebih 
-efisien [1]. Inovasi tersebut menjadi landasan bagi lahirnya generasi 
-model bahasa mutakhir, termasuk keluarga GPT dari OpenAI dan model BERT 
-dari Google, yang menunjukkan pemahaman konteks dan kemampuan generatif 
-yang unggul.
-
-% referensi:
-% [1]https://www.preprints.org/manuscript/202408.1483#:~:text=The%20advent%20of%20transformer,LLMs%2C%20including%20models%20like%20Generative
-
-Arsitektur Transformer memungkinkan pemrosesan urutan kata secara 
-paralel, berbeda dengan RNN yang memproses secara sekuensial. 
-Dalam encoder-decoder penuh, model dapat menangani tugas 
-sequence-to-sequence (misal penerjemahan) dengan efisien: encoder 
-menyandikan seluruh kalimat sumber menjadi representasi vektor, 
-lalu decoder secara autoregresif menghasilkan keluaran (kalimat 
-terjemahan) dengan memperhatikan konteks penyandian. Banyak Large 
-Language Model (LLM) generatif (seperti GPT-3 dan GPT-4) menggunakan 
-arsitektur transformer jenis decoder-only untuk menghasilkan teks, 
-sedangkan model seperti BERT menggunakan encoder saja untuk tugas 
-pemahaman bahasa. Fleksibilitas desain ini menjadikan Transformer 
-dapat diadaptasi untuk berbagai skenario NLP, dan skalanya dapat 
-diperbesar dengan menambah jumlah lapisan atau dimensi model untuk 
-mencapai performa yang lebih tinggi [1].
-
-% referensi:
-% [1]https://www.preprints.org/frontend/manuscript/92e4d57fdff35ee45698968cd472f781/download_pub#:~:text=More%20recent%20efforts%20have%20focused,3%2C%20which%20features%20several
+Penggunaan LLM telah meluas ke berbagai sektor industri, termasuk di antaranya 
+di bidang pendidikan. Dalam konteks pendidikan, LLM dimanfaatkan untuk
+menghasilkan materi pembelajaran yang dipersonalisasi, memberikan umpan balik
+otomatis kepada siswa, serta mendukung sistem tanya jawab interaktif.
 
 
-Large Language Model (LLM) merujuk pada model bahasa berukuran sangat 
-besar (berskala miliaran hingga triliunan parameter) yang dilatih pada 
-korpus teks yang amat luas. LLM dirancang untuk memahami dan menghasilkan 
-bahasa alami dengan tingkat kefasihan tinggi, bahkan mampu menangani 
-berbagai tugas tanpa pelatihan khusus (zero-shot/few-shot learning). 
-Contoh populer adalah GPT-3 dan GPT-4 dari OpenAI, yang masing-masing 
-memiliki sekitar 175 miliar dan diperkirakan 800 miliar parameter [1]. 
-Model sebesar ini dilatih menggunakan supercomputer selama ribuan jam 
-pada himpunan data teks raksasa (misalnya seluruh konten internet) [2]. 
-Dengan skala dan keragaman data tersebut, LLM menunjukkan kemampuan 
-emergen, misalnya dapat menjawab pertanyaan, menulis esai, menerjemahkan, 
-hingga memecahkan soal kode yang semuanya tanpa fine-tuning tambahan [2]. 
-LLM generatif seperti ChatGPT bahkan mampu melakukan dialog interaktif 
-dan memberikan penjelasan yang mendekati gaya humanis.
+% \subsubsection{Llama}
 
-% referensi:
-% [1]https://www.preprints.org/manuscript/202408.1483#:~:text=Falcon%202022%20SpaceX%20AI%20Streamlined,solving
-% [2]https://www.ejmste.com/article/user-acceptance-and-adoption-dynamics-of-chatgpt-in-educational-settings-14151#:~:text=Recent%20developments%20in%20natural%20language,days%20of%20artificial%20intelligence%20research
+% \subsection{\textit{Prompt Engineering} dan \textit{Context Engineering}}
+% \subsubsection{\textit{Prompt Engineering}} 
+% % membahas dasar teori prompt engineering dan jenis-jenis prompt engineering
+% \subsubsection{\textit{Context Engineering}}
 
-Peningkatan ukuran model secara konsisten terbukti berbanding lurus 
-dengan peningkatan kinerja pada aneka tugas [1]. Studi menunjukkan tren 
-bahwa semakin banyak parameter dalam model bahasa, akurasi dan kemampuan 
-generalisasi model tersebut meningkat signifikan di berbagai domain [1]. 
-Hal ini mendorong lahirnya model XtremeLLM, istilah untuk LLM dengan 
-lebih dari satu triliun parameter [1]. Namun, lonjakan skala ini juga 
-membawa tantangan besar. Model dengan ratusan miliar parameter memerlukan 
-sumber daya komputasi dan memori yang luar biasa, serta berdampak pada 
-waktu pengembangan dan konsumsi energi yang tinggi [1]. Di samping itu, LLM 
-kerap menghadapi isu hallucination (menghasilkan informasi salah yang 
-terdengar meyakinkan) dan bias yang tertanam dari data latih [2]. 
-Ketiadaan standar baku dalam pengembangan model-model masif ini menambah 
-kompleksitas untuk menjamin keandalan dan keamanan penerapannya [2]. 
-Beberapa kajian bahkan menggarisbawahi masalah etis seperti potensi 
-penyalahgunaan, plagiat, misinformasi, serta pelanggaran privasi dan 
-hak cipta jika LLM digunakan tanpa pengawasan [3]. Oleh karena itu, 
-meskipun LLM menawarkan lompatan kinerja, diperlukan strategi mitigasi 
-terhadap risiko teknis dan etis tersebut.
+% \subsection{\textit{Learning Analytics} (LA) dan Papan Kanban}
+% \subsubsection{Papan Kanban dalam Pendidikan}
+% \subsubsection{\textit{Learning Analytics} (LA)}
 
-% referensi:
-% [1]https://www.preprints.org/frontend/manuscript/92e4d57fdff35ee45698968cd472f781/download_pub#:~:text=Therefore%2C%20our%20work%20introduces%20the,challenges%20and%20opportunities%20they%20present
-% [2]https://journals.lww.com/cmj/fulltext/2024/11050/leveraging_foundation_and_large_language_models_in.3.aspx#:~:text=noteworthy%20limitations%2C%20including%20hallucinations%2C%20biases%2C,50%2C83%E2%80%9385
-% [3]https://research.uaeu.ac.ae/en/publications/large-language-models-in-medical-education-opportunities-challeng/#:~:text=learning%20materials%2C%20student%20assessments%2C%20and,gleaned%20from%20this%20analysis%20will
+% \subsection{Metodologi Evaluasi}
+% \subsubsection{Evaluasi Berbasis Semantik}
+% % Jelaskan mengapa metrik tradisional (seperti BLEU/ROUGE yang berbasis kecocokan kata per kata) tidak cocok untuk tugas kreatif seperti feedback. BERTScore: Mengukur kesamaan makna menggunakan contextual embedding. BARTScore: Menggunakan probabilitas generasi teks untuk menilai kualitas.
+% \subsubsection{\textit{LLM-as-a-Judge}}
 
-Perlu dicatat bahwa LLM dapat bersifat umum maupun spesifik domain. 
-Wong et al. (2024) mengklasifikasikan model AI berbasis 
-foundation model menjadi: (1) model khusus penyakit atau tugas 
-tertentu, (2) model domain umum yang serbaguna di berbagai aplikasi 
-medis, dan (3) model multimodal yang menangani data teks, citra, 
-maupun sinyal sekaligus [1]. Ilustrasi ini menunjukkan bahwa framework 
-LLM cukup fleksibel untuk diadaptasi; sebuah model besar bisa 
-di-fine-tune untuk keperluan sangat khusus (misalnya diagnostik 
-penyakit tertentu), atau dikembangkan sebagai model generalis yang 
-mampu menjawab pertanyaan di banyak topik. Kemampuan integratif ini 
-menjadikan LLM sebagai komponen inti dalam ecosystem AI modern di 
-berbagai bidang.
+% ==========================================================================
 
-% referensi:
-% [1]https://journals.lww.com/cmj/fulltext/2024/11050/leveraging_foundation_and_large_language_models_in.3.aspx#:~:text=In%20this%20review%2C%20our%20focus,data%20types%2C%20to%20enhance%20the
+% \subsection{\textit{Self Regulated Learning} (SRL) dan Peran Umpan Balik}
+% % Self-Regulated Learning (SRL) atau pembelajaran regulasi diri adalah konsep di mana peserta didik 
+% % secara aktif mengarahkan dan mengontrol proses belajarnya sendiri. Menurut teori sosial-kognitif 
+% % Zimmerman (2000), SRL merupakan proses siklikal yang mencakup fase perencanaan, pelaksanaan, 
+% % dan evaluasi [7]. Dalam fase perencanaan, mahasiswa menetapkan tujuan belajar dan merencanakan 
+% % strategi; fase pelaksanaan melibatkan penerapan strategi kognitif (misalnya membaca, membuat 
+% % catatan) serta pemantauan metakognitif (misalnya manajemen waktu) untuk menyelesaikan tugas; 
+% % sedangkan fase evaluasi mencakup penilaian diri terhadap kemajuan belajar dan hasil yang dicapai [7]. 
+% % Melalui siklus ini, mahasiswa dengan SRL tinggi akan merefleksikan capaian mereka dan menyesuaikan 
+% % pendekatan belajarnya secara mandiri agar tujuan pembelajaran tercapai [7].
+
+% % Di tingkat pendidikan tinggi, SRL memegang peran krusial dalam menentukan keberhasilan akademik. 
+% % Penelitian menunjukkan bahwa kemampuan regulasi diri berhubungan erat dengan kesuksesan mahasiswa 
+% % di perguruan tinggi [7]. Mahasiswa yang terampil dalam SRL cenderung lebih berhasil karena mereka 
+% % mampu merencanakan, menetapkan tujuan, mengorganisasi kegiatan belajar, serta melakukan evaluasi 
+% % diri secara berkelanjutan selama proses pembelajaran [7]. Kemampuan-kemampuan ini membantu 
+% % mahasiswa belajar lebih efektif dan mandiri.
+
+% % Lebih lanjut, berbagai studi di pendidikan tinggi telah mengaitkan SRL dengan sejumlah indikator 
+% % positif: kinerja akademik yang lebih baik, tingkat retensi (ketahanan studi) yang lebih tinggi, 
+% % keterlibatan yang lebih mendalam dalam aktivitas perkuliahan, dan kemampuan adaptasi yang lebih 
+% % baik terhadap kehidupan kampus [7]. Sebagai contoh, mahasiswa yang menguasai strategi SRL 
+% % dilaporkan memiliki prestasi yang lebih tinggi dan risiko putus studi yang lebih rendah [7]. 
+% % Intervensi pendidikan yang dirancang untuk meningkatkan keterampilan regulasi diri juga 
+% % terbukti efektif memperbaiki performa akademis dan mencegah dropout mahasiswa [7]. Hal ini 
+% % menegaskan bahwa mengembangkan kompetensi SRL pada mahasiswa merupakan investasi penting 
+% % dalam meningkatkan kualitas pembelajaran di pendidikan tinggi.
+
+% % Pendidikan tinggi menuntut mahasiswa untuk lebih mandiri dan proaktif dalam belajar. Mahasiswa 
+% % tidak selalu dibimbing secara intens seperti di jenjang sebelumnya; karena itu, kemampuan 
+% % regulasi diri menjadi kunci. Apalagi dengan berkembangnya pembelajaran daring dan blended 
+% % learning, SRL semakin esensial. Studi terbaru menekankan bahwa dalam lingkungan belajar 
+% % online, mahasiswa dituntut memiliki kapasitas regulasi diri lebih besar dibandingkan 
+% % pendidikan tatap muka [7]. Tanpa SRL yang memadai, kesenjangan dalam penguasaan materi dan 
+% % keterampilan belajar dapat semakin lebar saat pembelajaran beralih ke moda daring [7]. 
+% % Oleh sebab itu, perguruan tinggi masa kini menghadapi tantangan untuk membekali mahasiswa 
+% % dengan keterampilan SRL agar mereka dapat sukses, baik dalam konteks pembelajaran 
+% % konvensional maupun digital.
 
 
-LLM semakin dilirik untuk diimplementasikan dalam konteks pendidikan 
-karena potensinya yang besar dalam meningkatkan proses 
-belajar-mengajar. Integrasi model bahasa generatif seperti GPT-4 
-ke dalam pendidikan dipandang mampu mentransformasi pengalaman 
-belajar siswa dan meningkatkan pengetahuan serta kompetensi mereka [1]. 
-LLM dapat digunakan untuk mengembangkan kurikulum secara dinamis, 
-menghasilkan materi pembelajaran yang dipersonalisasi sesuai kebutuhan 
-masing-masing siswa, menyusun rencana studi individual, hingga 
-memberikan umpan balik otomatis dalam penilaian tugas [1]. Dalam 
-pendidikan kedokteran, misalnya, LLM berpeluang merevolusi metode 
-pengajaran dan evaluasi dengan menyediakan skenario klinis interaktif, 
-menjawab pertanyaan medis secara instan, dan membantu mahasiswa 
-melatih keterampilan diagnosis dalam lingkungan simulasi [1]. Studi 
-Znamenskiy et al. (2025) menunjukkan sebuah kerangka kerja di mana 
-platform GenAI (seperti ChatGPT, Claude, dan lain-lain) diintegrasikan 
-ke dalam praktikum lab untuk melatih berpikir kritis dan literasi 
-digital mahasiswa. Mahasiswa didorong merumuskan pertanyaan (prompts) 
-disiplin-spesifik dan kemudian mengevaluasi jawaban atau konten 
-yang dihasilkan AI. Hasil uji coba pada kelas astronomi untuk 
-non-sains menunjukkan tingkat keterlibatan dan refleksi kritis 
-yang tinggi; banyak mahasiswa yang secara sukarela melanjutkan 
-eksplorasi di luar jam kelas dan bahkan mempresentasikan temuan 
-mereka di simposium penelitian [2]. Temuan ini mengisyaratkan bahwa 
-interaksi terstruktur dengan LLM, jika dipadu dengan metode asesmen 
-reflektif, dapat meningkatkan motivasi dan hasil belajar mahasiswa [2]. 
-Dengan kata lain, LLM berpotensi berperan sebagai tool pendamping 
-yang memperkaya pembelajaran aktif dan investigatif di lingkungan 
-pendidikan.
-
-% referensi:
-% [1]https://research.uaeu.ac.ae/en/publications/large-language-models-in-medical-education-opportunities-challeng/#:~:text=The%20integration%20of%20large%20language,overreliance%2C%20plagiarism%2C%20misinformation%2C%20inequity%2C%20privacy
-% [2]https://arxiv.org/abs/2507.00007#:~:text=Students%20formulate%20discipline,See%20the%20guide%20to
-
-% Meskipun menjanjikan, penerapan LLM di pendidikan juga menghadirkan 
-% sejumlah tantangan dan prasyarat. Salah satu kekhawatiran utama 
-% adalah potensi penyalahgunaan oleh siswa, misalnya menggunakan 
-% ChatGPT untuk menulis esai tugas yang dapat berujung pada 
-% plagiarisme atau penurunan kemampuan berpikir orisinal. Abd-Alrazaq 
-% et al. (2023) mengingatkan bahwa integrasi LLM tanpa kontrol 
-% dapat menimbulkan overreliance pada mesin, bias algoritmik 
-% dalam konten materi, misinformasi ilmiah, hingga pelanggaran 
-% privasi data siswa ￼. Oleh karena itu, pendidik perlu menetapkan 
-% etika penggunaan dan strategi mitigasi, seperti mengecek 
-% orisinalitas karya dan mengedukasi siswa tentang batasan AI. 
-% Dari sisi penerimaan teknologi, faktor manfaat yang dirasakan 
-% terbukti berpengaruh signifikan terhadap adopsi LLM oleh pengguna. 
-% Sebuah studi survei terhadap 138 pelajar menemukan bahwa 
-% performance expectancy (harapan terhadap kinerja/manfaat) berkorelasi 
-% positif dengan niat untuk menggunakan ChatGPT, yang selanjutnya 
-% mendorong penggunaan aktual platform tersebut dalam pembelajaran ￼. 
-% Temuan ini menunjukkan bahwa siswa cenderung menerima dan memakai 
-% LLM apabila mereka meyakini teknologi ini benar-benar membantu 
-% meningkatkan prestasi atau mempermudah tugas belajar.
-
-% Selain itu, penerapan LLM dalam penilaian (assessment) membutuhkan 
-% kehati-hatian khusus. Di satu sisi, teknologi ini menawarkan peluang 
-% untuk meningkatkan efisiensi penilaian, mengurangi bias penilai 
-% manusia, serta memungkinkan evaluasi yang lebih adaptif dan 
-% personal ￼. Misalnya, LLM dapat dipakai untuk menghasilkan butir 
-% soal kustom sesuai tingkat kemampuan siswa, memberikan umpan balik 
-% otomatis pada jawaban esai, atau bahkan melakukan penskoran awal 
-% atas ujian esai secara konsisten. Namun di sisi lain, inovasi ini 
-% memunculkan kekhawatiran mengenai validitas dan keadilan evaluasi ￼. 
-% Apabila siswa dibantu AI dalam menjawab soal, maka validitas ujian 
-% ebagai pengukur kemampuan asli bisa terkompromi. Demikian pula, aspek 
-% transparansi algoritma LLM dalam penilaian, potensi bias terhadap 
-% kelompok tertentu, dan keamanan (misal kemungkinan kebocoran soal 
-% melalui model) menjadi isu yang harus diantisipasi ￼. 
-% Hao et al. (2024) menekankan bahwa komunitas pendidik dan penilai 
-% perlu meningkatkan literasi AI mereka untuk dapat memanfaatkan LLM 
-% secara efektif sekaligus menjaga integritas asesmen ￼. Artinya, 
-% pelatihan bagi guru/dosen tentang cara kerja dan keterbatasan LLM, 
-% penyusunan kebijakan penggunaan AI dalam ujian, serta pengembangan 
-% metode deteksi kecurangan berbasis AI menjadi sangat penting 
-% seiring semakin terintegrasinya LLM dalam dunia pendidikan.
-
-% Sebagai kesimpulan, Large Language Model menghadirkan paradigma 
-% baru dalam pendidikan yang bila dimanfaatkan dengan tepat dapat 
-% mengakselerasi pembelajaran, menyediakan pengalaman belajar yang 
-% dipersonalisasi, dan meningkatkan efisiensi pengajaran. Studi 
-% kasus terkini menunjukkan potensi positif LLM untuk mendorong 
-% keterlibatan dan pemikiran kritis mahasiswa ￼, namun juga 
-% mengingatkan kita akan tantangan etis dan pedagogis yang 
-% menyertainya ￼ ￼. Dengan kerangka regulasi dan literasi AI yang 
-% memadai, LLM dapat diimplementasikan sebagai alat bantu inovatif 
-% di berbagai jenjang pendidikan, mulai dari pembelajaran di kelas, 
-% laboratorium, hingga evaluasi, guna melahirkan generasi pembelajar 
-% yang adaptif di era AI.
-
-\subsection{\textit{Prompt Engineering}}
-
-\textit{Prompt engineering} merupakan bidang kajian baru yang berfokus pada perancangan, penyempurnaan, 
-dan implementasi prompt atau instruksi yang diberikan kepada model bahasa besar LLM 
-untuk mengarahkan keluaran model tersebut [1]. Dengan kata lain, \textit{prompt engineering} 
-adalah “mekanisme pengendali” (\textit{steering mechanism}) yang digunakan pengguna kecerdasan buatan 
-generatif untuk menyusun \textit{prompt} sedemikian rupa agar menghasilkan keluaran yang diinginkan [2]. 
-Konsep ini menjadi semakin penting seiring munculnya LLM populer seperti ChatGPT, karena 
-kemampuan merancang \textit{prompt} yang efektif memungkinkan pengguna untuk mendapatkan jawaban yang 
-lebih akurat, relevan, dan sesuai kebutuhan dari model AI [1].
-
-Sebagai suatu keterampilan, \textit{prompt engineering} dapat dipelajari dan dikembangkan. 
-Para peneliti menuliskan bahwa \textit{prompt engineering} sudah mulai diajarkan secara formal, 
-misalnya di perguruan tinggi, karena dianggap sebagai \textit{skillset} baru yang 
-dibutuhkan di era integrasi AI [2]. Intinya, \textit{prompt engineering} 
-menekankan seni merumuskan pertanyaan atau perintah dalam bahasa natural 
-sedemikian rupa sehingga model AI memahami konteks tugas dan memberikan respon optimal sesuai 
-keinginan pengguna.
-
-\subsection{\textit{Context Engineering}}
-
-\textit{Context engineering} adalah disiplin yang berkembang untuk melengkapi dan melampaui 
-\textit{prompt engineering}. Jika \textit{prompt engineering} berfokus 
-pada apa yang dikatakan kepada model pada satu waktu, maka \textit{context engineering} 
-berfokus pada apa saja yang diketahui model saat \textit{prompt} tersebut 
-diberikan. Menurut survei terbaru, \textit{context engineering} didefinisikan sebagai disiplin formal 
-yang melampaui sekadar perancangan \textit{prompt} dan mencakup optimisasi sistematis dari informasi 
-konteks yang disuplai ke LLM [3]. Kinerja LLM sangat ditentukan oleh informasi kontekstual 
-yang diberikan selama inferensi, sehingga \textit{context engineering} berusaha memastikan model 
-menerima \textit{payload} informasi yang paling relevan dan berguna.
-
-Dalam praktiknya, \textit{context engineering} mencakup teknik-teknik seperti \textit{retrieval-augmented 
-generation} (RAG) untuk mengambil pengetahuan eksternal, penggunaan \textit{memory systems} agar 
-model mengingat interaksi sebelumnya, integrasi alat tambahan (\textit{tool-integrated reasoning}), 
-hingga koordinasi \textit{multi-agen} AI [3]. Berbeda dengan \textit{prompt engineering} yang hanya memanipulasi 
-teks \textit{prompt}-nya, \textit{context engineering} mengatur lingkungan dan konteks bagi model, misalnya 
-mengumpulkan data pendukung, menyusun instruksi sistem, mendefinisikan aturan, serta memasukkan 
-memori atau informasi historis sebelum \textit{prompt} diberikan. Tujuannya adalah memaksimalkan kualitas 
-jawaban AI dengan menghadirkan konteks informasi yang optimal dalam batas panjang konteks model 
-tersebut [3]. Dengan demikian, \textit{context engineering} menjadikan AI lebih andal dan \textit{context-aware}, 
-tidak semata-mata mengandalkan satu perintah teks statis.
-
-\subsection{Jenis Teknik \textit{Prompting}}
 
 
-\subsection{Perbedaan \textit{Prompt Engineering} dan \textit{Context Engineering}}
-Meskipun terkait, \textit{prompt engineering} dan \textit{context engineering} memiliki fokus dan pendekatan yang 
-berbeda. Berikut adalah perbedaan utama keduanya [3]:
-% •	Lingkup Input: \textit{Prompt engineering} memandang \textit{prompt} sebagai teks statis tunggal yang 
-% 	menjadi masukan model. Sebaliknya, \textit{context engineering} memandang konteks secara dinamis dan 
-% 	terstruktur, terdiri dari berbagai komponen informasi (instruksi sistem, pengetahuan eksternal, 
-% 	memori percakapan, status pengguna, dll.) yang dirangkai bersama sebagai masukan [3]. 
-% 	Dengan kata lain, \textit{prompt engineering} beroperasi di dalam jendela konteks yang ada, sedangkan 
-% 	\textit{context engineering} menentukan apa saja yang mengisi jendela konteks tersebut.
-% •	Informasi dan Memori: Pada \textit{prompt engineering}, informasi yang diberikan bersifat tetap 
-% 	dalam teks \textit{prompt}, dan interaksi biasanya tanpa memori jangka panjang (setiap \textit{prompt} berdiri 
-% 	sendiri) [3]. Pada \textit{context engineering}, tujuannya adalah memaksimalkan informasi yang relevan 
-% 	dengan tugas dalam batas konteks model [3]. \textit{Context engineering} juga secara eksplisit 
-% 	mempertimbangkan komponen memori atau state, sehingga model dapat memanfaatkan informasi 
-% 	dari interaksi sebelumnya (stateful) [3].
-% •	Pendekatan Optimasi: \textit{Prompt engineering} umumnya mengandalkan percobaan manual dan 
-% 	iteratif dalam merancang kalimat \textit{prompt} hingga didapat keluaran yang diinginkan, sehingga 
-% 	sering dianggap sebagai suatu art (seni coba-coba) [3]. Sebaliknya, \textit{context engineering} 
-% 	menerapkan pendekatan yang lebih sistematis atau scientific. Ia melibatkan optimisasi di 
-% 	level sistem secara menyeluruh, misalnya menentukan fungsi-fungsi pengambil dan pengolah 
-% 	konteks yang ideal, dengan tujuan akhir meningkatkan kualitas output LLM secara konsisten [3]. 
-% 	Dalam \textit{context engineering}, evaluasi dan penyempurnaan bisa dilakukan pada masing-masing 
-% 	komponen konteks (misal modul pencarian pengetahuan atau mekanisme memori) secara terukur, 
-% 	bukan sekadar inspeksi output akhir secara manual [3].
-% •	Skalabilitas dan Kompleksitas: \textit{Prompt engineering} cenderung rapuh ketika \textit{prompt} menjadi 
-% 	terlalu panjang atau kompleks, karena model dapat kehilangan fokus atau konsistensi; 
-% 	pendekatan ini kurang terstruktur untuk skenario kompleks [3]. \textit{Context engineering} dirancang 
-% 	untuk mengatasi hal ini dengan komposisi modular, mengelola konteks panjang melalui 
-% 	segmentasi informasi, hirarki memori, dan kompresi konteks bila perlu [3]. Dengan demikian, 
-% 	\textit{context engineering} lebih siap menangani skala konteks yang besar dan beragam (misalnya 
-% 	input \textit{multi-modal}, pengetahuan berjenjang) dibandingkan pendekatan \textit{prompt-only}.
 
-\begin{table}[h]
-\centering
-\caption{Perbandingan \textit{Prompt Engineering} dan \textit{Context Engineering}}
-\label{tab:perbandingan}
-\begin{tabular}{|p{0.22\linewidth}|p{0.35\linewidth}|p{0.35\linewidth}|}
-\hline
-\textbf{Aspek} & \textbf{\textit{Prompt Engineering}} & \textbf{\textit{Context Engineering}} \\
-\hline
-Lingkup Input & Memandang \textit{prompt} sebagai teks statis tunggal yang menjadi masukan model. & Memandang konteks secara dinamis dan terstruktur, terdiri dari berbagai komponen informasi (instruksi, pengetahuan, memori, status pengguna) yang dirangkai bersama. \\
-\hline
-Informasi dan Memori & Informasi bersifat tetap dalam teks \textit{prompt}; interaksi biasanya tanpa memori jangka panjang (setiap \textit{prompt} berdiri sendiri). & Mempertimbangkan komponen memori atau \textit{state} secara eksplisit, memungkinkan model memanfaatkan informasi dari interaksi sebelumnya (\textit{stateful}). \\
-\hline
-Pendekatan Optimasi & Mengandalkan percobaan manual dan iteratif; sering dianggap sebagai suatu seni (\textit{art}) coba-coba. & Menerapkan pendekatan yang sistematis dan ilmiah (\textit{scientific}); melibatkan optimisasi di level sistem secara menyeluruh. \\
-\hline
-Skalabilitas dan Kompleksitas & Cenderung rapuh untuk \textit{prompt} yang panjang dan kompleks; kurang terstruktur untuk skenario kompleks. & Dirancang untuk mengelola konteks yang besar dan beragam secara modular (segmentasi, hirarki, kompresi). \\
-\hline
-\end{tabular}
-\end{table}
+% % [1] Panadero, E., & Alonso-Tapia, J. (2016). Self-assessment: Theoretical and practical connotations, when it happens, how is it acquired, and what to do to develop it in our students. Electronic Journal of Research in Educational Psychology, 14(1), 551-576.
+% % [2] Zimmerman, B. J. (2000). Attaining self-regulation: A social cognitive perspective. In Handbook of self-regulation (pp. 13-39). Academic Press.
+% % [3] Hattie, J., & Timperley, H. (2007). The power of feedback. Review of Educational Research, 77(1), 81-112.
+% % [4] Wisniewski, B., Zierer, K., & Hattie, J. (2020). The power of feedback revisited: A meta-analysis of educational feedback research. Frontiers in Psychology, 10, 3087.
+% % [5] Sun, D., Xu, P., Zhang, J., Liu, R., & Zhang, J. (2025). How Self-Regulated Learning Is Affected by Feedback Based on Large Language Models: Data-Driven Sustainable Development in Computer Programming Learning. Electronics, 14(1), 194.
+% % [6] Nakata, Y., Wang, C., & Yamamoto, Y. (2025). Student perceptions of feedback and self-regulated language learning: A mixed-methods investigation. System, 131, 103654.
+% % [7] Lobos, K., Cobo-Rendón, R., Jofré, D. B., & Santana, J. (2024). New challenges for higher education: self-regulated learning in blended learning contexts. Frontiers in Education, 9, 1457367.
+% % [8] Steinert, S., Küchemann, S., Avila, K. E., et al. (2024). Harnessing large language models to develop research-based learning assistants for formative feedback. Smart Learning Environments, 11(1), 30.
+
+% \textit{Self-Regulated Learning} (SRL) merujuk pada kapasitas mahasiswa untuk secara aktif merencanakan, 
+% memantau, dan mengevaluasi proses belajarnya sendiri, melalui siklus 
+% perencanaan, pelaksanaan, dan refleksi yang saling terkait [1], [2]. Pada fase perencanaan, 
+% mahasiswa menetapkan tujuan serta strategi. Lalu, pada fase pelaksanaan, mereka menerapkan strategi 
+% kognitif dan melakukan pemantauan metakognitif (mis. manajemen waktu, monitoring pemahaman). 
+% Kemudian, pada fase refleksi, mahasiswa melibatkan penilaian diri terhadap kemajuan dan hasil untuk 
+% menyesuaikan strategi berikutnya [1], [2]. Berbekal mekanisme siklikal ini, SRL menggabungkan 
+% dimensi kognitif, motivasional, dan perilaku yang bersama-sama menentukan kualitas belajar 
+% mandiri di pendidikan tinggi [1], [2].
+
+% Di konteks pendidikan tinggi, SRL berperan krusial karena lingkungan belajar menuntut kemandirian,
+% terutama pada pembelajaran digital (daring atau campuran) yang memerlukan disiplin diri lebih tinggi
+% serta kemampuan mengelola distraksi. Kajian terkini menunjukkan bahwa SRL berkorelasi dengan
+% kinerja akademik, keterlibatan, dan ketahanan studi. Sebaliknya, kekurangan SRL di
+% pembelajaran daring atau campuran dapat memperlebar kesenjangan capaian yang diperoleh 
+% mahasiswa [3]. Dengan demikian,
+% pengembangan kompetensi SRL termasuk penetapan tujuan, strategi, monitoring, dan
+% refleksi—menjadi prasyarat penting untuk keberhasilan mahasiswa di ekosistem belajar
+% modern [2], [3].
+
+% Kemajuan \textit{Large Language Models} (LLM) membuka peluang penyediaan 
+% bimbingan pengarahan (\textit{feedback}) yang personal, 
+% cepat, dan interaktif untuk menopang SRL. 
+% Studi eksperimental di konteks pemrograman (pendidikan tinggi) menunjukkan 
+% \textit{feedback} berbasis LLM dapat meningkatkan strategi metakognitif, 
+% motivasi, dan performa mahasiswa dibanding kondisi 
+% tanpa \textit{feedback} dari AI [6]. Riset pengembangan menunjukkan asisten belajar 
+% berbasis LLM yang dirancang dengan prinsip-prinsip pedagogis 
+% mampu menyajikan \textit{feedback} yang scaffolded (bertahap), memicu \textit{self-explanation}, 
+% dan menuntun refleksi [7]. Dengan dialog natural, LLM dapat membantu ketiga fase 
+% SRL yaitu, (i) perencanaan (menyusun tujuan dan rencana aksi), 
+% (ii) pelaksanaan (memberi hint/pertanyaan pemandu saat buntu), 
+% dan (iii) refleksi (merangkum kekuatan-kelemahan dan langkah tindak lanjut) [6], [7]. 
+% Agar efektif dan aman, \textit{feedback} LLM sebaiknya disejajarkan dengan praktik pedagogis berbasis 
+% bukti (fokus pada proses, \textit{actionability}, dan nada empatik) dan dievaluasi kualitasnya 
+% secara sistematis.
+
+% % \paragraph{Landasan tiga fungsi pedagogis.}
+% Dalam kerangka SRL, efektivitas umpan balik dipahami melalui fokus bertingkat pada 
+% \textit{task}, \textit{process}, dan \textit{self-regulation}, serta dampaknya pada 
+% keyakinan diri dan ketekunan belajar [4]. Menurut artikel jurnal ini [4], disebutkan bahwa 
+% \textit{feedback} kognitif efektif bila spesifik, mendiagnosis miskonsepsi, dan 
+% menyarankan langkah perbaikan yang terstruktur. Lalu, \textbf{dukungan motivasional} 
+% menjaga \textit{self-efficacy} (keyakinan diri), menetapkan tujuan yang menantang namun realistis, 
+% serta mendorong komitmen rencana aksi. Terakhir, pemberian apresiasi yang spesifik 
+% terhadap usaha/progres dapat berkontribusi pada afek positif dan keterlibatan yang 
+% disertai arahan perbaikan agar tidak menjadi pujian kosong [4]. Oleh karena itu, 
+% penelitian ini menilai kualitas respons LLM pada ketiga fungsi tersebut karena ketiganya 
+% (\textit{feedback}, \textit{motivation}, dan \textit{appreciation}) 
+% secara langsung mendukung fase perencanaan–pelaksanaan–refleksi dalam SRL [1], [2], [4].
+
+
+% % [1] B. J. Zimmerman, “Becoming a self-regulated learner: An overview,” Theory Into Practice, vol. 41, no. 2, pp. 64–70, 2002.
+% % [2] E. Panadero, “A review of self-regulated learning: Six models and four directions for research,” Educational Psychology Review, vol. 29, no. 4, pp. 1–28, 2017.
+% % [3] K. Lobos, R. Cobo-Rendón, D. B. Jofré, and J. Santana, “New challenges for higher education: Self-regulated learning in blended learning contexts,” Frontiers in Education, vol. 9, art. 1457367, 2024.
+% % [4] D. J. Nicol and D. Macfarlane-Dick, “Formative assessment and self-regulated learning: A model and seven principles of good feedback practice,” Studies in Higher Education, vol. 31, no. 2, pp. 199–218, 2006.
+% % [5] J. Hattie and H. Timperley, “The power of feedback,” Review of Educational Research, vol. 77, no. 1, pp. 81–112, 2007.
+% % [6] D. Sun, P. Xu, J. Zhang, R. Liu, and J. Zhang, “How self-regulated learning is affected by feedback based on large language models: Data-driven sustainable development in computer programming learning,” Electronics, vol. 14, no. 1, art. 194, 2025.
+% % [7] S. Steinert et al., “Harnessing large language models to develop research-based learning assistants for formative feedback,” Smart Learning Environments, vol. 11, no. 1, art. 30, 2024.
+
+% % LLM dalam dunia pendidikan undergraduate
+
+% \subsection{\textit{Large Language Model} (LLM)}
+
+% \textit{Kecerdasan Buatan} adalah cabang ilmu komputer yang berfokus 
+% pada pembuatan sistem yang mampu meniru kecerdasan manusia dalam 
+% pemecahan masalah dan pengambilan keputusan. Pendekatan awal AI banyak 
+% bersifat \textit{symbolic} (\textit{rule-based}), namun berkembang 
+% menuju metode \textit{data-driven} seperti \textit{machine learning}. 
+% Sejak awal, para peneliti AI telah membayangkan tercapainya 
+% \textit{general problem solver} yang mampu menyelesaikan berbagai 
+% tugas secara cerdas \cite{Bazelais2024User}. Kemajuan mutakhir di bidang 
+% \textit{natural language processing} menunjukkan tanda-tanda menuju 
+% visi tersebut, contohnya model bahasa besar (\textit{large language model}) 
+% seperti \textit{ChatGPT} yang dilatih dengan miliaran parameter pada 
+% seluruh teks internet mampu melakukan beragam tugas tekstual secara 
+% \textit{out-of-the-box} dan menunjukkan kemampuan \textit{emergent} 
+% mendekati kecerdasan umum manusia \cite{Bazelais2024User}. Perkembangan ini menandai lompatan 
+% signifikan dalam upaya mewujudkan AI yang lebih cerdas dan serbaguna.
+
+% % referensi:
+% % [1]https://www.ejmste.com/article/user-acceptance-and-adoption-dynamics-of-chatgpt-in-educational-settings-14151#:~:text=Recent%20developments%20in%20natural%20language,days%20of%20artificial%20intelligence%20research
+
+% Salah satu pendekatan utama untuk mencapai AI adalah pembelajaran mesin 
+% (machine learning), yakni algoritme yang memungkinkan komputer belajar 
+% dari data tanpa diprogram secara eksplisit. Alih-alih merancang aturan 
+% manual, pendekatan ini membuat sistem mengekstraksi pola dan pengetahuan 
+% langsung dari data. Khususnya, deep learning (pembelajaran mendalam) 
+% yang menggunakan jaringan saraf tiruan berlapis banyak telah merevolusi 
+% berbagai bidang, mulai dari pengenalan gambar hingga pemrosesan bahasa. 
+% Model deep learning mampu mempelajari representasi fitur tingkat tinggi 
+% secara hierarkis, sehingga melampaui pendekatan statistik konvensional. 
+% Dalam konteks pemodelan bahasa, pendekatan ini menggantikan model n-gram 
+% sederhana dengan model neural probabilistik yang memahami semantik lebih 
+% dalam [1]. Penerapan jaringan saraf berstruktur dalam (recurrent neural 
+% networks dan transformer) terbukti meningkatkan performa sistem NLP 
+% secara drastis, membuka jalan bagi terciptanya model bahasa yang semakin 
+% kompleks dan akurat.
+
+% % referensi:
+% % [1]https://www.preprints.org/manuscript/202408.1483#:~:text=essential%20for%20applications%20requiring%20natural,16
+
+% Pemrosesan Bahasa Alami (natural language processing atau NLP) adalah 
+% cabang AI yang berfokus pada interaksi antara komputer dan bahasa manusia. 
+% Tugas-tugas NLP mencakup pemahaman teks, terjemahan otomatis, chatbot, 
+% ekstraksi informasi, dan lain-lain. Inti dari banyak sistem NLP adalah 
+% model bahasa (language model), yaitu model probabilistik yang mempelajari 
+% pola dan kecenderungan dalam sekumpulan teks untuk memprediksi kata atau 
+% frasa berikutnya dalam sebuah kalimat. Generasi awal model bahasa 
+% menggunakan metode statistik (misalnya unigram dan n-gram) yang terbatas 
+% dalam menangkap konteks panjang. Perkembangan kemudian beralih ke model 
+% berbasis jaringan saraf seperti Recurrent Neural Networks (RNN) dan 
+% variannya LSTM/GRU, yang mampu mempertimbangkan urutan kata secara dinamis. 
+% Terobosan terbesar datang dengan diperkenalkannya arsitektur Transformer 
+% oleh Vaswani dkk. (2017), yang menggunakan mekanisme self-attention. 
+% Arsitektur transformer ini membawa perubahan mendasar dalam rancangan 
+% model bahasa dengan menangani dependensi jarak jauh secara lebih 
+% efisien [1]. Inovasi tersebut menjadi landasan bagi lahirnya generasi 
+% model bahasa mutakhir, termasuk keluarga GPT dari OpenAI dan model BERT 
+% dari Google, yang menunjukkan pemahaman konteks dan kemampuan generatif 
+% yang unggul.
+
+% % referensi:
+% % [1]https://www.preprints.org/manuscript/202408.1483#:~:text=The%20advent%20of%20transformer,LLMs%2C%20including%20models%20like%20Generative
+
+% Arsitektur Transformer memungkinkan pemrosesan urutan kata secara 
+% paralel, berbeda dengan RNN yang memproses secara sekuensial. 
+% Dalam encoder-decoder penuh, model dapat menangani tugas 
+% sequence-to-sequence (misal penerjemahan) dengan efisien: encoder 
+% menyandikan seluruh kalimat sumber menjadi representasi vektor, 
+% lalu decoder secara autoregresif menghasilkan keluaran (kalimat 
+% terjemahan) dengan memperhatikan konteks penyandian. Banyak Large 
+% Language Model (LLM) generatif (seperti GPT-3 dan GPT-4) menggunakan 
+% arsitektur transformer jenis decoder-only untuk menghasilkan teks, 
+% sedangkan model seperti BERT menggunakan encoder saja untuk tugas 
+% pemahaman bahasa. Fleksibilitas desain ini menjadikan Transformer 
+% dapat diadaptasi untuk berbagai skenario NLP, dan skalanya dapat 
+% diperbesar dengan menambah jumlah lapisan atau dimensi model untuk 
+% mencapai performa yang lebih tinggi [1].
+
+% % referensi:
+% % [1]https://www.preprints.org/frontend/manuscript/92e4d57fdff35ee45698968cd472f781/download_pub#:~:text=More%20recent%20efforts%20have%20focused,3%2C%20which%20features%20several
+
+
+% Large Language Model (LLM) merujuk pada model bahasa berukuran sangat 
+% besar (berskala miliaran hingga triliunan parameter) yang dilatih pada 
+% korpus teks yang amat luas. LLM dirancang untuk memahami dan menghasilkan 
+% bahasa alami dengan tingkat kefasihan tinggi, bahkan mampu menangani 
+% berbagai tugas tanpa pelatihan khusus (zero-shot/few-shot learning). 
+% Contoh populer adalah GPT-3 dan GPT-4 dari OpenAI, yang masing-masing 
+% memiliki sekitar 175 miliar dan diperkirakan 800 miliar parameter [1]. 
+% Model sebesar ini dilatih menggunakan supercomputer selama ribuan jam 
+% pada himpunan data teks raksasa (misalnya seluruh konten internet) [2]. 
+% Dengan skala dan keragaman data tersebut, LLM menunjukkan kemampuan 
+% emergen, misalnya dapat menjawab pertanyaan, menulis esai, menerjemahkan, 
+% hingga memecahkan soal kode yang semuanya tanpa fine-tuning tambahan [2]. 
+% LLM generatif seperti ChatGPT bahkan mampu melakukan dialog interaktif 
+% dan memberikan penjelasan yang mendekati gaya humanis.
+
+% % referensi:
+% % [1]https://www.preprints.org/manuscript/202408.1483#:~:text=Falcon%202022%20SpaceX%20AI%20Streamlined,solving
+% % [2]https://www.ejmste.com/article/user-acceptance-and-adoption-dynamics-of-chatgpt-in-educational-settings-14151#:~:text=Recent%20developments%20in%20natural%20language,days%20of%20artificial%20intelligence%20research
+
+% Peningkatan ukuran model secara konsisten terbukti berbanding lurus 
+% dengan peningkatan kinerja pada aneka tugas [1]. Studi menunjukkan tren 
+% bahwa semakin banyak parameter dalam model bahasa, akurasi dan kemampuan 
+% generalisasi model tersebut meningkat signifikan di berbagai domain [1]. 
+% Hal ini mendorong lahirnya model XtremeLLM, istilah untuk LLM dengan 
+% lebih dari satu triliun parameter [1]. Namun, lonjakan skala ini juga 
+% membawa tantangan besar. Model dengan ratusan miliar parameter memerlukan 
+% sumber daya komputasi dan memori yang luar biasa, serta berdampak pada 
+% waktu pengembangan dan konsumsi energi yang tinggi [1]. Di samping itu, LLM 
+% kerap menghadapi isu hallucination (menghasilkan informasi salah yang 
+% terdengar meyakinkan) dan bias yang tertanam dari data latih [2]. 
+% Ketiadaan standar baku dalam pengembangan model-model masif ini menambah 
+% kompleksitas untuk menjamin keandalan dan keamanan penerapannya [2]. 
+% Beberapa kajian bahkan menggarisbawahi masalah etis seperti potensi 
+% penyalahgunaan, plagiat, misinformasi, serta pelanggaran privasi dan 
+% hak cipta jika LLM digunakan tanpa pengawasan [3]. Oleh karena itu, 
+% meskipun LLM menawarkan lompatan kinerja, diperlukan strategi mitigasi 
+% terhadap risiko teknis dan etis tersebut.
+
+% % referensi:
+% % [1]https://www.preprints.org/frontend/manuscript/92e4d57fdff35ee45698968cd472f781/download_pub#:~:text=Therefore%2C%20our%20work%20introduces%20the,challenges%20and%20opportunities%20they%20present
+% % [2]https://journals.lww.com/cmj/fulltext/2024/11050/leveraging_foundation_and_large_language_models_in.3.aspx#:~:text=noteworthy%20limitations%2C%20including%20hallucinations%2C%20biases%2C,50%2C83%E2%80%9385
+% % [3]https://research.uaeu.ac.ae/en/publications/large-language-models-in-medical-education-opportunities-challeng/#:~:text=learning%20materials%2C%20student%20assessments%2C%20and,gleaned%20from%20this%20analysis%20will
+
+% Perlu dicatat bahwa LLM dapat bersifat umum maupun spesifik domain. 
+% Wong et al. (2024) mengklasifikasikan model AI berbasis 
+% foundation model menjadi: (1) model khusus penyakit atau tugas 
+% tertentu, (2) model domain umum yang serbaguna di berbagai aplikasi 
+% medis, dan (3) model multimodal yang menangani data teks, citra, 
+% maupun sinyal sekaligus [1]. Ilustrasi ini menunjukkan bahwa framework 
+% LLM cukup fleksibel untuk diadaptasi; sebuah model besar bisa 
+% di-fine-tune untuk keperluan sangat khusus (misalnya diagnostik 
+% penyakit tertentu), atau dikembangkan sebagai model generalis yang 
+% mampu menjawab pertanyaan di banyak topik. Kemampuan integratif ini 
+% menjadikan LLM sebagai komponen inti dalam ecosystem AI modern di 
+% berbagai bidang.
+
+% % referensi:
+% % [1]https://journals.lww.com/cmj/fulltext/2024/11050/leveraging_foundation_and_large_language_models_in.3.aspx#:~:text=In%20this%20review%2C%20our%20focus,data%20types%2C%20to%20enhance%20the
+
+
+% LLM semakin dilirik untuk diimplementasikan dalam konteks pendidikan 
+% karena potensinya yang besar dalam meningkatkan proses 
+% belajar-mengajar. Integrasi model bahasa generatif seperti GPT-4 
+% ke dalam pendidikan dipandang mampu mentransformasi pengalaman 
+% belajar siswa dan meningkatkan pengetahuan serta kompetensi mereka [1]. 
+% LLM dapat digunakan untuk mengembangkan kurikulum secara dinamis, 
+% menghasilkan materi pembelajaran yang dipersonalisasi sesuai kebutuhan 
+% masing-masing siswa, menyusun rencana studi individual, hingga 
+% memberikan umpan balik otomatis dalam penilaian tugas [1]. Dalam 
+% pendidikan kedokteran, misalnya, LLM berpeluang merevolusi metode 
+% pengajaran dan evaluasi dengan menyediakan skenario klinis interaktif, 
+% menjawab pertanyaan medis secara instan, dan membantu mahasiswa 
+% melatih keterampilan diagnosis dalam lingkungan simulasi [1]. Studi 
+% Znamenskiy et al. (2025) menunjukkan sebuah kerangka kerja di mana 
+% platform GenAI (seperti ChatGPT, Claude, dan lain-lain) diintegrasikan 
+% ke dalam praktikum lab untuk melatih berpikir kritis dan literasi 
+% digital mahasiswa. Mahasiswa didorong merumuskan pertanyaan (prompts) 
+% disiplin-spesifik dan kemudian mengevaluasi jawaban atau konten 
+% yang dihasilkan AI. Hasil uji coba pada kelas astronomi untuk 
+% non-sains menunjukkan tingkat keterlibatan dan refleksi kritis 
+% yang tinggi; banyak mahasiswa yang secara sukarela melanjutkan 
+% eksplorasi di luar jam kelas dan bahkan mempresentasikan temuan 
+% mereka di simposium penelitian [2]. Temuan ini mengisyaratkan bahwa 
+% interaksi terstruktur dengan LLM, jika dipadu dengan metode asesmen 
+% reflektif, dapat meningkatkan motivasi dan hasil belajar mahasiswa [2]. 
+% Dengan kata lain, LLM berpotensi berperan sebagai tool pendamping 
+% yang memperkaya pembelajaran aktif dan investigatif di lingkungan 
+% pendidikan.
+
+% % referensi:
+% % [1]https://research.uaeu.ac.ae/en/publications/large-language-models-in-medical-education-opportunities-challeng/#:~:text=The%20integration%20of%20large%20language,overreliance%2C%20plagiarism%2C%20misinformation%2C%20inequity%2C%20privacy
+% % [2]https://arxiv.org/abs/2507.00007#:~:text=Students%20formulate%20discipline,See%20the%20guide%20to
+
+% % Meskipun menjanjikan, penerapan LLM di pendidikan juga menghadirkan 
+% % sejumlah tantangan dan prasyarat. Salah satu kekhawatiran utama 
+% % adalah potensi penyalahgunaan oleh siswa, misalnya menggunakan 
+% % ChatGPT untuk menulis esai tugas yang dapat berujung pada 
+% % plagiarisme atau penurunan kemampuan berpikir orisinal. Abd-Alrazaq 
+% % et al. (2023) mengingatkan bahwa integrasi LLM tanpa kontrol 
+% % dapat menimbulkan overreliance pada mesin, bias algoritmik 
+% % dalam konten materi, misinformasi ilmiah, hingga pelanggaran 
+% % privasi data siswa ￼. Oleh karena itu, pendidik perlu menetapkan 
+% % etika penggunaan dan strategi mitigasi, seperti mengecek 
+% % orisinalitas karya dan mengedukasi siswa tentang batasan AI. 
+% % Dari sisi penerimaan teknologi, faktor manfaat yang dirasakan 
+% % terbukti berpengaruh signifikan terhadap adopsi LLM oleh pengguna. 
+% % Sebuah studi survei terhadap 138 pelajar menemukan bahwa 
+% % performance expectancy (harapan terhadap kinerja/manfaat) berkorelasi 
+% % positif dengan niat untuk menggunakan ChatGPT, yang selanjutnya 
+% % mendorong penggunaan aktual platform tersebut dalam pembelajaran ￼. 
+% % Temuan ini menunjukkan bahwa siswa cenderung menerima dan memakai 
+% % LLM apabila mereka meyakini teknologi ini benar-benar membantu 
+% % meningkatkan prestasi atau mempermudah tugas belajar.
+
+% % Selain itu, penerapan LLM dalam penilaian (assessment) membutuhkan 
+% % kehati-hatian khusus. Di satu sisi, teknologi ini menawarkan peluang 
+% % untuk meningkatkan efisiensi penilaian, mengurangi bias penilai 
+% % manusia, serta memungkinkan evaluasi yang lebih adaptif dan 
+% % personal ￼. Misalnya, LLM dapat dipakai untuk menghasilkan butir 
+% % soal kustom sesuai tingkat kemampuan siswa, memberikan umpan balik 
+% % otomatis pada jawaban esai, atau bahkan melakukan penskoran awal 
+% % atas ujian esai secara konsisten. Namun di sisi lain, inovasi ini 
+% % memunculkan kekhawatiran mengenai validitas dan keadilan evaluasi ￼. 
+% % Apabila siswa dibantu AI dalam menjawab soal, maka validitas ujian 
+% % ebagai pengukur kemampuan asli bisa terkompromi. Demikian pula, aspek 
+% % transparansi algoritma LLM dalam penilaian, potensi bias terhadap 
+% % kelompok tertentu, dan keamanan (misal kemungkinan kebocoran soal 
+% % melalui model) menjadi isu yang harus diantisipasi ￼. 
+% % Hao et al. (2024) menekankan bahwa komunitas pendidik dan penilai 
+% % perlu meningkatkan literasi AI mereka untuk dapat memanfaatkan LLM 
+% % secara efektif sekaligus menjaga integritas asesmen ￼. Artinya, 
+% % pelatihan bagi guru/dosen tentang cara kerja dan keterbatasan LLM, 
+% % penyusunan kebijakan penggunaan AI dalam ujian, serta pengembangan 
+% % metode deteksi kecurangan berbasis AI menjadi sangat penting 
+% % seiring semakin terintegrasinya LLM dalam dunia pendidikan.
+
+% % Sebagai kesimpulan, Large Language Model menghadirkan paradigma 
+% % baru dalam pendidikan yang bila dimanfaatkan dengan tepat dapat 
+% % mengakselerasi pembelajaran, menyediakan pengalaman belajar yang 
+% % dipersonalisasi, dan meningkatkan efisiensi pengajaran. Studi 
+% % kasus terkini menunjukkan potensi positif LLM untuk mendorong 
+% % keterlibatan dan pemikiran kritis mahasiswa ￼, namun juga 
+% % mengingatkan kita akan tantangan etis dan pedagogis yang 
+% % menyertainya ￼ ￼. Dengan kerangka regulasi dan literasi AI yang 
+% % memadai, LLM dapat diimplementasikan sebagai alat bantu inovatif 
+% % di berbagai jenjang pendidikan, mulai dari pembelajaran di kelas, 
+% % laboratorium, hingga evaluasi, guna melahirkan generasi pembelajar 
+% % yang adaptif di era AI.
+
+% \subsection{\textit{Prompt Engineering}}
+
+% \textit{Prompt engineering} merupakan bidang kajian baru yang berfokus pada perancangan, penyempurnaan, 
+% dan implementasi prompt atau instruksi yang diberikan kepada model bahasa besar LLM 
+% untuk mengarahkan keluaran model tersebut [1]. Dengan kata lain, \textit{prompt engineering} 
+% adalah “mekanisme pengendali” (\textit{steering mechanism}) yang digunakan pengguna kecerdasan buatan 
+% generatif untuk menyusun \textit{prompt} sedemikian rupa agar menghasilkan keluaran yang diinginkan [2]. 
+% Konsep ini menjadi semakin penting seiring munculnya LLM populer seperti ChatGPT, karena 
+% kemampuan merancang \textit{prompt} yang efektif memungkinkan pengguna untuk mendapatkan jawaban yang 
+% lebih akurat, relevan, dan sesuai kebutuhan dari model AI [1].
+
+% Sebagai suatu keterampilan, \textit{prompt engineering} dapat dipelajari dan dikembangkan. 
+% Para peneliti menuliskan bahwa \textit{prompt engineering} sudah mulai diajarkan secara formal, 
+% misalnya di perguruan tinggi, karena dianggap sebagai \textit{skillset} baru yang 
+% dibutuhkan di era integrasi AI [2]. Intinya, \textit{prompt engineering} 
+% menekankan seni merumuskan pertanyaan atau perintah dalam bahasa natural 
+% sedemikian rupa sehingga model AI memahami konteks tugas dan memberikan respon optimal sesuai 
+% keinginan pengguna.
+
+% \subsection{\textit{Context Engineering}}
+
+% \textit{Context engineering} adalah disiplin yang berkembang untuk melengkapi dan melampaui 
+% \textit{prompt engineering}. Jika \textit{prompt engineering} berfokus 
+% pada apa yang dikatakan kepada model pada satu waktu, maka \textit{context engineering} 
+% berfokus pada apa saja yang diketahui model saat \textit{prompt} tersebut 
+% diberikan. Menurut survei terbaru, \textit{context engineering} didefinisikan sebagai disiplin formal 
+% yang melampaui sekadar perancangan \textit{prompt} dan mencakup optimisasi sistematis dari informasi 
+% konteks yang disuplai ke LLM [3]. Kinerja LLM sangat ditentukan oleh informasi kontekstual 
+% yang diberikan selama inferensi, sehingga \textit{context engineering} berusaha memastikan model 
+% menerima \textit{payload} informasi yang paling relevan dan berguna.
+
+% Dalam praktiknya, \textit{context engineering} mencakup teknik-teknik seperti \textit{retrieval-augmented 
+% generation} (RAG) untuk mengambil pengetahuan eksternal, penggunaan \textit{memory systems} agar 
+% model mengingat interaksi sebelumnya, integrasi alat tambahan (\textit{tool-integrated reasoning}), 
+% hingga koordinasi \textit{multi-agen} AI [3]. Berbeda dengan \textit{prompt engineering} yang hanya memanipulasi 
+% teks \textit{prompt}-nya, \textit{context engineering} mengatur lingkungan dan konteks bagi model, misalnya 
+% mengumpulkan data pendukung, menyusun instruksi sistem, mendefinisikan aturan, serta memasukkan 
+% memori atau informasi historis sebelum \textit{prompt} diberikan. Tujuannya adalah memaksimalkan kualitas 
+% jawaban AI dengan menghadirkan konteks informasi yang optimal dalam batas panjang konteks model 
+% tersebut [3]. Dengan demikian, \textit{context engineering} menjadikan AI lebih andal dan \textit{context-aware}, 
+% tidak semata-mata mengandalkan satu perintah teks statis.
+
+% \subsection{Jenis Teknik \textit{Prompting}}
+
+
+% \subsection{Perbedaan \textit{Prompt Engineering} dan \textit{Context Engineering}}
+% Meskipun terkait, \textit{prompt engineering} dan \textit{context engineering} memiliki fokus dan pendekatan yang 
+% berbeda. Berikut adalah perbedaan utama keduanya [3]:
+% % •	Lingkup Input: \textit{Prompt engineering} memandang \textit{prompt} sebagai teks statis tunggal yang 
+% % 	menjadi masukan model. Sebaliknya, \textit{context engineering} memandang konteks secara dinamis dan 
+% % 	terstruktur, terdiri dari berbagai komponen informasi (instruksi sistem, pengetahuan eksternal, 
+% % 	memori percakapan, status pengguna, dll.) yang dirangkai bersama sebagai masukan [3]. 
+% % 	Dengan kata lain, \textit{prompt engineering} beroperasi di dalam jendela konteks yang ada, sedangkan 
+% % 	\textit{context engineering} menentukan apa saja yang mengisi jendela konteks tersebut.
+% % •	Informasi dan Memori: Pada \textit{prompt engineering}, informasi yang diberikan bersifat tetap 
+% % 	dalam teks \textit{prompt}, dan interaksi biasanya tanpa memori jangka panjang (setiap \textit{prompt} berdiri 
+% % 	sendiri) [3]. Pada \textit{context engineering}, tujuannya adalah memaksimalkan informasi yang relevan 
+% % 	dengan tugas dalam batas konteks model [3]. \textit{Context engineering} juga secara eksplisit 
+% % 	mempertimbangkan komponen memori atau state, sehingga model dapat memanfaatkan informasi 
+% % 	dari interaksi sebelumnya (stateful) [3].
+% % •	Pendekatan Optimasi: \textit{Prompt engineering} umumnya mengandalkan percobaan manual dan 
+% % 	iteratif dalam merancang kalimat \textit{prompt} hingga didapat keluaran yang diinginkan, sehingga 
+% % 	sering dianggap sebagai suatu art (seni coba-coba) [3]. Sebaliknya, \textit{context engineering} 
+% % 	menerapkan pendekatan yang lebih sistematis atau scientific. Ia melibatkan optimisasi di 
+% % 	level sistem secara menyeluruh, misalnya menentukan fungsi-fungsi pengambil dan pengolah 
+% % 	konteks yang ideal, dengan tujuan akhir meningkatkan kualitas output LLM secara konsisten [3]. 
+% % 	Dalam \textit{context engineering}, evaluasi dan penyempurnaan bisa dilakukan pada masing-masing 
+% % 	komponen konteks (misal modul pencarian pengetahuan atau mekanisme memori) secara terukur, 
+% % 	bukan sekadar inspeksi output akhir secara manual [3].
+% % •	Skalabilitas dan Kompleksitas: \textit{Prompt engineering} cenderung rapuh ketika \textit{prompt} menjadi 
+% % 	terlalu panjang atau kompleks, karena model dapat kehilangan fokus atau konsistensi; 
+% % 	pendekatan ini kurang terstruktur untuk skenario kompleks [3]. \textit{Context engineering} dirancang 
+% % 	untuk mengatasi hal ini dengan komposisi modular, mengelola konteks panjang melalui 
+% % 	segmentasi informasi, hirarki memori, dan kompresi konteks bila perlu [3]. Dengan demikian, 
+% % 	\textit{context engineering} lebih siap menangani skala konteks yang besar dan beragam (misalnya 
+% % 	input \textit{multi-modal}, pengetahuan berjenjang) dibandingkan pendekatan \textit{prompt-only}.
 
 % \begin{table}[h]
-% 	\caption{Tabel ini}
-% 	\vspace{0.5em}
-% 	\centering
-% 	\begin{tabular}{|c|c|c|}
-% 		\hline
-% 		ID & Tinggi Badan (cm) & Berat Badan (kg) \\
-% 		\hline \hline
-% 		A23 & 173 & 62 \\
-% 		A25 & 185 & 78 \\
-% 		A10 & 162 & 70 \\ \hline
-% 	\end{tabular}
-% 	\label{Tab: Tabel Tinggi Berat}
+% \centering
+% \caption{Perbandingan \textit{Prompt Engineering} dan \textit{Context Engineering}}
+% \label{tab:perbandingan}
+% \begin{tabular}{|p{0.22\linewidth}|p{0.35\linewidth}|p{0.35\linewidth}|}
+% \hline
+% \textbf{Aspek} & \textbf{\textit{Prompt Engineering}} & \textbf{\textit{Context Engineering}} \\
+% \hline
+% Lingkup Input & Memandang \textit{prompt} sebagai teks statis tunggal yang menjadi masukan model. & Memandang konteks secara dinamis dan terstruktur, terdiri dari berbagai komponen informasi (instruksi, pengetahuan, memori, status pengguna) yang dirangkai bersama. \\
+% \hline
+% Informasi dan Memori & Informasi bersifat tetap dalam teks \textit{prompt}; interaksi biasanya tanpa memori jangka panjang (setiap \textit{prompt} berdiri sendiri). & Mempertimbangkan komponen memori atau \textit{state} secara eksplisit, memungkinkan model memanfaatkan informasi dari interaksi sebelumnya (\textit{stateful}). \\
+% \hline
+% Pendekatan Optimasi & Mengandalkan percobaan manual dan iteratif; sering dianggap sebagai suatu seni (\textit{art}) coba-coba. & Menerapkan pendekatan yang sistematis dan ilmiah (\textit{scientific}); melibatkan optimisasi di level sistem secara menyeluruh. \\
+% \hline
+% Skalabilitas dan Kompleksitas & Cenderung rapuh untuk \textit{prompt} yang panjang dan kompleks; kurang terstruktur untuk skenario kompleks. & Dirancang untuk mengelola konteks yang besar dan beragam secara modular (segmentasi, hirarki, kompresi). \\
+% \hline
+% \end{tabular}
 % \end{table}
-% Contoh penulisan tabel bisa dilihat pada Tabel \ref{Tab: Tabel Tinggi Berat}.
+
+% % \begin{table}[h]
+% % 	\caption{Tabel ini}
+% % 	\vspace{0.5em}
+% % 	\centering
+% % 	\begin{tabular}{|c|c|c|}
+% % 		\hline
+% % 		ID & Tinggi Badan (cm) & Berat Badan (kg) \\
+% % 		\hline \hline
+% % 		A23 & 173 & 62 \\
+% % 		A25 & 185 & 78 \\
+% % 		A10 & 162 & 70 \\ \hline
+% % 	\end{tabular}
+% % 	\label{Tab: Tabel Tinggi Berat}
+% % \end{table}
+% % Contoh penulisan tabel bisa dilihat pada Tabel \ref{Tab: Tabel Tinggi Berat}.
 
 
-% Kasih Gambar.
+% % Kasih Gambar.
 
-Secara ringkas, \textit{prompt engineering} menitikberatkan cara merumuskan pertanyaan kepada AI, 
-sedangkan \textit{context engineering} menitikberatkan apa saja informasi pendukung yang disertakan 
-agar AI dapat menjawab dengan lebih baik. \textit{Context engineering} mengubah fokus dari sekadar 
-“seni” merangkai prompt menjadi “ilmu” mengelola informasi untuk optimalisasi sistem AI [3]. 
-Kedua pendekatan ini saling melengkapi: prompt yang baik diperlukan, namun penyajian konteks 
-yang tepat akan semakin meningkatkan kemampuan model dalam menyelesaikan tugas secara andal.
+% Secara ringkas, \textit{prompt engineering} menitikberatkan cara merumuskan pertanyaan kepada AI, 
+% sedangkan \textit{context engineering} menitikberatkan apa saja informasi pendukung yang disertakan 
+% agar AI dapat menjawab dengan lebih baik. \textit{Context engineering} mengubah fokus dari sekadar 
+% “seni” merangkai prompt menjadi “ilmu” mengelola informasi untuk optimalisasi sistem AI [3]. 
+% Kedua pendekatan ini saling melengkapi: prompt yang baik diperlukan, namun penyajian konteks 
+% yang tepat akan semakin meningkatkan kemampuan model dalam menyelesaikan tugas secara andal.
 
-\subsection{\textit{Learning Analytics} dan Cakupannya}
-Learning analytics adalah bidang kajian yang memanfaatkan data pendidikan untuk memahami dan 
-meningkatkan proses pembelajaran. Salah satu definisi yang umum dikutip menyatakan bahwa learning 
-analytics merupakan pengukuran, pengumpulan, analisis, dan pelaporan data tentang peserta didik 
-serta konteksnya, dengan tujuan memahami dan mengoptimalkan pembelajaran serta lingkungan 
-di mana pembelajaran tersebut berlangsung [4]. Dalam praktiknya, learning analytics mencakup 
-penggunaan berbagai sumber data (misalnya data aktivitas pada Learning Management System, 
-nilai akademik, log interaksi, dan sebagainya) untuk memperoleh wawasan yang dapat ditindaklanjuti 
-oleh pendidik, lembaga, ataupun peserta didik sendiri.
+% \subsection{\textit{Learning Analytics} dan Cakupannya}
+% Learning analytics adalah bidang kajian yang memanfaatkan data pendidikan untuk memahami dan 
+% meningkatkan proses pembelajaran. Salah satu definisi yang umum dikutip menyatakan bahwa learning 
+% analytics merupakan pengukuran, pengumpulan, analisis, dan pelaporan data tentang peserta didik 
+% serta konteksnya, dengan tujuan memahami dan mengoptimalkan pembelajaran serta lingkungan 
+% di mana pembelajaran tersebut berlangsung [4]. Dalam praktiknya, learning analytics mencakup 
+% penggunaan berbagai sumber data (misalnya data aktivitas pada Learning Management System, 
+% nilai akademik, log interaksi, dan sebagainya) untuk memperoleh wawasan yang dapat ditindaklanjuti 
+% oleh pendidik, lembaga, ataupun peserta didik sendiri.
 
-Cakupan learning analytics sangat luas, meliputi beragam skenario dan kepentingan pendidikan. 
-Pada tingkat institusi, learning analytics digunakan untuk memonitor kinerja dan retensi mahasiswa. 
-Studi menunjukkan banyak institusi pendidikan menerapkan learning analytics terutama untuk 
-mengidentifikasi mahasiswa berisiko tinggi (misalnya berpotensi drop-out atau gagal studi) 
-dan mengambil langkah intervensi dini guna meningkatkan retensi [4]. Dengan analisis data 
-yang tepat, institusi dapat bersikap lebih preventif daripada reaktif. Model prediktif dapat 
-menandai siswa yang membutuhkan bantuan, sehingga advisor atau dosen dapat memberikan bimbingan 
-sebelum masalah berkembang lebih jauh [4]. Hasilnya, learning analytics berkontribusi pada 
-peningkatan keberhasilan studi melalui intervensi yang tepat sasaran.
+% Cakupan learning analytics sangat luas, meliputi beragam skenario dan kepentingan pendidikan. 
+% Pada tingkat institusi, learning analytics digunakan untuk memonitor kinerja dan retensi mahasiswa. 
+% Studi menunjukkan banyak institusi pendidikan menerapkan learning analytics terutama untuk 
+% mengidentifikasi mahasiswa berisiko tinggi (misalnya berpotensi drop-out atau gagal studi) 
+% dan mengambil langkah intervensi dini guna meningkatkan retensi [4]. Dengan analisis data 
+% yang tepat, institusi dapat bersikap lebih preventif daripada reaktif. Model prediktif dapat 
+% menandai siswa yang membutuhkan bantuan, sehingga advisor atau dosen dapat memberikan bimbingan 
+% sebelum masalah berkembang lebih jauh [4]. Hasilnya, learning analytics berkontribusi pada 
+% peningkatan keberhasilan studi melalui intervensi yang tepat sasaran.
 
-Di sisi lain, cakupan learning analytics juga mencakup tingkat kelas dan individu. Bagi pendidik, 
-analitik pembelajaran dapat dipakai untuk mengevaluasi efektivitas pengajaran dan kualitas 
-interaksi di kelas. Misalnya, data pola akses e-learning dan keterlibatan siswa dapat dianalisis 
-untuk mengetahui bagian materi mana yang sulit dipahami atau siapa siswa yang kurang aktif, 
-sehingga pendidik dapat menyesuaikan strategi pengajaran. Bagi pelajar, dashboard learning 
-analytics bisa memberikan umpan balik personal tentang progres belajar mereka, membantu 
-self-reflection dan pengambilan keputusan belajar yang lebih baik.
+% Di sisi lain, cakupan learning analytics juga mencakup tingkat kelas dan individu. Bagi pendidik, 
+% analitik pembelajaran dapat dipakai untuk mengevaluasi efektivitas pengajaran dan kualitas 
+% interaksi di kelas. Misalnya, data pola akses e-learning dan keterlibatan siswa dapat dianalisis 
+% untuk mengetahui bagian materi mana yang sulit dipahami atau siapa siswa yang kurang aktif, 
+% sehingga pendidik dapat menyesuaikan strategi pengajaran. Bagi pelajar, dashboard learning 
+% analytics bisa memberikan umpan balik personal tentang progres belajar mereka, membantu 
+% self-reflection dan pengambilan keputusan belajar yang lebih baik.
 
-Sebagai bidang multidisiplin, learning analytics memadukan teknik dari data science,
-machine learning, dan pendidikan. Penerapannya mencakup analisis deskriptif (melaporkan apa 
-yang terjadi dalam pembelajaran), diagnostik (mengapa sesuatu terjadi), prediktif (memprediksi 
-hasil atau risiko di masa depan, seperti kemungkinan drop-out), hingga preskriptif (memberikan 
-rekomendasi intervensi untuk perbaikan). Dengan kata lain, cakupan learning analytics tidak 
-hanya terbatas pada pelaporan statistik, tetapi juga pengambilan keputusan berbasis data 
-dalam pendidikan.
+% Sebagai bidang multidisiplin, learning analytics memadukan teknik dari data science,
+% machine learning, dan pendidikan. Penerapannya mencakup analisis deskriptif (melaporkan apa 
+% yang terjadi dalam pembelajaran), diagnostik (mengapa sesuatu terjadi), prediktif (memprediksi 
+% hasil atau risiko di masa depan, seperti kemungkinan drop-out), hingga preskriptif (memberikan 
+% rekomendasi intervensi untuk perbaikan). Dengan kata lain, cakupan learning analytics tidak 
+% hanya terbatas pada pelaporan statistik, tetapi juga pengambilan keputusan berbasis data 
+% dalam pendidikan.
 
-Secara keseluruhan, learning analytics berperan sebagai alat bantu strategis bagi institusi 
-pendidikan untuk meningkatkan kualitas pembelajaran. Dari meningkatkan outcome belajar siswa, 
-mengoptimalkan penggunaan teknologi pendidikan, menurunkan tingkat putus studi, hingga 
-meningkatkan personalisasi pembelajaran, semuanya termasuk dalam ruang lingkup learning 
-analytics [4]. Dengan dukungan literatur ilmiah yang terus berkembang, learning analytics 
-menawarkan kerangka berbasis data untuk memahami proses belajar mengajar secara lebih 
-mendalam dan mendorong inovasi dalam praktik pendidikan.
-
-
-	% [1]	Bertalan Meskó (2023). “Prompt Engineering as an Important Emerging Skill for Medical Professionals: Tutorial.” J. Med. Internet Res., 25(1):e50638 ￼.
-	% [2]	Moorhouse, B.L. & Romina Jamieson-Proctor (2025). “Prompt engineering in higher education: a systematic review to help inform curricula.” Int. J. Educ. Technol. High. Educ., 22(39) ￼.
-	% [3]	Lingrui Mei et al. (2025). “A Survey of Context Engineering for Large Language Models.” arXiv preprint arXiv:2507.13334 ￼ ￼.
-	% [4]	Marcela Hernández-de-Menéndez et al. (2022). “Learning analytics: state of the art.” Int. J. Interact. Des. Manuf., 16:1209–1230 ￼ ￼.
-
-% Proses pembuatan \textit{game} dimulai dari pembuatan \textit{game design document} dimana 
-% dokumen ini akan menjadi landasan pengembangan game tersebut serta menginformasikan gambaran keseluruhan game yang akan dibuat \cite{ferdiana2012agile}. \textcolor{red}{\textit{Catatan: apapun yang diambil dari tulisan orang lain harus disitasi seperti dicontohkan \cite{ferdiana2012agile}.}}
-
-% \begin{figure}[ht]
-% 	\centering
-% 	\includegraphics[width=12cm]{contents/chapter-2/gambar-buatan-sendiri.png}
-% 	\caption[Contoh gambar]{Contoh gambar \cite{lukito2016}}
-% 	\label{Fig:gambar-buatan-sendiri}
-% \end{figure}
+% Secara keseluruhan, learning analytics berperan sebagai alat bantu strategis bagi institusi 
+% pendidikan untuk meningkatkan kualitas pembelajaran. Dari meningkatkan outcome belajar siswa, 
+% mengoptimalkan penggunaan teknologi pendidikan, menurunkan tingkat putus studi, hingga 
+% meningkatkan personalisasi pembelajaran, semuanya termasuk dalam ruang lingkup learning 
+% analytics [4]. Dengan dukungan literatur ilmiah yang terus berkembang, learning analytics 
+% menawarkan kerangka berbasis data untuk memahami proses belajar mengajar secara lebih 
+% mendalam dan mendorong inovasi dalam praktik pendidikan.
 
 
+% 	% [1]	Bertalan Meskó (2023). “Prompt Engineering as an Important Emerging Skill for Medical Professionals: Tutorial.” J. Med. Internet Res., 25(1):e50638 ￼.
+% 	% [2]	Moorhouse, B.L. & Romina Jamieson-Proctor (2025). “Prompt engineering in higher education: a systematic review to help inform curricula.” Int. J. Educ. Technol. High. Educ., 22(39) ￼.
+% 	% [3]	Lingrui Mei et al. (2025). “A Survey of Context Engineering for Large Language Models.” arXiv preprint arXiv:2507.13334 ￼ ￼.
+% 	% [4]	Marcela Hernández-de-Menéndez et al. (2022). “Learning analytics: state of the art.” Int. J. Interact. Des. Manuf., 16:1209–1230 ￼ ￼.
 
-% \textit{Game design document} adalah sebuah bagian penting dalam pembuatan game baik itu elemen-elemen penyusunnya maupun proses pengembangannya. Game design yang telah dibuat, dijabarkan satu persatu mengenai tahapan dalam pembuatan game dan hasilnya disatukan dalam bentuk dokumentasi \textit{game design document} yang digunakan oleh \textit{developer} sebagai buku petunjuk bagaimana membuat \textit{game} \cite{lukito2016}.
+% % Proses pembuatan \textit{game} dimulai dari pembuatan \textit{game design document} dimana 
+% % dokumen ini akan menjadi landasan pengembangan game tersebut serta menginformasikan gambaran keseluruhan game yang akan dibuat \cite{ferdiana2012agile}. \textcolor{red}{\textit{Catatan: apapun yang diambil dari tulisan orang lain harus disitasi seperti dicontohkan \cite{ferdiana2012agile}.}}
 
-% Dalam buku \textit{Game Design Essentials} disebutkan \textit{game design document} merupakan metode yang menghubungkan elemen-elemen penyusun \textit{game}, baik itu \textit{art, sound, program, 
-% gameplay} sehingga semuanya terdokumentasi menjadi satu dan menjadi acuan bagi para \textit{developer} dalam membuat \textit{game} \cite{wibirama2013dual}. 
-% \section{Penelitian Terkait}
-
-% \subsection{Studi Menggabungkan LLM dengan Learning Analytics}
-% Beberapa penelitian terbaru telah mengintegrasikan Large Language Models (LLM) dengan 
-% teknik learning analytics untuk meningkatkan pemberian umpan balik dan tutoring. 
-% Misalnya, TutorLLM (Li dkk., 2024) menggabungkan model knowledge tracing (KT) dengan 
-% retrieval-augmented generation (RAG) dalam LLM. TutorLLM memanfaatkan data jejak 
-% belajar tiap siswa (dari model KT BERT-based) serta pencarian konteks relevan, 
-% sehingga LLM dapat memberikan rekomendasi belajar yang dipersonalisasi sesuai 
-% status pengetahuan siswa dan mengurangi halusinasi [1]. Hasil evaluasi TutorLLM 
-% menunjukkan peningkatan kepuasan pengguna ~10\% dan skor kuis ~5\% dibanding 
-% penggunaan LLM umum tanpa personalisasi [1].
-
-% Studi LLM-KT (Wang dkk., 2025) juga menunjukkan pendekatan serupa dengan fokus 
-% pada knowledge tracing. LLM-KT menggunakan kerangka plug-and-play untuk menyelaraskan 
-% LLM dengan tugas KT, memanfaatkan kemampuan penalaran dan pengetahuan dunia luas 
-% dari LLM sekaligus memasukkan rekaman interaksi siswa secara sekuensial seperti 
-% pada model KT tradisional [2]. Melalui penyisipan konteks pertanyaan dan urutan 
-% jawaban historis ke dalam LLM, model hybrid ini mencapai kinerja state-of-the-art 
-% dalam memprediksi jawaban siswa di beberapa dataset KT klasik [2]. Ini menunjukkan 
-% potensi framework yang memadukan kekuatan LLM (fleksibilitas bahasa dan penalaran) 
-% dengan analitik pembelajaran tradisional (pelacakan pengetahuan sekuensial).
-
-% Selain itu, Reddig dkk. (2025) mengevaluasi penggunaan GPT-4 untuk memberikan umpan 
-% balik personal dalam konteks Intelligent Tutoring System (ITS). Studi ini 
-% menganalisis data kesalahan siswa dalam tutor aljabar lalu *mem-*prompt GPT-4 
-% untuk menghasilkan hint/koreksi spesifik terhadap kesalahan tersebut [3]. Hasilnya, 
-% model LLM cukup efektif mendiagnosis berbagai kesalahan siswa dan menghasilkan 
-% umpan balik relevan; namun sekitar 35\% hint yang dihasilkan terlalu umum, kurang 
-% tepat, atau justru langsung memberi jawaban [3]. Temuan ini menekankan bahwa meskipun 
-% LLM dapat meningkatkan skala dan personalisasi umpan balik, diperlukan mekanisme 
-% kontrol kualitas agar saran yang menyesatkan tidak ditampilkan pada siswa [3]. 
-% Menariknya, Reddig dkk. juga menguji kemampuan LLM untuk secara otomatis menilai 
-% kualitas umpan balik yang dibuatnya, sebagai upaya menggabungkan praktik tutoring 
-% terbukti dengan fleksibilitas LLM demi memperoleh “best of both worlds” [3].
-
-% Penelitian lain mengindikasikan efektivitas umpan balik berbasis LLM bergantung 
-% pada keterlibatan pelajar. Thomas dkk. (2025) menemukan bahwa dalam skenario 
-% pelatihan tutor, peserta yang memilih melihat penjelasan feedback dari LLM (ChatGPT) 
-% mendapat skor post-test lebih tinggi daripada yang tidak menggunakannya, 
-% dengan effect size moderat (~0.3) pada beberapa lesson [4]. Ini menunjukkan 
-% potensi LLM untuk memberikan umpan balik seefektif tutor manusia dalam konteks 
-% tertentu, asalkan penggunaannya terarah dan sesuai kebutuhan.
+% % \begin{figure}[ht]
+% % 	\centering
+% % 	\includegraphics[width=12cm]{contents/chapter-2/gambar-buatan-sendiri.png}
+% % 	\caption[Contoh gambar]{Contoh gambar \cite{lukito2016}}
+% % 	\label{Fig:gambar-buatan-sendiri}
+% % \end{figure}
 
 
 
-% % [1] Z. Li et al., "TutorLLM: Customizing Learning Recommendations with Knowledge Tracing and Retrieval-Augmented Generation," in Proceedings of the 18th ACM Conference on Recommender Systems, Bari, Italy, Oct. 2024, pp. 1–10. doi: 10.1145/XXXXXX.XXXXXXX.
+% % \textit{Game design document} adalah sebuah bagian penting dalam pembuatan game baik itu elemen-elemen penyusunnya maupun proses pengembangannya. Game design yang telah dibuat, dijabarkan satu persatu mengenai tahapan dalam pembuatan game dan hasilnya disatukan dalam bentuk dokumentasi \textit{game design document} yang digunakan oleh \textit{developer} sebagai buku petunjuk bagaimana membuat \textit{game} \cite{lukito2016}.
 
-% % [2] Z. Wang, J. Zhou, Q. Chen, M. Zhang, B. Jiang, A. Zhou, Q. Bai, and L. He, "LLM-KT: Aligning Large Language Models with Knowledge Tracing using a Plug-and-Play Instruction," in Proceedings of the XXX Conference, XXX, 2025, pp. 1–10. doi: 10.1145/XXXXXX.XXXXXXX.
+% % Dalam buku \textit{Game Design Essentials} disebutkan \textit{game design document} merupakan metode yang menghubungkan elemen-elemen penyusun \textit{game}, baik itu \textit{art, sound, program, 
+% % gameplay} sehingga semuanya terdokumentasi menjadi satu dan menjadi acuan bagi para \textit{developer} dalam membuat \textit{game} \cite{wibirama2013dual}. 
+% % \section{Penelitian Terkait}
 
-% % [3] J. M. Reddig, A. Arora, and C. J. MacLellan, "Generating In-Context, Personalized Feedback for Intelligent Tutors with Large Language Models," International Journal of Artificial Intelligence in Education, vol. 35, no. 3, pp. 1–25, Sep. 2025, doi: 10.1007/s40593-025-00505-6.
-% % [4] D. R. Thomas, C. Borchers, S. Bhushan, E. Gatz, S. Gupta, and K. R. Koedinger, "LLM-Generated Feedback Supports Learning If Learners Choose to Use It," arXiv preprint, arXiv:2506.17006, 2025. [Online]. Available: https://arxiv.org/abs/2506.17006
+% % \subsection{Studi Menggabungkan LLM dengan Learning Analytics}
+% % Beberapa penelitian terbaru telah mengintegrasikan Large Language Models (LLM) dengan 
+% % teknik learning analytics untuk meningkatkan pemberian umpan balik dan tutoring. 
+% % Misalnya, TutorLLM (Li dkk., 2024) menggabungkan model knowledge tracing (KT) dengan 
+% % retrieval-augmented generation (RAG) dalam LLM. TutorLLM memanfaatkan data jejak 
+% % belajar tiap siswa (dari model KT BERT-based) serta pencarian konteks relevan, 
+% % sehingga LLM dapat memberikan rekomendasi belajar yang dipersonalisasi sesuai 
+% % status pengetahuan siswa dan mengurangi halusinasi [1]. Hasil evaluasi TutorLLM 
+% % menunjukkan peningkatan kepuasan pengguna ~10\% dan skor kuis ~5\% dibanding 
+% % penggunaan LLM umum tanpa personalisasi [1].
 
-% \subsection{Pendekatan Rekayasa dalam \textit{Learning Analytics}}
+% % Studi LLM-KT (Wang dkk., 2025) juga menunjukkan pendekatan serupa dengan fokus 
+% % pada knowledge tracing. LLM-KT menggunakan kerangka plug-and-play untuk menyelaraskan 
+% % LLM dengan tugas KT, memanfaatkan kemampuan penalaran dan pengetahuan dunia luas 
+% % dari LLM sekaligus memasukkan rekaman interaksi siswa secara sekuensial seperti 
+% % pada model KT tradisional [2]. Melalui penyisipan konteks pertanyaan dan urutan 
+% % jawaban historis ke dalam LLM, model hybrid ini mencapai kinerja state-of-the-art 
+% % dalam memprediksi jawaban siswa di beberapa dataset KT klasik [2]. Ini menunjukkan 
+% % potensi framework yang memadukan kekuatan LLM (fleksibilitas bahasa dan penalaran) 
+% % dengan analitik pembelajaran tradisional (pelacakan pengetahuan sekuensial).
 
-% Dari sisi pendekatan rekayasa dalam learning analytics, beberapa karya menyoroti 
-% pentingnya merancang sistem yang dapat mengumpulkan dan menganalisis data proses 
-% belajar secara efisien, termasuk data “Kanban” atau pelacakan tugas belajar. 
-% Sebagai contoh, sebuah studi memanfaatkan papan Kanban untuk orkestrasi kelas 
-% sebagai alat self-regulated learning; papan tersebut menampilkan kartu tugas 
-% siswa dalam kolom “to do / in progress / done” untuk memvisualisasikan kemajuan 
-% mereka []1. Data status tugas di Kanban ini memberikan informasi real-time tentang 
-% progres dan keterlibatan siswa yang dapat dimanfaatkan guru. Bahkan, dikembangkan 
-% prototipe alat digital Kanban yang dirancang khusus untuk pendidikan 
-% (tidak bergantung pada Trello dkk. karena isu privasi) agar guru dapat 
-% menyiapkan template board dan mereplikasi ke banyak kelompok belajar [1].
+% % Selain itu, Reddig dkk. (2025) mengevaluasi penggunaan GPT-4 untuk memberikan umpan 
+% % balik personal dalam konteks Intelligent Tutoring System (ITS). Studi ini 
+% % menganalisis data kesalahan siswa dalam tutor aljabar lalu *mem-*prompt GPT-4 
+% % untuk menghasilkan hint/koreksi spesifik terhadap kesalahan tersebut [3]. Hasilnya, 
+% % model LLM cukup efektif mendiagnosis berbagai kesalahan siswa dan menghasilkan 
+% % umpan balik relevan; namun sekitar 35\% hint yang dihasilkan terlalu umum, kurang 
+% % tepat, atau justru langsung memberi jawaban [3]. Temuan ini menekankan bahwa meskipun 
+% % LLM dapat meningkatkan skala dan personalisasi umpan balik, diperlukan mekanisme 
+% % kontrol kualitas agar saran yang menyesatkan tidak ditampilkan pada siswa [3]. 
+% % Menariknya, Reddig dkk. juga menguji kemampuan LLM untuk secara otomatis menilai 
+% % kualitas umpan balik yang dibuatnya, sebagai upaya menggabungkan praktik tutoring 
+% % terbukti dengan fleksibilitas LLM demi memperoleh “best of both worlds” [3].
 
-% Ke depan, platform Kanban edukasi semacam itu berpotensi diperluas dengan 
-% kapabilitas learning analytics langsung. Misalnya, Winter dkk. (2022) merancang 
-% alat Kanban kelas yang rencananya dilengkapi analytics berupa statistik otomatis, 
-% identifikasi “tugas yang macet”, rekomendasi khusus, serta dashboard guru untuk 
-% memantau semua papan siswa secara bersamaan [1]. Integrasi semacam ini menunjukkan 
-% pendekatan rekayasa di mana data pelacakan tugas mikro (misal, berapa lama tugas 
-% tertahan di kolom tertentu) dikumpulkan dan dianalisis guna memberi wawasan 
-% tindakan: guru dapat segera melihat siapa yang butuh bantuan 
-% (tugasnya lama di “in progress”), atau sistem bisa menyarankan intervensi pada 
-% tugas spesifik. Perekaman data proses semacam ini juga bermanfaat untuk penelitian 
-% edukasi dan evaluasi metode belajar, asalkan sesuai aturan privasi [1].
-
-% Lebih umum lagi, data proses (process data) dalam learning analytics, yaitu 
-% rekaman langkah-langkah atau interaksi saat siswa mengerjakan tugas yang dipandang 
-% kian penting untuk memahami pola belajar. Mazzullo dkk. (2023) menekankan bahwa 
-% pemanfaatan data proses (misal urutan klik, waktu respon, transisi antar tugas) 
-% dapat menghasilkan insight yang lebih interpretable tentang perilaku belajar 
-% dibanding sekadar nilai akhir [2]. Pendekatan rekayasa LA yang baik perlu mampu 
-% menangkap data proses ini dan menyajikannya secara informatif. Tantangan yang 
-% diidentifikasi meliputi bagaimana mendesain sistem LA dengan landasan pedagogis 
-% kuat, memastikan insight mudah dipahami, prediksi akurat, dan umpan balik yang 
-% dapat ditindaklanjuti [2]. Dengan kata lain, arsitektur LA harus dirancang tidak 
-% hanya untuk mengumpulkan data (termasuk data “kanban” tugas) tetapi juga untuk 
-% menganalisis dan menyajikannya dalam bentuk yang mendukung pengambilan keputusan 
-% pembelajaran.
-
-% % [1] S. Strickroth, M. Kreidenweis, and Z. Wurm, "Learning from Agile Methods: Using a Kanban Board for Classroom Orchestration," in Proceedings of the [Nama Konferensi], [Lokasi Konferensi], [Tahun], pp. [XX-YY]. doi: [DOI yang sesuai].
-% % [2] E. Mazzullo, O. Bulut, T. Wongvorachan, and B. Tan, "Learning Analytics in the Era of Large Language Models," Analytics, vol. 2, no. 4, pp. 877-898, Nov. 2023, doi: 10.3390/analytics2040046.
+% % Penelitian lain mengindikasikan efektivitas umpan balik berbasis LLM bergantung 
+% % pada keterlibatan pelajar. Thomas dkk. (2025) menemukan bahwa dalam skenario 
+% % pelatihan tutor, peserta yang memilih melihat penjelasan feedback dari LLM (ChatGPT) 
+% % mendapat skor post-test lebih tinggi daripada yang tidak menggunakannya, 
+% % dengan effect size moderat (~0.3) pada beberapa lesson [4]. Ini menunjukkan 
+% % potensi LLM untuk memberikan umpan balik seefektif tutor manusia dalam konteks 
+% % tertentu, asalkan penggunaannya terarah dan sesuai kebutuhan.
 
 
-% \subsection{Menghubungkan Hasil \textit{Learning Analytics} dengan Prompt \textit{Context-Aware} pada LLM}
 
-% Bidang ini semakin berkembang menuju penggabungan insight dari learning analytics 
-% dengan prompt engineering yang context-aware untuk meningkatkan kualitas output LLM.
-% Idenya adalah menjadikan LLM lebih “sadar konteks” situasi belajar individu, 
-% sehingga respon yang dihasilkan lebih tepat sasaran. Beberapa studi telah 
-% mengeksplorasi pendekatan ini.
+% % % [1] Z. Li et al., "TutorLLM: Customizing Learning Recommendations with Knowledge Tracing and Retrieval-Augmented Generation," in Proceedings of the 18th ACM Conference on Recommender Systems, Bari, Italy, Oct. 2024, pp. 1–10. doi: 10.1145/XXXXXX.XXXXXXX.
 
-% Venugopalan dkk. (LAK 2025) mempelajari skenario hybrid tutoring di mana sistem 
-% tutoring tradisional digabung dengan LLM untuk mendukung orang tua yang membimbing 
-% anaknya belajar matematika. Mereka menggunakan prompt engineering dengan memasukkan 
-% konteks real-time dari ITS (misal: langkah pengerjaan siswa, kesalahan yang 
-% dilakukan, hint yang sudah diberikan) ke prompt LLM, ditambah contoh praktik 
-% tutoring yang baik (few-shot). Hasilnya, LLM (Llama 3) mampu menghasilkan 
-% rekomendasi percakapan bagi orang tua yang dinilai membantu meningkatkan dukungan 
-% metakognisi siswa (misal mendorong anak menjelaskan pikirannya) []. Studi ini 
-% menunjukkan bahwa memberikan konteks situasional (dari analytics ITS) dalam 
-% prompt dapat meng-align output LLM dengan strategi pedagogis yang diinginkan.
+% % % [2] Z. Wang, J. Zhou, Q. Chen, M. Zhang, B. Jiang, A. Zhou, Q. Bai, and L. He, "LLM-KT: Aligning Large Language Models with Knowledge Tracing using a Plug-and-Play Instruction," in Proceedings of the XXX Conference, XXX, 2025, pp. 1–10. doi: 10.1145/XXXXXX.XXXXXXX.
 
-% Demikian pula, TutorLLM yang disebut sebelumnya memanfaatkan contextual prompt 
-% secara otomatis: modul “Scraper” dalam arsitekturnya mengambil konten teks 
-% terkait materi belajar selama sesi online, lalu informasi itu bersama prediksi 
-% model KT tentang kelemahan siswa disuplai ke LLM (GPT-4) untuk menghasilkan 
-% jawaban yang akurat dan sesuai tingkat pemahaman siswa []. Dengan menambah 
-% pengetahuan latar kontekstual ke prompt, TutorLLM terbukti mengurangi risiko 
-% halusinasi dan meningkatkan relevansi jawaban terhadap kebutuhan spesifik 
-% siswa []. Ini adalah contoh konkret bagaimana hasil learning analytics 
-% (dalam hal ini profil pengetahuan siswa dari KT dan materi relevan yang 
-% di-retrieve) dapat tersambung langsung ke LLM sehingga responnya terpersonalisasi 
-% dan kontekstual.
+% % % [3] J. M. Reddig, A. Arora, and C. J. MacLellan, "Generating In-Context, Personalized Feedback for Intelligent Tutors with Large Language Models," International Journal of Artificial Intelligence in Education, vol. 35, no. 3, pp. 1–25, Sep. 2025, doi: 10.1007/s40593-025-00505-6.
+% % % [4] D. R. Thomas, C. Borchers, S. Bhushan, E. Gatz, S. Gupta, and K. R. Koedinger, "LLM-Generated Feedback Supports Learning If Learners Choose to Use It," arXiv preprint, arXiv:2506.17006, 2025. [Online]. Available: https://arxiv.org/abs/2506.17006
 
-% Pendekatan serupa tampak pada studi Reddig dkk. (2025) tadi: alih-alih LLM 
-% bekerja “kosong”, mereka mem-prompt GPT-4 dengan input berupa deskripsi kesalahan 
-% spesifik yang dilakukan siswa pada tutor algebra, seolah memberikan konteks 
-% masalah dan kesalahan untuk diperbaiki []. Strategi prompting yang context-aware 
-% ini memungkinkan GPT-4 memberikan feedback yang lebih tepat karena “tahu” 
-% kesalahan mana yang terjadi. Reddig dkk. juga membahas pentingnya format 
-% prompt dan kriteria penilaian keluaran agar LLM tidak memberi jawaban terlalu 
-% langsung atau keliru []. Hal ini menggarisbawahi perlunya prompt engineering 
-% berbasis insight LA: misalnya menentukan informasi apa saja yang harus 
-% disertakan dalam prompt (error siswa, riwayat upaya, dll.) dan bagaimana 
-% meminta LLM memberikan keluaran (misal hint yang membimbing, bukannya solusi 
-% instan) []. Penelitian Stamper dkk. (2024) bahkan menyusun kerangka sistematis 
-% untuk merancang prompt LLM berbasis prinsip umpan balik ITS yang sudah teruji, 
-% seperti menentukan kapan LLM diberi trigger untuk menilai jawaban siswa, 
-% informasi apa yang perlu disertakan dalam prompt input ke LLM, dan jenis 
-% keluaran umpan balik apa yang diharapkan []. Pendekatan teoritis ini 
-% memastikan penggunaan LLM selaras dengan teori pendidikan (mis. umpan balik 
-% segera, spesifik, mendorong self-explanation) sehingga kualitas output-nya 
-% lebih terjamin.
+% % \subsection{Pendekatan Rekayasa dalam \textit{Learning Analytics}}
 
-% Secara keseluruhan, tren riset ini menunjukkan upaya menggabungkan kekuatan 
-% learning analytics dengan kecerdasan generatif LLM. Learning analytics 
-% menyediakan data-driven insights tentang proses dan status belajar (misal: 
-% apa yang sudah dikuasai, kesalahan yang sering muncul, progress task di 
-% Kanban, dll.), sementara LLM dapat memanfaatkan konteks tersebut untuk 
-% menghasilkan umpan balik atau bimbingan yang adaptif. Mazzullo dkk. (2023) 
-% menyatakan bahwa implementasi LLM dalam LA dapat membantu memberikan insight 
-% yang lebih mudah dipahami, umpan balik yang lebih cepat dan actionable, 
-% peningkatan personalisasi, serta mendukung tugas-tugas guru secara lebih 
-% luas []. Dengan mengaitkan hasil analitik (misal deteksi kebuntuan tugas 
-% atau prediksi kemampuan) ke dalam prompt atau modul pengetahuan LLM, 
-% diharapkan output AI menjadi lebih relevan konteks dan berkualitas 
-% tinggi dalam mendukung pembelajaran. Ini juga area kebaruan yang bisa 
-% peneliti tekankan: membedakan bagaimana pendekatan mereka menyambungkan 
-% LA dan LLM secara lebih erat atau efektif dibanding studi-studi 
-% terdahulu seperti TutorLLM, LLM-KT, atau Reddig dkk. di atas.
+% % Dari sisi pendekatan rekayasa dalam learning analytics, beberapa karya menyoroti 
+% % pentingnya merancang sistem yang dapat mengumpulkan dan menganalisis data proses 
+% % belajar secara efisien, termasuk data “Kanban” atau pelacakan tugas belajar. 
+% % Sebagai contoh, sebuah studi memanfaatkan papan Kanban untuk orkestrasi kelas 
+% % sebagai alat self-regulated learning; papan tersebut menampilkan kartu tugas 
+% % siswa dalam kolom “to do / in progress / done” untuk memvisualisasikan kemajuan 
+% % mereka []1. Data status tugas di Kanban ini memberikan informasi real-time tentang 
+% % progres dan keterlibatan siswa yang dapat dimanfaatkan guru. Bahkan, dikembangkan 
+% % prototipe alat digital Kanban yang dirancang khusus untuk pendidikan 
+% % (tidak bergantung pada Trello dkk. karena isu privasi) agar guru dapat 
+% % menyiapkan template board dan mereplikasi ke banyak kelompok belajar [1].
 
-% % [1] D. Venugopalan, Z. Yan, C. Borchers, J. Lin, and V. Aleven, "Combining Large Language Models with Tutoring System Intelligence: A Case Study in Caregiver Homework Support," in Proceedings of the 15th International Conference on Learning Analytics & Knowledge (LAK '25), 2025, pp. 1–11. doi: 10.1145/3706468.3706516. arXiv preprint arXiv:2412.11995. [Online]. Available: https://arxiv.org/abs/2412.11995
-% % [2] Z. Li et al., "TutorLLM: Customizing Learning Recommendations with Knowledge Tracing and Retrieval-Augmented Generation," in Proceedings of the 18th ACM Conference on Recommender Systems, Bari, Italy, Oct. 2024, pp. 1–10. doi: 10.1145/XXXXXX.XXXXXXX.
-% % [3] J. M. Reddig, A. Arora, and C. J. MacLellan, "Generating In-Context, Personalized Feedback for Intelligent Tutors with Large Language Models," International Journal of Artificial Intelligence in Education, vol. 35, no. 3, pp. 1–25, Sep. 2025, doi: 10.1007/s40593-025-00505-6.
-% % [4] J. Stamper, R. Xiao, and X. Hou, "Enhancing LLM-Based Feedback: Insights from Intelligent Tutoring Systems and the Learning Sciences," in Proceedings of the [Conference Name], [Conference Location], [Year], pp. [Page Range]. doi: [DOI].
-% % [5] E. Mazzullo, O. Bulut, T. Wongvorachan, and B. Tan, "Learning Analytics in the Era of Large Language Models," Analytics, vol. 2, no. 4, pp. 877-898, Nov. 2023, doi: 10.3390/analytics2040046.
+% % Ke depan, platform Kanban edukasi semacam itu berpotensi diperluas dengan 
+% % kapabilitas learning analytics langsung. Misalnya, Winter dkk. (2022) merancang 
+% % alat Kanban kelas yang rencananya dilengkapi analytics berupa statistik otomatis, 
+% % identifikasi “tugas yang macet”, rekomendasi khusus, serta dashboard guru untuk 
+% % memantau semua papan siswa secara bersamaan [1]. Integrasi semacam ini menunjukkan 
+% % pendekatan rekayasa di mana data pelacakan tugas mikro (misal, berapa lama tugas 
+% % tertahan di kolom tertentu) dikumpulkan dan dianalisis guna memberi wawasan 
+% % tindakan: guru dapat segera melihat siapa yang butuh bantuan 
+% % (tugasnya lama di “in progress”), atau sistem bisa menyarankan intervensi pada 
+% % tugas spesifik. Perekaman data proses semacam ini juga bermanfaat untuk penelitian 
+% % edukasi dan evaluasi metode belajar, asalkan sesuai aturan privasi [1].
+
+% % Lebih umum lagi, data proses (process data) dalam learning analytics, yaitu 
+% % rekaman langkah-langkah atau interaksi saat siswa mengerjakan tugas yang dipandang 
+% % kian penting untuk memahami pola belajar. Mazzullo dkk. (2023) menekankan bahwa 
+% % pemanfaatan data proses (misal urutan klik, waktu respon, transisi antar tugas) 
+% % dapat menghasilkan insight yang lebih interpretable tentang perilaku belajar 
+% % dibanding sekadar nilai akhir [2]. Pendekatan rekayasa LA yang baik perlu mampu 
+% % menangkap data proses ini dan menyajikannya secara informatif. Tantangan yang 
+% % diidentifikasi meliputi bagaimana mendesain sistem LA dengan landasan pedagogis 
+% % kuat, memastikan insight mudah dipahami, prediksi akurat, dan umpan balik yang 
+% % dapat ditindaklanjuti [2]. Dengan kata lain, arsitektur LA harus dirancang tidak 
+% % hanya untuk mengumpulkan data (termasuk data “kanban” tugas) tetapi juga untuk 
+% % menganalisis dan menyajikannya dalam bentuk yang mendukung pengambilan keputusan 
+% % pembelajaran.
+
+% % % [1] S. Strickroth, M. Kreidenweis, and Z. Wurm, "Learning from Agile Methods: Using a Kanban Board for Classroom Orchestration," in Proceedings of the [Nama Konferensi], [Lokasi Konferensi], [Tahun], pp. [XX-YY]. doi: [DOI yang sesuai].
+% % % [2] E. Mazzullo, O. Bulut, T. Wongvorachan, and B. Tan, "Learning Analytics in the Era of Large Language Models," Analytics, vol. 2, no. 4, pp. 877-898, Nov. 2023, doi: 10.3390/analytics2040046.
 
 
-% % \section{Hipotesis Penelitian}
-% % Diisi dengan hipotesis h0 dan h1.
+% % \subsection{Menghubungkan Hasil \textit{Learning Analytics} dengan Prompt \textit{Context-Aware} pada LLM}
+
+% % Bidang ini semakin berkembang menuju penggabungan insight dari learning analytics 
+% % dengan prompt engineering yang context-aware untuk meningkatkan kualitas output LLM.
+% % Idenya adalah menjadikan LLM lebih “sadar konteks” situasi belajar individu, 
+% % sehingga respon yang dihasilkan lebih tepat sasaran. Beberapa studi telah 
+% % mengeksplorasi pendekatan ini.
+
+% % Venugopalan dkk. (LAK 2025) mempelajari skenario hybrid tutoring di mana sistem 
+% % tutoring tradisional digabung dengan LLM untuk mendukung orang tua yang membimbing 
+% % anaknya belajar matematika. Mereka menggunakan prompt engineering dengan memasukkan 
+% % konteks real-time dari ITS (misal: langkah pengerjaan siswa, kesalahan yang 
+% % dilakukan, hint yang sudah diberikan) ke prompt LLM, ditambah contoh praktik 
+% % tutoring yang baik (few-shot). Hasilnya, LLM (Llama 3) mampu menghasilkan 
+% % rekomendasi percakapan bagi orang tua yang dinilai membantu meningkatkan dukungan 
+% % metakognisi siswa (misal mendorong anak menjelaskan pikirannya) []. Studi ini 
+% % menunjukkan bahwa memberikan konteks situasional (dari analytics ITS) dalam 
+% % prompt dapat meng-align output LLM dengan strategi pedagogis yang diinginkan.
+
+% % Demikian pula, TutorLLM yang disebut sebelumnya memanfaatkan contextual prompt 
+% % secara otomatis: modul “Scraper” dalam arsitekturnya mengambil konten teks 
+% % terkait materi belajar selama sesi online, lalu informasi itu bersama prediksi 
+% % model KT tentang kelemahan siswa disuplai ke LLM (GPT-4) untuk menghasilkan 
+% % jawaban yang akurat dan sesuai tingkat pemahaman siswa []. Dengan menambah 
+% % pengetahuan latar kontekstual ke prompt, TutorLLM terbukti mengurangi risiko 
+% % halusinasi dan meningkatkan relevansi jawaban terhadap kebutuhan spesifik 
+% % siswa []. Ini adalah contoh konkret bagaimana hasil learning analytics 
+% % (dalam hal ini profil pengetahuan siswa dari KT dan materi relevan yang 
+% % di-retrieve) dapat tersambung langsung ke LLM sehingga responnya terpersonalisasi 
+% % dan kontekstual.
+
+% % Pendekatan serupa tampak pada studi Reddig dkk. (2025) tadi: alih-alih LLM 
+% % bekerja “kosong”, mereka mem-prompt GPT-4 dengan input berupa deskripsi kesalahan 
+% % spesifik yang dilakukan siswa pada tutor algebra, seolah memberikan konteks 
+% % masalah dan kesalahan untuk diperbaiki []. Strategi prompting yang context-aware 
+% % ini memungkinkan GPT-4 memberikan feedback yang lebih tepat karena “tahu” 
+% % kesalahan mana yang terjadi. Reddig dkk. juga membahas pentingnya format 
+% % prompt dan kriteria penilaian keluaran agar LLM tidak memberi jawaban terlalu 
+% % langsung atau keliru []. Hal ini menggarisbawahi perlunya prompt engineering 
+% % berbasis insight LA: misalnya menentukan informasi apa saja yang harus 
+% % disertakan dalam prompt (error siswa, riwayat upaya, dll.) dan bagaimana 
+% % meminta LLM memberikan keluaran (misal hint yang membimbing, bukannya solusi 
+% % instan) []. Penelitian Stamper dkk. (2024) bahkan menyusun kerangka sistematis 
+% % untuk merancang prompt LLM berbasis prinsip umpan balik ITS yang sudah teruji, 
+% % seperti menentukan kapan LLM diberi trigger untuk menilai jawaban siswa, 
+% % informasi apa yang perlu disertakan dalam prompt input ke LLM, dan jenis 
+% % keluaran umpan balik apa yang diharapkan []. Pendekatan teoritis ini 
+% % memastikan penggunaan LLM selaras dengan teori pendidikan (mis. umpan balik 
+% % segera, spesifik, mendorong self-explanation) sehingga kualitas output-nya 
+% % lebih terjamin.
+
+% % Secara keseluruhan, tren riset ini menunjukkan upaya menggabungkan kekuatan 
+% % learning analytics dengan kecerdasan generatif LLM. Learning analytics 
+% % menyediakan data-driven insights tentang proses dan status belajar (misal: 
+% % apa yang sudah dikuasai, kesalahan yang sering muncul, progress task di 
+% % Kanban, dll.), sementara LLM dapat memanfaatkan konteks tersebut untuk 
+% % menghasilkan umpan balik atau bimbingan yang adaptif. Mazzullo dkk. (2023) 
+% % menyatakan bahwa implementasi LLM dalam LA dapat membantu memberikan insight 
+% % yang lebih mudah dipahami, umpan balik yang lebih cepat dan actionable, 
+% % peningkatan personalisasi, serta mendukung tugas-tugas guru secara lebih 
+% % luas []. Dengan mengaitkan hasil analitik (misal deteksi kebuntuan tugas 
+% % atau prediksi kemampuan) ke dalam prompt atau modul pengetahuan LLM, 
+% % diharapkan output AI menjadi lebih relevan konteks dan berkualitas 
+% % tinggi dalam mendukung pembelajaran. Ini juga area kebaruan yang bisa 
+% % peneliti tekankan: membedakan bagaimana pendekatan mereka menyambungkan 
+% % LA dan LLM secara lebih erat atau efektif dibanding studi-studi 
+% % terdahulu seperti TutorLLM, LLM-KT, atau Reddig dkk. di atas.
+
+% % % [1] D. Venugopalan, Z. Yan, C. Borchers, J. Lin, and V. Aleven, "Combining Large Language Models with Tutoring System Intelligence: A Case Study in Caregiver Homework Support," in Proceedings of the 15th International Conference on Learning Analytics & Knowledge (LAK '25), 2025, pp. 1–11. doi: 10.1145/3706468.3706516. arXiv preprint arXiv:2412.11995. [Online]. Available: https://arxiv.org/abs/2412.11995
+% % % [2] Z. Li et al., "TutorLLM: Customizing Learning Recommendations with Knowledge Tracing and Retrieval-Augmented Generation," in Proceedings of the 18th ACM Conference on Recommender Systems, Bari, Italy, Oct. 2024, pp. 1–10. doi: 10.1145/XXXXXX.XXXXXXX.
+% % % [3] J. M. Reddig, A. Arora, and C. J. MacLellan, "Generating In-Context, Personalized Feedback for Intelligent Tutors with Large Language Models," International Journal of Artificial Intelligence in Education, vol. 35, no. 3, pp. 1–25, Sep. 2025, doi: 10.1007/s40593-025-00505-6.
+% % % [4] J. Stamper, R. Xiao, and X. Hou, "Enhancing LLM-Based Feedback: Insights from Intelligent Tutoring Systems and the Learning Sciences," in Proceedings of the [Conference Name], [Conference Location], [Year], pp. [Page Range]. doi: [DOI].
+% % % [5] E. Mazzullo, O. Bulut, T. Wongvorachan, and B. Tan, "Learning Analytics in the Era of Large Language Models," Analytics, vol. 2, no. 4, pp. 877-898, Nov. 2023, doi: 10.3390/analytics2040046.
 
 
-% \section{Analisis Perbandingan Metode}
+% % % \section{Hipotesis Penelitian}
+% % % Diisi dengan hipotesis h0 dan h1.
 
-% Di dalam tinjauan pustaka hasil akhirnya adalah analisis secara kualitatif atau pun secara kuantitatif kelebihan dan kekurangan metode jika dikaitkan dengan masalah, batasan-batasan masalah dan solusi yang dinginkan. Analisis kuantitatif tidak wajib teapi mempunyai nilai tambah di dalam tugas akhir saudara. Bagian ini menjelaskan kenapa metode tersebut dipilih dan uraikan dengan lebih jelas metode pelaksanaan tugas akhir yang ingin Anda lakukan. 
 
-% \section{Pertanyaan Tugas Akhir (Jika Perlu)}
+% % \section{Analisis Perbandingan Metode}
 
-% Pertanyaan tugas akhir bersifat opsional dan dapat ditambahkan untuk menekankan hal-hal yang hendak diketahui dari tugas akhir berdasar pada tujuan tugas akhir. Pertanyaan tugas akhir dikenal dengan RQ (\textit{Research Question}) dan harus memiliki keterkaitan dengan RO (\textit{Research Objective}). Satu RO dapat memiliki satu atau lebih dari satu RQ. 
+% % Di dalam tinjauan pustaka hasil akhirnya adalah analisis secara kualitatif atau pun secara kuantitatif kelebihan dan kekurangan metode jika dikaitkan dengan masalah, batasan-batasan masalah dan solusi yang dinginkan. Analisis kuantitatif tidak wajib teapi mempunyai nilai tambah di dalam tugas akhir saudara. Bagian ini menjelaskan kenapa metode tersebut dipilih dan uraikan dengan lebih jelas metode pelaksanaan tugas akhir yang ingin Anda lakukan. 
+
+% % \section{Pertanyaan Tugas Akhir (Jika Perlu)}
+
+% % Pertanyaan tugas akhir bersifat opsional dan dapat ditambahkan untuk menekankan hal-hal yang hendak diketahui dari tugas akhir berdasar pada tujuan tugas akhir. Pertanyaan tugas akhir dikenal dengan RQ (\textit{Research Question}) dan harus memiliki keterkaitan dengan RO (\textit{Research Objective}). Satu RO dapat memiliki satu atau lebih dari satu RQ. 
 
