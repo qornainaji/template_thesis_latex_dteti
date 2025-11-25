@@ -1199,7 +1199,6 @@ sebagai berikut:
 
 
 \section{Dasar Teori}
-\section{Dasar Teori}
 
 Bab ini menyajikan landasan konseptual dan kerangka 
 teoretis yang menopang rancangan sistem, metodologi 
@@ -1209,8 +1208,8 @@ hingga implementasi teknis dan metode pengujian.
 
 Pertama, diuraikan \textbf{Tinjauan Teoretis Psikologi Pendidikan} 
 yang menjadi standar acuan kualitas sistem, mencakup prinsip 
-\textit{Self-Regulated Learning} (SRL) dalam lingkungan berbasis 
-Kanban , teori umpan balik formatif, serta kerangka motivasi 
+SRL dalam lingkungan berbasis Kanban , teori umpan 
+balik formatif, serta kerangka motivasi 
 \textit{Self-Determination Theory} (SDT)  dan psikologi positif. 
 Kedua, dibahas karakteristik \textbf{Large Language Models (LLM)}
 sebagai mesin utama agen cerdas, dengan fokus pada arsitektur 
@@ -1670,17 +1669,89 @@ akurat, sekaligus menjadi landasan bagi pengembangan model-model canggih kontemp
 seperti GPT dan BERT.
 
 Penggunaan LLM telah meluas ke berbagai sektor industri, termasuk di antaranya 
-di bidang pendidikan. Dalam konteks pendidikan, LLM dimanfaatkan untuk
+di bidang pendidikan \cite{jacobsen2025promises, li2025designaipoweredtoolselfregulation}. Dalam konteks pendidikan, LLM dimanfaatkan untuk
 menghasilkan materi pembelajaran yang dipersonalisasi, memberikan umpan balik
-otomatis kepada siswa, serta mendukung sistem tanya jawab interaktif.
+otomatis kepada siswa, serta mendukung sistem tanya jawab interaktif \cite{woodrow2025dpo_feedback, jacobsen2025promises, li2025designaipoweredtoolselfregulation}.
 
 
-% \subsubsection{Llama}
+\subsubsection{Llama}
+Llama (Large Language Model Meta AI) adalah keluarga model 
+bahasa besar yang dikembangkan oleh Meta AI dengan tujuan 
+mendorong adopsi luas AI melalui pendekatan terbuka. Meta 
+merilis Llama sebagai model open-source \cite{zuckerberg2024opensource}. 
+CEO Meta, Mark Zuckerberg, menyatakan bahwa Llama 3 (termasuk varian 
+8B, 70B, dan 405B) menawarkan rasio biaya/kinerja yang lebih 
+baik dibanding model komersial tertutup (misalnya GPT-4), 
+serta mendukung fine-tuning yang luas karena keterbukaannya \cite{zuckerberg2024opensource}. 
+Dengan prinsip tersebut, arsitektur Llama dirancang untuk 
+efisiensi dan fleksibilitas tinggi. Pengembangan Llama 3.1 
+menghadirkan peningkatan signifikan pada arsitektur foundation 
+model dengan peluncuran varian \textit{flagship} berkapasitas 405 
+miliar parameter yang menggunakan arsitektur \textit{dense 
+Transformer} dan mendukung context window hingga 128.000 
+token. Berbeda dengan iterasi sebelumnya, model ini dirancang 
+dengan dukungan bawaan (native support) untuk kemampuan 
+multibahasa, pemrograman (coding), penalaran (reasoning), 
+serta penggunaan alat atau tool usage. Meta merilis model 
+ini secara terbuka dalam versi pre-trained dan post-trained, 
+serta melengkapinya dengan Llama Guard 3 untuk menjaga 
+keamanan input dan output. Dalam hal kapabilitas multimodal, 
+dokumen teknis memaparkan eksperimen integrasi gambar, video, 
+dan suara melalui pendekatan komposisional, meskipun model 
+multimodal spesifik ini masih dalam tahap pengembangan aktif 
+dan belum dirilis secara luas. Berdasarkan evaluasi empiris, 
+performa model Llama 3 405B terbukti kompetitif dan sebanding 
+dengan model proprietary terkemuka seperti GPT-4 pada berbagai 
+tolok ukur pengujian \cite{dubey2024llama}.
+
+Llama 3.1 8B dan Llama 3.3 70B merupakan dua ujung spektrum di mana 
+8B menonjol pada efisiensi dan kemudahan implementasi 
+(misalnya aplikasi \textit{mobile} atau \textit{startup} edukasi dengan 
+sumber daya terbatas), sedangkan 70B menawarkan kinerja 
+unggul pada tugas kompleks dan domain penelitian yang 
+menuntut kualitas tinggi. Pemilihan model sebaiknya 
+mempertimbangkan kebutuhan aplikasi seperti model 70B ideal untuk 
+sistem pembangkitan teks yang memerlukan akurasi tinggi 
+(misalnya umpan balik pembelajaran mendalam), sedangkan 
+8B cukup untuk tugas-tugas standar dengan latensi dan 
+biaya lebih rendah.
+\cite{meta2024llama31}
+
 
 % \subsection{\textit{Prompt Engineering} dan \textit{Context Engineering}}
-% \subsubsection{\textit{Prompt Engineering}} 
+
+\subsection{\textit{Prompt Engineering}} 
+\textit{Prompt engineering} merupakan bidang kajian 
+baru yang berfokus pada perancangan, penyempurnaan, 
+dan implementasi prompt atau instruksi yang diberikan 
+kepada model bahasa besar LLM 
+untuk mengarahkan keluaran model tersebut [1]. Dengan 
+kata lain, \textit{prompt engineering} 
+adalah “mekanisme pengendali” (\textit{steering mechanism}) 
+yang digunakan pengguna kecerdasan buatan 
+generatif untuk menyusun \textit{prompt} sedemikian rupa agar 
+menghasilkan keluaran yang diinginkan [2]. 
+Konsep ini menjadi semakin penting seiring munculnya LLM 
+populer seperti ChatGPT, karena 
+kemampuan merancang \textit{prompt} yang efektif memungkinkan 
+pengguna untuk mendapatkan jawaban yang 
+lebih akurat, relevan, dan sesuai kebutuhan dari model AI [1].
+
+Sebagai suatu keterampilan, \textit{prompt engineering} dapat 
+dipelajari dan dikembangkan. 
+Para peneliti menuliskan bahwa \textit{prompt engineering} sudah 
+mulai diajarkan secara formal, 
+misalnya di perguruan tinggi, karena dianggap sebagai 
+\textit{skillset} baru yang 
+dibutuhkan di era integrasi AI [2]. Intinya, 
+\textit{prompt engineering} 
+menekankan seni merumuskan pertanyaan atau perintah 
+dalam bahasa natural 
+sedemikian rupa sehingga model AI memahami konteks 
+tugas dan memberikan respon optimal sesuai 
+keinginan pengguna.
 % % membahas dasar teori prompt engineering dan jenis-jenis prompt engineering
-% \subsubsection{\textit{Context Engineering}}
+\subsection{\textit{Context Engineering}}
 
 % \subsection{\textit{Learning Analytics} (LA) dan Papan Kanban}
 % \subsubsection{Papan Kanban dalam Pendidikan}
