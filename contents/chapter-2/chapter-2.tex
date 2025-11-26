@@ -1720,22 +1720,31 @@ biaya lebih rendah.
 
 % \subsection{\textit{Prompt Engineering} dan \textit{Context Engineering}}
 
-\subsection{\textit{Prompt Engineering}} 
+\subsection{\textit{Prompt Engineering}}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{contents/chapter-2/Diagram_Prompt_Engineering.png}
+    \caption{Ilustrasi konsep \textit{Prompt Engineering} sebagai mekanisme pengendali 
+    (\textit{steering mechanism}) untuk mengarahkan keluaran LLM \cite{Lee2025}.}
+    \label{fig:prompt-engineering}
+\end{figure}
+
 \textit{Prompt engineering} merupakan bidang kajian 
 baru yang berfokus pada perancangan, penyempurnaan, 
 dan implementasi prompt atau instruksi yang diberikan 
 kepada model bahasa besar LLM 
-untuk mengarahkan keluaran model tersebut [1]. Dengan 
+untuk mengarahkan keluaran model tersebut \cite{Mesko2023}. Dengan 
 kata lain, \textit{prompt engineering} 
 adalah “mekanisme pengendali” (\textit{steering mechanism}) 
 yang digunakan pengguna kecerdasan buatan 
 generatif untuk menyusun \textit{prompt} sedemikian rupa agar 
-menghasilkan keluaran yang diinginkan [2]. 
+menghasilkan keluaran yang diinginkan \cite{Lee2025}. 
 Konsep ini menjadi semakin penting seiring munculnya LLM 
 populer seperti ChatGPT, karena 
 kemampuan merancang \textit{prompt} yang efektif memungkinkan 
 pengguna untuk mendapatkan jawaban yang 
-lebih akurat, relevan, dan sesuai kebutuhan dari model AI [1].
+lebih akurat, relevan, dan sesuai kebutuhan dari model AI \cite{Mesko2023}.
 
 Sebagai suatu keterampilan, \textit{prompt engineering} dapat 
 dipelajari dan dikembangkan. 
@@ -1743,13 +1752,69 @@ Para peneliti menuliskan bahwa \textit{prompt engineering} sudah
 mulai diajarkan secara formal, 
 misalnya di perguruan tinggi, karena dianggap sebagai 
 \textit{skillset} baru yang 
-dibutuhkan di era integrasi AI [2]. Intinya, 
+dibutuhkan di era integrasi AI \cite{Lee2025}. Intinya, 
 \textit{prompt engineering} 
 menekankan seni merumuskan pertanyaan atau perintah 
 dalam bahasa natural 
 sedemikian rupa sehingga model AI memahami konteks 
 tugas dan memberikan respon optimal sesuai 
-keinginan pengguna.
+Pendekatan ini mencakup berbagai strategi, mulai 
+dari teknik dasar seperti \textit{Zero-shot} dan \textit{Few-shot} 
+\textit{prompting} hingga metode yang lebih maju seperti \textit{Chain-of-Thought}.
+Berikut adalah jenis-jenis \textit{prompt engineering}
+yang digunakan pada penelitian ini.
+
+\subsubsection{\textit{Few-Shot Prompting}}
+\textit{Few-Shot Prompting} (atau \textit{in-context learning}) adalah pendekatan di mana model bahasa diberikan beberapa demonstrasi tugas pada saat inferensi sebagai kondisi, tanpa pembaruan bobot atau \textit{fine-tuning} \cite{Brown2020}. Pendekatan ini memanfaatkan kemampuan yang diperoleh selama pra-pelatihan (\textit{pre-training}) untuk mengenali pola dan beradaptasi dengan tugas baru hanya berdasarkan sejumlah kecil contoh yang disertakan dalam konteks \cite{Brown2020}. Mekanisme utama metode ini adalah menyajikan $K$ contoh masukan-luaran yang diinginkan (jumlah contoh bergantung pada jendela konteks model), lalu diikuti oleh masukan target yang diharapkan dilengkapi oleh model \cite{Brown2020}.
+
+Secara umum, penerapan \textit{Few-Shot Prompting} memiliki karakteristik sebagai berikut:
+\begin{enumerate}
+    \item Mekanisme \textit{in-context learning}. Model tidak melakukan pembelajaran gradien (\textit{gradient updates}); melainkan memproses instruksi dan contoh-contoh demonstrasi yang diberikan dalam prompt sebagai satu kesatuan sekuens untuk memprediksi keluaran berikutnya. Hal ini mirip dengan bagaimana manusia dapat mempelajari tugas baru hanya dengan melihat beberapa contoh \cite{Brown2020}.
+    \item Struktur prompt. Prompt biasanya terdiri dari deskripsi tugas (opsional), diikuti oleh beberapa pasangan contoh (Input $\rightarrow$ Output), dan diakhiri dengan input target yang ingin dijawab.
+\end{enumerate}
+
+\subsubsection{\textit{Role-Play}}
+\textit{Role-Play Prompting} adalah pendekatan 
+konseptual untuk memahami dan mengarahkan perilaku 
+agen dialog berbasis \textit{Large Language Models} 
+(LLM). Dalam kerangka kerja ini, perilaku agen tidak 
+dilihat sebagai ekspresi dari kesadaran atau niat asli 
+model, melainkan sebagai hasil dari ``bermain peran'' 
+(\textit{role play}) karakter tertentu yang dideskripsikan 
+dalam \textit{prompt}.
+
+Konsep ini menekankan bahwa LLM pada dasarnya adalah 
+prediktor teks yang memprediksi kelanjutan paling 
+masuk akal berdasarkan distribusi data pelatihan. 
+Ketika diberikan \textit{prompt} dialog yang 
+mendeskripsikan karakter tertentu, model akan 
+menghasilkan respons yang sesuai dengan ekspektasi 
+karakter tersebut, seolah-olah sedang melakukan 
+improvisasi teater.
+
+
+\subsubsection{\textit{Chain-of-Thought}}
+\textit{Chain-of-Thought} (CoT) adalah metode \textit{prompting} sederhana 
+yang dirancang untuk memunculkan kemampuan penalaran 
+kompleks pada \textit{Large Language Models} (LLM). Metode ini 
+bekerja dengan memberikan serangkaian \textit{intermediate reasoning steps} 
+dalam bahasa alami yang menuntun model menuju jawaban akhir.
+
+Secara prinsip, CoT meniru proses berpikir manusia saat 
+memecahkan masalah yang rumit, yaitu dengan memecah masalah 
+besar menjadi langkah-langkah kecil yang logis sebelum 
+memberikan kesimpulan.
+
+Metode ini biasanya diterapkan dalam format \textit{few-shot prompting}, 
+di mana pengguna memberikan beberapa contoh soal (\textit{exemplars}) 
+yang terdiri dari tiga komponen: \textit{Input} (pertanyaan), 
+\textit{Chain of Thought} (langkah penalaran), dan \textit{Output} (jawaban). 
+Dengan melihat contoh yang memiliki langkah 
+penalaran eksplisit, model kemudian 
+akan meniru pola tersebut untuk menghasilkan langkah penalarannya 
+sendiri saat menjawab pertanyaan baru \cite{Wei2022}.
+
+
 % % membahas dasar teori prompt engineering dan jenis-jenis prompt engineering
 \subsection{\textit{Context Engineering}}
 
