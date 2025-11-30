@@ -1,46 +1,35 @@
-Intisari ditulis menggunakan bahasa Indonesia dengan jarak antar baris 1 spasi dan maksimal 1 halaman. Intisari sekurang-kurangnya berisi tentang latar belakang dan tujuan penelitian, metodologi yang digunakan, hasil penelitian, kesimpulan dan implikasi, dan Kata kunci yang berhubungan dengan penelitian.
+Penerapan \textit{Self-Regulated Learning} (SRL) di pendidikan 
+tinggi menghadapi tantangan dalam hal skalabilitas 
+pemberian umpan balik personal yang berkualitas oleh 
+pengajar. Penelitian ini bertujuan untuk meningkatkan 
+kualitas umpan balik pedagogis yang dihasilkan oleh 
+\textit{Large Language Model} (LLM) pada lingkungan pembelajaran 
+berbasis papan Kanban dengan memanfaatkan pendekatan 
+\textit{Context Engineering} yang diperkaya oleh \textit{Learning Analytics} (LA).
 
-Kata Kunci ditulis maksimal 5 kata yang paling berhubungan dengan isi skripsi. Silakan mengacu pada ACM / IEEE \textit{Computing classification} jika Anda adalah mahasiswa Sarjana TI \textcolor{blue}{http://www.acm.org/about/class/} atau mengacu kepada IEEE keywords \textcolor{blue}{http://www.ieee.org/documents/taxonomy\_v101.pdf} jika Anda berasal dari Prodi Sarjana TE.
+Penelitian ini menggunakan metode eksperimen dengan data 
+sintetis aktivitas mahasiswa pada platform Kanban untuk 
+mata kuliah Pemrograman Berorientasi Objek. Dua model LLM, 
+yaitu Llama 3.1 8B Instant dan Llama 3.3 70B Versatile, 
+diuji menggunakan empat variasi \textit{prompt} yaitu \textit{Baseline}, Lis Materi, 
+LA, dan kombinasi ReAct + LA. Kualitas umpan balik dievaluasi 
+secara kuantitatif menggunakan metrik BERTScore, BARTScore, dan 
+LLM-as-a-Judge, serta secara kualitatif melalui validasi ahli 
+psikologi pendidikan.
 
-\noindent{Kata kunci} : Kata kunci 1, Kata kunci 2, Kata kunci 3, Kata kunci 4, Kata kunci 5
+Hasil penelitian menunjukkan bahwa integrasi \textit{Context Engineering} 
+dengan \textit{Learning Analytics} mampu meningkatkan kualitas umpan balik, 
+namun efektivitasnya bergantung pada ukuran model. Pada model kecil 
+(8B), penggunaan metode kompleks (ReAct + LA) memberikan 
+peningkatan performa tertinggi secara konsisten. Sebaliknya, 
+model besar (70B) memiliki performa dasar (\textit{Baseline}) yang 
+lebih superior namun kinerjanya menurun ketika diberikan 
+konteks yang terlalu kompleks, sehingga lebih optimal dengan 
+konteks sederhana. Validasi ahli menyatakan bahwa umpan balik 
+yang dihasilkan model terbaik dapat digunakan dengan revisi 
+minor, terutama terkait penyesuaian tonalitas bahasa dan 
+spesifisitas saran. Penelitian ini menyimpulkan bahwa rekayasa 
+konteks berbasis data analitik merupakan strategi yang efektif 
+dan efisien untuk mendukung SRL mahasiswa.
 
-\vspace{1cm}
-
-%HAPUS YANG TIDAK PERLU
-%-------------------------------------------------
-\noindent\fbox{%
-	\parbox{\textwidth}{%
-\textbf{Contoh Abstrak Teknik Elektro:} \\
-
-\hspace{1cm} "Penelitian ini bertujuan untuk mengembangkan sistem pengendalian suhu ruangan dengan menggunakan microcontroller. Metodologi yang digunakan adalah desain sirkuit, implementasi sistem pengendalian, dan pengujian performa. Hasil penelitian menunjukkan 
-bahwa sistem pengendalian suhu ruangan yang dikembangkan mampu mengendalikan suhu ruangan dengan akurasi sebesar ±0,5°C. Kesimpulan dari penelitian ini adalah sistem pengendalian suhu ruangan yang dikembangkan efektif dan efisien. \\
-
-Kata kunci: microcontroller, sistem pengendalian suhu, akurasi."
-\vspace{5mm}
-
-\textbf{Contoh Abstrak Teknik Biomedis:} \\
-
-\hspace{1cm} "Penelitian ini bertujuan untuk mengevaluasi keefektifan prototipe alat pemantau denyut jantung berbasis elektrokardiogram (ECG) untuk pasien jantung. Metodologi yang digunakan meliputi desain dan pembuatan prototipe, pengujian dengan pasien, dan analisis data. Hasil penelitian menunjukkan bahwa prototipe alat pemantau denyut jantung berbasis ECG memiliki 
-akurasi yang baik dan mampu memantau denyut jantung pasien secara efektif. Kesimpulan dari penelitian ini adalah prototipe alat pemantau denyut jantung berbasis ECG merupakan solusi 
-yang efektif dan efisien untuk memantau pasien jantung. \\
-
-Kata kunci: elektrokardiogram, alat pemantau denyut jantung, akurasi."
-\vspace{5mm}
-
-	}%
-}
-
-%-------------------------------------------------
-
-\noindent\fbox{%
-	\parbox{\textwidth}{%
-		\textbf{Contoh Abstrak Teknologi Informasi:} \\
-		
-\hspace{1cm} "Penelitian ini bertujuan untuk mengevaluasi keamanan dan privasi pengguna aplikasi media sosial terpopuler. Metodologi yang digunakan meliputi analisis kebijakan privasi dan pengaturan keamanan, pengujian penetrasi, dan survei pengguna. Hasil penelitian 
-menunjukkan bahwa beberapa aplikasi media sosial memiliki kebijakan privasi yang kurang jelas dan rendahnya tingkat keamanan. Kesimpulan dari penelitian ini adalah pentingnya meningkatkan kebijakan privasi dan tingkat keamanan pada aplikasi media sosial untuk melindungi privasi dan data pengguna. \\
-		
-Kata kunci: media sosial, keamanan, privasi, pengguna."
-\vspace{5mm}
-		
-	}%
-}
+\noindent{Kata kunci} : Model bahasa besar, \textit{self-regulated learning}, \textit{learning analytics}, \textit{context engineering}, papan \textit{Kanban}.

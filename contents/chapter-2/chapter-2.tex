@@ -570,7 +570,7 @@ dilakukan \textit{fine-tuning}.
 Penelitian \cite{jacobsen2025promises} memperlihatkan bagaimana 
 rekayasa \textit{prompt} 
 (\textit{prompt engineering}) memengaruhi kualitas umpan balik dari 
-\textit{Large Language Models} (LLM). Metode yang digunakan adalah 
+LLM. Metode yang digunakan adalah 
 mengembangkan sebuah panduan perancangan \textit{prompt} berbasis 
 (\textit{theory-driven prompt manual}) untuk menciptakan 
 tiga jenis \textit{prompt} dengan kualitas berbeda yaitu rendah, 
@@ -600,7 +600,7 @@ sedang, dan tinggi. Berikut adalah hasil dari yang dikerjakan oleh Jacobsen.
 % === Tabel (siap tempel) ===
 \begin{table}[htbp]
 \centering
-\caption{Prompt manual to ensure the development of high-quality prompts.}
+\caption{\textit{Theory-driven prompt manual} untuk memastikan pengembangan \textit{prompt} berkualitas tinggi.}
 \label{tab:prompt-manual}
 
 \begingroup
@@ -1224,7 +1224,7 @@ Keempat, dipaparkan pendekatan \textbf{Learning Analytics} (LA)
 tipe deskriptif yang digunakan untuk mentransformasi data 
 mentah aktivitas Kanban menjadi wawasan kontekstual bagi 
 LLM. Terakhir, bab ini menjelaskan metodologi 
-\textbf{Evaluasi} yang menggabungkan metrik kesamaan 
+\textbf{evaluasi} yang menggabungkan metrik kesamaan 
 semantik (\textit{BERTScore}, \textit{BARTScore}) dan 
 pendekatan \textit{LLM-as-a-Judge} untuk mengukur kualitas 
 respons secara objektif.
@@ -1814,18 +1814,500 @@ penalaran eksplisit, model kemudian
 akan meniru pola tersebut untuk menghasilkan langkah penalarannya 
 sendiri saat menjawab pertanyaan baru \cite{Wei2022}.
 
+\subsubsection{\textit{Reasoning and Acting} (ReAct)}
+ReAct (\textit{Reason and Acting}) merupakan sebuah paradigma yang 
+menyelaraskan kemampuan penalaran (\textit{reasoning}) dan 
+tindakan (\textit{acting}) dalam LLM 
+untuk menyelesaikan tugas pemrosesan bahasa maupun 
+pengambilan keputusan interaktif. Pendekatan ini 
+memperluas ruang aksi agen dengan menggabungkan 
+tindakan spesifik tugas dengan tindakan dalam ruang 
+bahasa yang disebut sebagai jejak penalaran atau 
+\textit{thoughts}. Secara operasional, ReAct meminta LLM untuk 
+menghasilkan jejak penalaran verbal dan tindakan secara 
+bergantian (\textit{interleaved}), yang memungkinkan model untuk 
+melakukan penalaran dinamis guna membuat, memelihara, 
+dan menyesuaikan rencana tingkat tinggi sambil berinteraksi 
+dengan lingkungan eksternal untuk mendapatkan informasi 
+tambahan. Keselarasan ini menciptakan siklus di mana model 
+menggunakan penalaran untuk mengarahkan tindakan 
+(\textit{reason to act}), dan menggunakan hasil tindakan untuk 
+memperkaya penalaran (\textit{act to reason}).
+
+Dalam mekanisme ini, jejak penalaran berfungsi sebagai 
+tindakan internal yang tidak memengaruhi lingkungan 
+luar, melainkan digunakan untuk menyusun informasi yang 
+berguna dengan menalar konteks saat ini, melacak 
+kemajuan tugas, serta menangani situasi pengecualian. 
+Sementara itu, komponen tindakan memungkinkan model untuk 
+menjembatani kesenjangan informasi internal dengan 
+berinteraksi langsung dengan sumber eksternal, seperti 
+basis pengetahuan atau lingkungan fisik, yang kemudian 
+menghasilkan umpan balik berupa observasi nyata. Kombinasi 
+ini mengatasi keterbatasan metode 
+CoT 
+yang statis dan terisolasi, karena ReAct memungkinkan 
+model untuk memperbarui pengetahuannya secara reaktif, 
+mengurangi halusinasi, serta menghasilkan lintasan 
+penyelesaian masalah yang lebih dapat diinterpretasikan 
+dan dipercaya oleh manusia.
+
+Dibandingkan dengan metode lain, ReAct mengatasi kelemahan 
+mendasar pada CoT yang bersifat 
+"kotak hitam" statis dan rentan terhadap halusinasi fakta 
+serta propagasi kesalahan karena hanya mengandalkan 
+representasi internal, dengan cara memungkinkan 
+interaksi langsung dengan lingkungan eksternal 
+(seperti API Wikipedia) untuk memperoleh informasi 
+faktual yang membumi (\textit{grounded}). Selain itu, ReAct
+juga mengungguli pendekatan \textit{Act-Only} yang kerap gagal 
+melakukan penalaran abstrak mengenai tujuan tingkat 
+tinggi atau kehilangan jejak dalam konteks yang kompleks, 
+di mana kegagalan tanpa penalaran tersebut sering kali 
+berujung pada kesalahan tindakan yang berulang atau 
+halusinasi tindakan.
+
+Berikut adalah representasi gambar diagram alur ReAct dalam 
+format \textit{Command Line Interface} (CLI) berdasarkan contoh 
+kasus HotpotQA yang terdapat dalam paper \cite{Yao2023}
+yang ditunjukkan pada Gambar \ref{fig:react-diagram}.
+
+
+
+\begin{figure}[H]
+    \centering
+    \begin{lstlisting}[basicstyle=\ttfamily\scriptsize,breaklines=true]
+        > TASK STARTED: HotpotQA
+        > QUESTION: Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact with?
+
+        [STEP 1]
+        > THOUGHT 1: I need to search Apple Remote and find the program it was originally designed to interact with.
+        > ACT 1    : Search[Apple Remote]
+        > OBS 1    : The Apple Remote is a remote control introduced in October 2005 by Apple ... originally designed to control the Front Row media center program...
+
+        [STEP 2]
+        > THOUGHT 2: Apple Remote was originally designed to control the Front Row media center program. I need to search Front Row next and find what other device can control it.
+        > ACT 2    : Search[Front Row]
+        > OBS 2    : Could not find [Front Row]. Similar: ['Front Row Seat to Earth', 'Front Row Motorsports', 'Front Row (software)']...
+
+        [STEP 3]
+        > THOUGHT 3: Front Row is not found. I need to search Front Row (software).
+        > ACT 3    : Search[Front Row (software)]
+        > OBS 3    : Front Row is a discontinued media center software...
+
+        [STEP 4]
+        > THOUGHT 4: Front Row (software) is controlled by an Apple Remote or the keyboard function keys. So the answer is keyboard function keys.
+        > ACT 4    : Finish[keyboard function keys]
+
+        > TASK COMPLETED.
+        > RESULT: keyboard function keys (Correct)
+    \end{lstlisting}
+    \caption{Diagram alur ReAct dalam format \textit{Command Line Interface} (CLI) berdasarkan contoh kasus HotpotQA \cite{Yao2023}.}
+    \label{fig:react-diagram}
+\end{figure}
 
 % % membahas dasar teori prompt engineering dan jenis-jenis prompt engineering
 \subsection{\textit{Context Engineering}}
+\textit{Context engineering} adalah disiplin yang berkembang untuk melengkapi dan melampaui 
+\textit{prompt engineering}. Jika \textit{prompt engineering} berfokus 
+pada apa yang dikatakan kepada model pada satu waktu, maka \textit{context engineering} 
+berfokus pada apa saja yang diketahui model saat \textit{prompt} tersebut 
+diberikan. Menurut survei terbaru, \textit{context engineering} didefinisikan sebagai disiplin formal 
+yang melampaui sekadar perancangan \textit{prompt} dan mencakup optimisasi sistematis dari informasi 
+konteks yang disuplai ke LLM [3]. Kinerja LLM sangat ditentukan oleh informasi kontekstual 
+yang diberikan selama inferensi, sehingga \textit{context engineering} berusaha memastikan model 
+menerima \textit{payload} informasi yang paling relevan dan berguna.
+
+Dalam praktiknya, \textit{context engineering} mencakup teknik-teknik seperti \textit{retrieval-augmented 
+generation} (RAG) untuk mengambil pengetahuan eksternal, penggunaan \textit{memory systems} agar 
+model mengingat interaksi sebelumnya, integrasi alat tambahan (\textit{tool-integrated reasoning}), 
+hingga koordinasi \textit{multi-agen} AI [3]. Berbeda dengan \textit{prompt engineering} yang hanya memanipulasi 
+teks \textit{prompt}-nya, \textit{context engineering} mengatur lingkungan dan konteks bagi model, misalnya 
+mengumpulkan data pendukung, menyusun instruksi sistem, mendefinisikan aturan, serta memasukkan 
+memori atau informasi historis sebelum \textit{prompt} diberikan. Tujuannya adalah memaksimalkan kualitas 
+jawaban AI dengan menghadirkan konteks informasi yang optimal dalam batas panjang konteks model 
+tersebut [3]. Dengan demikian, \textit{context engineering} menjadikan AI lebih andal dan \textit{context-aware}, 
+tidak semata-mata mengandalkan satu perintah teks statis.
+
+Meskipun terkait, \textit{prompt engineering} dan \textit{context engineering} memiliki fokus dan pendekatan yang 
+berbeda. Berikut adalah perbedaan utama keduanya [3] yang ditampilkan pada Tabel \ref{tab:perbandingan}.
+% •	Lingkup Input: \textit{Prompt engineering} memandang \textit{prompt} sebagai teks statis tunggal yang 
+% 	menjadi masukan model. Sebaliknya, \textit{context engineering} memandang konteks secara dinamis dan 
+% 	terstruktur, terdiri dari berbagai komponen informasi (instruksi sistem, pengetahuan eksternal, 
+% 	memori percakapan, status pengguna, dll.) yang dirangkai bersama sebagai masukan [3]. 
+% 	Dengan kata lain, \textit{prompt engineering} beroperasi di dalam jendela konteks yang ada, sedangkan 
+% 	\textit{context engineering} menentukan apa saja yang mengisi jendela konteks tersebut.
+% •	Informasi dan Memori: Pada \textit{prompt engineering}, informasi yang diberikan bersifat tetap 
+% 	dalam teks \textit{prompt}, dan interaksi biasanya tanpa memori jangka panjang (setiap \textit{prompt} berdiri 
+% 	sendiri) [3]. Pada \textit{context engineering}, tujuannya adalah memaksimalkan informasi yang relevan 
+% 	dengan tugas dalam batas konteks model [3]. \textit{Context engineering} juga secara eksplisit 
+% 	mempertimbangkan komponen memori atau state, sehingga model dapat memanfaatkan informasi 
+% 	dari interaksi sebelumnya (stateful) [3].
+% •	Pendekatan Optimasi: \textit{Prompt engineering} umumnya mengandalkan percobaan manual dan 
+% 	iteratif dalam merancang kalimat \textit{prompt} hingga didapat keluaran yang diinginkan, sehingga 
+% 	sering dianggap sebagai suatu art (seni coba-coba) [3]. Sebaliknya, \textit{context engineering} 
+% 	menerapkan pendekatan yang lebih sistematis atau scientific. Ia melibatkan optimisasi di 
+% 	level sistem secara menyeluruh, misalnya menentukan fungsi-fungsi pengambil dan pengolah 
+% 	konteks yang ideal, dengan tujuan akhir meningkatkan kualitas output LLM secara konsisten [3]. 
+% 	Dalam \textit{context engineering}, evaluasi dan penyempurnaan bisa dilakukan pada masing-masing 
+% 	komponen konteks (misal modul pencarian pengetahuan atau mekanisme memori) secara terukur, 
+% 	bukan sekadar inspeksi output akhir secara manual [3].
+% •	Skalabilitas dan Kompleksitas: \textit{Prompt engineering} cenderung rapuh ketika \textit{prompt} menjadi 
+% 	terlalu panjang atau kompleks, karena model dapat kehilangan fokus atau konsistensi; 
+% 	pendekatan ini kurang terstruktur untuk skenario kompleks [3]. \textit{Context engineering} dirancang 
+% 	untuk mengatasi hal ini dengan komposisi modular, mengelola konteks panjang melalui 
+% 	segmentasi informasi, hirarki memori, dan kompresi konteks bila perlu [3]. Dengan demikian, 
+% 	\textit{context engineering} lebih siap menangani skala konteks yang besar dan beragam (misalnya 
+% 	input \textit{multi-modal}, pengetahuan berjenjang) dibandingkan pendekatan \textit{prompt-only}.
+
+\begin{table}[h]
+\centering
+\caption{Perbandingan \textit{Prompt Engineering} dan \textit{Context Engineering}}
+\label{tab:perbandingan}
+\begin{tabular}{|p{0.22\linewidth}|p{0.35\linewidth}|p{0.35\linewidth}|}
+\hline
+\textbf{Aspek} & \textbf{\textit{Prompt Engineering}} & \textbf{\textit{Context Engineering}} \\
+\hline
+Lingkup Input & Memandang \textit{prompt} sebagai teks statis tunggal yang menjadi masukan model. & Memandang konteks secara dinamis dan terstruktur, terdiri dari berbagai komponen informasi (instruksi, pengetahuan, memori, status pengguna) yang dirangkai bersama. \\
+\hline
+Informasi dan Memori & Informasi bersifat tetap dalam teks \textit{prompt}; interaksi biasanya tanpa memori jangka panjang (setiap \textit{prompt} berdiri sendiri). & Mempertimbangkan komponen memori atau \textit{state} secara eksplisit, memungkinkan model memanfaatkan informasi dari interaksi sebelumnya (\textit{stateful}). \\
+\hline
+Pendekatan Optimasi & Mengandalkan percobaan manual dan iteratif; sering dianggap sebagai suatu seni (\textit{art}) coba-coba. & Menerapkan pendekatan yang sistematis dan ilmiah (\textit{scientific}); melibatkan optimisasi di level sistem secara menyeluruh. \\
+\hline
+Skalabilitas dan Kompleksitas & Cenderung rapuh untuk \textit{prompt} yang panjang dan kompleks; kurang terstruktur untuk skenario kompleks. & Dirancang untuk mengelola konteks yang besar dan beragam secara modular (segmentasi, hirarki, kompresi). \\
+\hline
+\end{tabular}
+\end{table}
+
+% Kasih Gambar.
+
+Secara ringkas, \textit{prompt engineering} menitikberatkan cara merumuskan pertanyaan kepada AI,
+sedangkan \textit{context engineering} menitikberatkan apa saja informasi pendukung yang disertakan
+agar AI dapat menjawab dengan lebih baik. \textit{Context engineering} mengubah fokus dari sekadar
+“seni” merangkai prompt menjadi “ilmu” mengelola informasi untuk optimalisasi sistem AI [3].
+Kedua pendekatan ini saling melengkapi prompt yang baik diperlukan, namun penyajian konteks
+yang tepat akan semakin meningkatkan kemampuan model dalam menyelesaikan tugas secara andal.
+
+
 
 % \subsection{\textit{Learning Analytics} (LA) dan Papan Kanban}
-% \subsubsection{Papan Kanban dalam Pendidikan}
-% \subsubsection{\textit{Learning Analytics} (LA)}
+\subsection{Papan Kanban}
+Kanban didefinisikan sebagai pendekatan manajemen untuk 
+layanan pekerjaan berpengetahuan (\textit{knowledge work}) yang beroperasi 
+berdasarkan sistem ``\textit{pull}'' (\textit{pull system}) untuk membatasi 
+pekerjaan yang sedang berlangsung (\textit{Work in Progress} (WIP)) 
+dan memaksimalkan aliran nilai kepada pelanggan. Metode ini 
+dibangun di atas sembilan nilai dasar termasuk transparansi, 
+keseimbangan, dan fokus pelanggan. Kemudian metode ini dipandu oleh 
+prinsip-prinsip manajemen perubahan yang menekankan evolusi 
+bertahap dari proses yang sudah ada tanpa melakukan perombakan 
+drastis di awal. Selain itu, prinsip penyampaian layanan 
+Kanban menuntut organisasi untuk berfokus pada kebutuhan 
+pelanggan, mengelola pekerjaan itu sendiri alih-alih mengelola 
+orang-orangnya, dan secara rutin meninjau jaringan layanan 
+untuk memastikan efektivitas.
+
+
+Untuk implementasi praktis, Kanban menerapkan enam praktik 
+umum, yaitu memvisualisasikan pekerjaan, membatasi WIP, 
+mengelola alur, membuat kebijakan proses menjadi eksplisit, 
+menerapkan siklus umpan balik (\textit{feedback loops}), dan melakukan 
+peningkatan secara kolaboratif. Penerapan praktik ini didukung 
+oleh pemahaman metrik aliran, khususnya \textit{Hukum Little} (\textit{Little's Law}), yang menyatakan bahwa waktu penyelesaian 
+rata-rata (\textit{lead time}) berbanding lurus dengan rata-rata WIP 
+dibagi dengan rata-rata \textit{throughput}, sehingga pengurangan 
+WIP menjadi kunci untuk mempercepat layanan. Dengan 
+menggabungkan praktik dan metrik ini, Kanban bertujuan 
+mencapai tiga agenda utama: keberlanjutan kerja, orientasi 
+layanan yang lebih baik, dan kelangsungan hidup organisasi 
+melalui adaptasi yang terus-menerus.
+
+\begin{table}[htbp]
+\centering
+\caption{Contoh papan Kanban: kelas layanan dan status pekerjaan}
+\label{tab:kanban-swimlane}
+\begin{tabularx}{\textwidth}{@{}p{3.2cm}*{5}{>{\raggedright\arraybackslash}X}@{}}
+\toprule
+Swimlane (Kelas Layanan) & Ide / Opsi (Input) & Komitmen (Ready) & Pengembangan (Dev) & Pengujian (Test) & Selesai (Deployed) \\
+\midrule
+WIP Limit (Batas) & Tak Terbatas & 3 & 2 & 1 & Tak Terbatas \\
+\addlinespace
+Expedite (Darurat) & --- & --- & [Bug Kritis A] & --- & [Hotfix Server] \\
+\addlinespace
+Standard (Normal) & [Fitur X] \quad [Fitur Y] & [Fitur Z] \quad [Update UI] & [API Login] (Sedang dikerjakan) \quad [Halaman Admin] (Selesai/Siap tarik) & [Integrasi Payment] & [Rilis v1.0] \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+
+\subsection{\textit{Learning Analytics} (LA)}
+Learning Analytics (LA) didefinisikan sebagai proses 
+pengukuran, pengumpulan, analisis, dan pelaporan data 
+mengenai peserta didik serta konteks pembelajaran 
+mereka. Tujuan utama dari disiplin ini adalah untuk 
+memahami dan mengoptimalkan proses pembelajaran dan 
+lingkungan tempat pembelajaran tersebut berlangsung. 
+Dalam kerangka teknologi pendidikan yang muncul, LA 
+dianggap sebagai instrumen vital yang memanfaatkan 
+jejak data digital siswa untuk memberikan wawasan yang 
+dapat ditindaklanjuti bagi pendidik guna meningkatkan 
+efektivitas pengajaran \cite{Crompton2020}.
+
+Kegunaan utama LA terletak pada kemampuannya untuk 
+mendukung personalisasi pembelajaran dan intervensi 
+dini. Secara spesifik, LA digunakan untuk melacak 
+perilaku dan pola belajar siswa, memberikan umpan balik 
+yang membantu mereka mengatur strategi belajar sendiri 
+(Self-Regulated Learning). Selain itu, data analitik ini
+memungkinkan instruktur untuk mengidentifikasi siswa 
+yang berisiko mengalami kesulitan akademik lebih awal, 
+sehingga instruksi yang adaptif dan dukungan yang tepat 
+dapat diberikan untuk memaksimalkan kesuksesan mahasiswa \cite{Crompton2020}.
+
+Learning Analytics (LA) mengadopsi beragam metode 
+yang bersumber dari pendekatan multidisiplin, meliputi 
+pembelajaran mesin (machine learning), kecerdasan buatan, 
+statistik, temu kembali informasi (information retrieval), 
+dan visualisasi. Integrasi metode-metode ini bertujuan 
+untuk menganalisis data pendidikan guna mendukung dan 
+meningkatkan kualitas proses pembelajaran \cite{chatti_reference_2012}. 
+Berdasarkan berbagai literatur penelitian, metode dalam 
+learning analytics dapat dikategorikan secara luas ke 
+dalam beberapa jenis utama berikut.
+
+\begin{enumerate}
+    \item \textbf{Analitik Deskriptif (\textit{Descriptive Analytics})} \\
+    Metode ini berfokus pada analisis data pendidikan historis 
+    untuk mendeskripsikan perilaku siswa, pola pembelajaran, dan 
+    kinerja akademik. Pendekatan ini mencakup penggunaan teknik 
+    visualisasi dan analisis statistik untuk memberikan pemahaman 
+    mengenai apa yang telah terjadi dalam lingkungan pembelajaran 
+    \cite{yunita_research_2021}.
+    
+    \item \textbf{Analitik Prediktif (\textit{Predictive Analytics})} \\
+    Kategori ini memanfaatkan teknik pembelajaran mesin 
+    dan penggalian data (\textit{data mining}) untuk memprediksi 
+    hasil pembelajaran di masa depan, seperti kinerja 
+    siswa, tingkat retensi, probabilitas putus sekolah 
+    (\textit{dropout}), atau penyelesaian kursus. Model-model 
+    yang umum diterapkan meliputi algoritma klasifikasi, 
+    model regresi, dan deep learning yang diaplikasikan 
+    pada fitur-fitur yang diekstraksi dari dataset 
+    pendidikan \cite{sghir_recent_2022, daud_predicting_2017}.
+    
+    \item \textbf{Analitik Preskriptif (\textit{Prescriptive Analytics})} \\
+    Sebagai pengembangan lebih lanjut dari analitik 
+    prediktif, metode ini bertujuan untuk merekomendasikan 
+    intervensi atau tindakan nyata guna meningkatkan 
+    hasil pembelajaran berdasarkan prediksi yang 
+    diperoleh. Fokus utamanya melibatkan perancangan 
+    kerangka kerja otomatis untuk menyarankan jalur 
+    pembelajaran yang dipersonalisasi (\textit{personalized 
+    learning pathways}) atau tindakan pedagogis bagi 
+    pengajar \cite{yunita_research_2021}.
+    
+    \item \textbf{\textit{Educational Data Mining} (EDM)} \\
+    Meskipun memiliki keterkaitan erat dan terkadang beririsan 
+    dengan LA, EDM memfokuskan diri secara spesifik pada 
+    penerapan teknik penggalian data untuk mendeteksi 
+    pola-pola tersembunyi dalam data pendidikan. Wawasan 
+    yang dihasilkan meliputi penilaian pembelajaran siswa, 
+    analisis perilaku, dan akuisisi keterampilan. Teknik 
+    EDM yang sering digunakan mencakup klasterisasi 
+    (\textit{clustering}), penggalian aturan asosiasi (\textit{association 
+    rule mining}), dan penemuan pola 
+    \cite{siemens_learning_2012,buenanofernandez_use_2019}.
+\end{enumerate}
+
+\subsection{Theory-driven prompt manual}
+Dalam konteks pemanfaatan \textit{Generative AI} di 
+pendidikan tinggi, kualitas luaran yang dihasilkan 
+oleh \textit{Large Language Model} (LLM) sangat bergantung 
+pada kualitas instruksi atau \textit{prompt} yang 
+diberikan. \textit{Prompt engineering} didefinisikan 
+sebagai proses perancangan pertanyaan atau stimulus 
+yang efektif untuk menyempurnakan interaksi dengan 
+LLM agar menghasilkan respons yang relevan dan akurat
+ \cite{jacobsen2025promises}.
+
+Untuk memastikan validitas instrumen prompt yang 
+digunakan dalam penelitian ini, disusun sebuah manual 
+evaluasi kualitas prompt (\textit{prompt quality manual}) 
+yang bersifat \textit{theory-driven}. Pengembangan 
+manual ini mengintegrasikan tiga kerangka kerja 
+teoritis utama dalam literatur \textit{prompt engineering}, yaitu:
+\begin{enumerate}
+    \item \textbf{Elemen Modular Kipp:} Mengidentifikasi empat elemen inti prompt yaitu konteks, pertanyaan, format, dan contoh sebagai pedoman konstruksi modular.
+    \item \textbf{Faktor Seleksi Ekin:} Menekankan pada lima faktor yang mempengaruhi efektivitas prompt, meliputi niat pengguna, pemahaman model, spesifisitas domain, kejelasan, dan batasan (\textit{constraints}).
+    \item \textbf{Kerangka Kerja CLEAR (Lo):} Digunakan sebagai validasi akhir untuk memastikan prompt memenuhi kriteria \textit{Concise} (ringkas), \textit{Logical} (logis), \textit{Explicit} (eksplisit), \textit{Adaptive} (adaptif), dan \textit{Reflective} (reflektif).
+\end{enumerate}
+
+Sintesis dari ketiga pendekatan tersebut menghasilkan 
+delapan kategori kualitas prompt yang terbagi dalam 
+tiga dimensi utama: Konteks, Misi, serta Kejelasan dan 
+Spesifisitas. Rincian indikator untuk prompt berkualitas 
+tinggi (\textit{high-quality prompt}) disajikan dalam 
+Tabel \ref{tab:prompt-manual}.
+
+Penggunaan manual ini bertujuan untuk meminimalkan 
+risiko halusinasi AI dan memastikan bahwa umpan balik 
+yang dihasilkan oleh LLM memiliki struktur yang setara 
+atau mendekati standar umpan balik ahli (\textit{expert feedback}).
 
 % \subsection{Metodologi Evaluasi}
 % \subsubsection{Evaluasi Berbasis Semantik}
-% % Jelaskan mengapa metrik tradisional (seperti BLEU/ROUGE yang berbasis kecocokan kata per kata) tidak cocok untuk tugas kreatif seperti feedback. BERTScore: Mengukur kesamaan makna menggunakan contextual embedding. BARTScore: Menggunakan probabilitas generasi teks untuk menilai kualitas.
-% \subsubsection{\textit{LLM-as-a-Judge}}
+% Jelaskan mengapa metrik tradisional (seperti BLEU/ROUGE yang berbasis kecocokan kata per kata) tidak cocok untuk tugas kreatif seperti feedback. BERTScore: Mengukur kesamaan makna menggunakan contextual embedding. BARTScore: Menggunakan probabilitas generasi teks untuk menilai kualitas.
+\subsection{BERTScore}
+BERTScore adalah metrik evaluasi otomatis untuk 
+pembuatan teks yang menghitung skor kesamaan 
+(\textit{similarity score}) untuk setiap token dalam kalimat 
+kandidat dengan setiap token dalam kalimat referensi. 
+Berbeda dengan metrik umum lainnya yang berbasis 
+pencocokan n-gram (seperti BLEU) yang hanya melihat 
+kecocokan bentuk kata secara eksak, BERTScore 
+memanfaatkan penyematan kontekstual (\textit{contextual 
+embeddings}) dari model BERT yang telah dilatih 
+sebelumnya. Pendekatan ini dikembangkan untuk 
+mengatasi kelemahan metrik n-gram yang sering kali 
+gagal mencocokkan parafrase yang valid karena variasi 
+kata, serta gagal menangkap dependensi jarak jauh dalam 
+kalimat. Dengan menggunakan \textit{contextual embeddings}, 
+BERTScore mampu mengukur kedekatan semantik antara 
+kalimat yang dihasilkan model (kandidat) dan kalimat 
+referensi, sehingga menghasilkan korelasi yang lebih 
+kuat dengan penilaian manusia dibandingkan metrik 
+tradisional \cite{zhang2020bertscore}. 
+
+Berdasarkan representasi vektor kontekstual dari kalimat referensi 
+$x = \langle x_1, \dots, x_k \rangle$ dan kalimat 
+kandidat $\hat{x} = \langle \hat{x}_1, \dots, \hat{x}_l \rangle$, 
+BERTScore menghitung Recall, Precision, dan skor F1 menggunakan 
+\textit{cosine similarity}. Mengingat bahwa vektor-vektor tersebut telah 
+dinormalisasi (sehingga \textit{cosine similarity} hanyalah hasil kali 
+titik atau \textit{dot product} antara dua vektor), rumus perhitungannya 
+adalah sebagai berikut:
+
+\textbf{Recall ($R_{\text{BERT}}$):} 
+Dihitung dengan mengambil nilai kemiripan maksimum (\textit{greedy matching}) 
+dari setiap token di referensi ($x$) terhadap token-token 
+di kandidat ($\hat{x}$), lalu dirata-rata.
+$$R_{\text{BERT}} = \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^\top \hat{\mathbf{x}}_j$$
+
+\textbf{Precision ($P_{\text{BERT}}$):} Dihitung dengan mengambil nilai kemiripan maksimum dari setiap token di kandidat 
+($\hat{x}$) terhadap token-token di referensi ($x$), 
+lalu dirata-rata.
+$$P_{\text{BERT}} = \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^\top \hat{\mathbf{x}}_j$$
+
+\textbf{F1 Score ($F_{\text{BERT}}$):} Merupakan rata-rata 
+harmonik dari Precision dan Recall.
+$$F_{\text{BERT}} = 2 \frac{P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}}$$
+
+\subsection{BARTScore}
+BARTScore adalah metrik evaluasi untuk teks yang dihasilkan 
+\textit{generated text} yang mengkonseptualisasikan evaluasi 
+sebagai masalah pembuatan teks (\textit{text generation problem}). 
+Berbeda dengan metrik berbasis pencocokan vektor seperti 
+BERTScore yang membandingkan representasi semantik, BARTScore 
+memanfaatkan probabilitas generasi dari model 
+\textit{sequence-to-sequence} yang telah dilatih sebelumnya 
+(seperti BART) untuk menilai kualitas teks. Ide dasarnya 
+adalah model yang telah dilatih dengan baik seharusnya 
+memberikan probabilitas yang tinggi pada teks yang berkualitas 
+tinggi. Oleh karena itu, BARTScore mengukur seberapa besar 
+kemungkinan model BART menghasilkan teks target (hipotesis) 
+jika diberikan teks sumber (referensi atau input), atau 
+sebaliknya. Pendekatan ini memungkinkan BARTScore untuk 
+mengevaluasi berbagai aspek kualitas teks seperti kefasihan 
+(\textit{fluency}), akurasi fakta (\textit{factuality}), dan kualitas 
+parafrase tanpa memerlukan pelatihan ulang yang ekstensif \cite{yuan2021bartscore}.
+
+
+BARTScore menghitung \textit{log-likelihood} tertimbang dari token-token dalam kalimat target ($y$) ketika 
+dikondisikan pada kalimat sumber ($x$). Misalkan model memiliki 
+parameter $\theta$, rumus dasarnya 
+adalah:$$\text{BARTScore} = \sum_{t=1}^{m} w_t \log p(y_t | y_{<t}, x; \theta)$$
+Di mana:
+\begin{itemize}
+    \item $y = \langle y_1, \dots, y_m \rangle$ adalah urutan \textit{token} dari teks yang sedang dinilai.
+    \item $x$ adalah teks konteks atau referensi.
+    \item $p(y_t \mid y_{<t}, x; \theta)$ adalah probabilitas bersyarat dari token $y_t$ yang diprediksi oleh model BART berdasarkan token sebelumnya ($y_{<t}$) dan konteks ($x$).
+    \item $w_t$ adalah bobot untuk setiap token (biasanya $w_t = 1$ untuk rata-rata aritmatika standar).
+\end{itemize}
+
+
+\subsection{\textit{LLM-as-a-Judge}}
+\textit{LLM-as-a-Judge} adalah paradigma evaluasi di mana 
+LLM yang sangat kuat (seperti \textit{GPT-4}) digunakan 
+sebagai evaluator otomatis untuk menilai kualitas output 
+yang dihasilkan oleh model lain (biasanya model yang lebih 
+kecil atau kurang berkinerja). Pendekatan ini muncul sebagai 
+solusi atas kemacetan (bottleneck) dalam evaluasi manusia 
+yang mahal dan lambat, serta keterbatasan metrik otomatis 
+tradisional (seperti \textit{BLEU} atau \textit{ROUGE}) 
+yang sering kali tidak berkorelasi baik dengan penilaian 
+manusia pada tugas-tugas yang kompleks dan \textit{open-ended}.
+
+Teori yang mendasarinya adalah bahwa LLM canggih telah 
+mencapai tingkat kemampuan yang mendekati manusia dalam 
+banyak tugas, sehingga mereka dapat memodelkan preferensi 
+dan penilaian manusia dengan cukup akurat. Dalam konteks 
+pendidikan (seperti dalam paper referensi), 
+\textit{LLM-as-a-Judge} digunakan untuk menilai 
+kualitas \textit{feedback} (pemrograman), seperti 
+\textit{completeness}, \textit{perceptivity}, dan 
+\textit{selectivity}. Studi menunjukkan bahwa LLM seperti 
+GPT-4 memiliki kesepakatan (\textit{agreement}) 
+yang moderat hingga tinggi dengan penilai ahli manusia, 
+menjadikannya proksi yang layak untuk evaluasi skala 
+besar. \cite{koutcheme2024openfeedback}
+
+Tidak seperti metrik berbasis \textit{n-gram} atau 
+\textit{embedding} yang memiliki rumus matematika 
+tertutup yang statis, \textit{LLM-as-a-Judge} 
+diformulasikan sebagai fungsi pemetaan probabilistik 
+yang dikondisikan pada sebuah \textit{prompt}. Jika 
+kita mendefinisikan fungsi evaluasi $f_{\theta}$ yang 
+diparameterisasi oleh LLM (misalnya GPT-4), maka skor 
+atau label evaluasi $E$ diperoleh melalui:
+$$E = f_{\theta}(\mathcal{I}, \mathcal{C}, \mathcal{R}, \mathcal{S})$$
+Di mana:
+\begin{itemize}
+    \item $\mathcal{I}$: Instruksi evaluasi atau \textit{rubrik} (misalnya, ``Nilai apakah umpan balik ini membantu'').
+    \item $\mathcal{C}$: Konteks masalah (misalnya, deskripsi soal, kode siswa yang salah, solusi model).
+    \item $\mathcal{R}$: Respons atau output yang dievaluasi (misalnya, umpan balik yang dihasilkan oleh model target).
+    \item $\mathcal{S}$: Kriteria penilaian (misalnya, skala 1--5 atau label biner Ya/Tidak (1/0)).
+\end{itemize}
+
+Proses ini biasanya menggunakan \textit{greedy decoding} 
+(memilih token dengan probabilitas tertinggi) untuk 
+memastikan determinisme hasil evaluasi:
+$$E = \operatorname*{argmax}_{y \in \mathcal{Y}} P_{\theta}(y \mid \text{Prompt}(\mathcal{I}, \mathcal{C}, \mathcal{R}))$$
+
+Contoh \textit{prompt} untuk menilai kelengkapan umpan 
+balik yang berasal dari
+literatur referensi adalah sebagai berikut 
+\cite{koutcheme2024openfeedback}:
+
+\begin{lstlisting}
+1. You are a computer science professor teaching introductory programming using Dart.
+
+2. Below is a problem description, a model solution, and an incorrect program written by a student. You are also provided with the feedback generated by GPT-3.5. Your task is to evaluate the quality of the feedback (by saying yes or no) to ensure it adheres to the multiple criteria outlined below. For each criterion, provide your answer in a separate line with the format '(CRITERIA_NUMBER): Yes/No'. Do not provide comments, but be attentive to the problem description requirements.
+
+3. ## Problem description:
+<handout>
+## Model solution:
+<sample_solution>
+## Student Code:
+<submitted_code>
+## Feedback:
+<feedback>
+
+## Criteria:
+(1) Identifies and mentions all actual issues
+(2) Identifies and mentions at least one actual issue
+(3) Does not identify non-existent issues
+\end{lstlisting}
 
 % ==========================================================================
 
