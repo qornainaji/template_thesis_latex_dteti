@@ -1,12 +1,40 @@
 \chapter*{LAMPIRAN}
+% \addcontentsline{toc}{chapter}{LAMPIRAN}
+
+% 1. Tulis Judul Section di sini (bukan di dalam command pdf)
+% \section{Kuesioner Evaluasi Efektivitas Chatbot dalam Memberikan Feedback}
+% % Jika ingin masuk daftar isi, uncomment baris bawah:
+% % \addcontentsline{toc}{section}{Kuesioner Evaluasi...}
+
+% % 2. Masukkan HALAMAN 1 menggunakan \includegraphics
+% % Gunakan 'page=1' untuk mengambil halaman pertama saja.
+% % Kita perlu mengatur 'width' atau 'scale' agar muat di sisa ruang halaman (karena sudah terpakai judul).
+% \begin{center}
+%     \includegraphics[page=1, width=1.5\textwidth]{contents/appendix/Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback.pdf}
+% \end{center}
+
+% % 3. Masukkan HALAMAN 2 Seterusnya menggunakan \includepdf biasa
+% \includepdf[pages=2-, pagecommand={}]{contents/appendix/Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback.pdf}
+
+% \chapter*{LAMPIRAN}
 %\addcontentsline{toc}{chapter}{LAMPIRAN}	
 % saya ingin melampirkan file pdf hasil survei kuesioner
-\section{Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback}
-\includepdf[pages=-]{contents/appendix/Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback.pdf}
+% \includepdf[
+%     pages=1,
+%     pagecommand=\section{Kuesioner Evaluasi Efektivitas Chatbot dalam Memberikan Feedback}
+% ]{contents/appendix/Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback.pdf}
 
+\section{Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback}
+\includepdf[pages=-, pagecommand={}]{contents/appendix/Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback.pdf}
+
+% \section{Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback}
+% \includepdf[pages=-]{contents/appendix/Kuesioner Evaluasi Efektivitas Chatbot sebagai Asisten Pembelajaran dalam Memberikan Feedback.pdf}
+
+\section{Wawancara Penilaian Ahli Manusia terhadap Umpan Balik yang Dihasilkan oleh LLM}
+\includepdf[pages=-, pagecommand={}]{contents/appendix/Recording Wawancara.pdf}
 
 \section{Data Respons \textit{Feedback}, \textit{Motivation}, dan \textit{Appreciation} dari Ahli Manusia}
-\includepdf[pages=-]{contents/appendix/Data Respon Ahli.pdf}
+\includepdf[pages=-, pagecommand={}]{contents/appendix/Data Respon Ahli.pdf}
 % \section{Isi Lampiran}
 
 % Lampiran bersifat opsional bergantung hasil kesepakatan dengan pembimbing 
